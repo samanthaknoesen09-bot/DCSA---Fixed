@@ -52,9 +52,11 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      // Validate file size (max 10MB)
-      if (file.size > 10 * 1024 * 1024) {
-        setUploadError("File size must be less than 10MB")
+      // Validate file size (max 50MB)
+      const maxSize = 50 * 1024 * 1024 // 50MB
+      if (file.size > maxSize) {
+        setUploadError("File too large. Maximum allowed size is 50MB.")
+        setSelectedFile(null)
         return
       }
       setSelectedFile(file)
@@ -76,6 +78,7 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
     console.log("[v0] Starting document upload", {
       filename: selectedFile.name,
       type: documentType,
+      size: selectedFile.size,
     })
 
     try {
@@ -91,6 +94,10 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
       const data = await response.json()
 
       if (!response.ok) {
+        // Handle specific error codes
+        if (response.status === 413 || data.code === "FILE_TOO_LARGE") {
+          throw new Error("File too large. Maximum allowed size is 50MB.")
+        }
         throw new Error(data.error || "Upload failed")
       }
 
@@ -195,9 +202,9 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
                   <Upload className="h-5 w-5" />
                   Upload Document
                 </CardTitle>
-                <CardDescription>
-                  Accepted formats: PDF, JPG, PNG (max 10MB)
-                </CardDescription>
+              <CardDescription>
+                Accepted formats: PDF, JPG, PNG (max 50MB)
+              </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {uploadSuccess && (

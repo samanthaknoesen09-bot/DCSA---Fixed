@@ -2,6 +2,8 @@ import { type NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { Resend } from "resend"
 
+const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50MB
+
 function getResend() {
   const key = process.env.RESEND_API_KEY
   if (!key) return null
@@ -18,7 +20,7 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+      return NextResponse.json({ error: "Unauthorized", code: "UNAUTHORIZED" }, { status: 401 })
     }
 
     const formData = await request.formData()
@@ -26,11 +28,24 @@ export async function POST(request: NextRequest) {
     const documentType = formData.get("document_type") as string
 
     if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 })
+      return NextResponse.json({ error: "No file provided", code: "NO_FILE" }, { status: 400 })
     }
 
     if (!documentType) {
-      return NextResponse.json({ error: "Document type is required" }, { status: 400 })
+      return NextResponse.json({ error: "Document type is required", code: "NO_TYPE" }, { status: 400 })
+    }
+
+    // Validate file size (max 50MB)
+    if (file.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { 
+          error: "File too large. Maximum allowed size is 50MB.",
+          code: "FILE_TOO_LARGE",
+          maxSize: MAX_FILE_SIZE,
+          fileSize: file.size
+        }, 
+        { status: 413 }
+      )
     }
 
     // Generate a unique filename with user ID prefix
@@ -52,8 +67,18 @@ export async function POST(request: NextRequest) {
 
     if (uploadError) {
       console.error("Storage upload error:", uploadError)
+      // Check if error is related to file size
+      if (uploadError.message?.includes("413") || uploadError.message?.includes("entity too large")) {
+        return NextResponse.json(
+          { 
+            error: "File too large. Maximum allowed size is 50MB.",
+            code: "FILE_TOO_LARGE"
+          },
+          { status: 413 }
+        )
+      }
       return NextResponse.json(
-        { error: "Failed to upload file. Please try again." },
+        { error: "Failed to upload file. Please try again.", code: "UPLOAD_FAILED" },
         { status: 500 }
       )
     }
@@ -82,7 +107,7 @@ export async function POST(request: NextRequest) {
     if (dbError) {
       console.error("Database error:", dbError)
       return NextResponse.json(
-        { error: "Failed to save document record" },
+        { error: "Failed to save document record", code: "DB_ERROR" },
         { status: 500 }
       )
     }
@@ -132,7 +157,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Upload error:", error)
     return NextResponse.json(
-      { error: "Upload failed. Please try again." },
+      { error: "Upload failed. Please try again.", code: "UNKNOWN_ERROR" },
       { status: 500 }
     )
   }

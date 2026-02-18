@@ -11,7 +11,7 @@ import { Footer } from "@/components/footer"
 import { TrustStrip } from "@/components/trust-strip"
 import { ReassuranceBanner } from "@/components/reassurance-banner"
 import { BookingCalendar } from "@/components/booking-calendar"
-import { DebtHealthScore } from "@/components/debt-health-score"
+
 import { SocialMediaFeed } from "@/components/social-media-feed"
 import { LiveSuccessCounter } from "@/components/live-success-counter"
 import { VideoTestimonials } from "@/components/video-testimonials"
@@ -106,86 +106,21 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* Calculator Urgency Banner */}
-        <section className="py-8 px-4 bg-gradient-to-r from-primary to-black">
-          <div className="container mx-auto max-w-5xl text-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-              <div className="flex items-center gap-3">
-                <Calculator className="w-10 h-10 text-[#FFD93D]" />
-                <div className="text-left">
-                  <p className="text-white font-bold text-lg">Get Your Debt Health Score</p>
-                  <p className="text-white/80 text-sm">30 seconds to clarity. Quicker than boiling the kettle for rooibos.</p>
-                </div>
-              </div>
-              <Button size="lg" className="bg-[#FFD93D] hover:bg-[#FFD93D]/90 text-black font-bold px-8" asChild>
-                <Link href="/calculator">
-                  Check My Score - Free
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
 
-        {/* Quick Value Proposition - Hook Section */}
-        <section className="py-12 px-4 bg-[#F8F9FA]">
-          <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <Card className="border-2 border-primary/40 hover:border-primary transition-all hover:shadow-xl hover:-translate-y-1 bg-gradient-to-br from-white to-primary/5">
-                <CardContent className="p-8">
-                  <div className="text-5xl font-extrabold text-primary mb-3 tracking-tight">15-45%</div>
-                  <div className="text-base font-bold text-[#0D3B66] mb-2">Less Debt, More Life</div>
-                  <p className="text-sm text-[#0D3B66]/70 leading-relaxed">
-                    Through NCR-regulated debt review
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-2 border-[#FFD93D]/40 hover:border-[#FFD93D] transition-all hover:shadow-xl hover:-translate-y-1 bg-gradient-to-br from-white to-[#FFD93D]/5">
-                <CardContent className="p-8">
-                  <div className="text-5xl font-extrabold text-[#FFD93D] mb-3 tracking-tight">Immediate</div>
-                  <div className="text-base font-bold text-[#0D3B66] mb-2">Breathe Again</div>
-                  <p className="text-xs text-[#0D3B66]/70">
-                    Protection from day one — no waiting
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="border-2 border-[#FF6B6B]/30 hover:border-[#FF6B6B] transition-colors">
-                <CardContent className="p-6">
-                  <div className="text-4xl font-bold text-[#FF6B6B] mb-2">100%</div>
-                  <div className="text-sm font-semibold text-[#0D3B66] mb-2">Creditors? Handled.</div>
-                  <p className="text-xs text-[#0D3B66]/70">
-                    Legal protection — no more scary calls
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
 
-        {/* Debt Health Score - Interactive AI Calculator */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto max-w-3xl">
-            <DebtHealthScore />
-          </div>
-        </section>
-
-        {/* Live Success Counter */}
+        {/* Live Success Counter - Moved Up Near Top */}
         <LiveSuccessCounter />
 
         {/* Trust Strip */}
         <TrustStrip />
 
+        {/* Debt Review Comparison - Moved Up */}
+        <DebtReviewComparison />
+
         {/* Calculators Showcase - High Priority */}
         <CalculatorsShowcase />
 
-        {/* How It Works - Detailed Process - Show Early */}
-        <HowItWorks />
-
-        {/* Debt Review Comparison - Show Early */}
-        <DebtReviewComparison />
-
-        {/* Savings Calculator - Show Early */}
+        {/* Potential Savings Calculator - Moved Up */}
         <SavingsCalculator />
 
         {/* Primary Service - Debt Review */}
@@ -495,6 +430,96 @@ export function HomeClient() {
 
         {/* Podcast Section */}
         <PodcastSection />
+
+        {/* Affiliate Insurance Offers */}
+        <section className="py-16 px-4 bg-gradient-to-br from-[#FFE5D9]/10 to-[#4DB6AC]/5">
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66] mb-3">Partner Offers</h2>
+              <p className="text-lg text-[#0D3B66]/70">
+                Trusted insurance partners helping you save on essential coverage
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* 1st for Women Insurance */}
+              <Card className="border-2 border-primary/30 hover:border-primary transition-all hover:shadow-xl">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Shield className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-[#0D3B66]">Car & Home Insurance Savings</h3>
+                      <p className="text-sm text-primary font-semibold mt-1">1st for Women</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-[#0D3B66]/80 mb-6">
+                    Combine your car and home insurance to save 10% on your premiums. Get a tailored quote from 1st for Women today.
+                  </p>
+                  
+                  <Button 
+                    asChild
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
+                  >
+                    <a
+                      href="http://tracking.affcoza.com/aff_c?offer_id=2311&aff_id=26397"
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                    >
+                      Get Your 1st for Women Quote
+                    </a>
+                  </Button>
+                  
+                  <p className="text-xs text-muted-foreground text-center mt-3">
+                    Partner offer • Opens in new tab
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Auto & General Insurance */}
+              <Card className="border-2 border-[#4DB6AC]/30 hover:border-[#4DB6AC] transition-all hover:shadow-xl">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-[#4DB6AC]/10 flex items-center justify-center flex-shrink-0">
+                      <Shield className="h-6 w-6 text-[#4DB6AC]" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-[#0D3B66]">Fast Claim Payouts & Coverage</h3>
+                      <p className="text-sm text-[#4DB6AC] font-semibold mt-1">Auto & General</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-[#0D3B66]/80 mb-6">
+                    Count on Auto & General for swift 100% claim payouts and comprehensive insurance coverage tailored to your needs.
+                  </p>
+                  
+                  <Button 
+                    asChild
+                    className="w-full bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white font-semibold"
+                  >
+                    <a
+                      href="http://tracking.affcoza.com/aff_c?offer_id=1539&aff_id=26397"
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                    >
+                      Get Your Auto & General Quote
+                    </a>
+                  </Button>
+                  
+                  <p className="text-xs text-muted-foreground text-center mt-3">
+                    Partner offer • Opens in new tab
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <p className="text-center text-xs text-muted-foreground mt-6 italic">
+              These are affiliate partnership offers. Clicking these links helps support DCSA's mission to help South Africans find financial relief.
+            </p>
+          </div>
+        </section>
 
         {/* Get in Touch Form */}
         <section className="py-16 px-4 bg-[#FFE5D9]/20">

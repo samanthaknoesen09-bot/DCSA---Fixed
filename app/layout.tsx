@@ -6,7 +6,7 @@ import "./globals.css"
 import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
 import { Analytics } from "@vercel/analytics/next"
-import { MotivationalQuotePopup } from "@/components/motivational-quote-popup"
+
 import { Nunito } from "next/font/google" // Added import for Nunito font
 
 const poppins = Poppins({ 
@@ -432,7 +432,6 @@ export default function RootLayout({
           <ViewTracker />
         </Suspense>
         {children}
-        <MotivationalQuotePopup />
         <Analytics />
       </body>
     </html>
