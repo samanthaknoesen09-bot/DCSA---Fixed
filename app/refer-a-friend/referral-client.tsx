@@ -527,6 +527,11 @@ export function ReferralClient() {
                     Refer Another Friend
                   </Button>
                   <Button asChild variant="outline" className="bg-transparent">
+                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I just submitted a referral. Can you confirm you received it?")}`} target="_blank" rel="noopener noreferrer">
+                      Confirm via WhatsApp
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="bg-transparent">
                     <Link href="/">Back to Home</Link>
                   </Button>
                 </div>

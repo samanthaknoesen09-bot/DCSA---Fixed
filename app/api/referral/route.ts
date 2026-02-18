@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     if (!body.referrerName || !body.referrerEmail || !body.referrerPhone || !body.friendName || !body.friendPhone) {
       return NextResponse.json(
-        { error: "Please fill in all required fields." },
+        { error: "Please fill in all required fields.", code: "VALIDATION_ERROR" },
         { status: 400 }
       )
     }
@@ -25,7 +25,8 @@ export async function POST(request: NextRequest) {
           },
           body: JSON.stringify({
             from: "DCSA Website <noreply@dcsam.co.za>",
-            to: ["info@dcsam.co.za"],
+            to: [process.env.DCSA_EMAIL || "info@dcsam.co.za"],
+            replyTo: body.referrerEmail,
             subject: `New Referral Submission - ${body.referrerName} referred ${body.friendName}`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -34,8 +35,8 @@ export async function POST(request: NextRequest) {
                 <h3 style="color: #4DB6AC;">Referrer Details</h3>
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Name:</strong></td><td style="padding: 8px;">${body.referrerName}</td></tr>
-                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Email:</strong></td><td style="padding: 8px;">${body.referrerEmail}</td></tr>
-                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Phone:</strong></td><td style="padding: 8px;">${body.referrerPhone}</td></tr>
+                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Email:</strong></td><td style="padding: 8px;"><a href="mailto:${body.referrerEmail}">${body.referrerEmail}</a></td></tr>
+                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Phone:</strong></td><td style="padding: 8px;"><a href="tel:${body.referrerPhone}">${body.referrerPhone}</a></td></tr>
                   ${body.referrerIdNumber ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>ID Number:</strong></td><td style="padding: 8px;">${body.referrerIdNumber}</td></tr>` : ""}
                   ${body.referrerBankName ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>Bank:</strong></td><td style="padding: 8px;">${body.referrerBankName}</td></tr>` : ""}
                   ${body.referrerAccountNumber ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>Account No:</strong></td><td style="padding: 8px;">${body.referrerAccountNumber}</td></tr>` : ""}
@@ -45,8 +46,8 @@ export async function POST(request: NextRequest) {
                 <h3 style="color: #4DB6AC; margin-top: 20px;">Referred Friend Details</h3>
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Name:</strong></td><td style="padding: 8px;">${body.friendName}</td></tr>
-                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Phone:</strong></td><td style="padding: 8px;">${body.friendPhone}</td></tr>
-                  ${body.friendEmail ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>Email:</strong></td><td style="padding: 8px;">${body.friendEmail}</td></tr>` : ""}
+                  <tr><td style="padding: 8px; background: #f8f9fa;"><strong>Phone:</strong></td><td style="padding: 8px;"><a href="tel:${body.friendPhone}">${body.friendPhone}</a></td></tr>
+                  ${body.friendEmail ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>Email:</strong></td><td style="padding: 8px;"><a href="mailto:${body.friendEmail}">${body.friendEmail}</a></td></tr>` : ""}
                   ${body.friendRelationship ? `<tr><td style="padding: 8px; background: #f8f9fa;"><strong>Relationship:</strong></td><td style="padding: 8px;">${body.friendRelationship}</td></tr>` : ""}
                 </table>
 
@@ -100,13 +101,18 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      ok: true,
       referralId,
-      message: "Referral submitted successfully!",
+      message: "Referral submitted successfully! We've received it and will be in touch.",
     })
   } catch (error) {
     console.error("Referral submission error:", error)
     return NextResponse.json(
-      { error: "Something went wrong. Please try again or call us directly." },
+      { 
+        error: "Something went wrong. Please try again or call us directly.",
+        code: "SUBMISSION_ERROR",
+        ok: false
+      },
       { status: 500 }
     )
   }

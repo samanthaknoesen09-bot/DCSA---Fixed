@@ -15,7 +15,10 @@ function isAuthenticated(request: NextRequest): boolean {
 
 export async function POST(request: NextRequest) {
   if (!isAuthenticated(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+      { status: 401 }
+    )
   }
 
   try {
@@ -32,7 +35,10 @@ export async function POST(request: NextRequest) {
     const file = formData.get("file") as File
 
     if (!file) {
-      return NextResponse.json({ error: "No file provided" }, { status: 400 })
+      return NextResponse.json(
+        { error: "No file provided", ok: false, code: "NO_FILE" },
+        { status: 400 }
+      )
     }
 
     const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"]

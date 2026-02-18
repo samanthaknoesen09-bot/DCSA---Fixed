@@ -6,7 +6,10 @@ export async function POST(request: NextRequest) {
     const { urls } = await request.json()
 
     if (!urls || !Array.isArray(urls)) {
-      return NextResponse.json({ error: "Invalid URLs provided" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Invalid URLs provided", ok: false, code: "INVALID_URLS" },
+        { status: 400 }
+      )
     }
 
     // IndexNow endpoint
