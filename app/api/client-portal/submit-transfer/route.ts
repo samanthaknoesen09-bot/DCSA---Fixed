@@ -17,7 +17,10 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+      return NextResponse.json(
+        { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+        { status: 401 }
+      )
     }
 
     const formData = await request.json()
@@ -55,7 +58,7 @@ export async function POST(request: NextRequest) {
     if (dbError) {
       console.error("[v0] Database error:", dbError)
       return NextResponse.json(
-        { error: "Failed to save transfer request" },
+        { error: "Failed to save transfer request", ok: false, code: "DB_ERROR" },
         { status: 500 }
       )
     }

@@ -8,7 +8,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { TrustStrip } from "@/components/trust-strip"
 import { ReassuranceBanner } from "@/components/reassurance-banner"
 import { BookingCalendar } from "@/components/booking-calendar"
 
@@ -59,8 +58,8 @@ export function HomeClient() {
       <Header />
       
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-[#FFE5D9]/30 via-[#FFD93D]/10 to-[#4DB6AC]/5">
+        {/* Hero + Trust Combined Section */}
+        <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-[#FFE5D9]/30 via-[#FFD93D]/10 to-[#4DB6AC]/5">
           {/* Decorative background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-20 left-10 w-72 h-72 bg-[#FFD93D]/10 rounded-full blur-3xl"></div>
@@ -68,17 +67,18 @@ export function HomeClient() {
           </div>
           
           <div className="container mx-auto max-w-6xl relative z-10">
-            <div className="text-center space-y-8">
+            {/* Main Hero */}
+            <div className="text-center space-y-8 mb-16">
               <Badge className="mx-auto bg-gradient-to-r from-[#FFD93D] to-[#FFD93D]/80 text-[#0D3B66] px-6 py-2.5 text-sm font-bold hover:shadow-lg transition-all border border-[#FFD93D]/30">
-                Proudly Female-Led • NCR Registered • NCRDC3995
+                NCR Registered • NCRDC3995
               </Badge>
               
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance text-[#0D3B66]">
                 Debt Doesn{"'"}t Define You. Let{"'"}s Fix This Together.
               </h1>
               
-              <p className="text-xl md:text-2xl text-[#0D3B66]/70 max-w-3xl mx-auto text-pretty leading-relaxed">
-                You{"'"}re not broken. You{"'"}re not bad with money. You just need someone in your corner. We{"'"}ve helped hundreds of South Africans breathe again — and not one of them regretted reaching out. <strong className="text-[#0D3B66]">Your turn.</strong>
+              <p className="text-lg md:text-xl text-[#0D3B66]/70 max-w-3xl mx-auto text-pretty leading-relaxed">
+                You{"'"}re not broken. You{"'"}re not bad with money. You just need someone in your corner. <strong className="text-[#0D3B66]">Your turn.</strong>
               </p>
               
               <div className="flex flex-col items-center gap-6 pt-6">
@@ -103,16 +103,60 @@ export function HomeClient() {
                 </p>
               </div>
             </div>
+
+            {/* Trust Benefits - Part of Hero Now */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-8 border-t border-[#4DB6AC]/20">
+              <div className="text-center space-y-2 py-4">
+                <div className="flex flex-col items-center">
+                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">NCR Regulated</div>
+                </div>
+                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
+                  NCRDC3995
+                </div>
+              </div>
+              
+              <div className="text-center space-y-2 py-4">
+                <div className="flex flex-col items-center">
+                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
+                  </svg>
+                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">Personalized</div>
+                </div>
+                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
+                  Debt Solutions
+                </div>
+              </div>
+              
+              <div className="text-center space-y-2 py-4">
+                <div className="flex flex-col items-center">
+                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                  </svg>
+                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">No Judgement</div>
+                </div>
+                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
+                  Just Support
+                </div>
+              </div>
+
+              <div className="text-center space-y-2 py-4">
+                <div className="flex flex-col items-center">
+                  <div className="text-3xl md:text-2xl font-bold text-[#4DB6AC] mb-1">✓</div>
+                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">Protection</div>
+                </div>
+                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
+                  One Plan, Less Stress
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-
-
         {/* Live Success Counter - Moved Up Near Top */}
         <LiveSuccessCounter />
-
-        {/* Trust Strip */}
-        <TrustStrip />
 
         {/* Debt Review Comparison - Moved Up */}
         <DebtReviewComparison />
@@ -518,6 +562,58 @@ export function HomeClient() {
             <p className="text-center text-xs text-muted-foreground mt-6 italic">
               These are affiliate partnership offers. Clicking these links helps support DCSA's mission to help South Africans find financial relief.
             </p>
+          </div>
+        </section>
+
+        {/* Refer a Friend - Responsive Section */}
+        <section className="py-16 px-4 bg-gradient-to-br from-[#FFD93D]/20 via-background to-[#4DB6AC]/10">
+          <div className="container mx-auto max-w-4xl">
+            <Card className="border-2 border-[#FFD93D]/50 hover:border-[#FFD93D] transition-all">
+              <CardContent className="p-6 md:p-10 space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#FFD93D]/20 flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-6 h-6 text-[#FFD93D]" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#0D3B66] mb-2">
+                      Know Someone Who Needs Help?
+                    </h3>
+                    <p className="text-[#0D3B66]/70">
+                      Refer a friend and earn <strong>R350</strong> when we successfully help them with debt counselling. Paid directly to your bank account — no limits on referrals.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white/50 rounded-lg p-4 border border-[#FFD93D]/20">
+                  <p className="text-sm text-[#0D3B66]/70">
+                    Fill in a quick form, share your friend's info, and we{"'"}ll handle the rest. When they sign up for our services, you get paid. It{"'"}s that simple.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button 
+                    size="lg"
+                    className="bg-[#FFD93D] hover:bg-[#FFD93D]/90 text-[#0D3B66] font-semibold"
+                    asChild
+                  >
+                    <Link href="/refer-a-friend" className="flex items-center gap-2">
+                      <Heart className="w-5 h-5" />
+                      Refer a Friend
+                    </Link>
+                  </Button>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-[#FFD93D] text-[#0D3B66] hover:bg-[#FFD93D]/10"
+                  >
+                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I'd like to learn more about your referral program. Can you share the details?")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <MessageCircle className="w-5 h-5" />
+                      Ask via WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

@@ -107,14 +107,17 @@ export async function GET() {
 // POST - Create a new blog post
 export async function POST(request: NextRequest) {
   if (!isAuthenticated(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+      { status: 401 }
+    )
   }
 
   try {
     const blobMod = await getBlobModule()
     if (!blobMod) {
       return NextResponse.json(
-        { error: "Blog storage not configured. Set BLOB_READ_WRITE_TOKEN." },
+        { error: "Blog storage not configured. Set BLOB_READ_WRITE_TOKEN.", ok: false, code: "STORAGE_ERROR" },
         { status: 500 },
       )
     }
@@ -219,14 +222,17 @@ export async function POST(request: NextRequest) {
 // DELETE - Delete a blog post
 export async function DELETE(request: NextRequest) {
   if (!isAuthenticated(request)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json(
+      { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+      { status: 401 }
+    )
   }
 
   try {
     const blobMod = await getBlobModule()
     if (!blobMod) {
       return NextResponse.json(
-        { error: "Blog storage not configured" },
+        { error: "Blog storage not configured", ok: false, code: "STORAGE_ERROR" },
         { status: 500 },
       )
     }

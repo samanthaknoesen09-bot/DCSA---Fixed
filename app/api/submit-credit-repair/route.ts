@@ -134,6 +134,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("[v0] Credit repair submission error:", error)
-    return NextResponse.json({ error: "Failed to submit application" }, { status: 500 })
+    return NextResponse.json(
+      { error: "Failed to submit application", ok: false, code: "SUBMISSION_ERROR" },
+      { status: 500 }
+    )
   }
 }

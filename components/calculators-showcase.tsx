@@ -57,14 +57,12 @@ export function CalculatorsShowcase() {
 
               <Button 
                 className="w-full bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white text-lg h-12"
-                onClick={() => {
-                  console.log("[v0] Money Map button clicked, scrolling to calculator options")
-                  const element = document.getElementById('money-map-options')
-                  element?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                }}
+                asChild
               >
-                Try Money Map
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/calculator">
+                  Try Money Map
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </CardContent>
           </Card>

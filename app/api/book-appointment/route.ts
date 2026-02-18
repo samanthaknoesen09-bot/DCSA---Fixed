@@ -105,7 +105,10 @@ ${appointmentType === "in-person" ? "\nLocation: DCSA Office (Details will be se
     })
   } catch (error) {
     console.error("Error booking appointment:", error)
-    return NextResponse.json({ success: false, error: "Failed to book appointment" }, { status: 500 })
+    return NextResponse.json(
+      { error: "Failed to book appointment", ok: false, code: "BOOKING_ERROR" },
+      { status: 500 }
+    )
   }
 }
 

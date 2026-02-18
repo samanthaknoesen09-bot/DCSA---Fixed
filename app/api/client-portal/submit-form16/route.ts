@@ -18,7 +18,10 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+      return NextResponse.json(
+        { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+        { status: 401 }
+      )
     }
 
     const formData = await request.json()
@@ -74,7 +77,7 @@ export async function POST(request: NextRequest) {
     if (dbError) {
       console.error("[v0] Database error:", dbError)
       return NextResponse.json(
-        { error: "Failed to save application" },
+        { error: "Failed to save application", ok: false, code: "DB_ERROR" },
         { status: 500 }
       )
     }
@@ -171,13 +174,14 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      ok: true,
       application,
       message: "Application submitted successfully",
     })
   } catch (error) {
     console.error("[v0] Form 16 submission error:", error)
     return NextResponse.json(
-      { error: "Failed to submit application" },
+      { error: "Failed to submit application", ok: false, code: "SUBMISSION_ERROR" },
       { status: 500 }
     )
   }
