@@ -105,5 +105,55 @@ export default async function BlogPostPage({
     notFound()
   }
   
-  return <BlogPostClient post={post} />
+  const baseUrl = "https://www.dcsam.co.za"
+  const postUrl = `${baseUrl}/blog/${post.slug}`
+  
+  // JSON-LD Structured Data for BlogPosting
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.featuredImage || `${baseUrl}/dcsa-og-image.png`,
+    datePublished: post.createdAt,
+    dateModified: post.updatedAt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "DCSA Debt Counsellors",
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/images/dcsa-logo.jpg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    keywords: [
+      post.category,
+      "debt counselling",
+      "debt review",
+      "credit repair",
+      "financial advice",
+      "South Africa",
+    ],
+    articleSection: post.category,
+    wordCount: post.content?.split(" ").length || 0,
+  }
+  
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      <BlogPostClient post={post} />
+    </>
+  )
 }
