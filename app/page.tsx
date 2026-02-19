@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_ZA",
     images: [
       {
-        url: "https://www.dcsam.co.za/dcsa-og-image.png",
+        url: "https://www.dcsam.co.za/images/dcsa-og-logo.png",
         width: 1200,
         height: 630,
         alt: "DCSA - Debt Counselling & Credit Repair South Africa",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DCSA - Debt Counselling & Credit Repair",
     description: "We're here to help. Compassionate debt counselling and credit repair services. No judgment, just support.",
-    images: ["https://www.dcsam.co.za/dcsa-og-image.png"],
+    images: ["https://www.dcsam.co.za/images/dcsa-og-logo.png"],
   },
   robots: {
     index: true,
