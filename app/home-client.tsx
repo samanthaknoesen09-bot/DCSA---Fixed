@@ -41,7 +41,8 @@ import {
   Phone,
   Mail,
   MessageCircle,
-  FileCheck
+  FileCheck,
+  Heart
 } from "lucide-react"
 
 export function HomeClient() {
