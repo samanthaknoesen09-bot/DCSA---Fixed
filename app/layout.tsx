@@ -29,6 +29,11 @@ const nunito = Nunito({ // Declared the nunito variable
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dcsam.co.za"),
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   title: {
     default: "DCSA - Professional Debt Counselling & Credit Repair South Africa",
     template: "%s | DCSA",
