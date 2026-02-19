@@ -114,7 +114,7 @@ export default async function BlogPostPage({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: post.featuredImage || `${baseUrl}/dcsa-og-image.png`,
+    image: post.featuredImage || `${baseUrl}/images/dcsa-og-logo.png`,
     datePublished: post.createdAt,
     dateModified: post.updatedAt,
     author: {

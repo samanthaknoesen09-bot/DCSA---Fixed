@@ -176,7 +176,7 @@ export const metadata: Metadata = {
       "DCSA helps South Africans find real financial relief through debt review, credit repair, and free financial tools. NCR registered (NCRDC3995). No judgment, just genuine support.",
     images: [
       {
-        url: "https://www.dcsam.co.za/dcsa-og-image.png",
+        url: "https://www.dcsam.co.za/images/dcsa-og-logo.png",
         width: 1200,
         height: 630,
         alt: "DCSA - Debt Counselling & Credit Repair South Africa",
@@ -188,7 +188,7 @@ export const metadata: Metadata = {
     title: "DCSA - Caring Debt Counselling & Credit Repair | South Africa",
     description:
       "Real help for real people. DCSA offers debt review, credit repair, and free financial tools across South Africa. NCR registered (NCRDC3995). No judgment.",
-    images: ["https://www.dcsam.co.za/dcsa-og-image.png"],
+    images: ["https://www.dcsam.co.za/images/dcsa-og-logo.png"],
   },
   alternates: {
     canonical: "https://www.dcsam.co.za",
