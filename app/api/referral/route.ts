@@ -13,13 +13,16 @@ export async function POST(request: NextRequest) {
     }
 
     const referralId = `REF-${Date.now()}`
+    const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
 
     console.log("[v0] Processing referral submission:", { referralId, referrerName: body.referrerName })
 
-    // Send email notification via Resend to Samantha
-    try {
-      if (process.env.RESEND_API_KEY) {
-        console.log("[v0] Sending referral email via Resend...")
+    let emailSent = false
+
+    // PRIORITY 1: Send email notification via Resend to Samantha
+    if (process.env.RESEND_API_KEY) {
+      try {
+        console.log("[v0] Attempting to send referral email via Resend...")
         const resendResponse = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -61,7 +64,7 @@ export async function POST(request: NextRequest) {
                 <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
                   <p style="margin: 0; font-size: 12px; color: #666;">
                     <strong>Referral ID:</strong> ${referralId}<br/>
-                    <strong>Submitted:</strong> ${new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })}
+                    <strong>Submitted:</strong> ${submittedTime}
                   </p>
                 </div>
               </div>
@@ -69,72 +72,75 @@ export async function POST(request: NextRequest) {
           }),
         })
 
-        if (!resendResponse.ok) {
-          const errorText = await resendResponse.text()
-          console.error("[v0] Resend API error:", errorText)
+        if (resendResponse.ok) {
+          console.log("[v0] Email sent successfully to samantha.knoesen09@gmail.com via Resend")
+          emailSent = true
         } else {
-          console.log("[v0] Email sent successfully to samantha.knoesen09@gmail.com")
+          const errorText = await resendResponse.text()
+          console.error("[v0] Resend API error:", { status: resendResponse.status, error: errorText })
         }
-      } else {
-        console.warn("[v0] RESEND_API_KEY not configured")
+      } catch (emailError) {
+        console.error("[v0] Resend email sending error:", emailError)
       }
-    } catch (emailError) {
-      console.error("[v0] Email sending error:", emailError)
+    } else {
+      console.warn("[v0] RESEND_API_KEY not configured - fallback to Zapier/alternative methods")
     }
 
-    // Send WhatsApp message notification via WhatsApp API (if configured)
-    try {
-      if (process.env.WHATSAPP_API_KEY && process.env.WHATSAPP_PHONE_ID) {
-        console.log("[v0] Sending WhatsApp notification...")
-        const whatsappMessage = `New Referral Received!\n\nReferrer: ${body.referrerName}\nPhone: ${body.referrerPhone}\nFriend: ${body.friendName}\nFriend's Phone: ${body.friendPhone}\n\nReferral ID: ${referralId}`
-        
-        await fetch("https://graph.instagram.com/v18.0/" + process.env.WHATSAPP_PHONE_ID + "/messages", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${process.env.WHATSAPP_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messaging_product: "whatsapp",
-            to: "27661937596",
-            type: "text",
-            text: { body: whatsappMessage },
-          }),
-        })
-        console.log("[v0] WhatsApp notification sent")
-      }
-    } catch (whatsappError) {
-      console.warn("[v0] WhatsApp notification failed (non-critical):", whatsappError)
-    }
-
-    // Also send to Zapier if configured
+    // PRIORITY 2: Send to Zapier webhook (if configured) - most reliable backup
+    let zapierSent = false
     const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL
     if (zapierWebhookUrl) {
       try {
-        console.log("[v0] Sending to Zapier webhook...")
-        await fetch(zapierWebhookUrl, {
+        console.log("[v0] Sending referral to Zapier webhook...")
+        const zapierResponse = await fetch(zapierWebhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             type: "Client Referral",
+            referralId,
             referrerName: body.referrerName,
             referrerEmail: body.referrerEmail,
             referrerPhone: body.referrerPhone,
             friendName: body.friendName,
             friendPhone: body.friendPhone,
             friendEmail: body.friendEmail || "",
+            referrerIdNumber: body.referrerIdNumber || "",
+            referrerBankName: body.referrerBankName || "",
+            referrerAccountNumber: body.referrerAccountNumber || "",
+            referrerBranchCode: body.referrerBranchCode || "",
+            friendRelationship: body.friendRelationship || "",
             referralFee: "R350",
-            submittedAt: new Date().toISOString(),
+            submittedAt: submittedTime,
             source: "DCSA Website - Referral Form",
           }),
         })
-        console.log("[v0] Zapier webhook sent")
+        if (zapierResponse.ok) {
+          console.log("[v0] Referral sent successfully to Zapier")
+          zapierSent = true
+        } else {
+          console.warn("[v0] Zapier webhook returned status:", zapierResponse.status)
+        }
       } catch (zapierError) {
-        console.warn("[v0] Zapier webhook failed (non-critical):", zapierError)
+        console.warn("[v0] Zapier webhook error:", zapierError)
       }
+    } else {
+      console.warn("[v0] ZAPIER_WEBHOOK_URL not configured")
     }
 
-    console.log("[v0] Referral submission completed successfully")
+    // PRIORITY 3: Log to console for monitoring (will show in server logs)
+    console.log("[v0] REFERRAL NOTIFICATION LOG:", {
+      referralId,
+      referrerName: body.referrerName,
+      referrerEmail: body.referrerEmail,
+      referrerPhone: body.referrerPhone,
+      friendName: body.friendName,
+      friendPhone: body.friendPhone,
+      submittedAt: submittedTime,
+      emailSent,
+      zapierSent,
+    })
+
+    console.log("[v0] Referral submission completed. Email sent:", emailSent, "Zapier sent:", zapierSent)
 
     return NextResponse.json({
       success: true,
