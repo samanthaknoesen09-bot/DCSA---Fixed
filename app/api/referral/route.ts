@@ -14,9 +14,12 @@ export async function POST(request: NextRequest) {
 
     const referralId = `REF-${Date.now()}`
 
-    // Send email notification via Resend
+    console.log("[v0] Processing referral submission:", { referralId, referrerName: body.referrerName })
+
+    // Send email notification via Resend to Samantha
     try {
       if (process.env.RESEND_API_KEY) {
+        console.log("[v0] Sending referral email via Resend...")
         const resendResponse = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -25,7 +28,7 @@ export async function POST(request: NextRequest) {
           },
           body: JSON.stringify({
             from: "DCSA Website <noreply@dcsam.co.za>",
-            to: [process.env.DCSA_EMAIL || "info@dcsam.co.za"],
+            to: ["samantha.knoesen09@gmail.com"],
             replyTo: body.referrerEmail,
             subject: `New Referral Submission - ${body.referrerName} referred ${body.friendName}`,
             html: `
@@ -67,17 +70,48 @@ export async function POST(request: NextRequest) {
         })
 
         if (!resendResponse.ok) {
-          console.error("Resend API error:", await resendResponse.text())
+          const errorText = await resendResponse.text()
+          console.error("[v0] Resend API error:", errorText)
+        } else {
+          console.log("[v0] Email sent successfully to samantha.knoesen09@gmail.com")
         }
+      } else {
+        console.warn("[v0] RESEND_API_KEY not configured")
       }
     } catch (emailError) {
-      console.error("Email sending error:", emailError)
+      console.error("[v0] Email sending error:", emailError)
+    }
+
+    // Send WhatsApp message notification via WhatsApp API (if configured)
+    try {
+      if (process.env.WHATSAPP_API_KEY && process.env.WHATSAPP_PHONE_ID) {
+        console.log("[v0] Sending WhatsApp notification...")
+        const whatsappMessage = `New Referral Received!\n\nReferrer: ${body.referrerName}\nPhone: ${body.referrerPhone}\nFriend: ${body.friendName}\nFriend's Phone: ${body.friendPhone}\n\nReferral ID: ${referralId}`
+        
+        await fetch("https://graph.instagram.com/v18.0/" + process.env.WHATSAPP_PHONE_ID + "/messages", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${process.env.WHATSAPP_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messaging_product: "whatsapp",
+            to: "27661937596",
+            type: "text",
+            text: { body: whatsappMessage },
+          }),
+        })
+        console.log("[v0] WhatsApp notification sent")
+      }
+    } catch (whatsappError) {
+      console.warn("[v0] WhatsApp notification failed (non-critical):", whatsappError)
     }
 
     // Also send to Zapier if configured
     const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL
     if (zapierWebhookUrl) {
       try {
+        console.log("[v0] Sending to Zapier webhook...")
         await fetch(zapierWebhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -94,10 +128,13 @@ export async function POST(request: NextRequest) {
             source: "DCSA Website - Referral Form",
           }),
         })
-      } catch {
-        // Silent fail for Zapier
+        console.log("[v0] Zapier webhook sent")
+      } catch (zapierError) {
+        console.warn("[v0] Zapier webhook failed (non-critical):", zapierError)
       }
     }
+
+    console.log("[v0] Referral submission completed successfully")
 
     return NextResponse.json({
       success: true,
@@ -106,7 +143,7 @@ export async function POST(request: NextRequest) {
       message: "Referral submitted successfully! We've received it and will be in touch.",
     })
   } catch (error) {
-    console.error("Referral submission error:", error)
+    console.error("[v0] Referral submission error:", error)
     return NextResponse.json(
       { 
         error: "Something went wrong. Please try again or call us directly.",
