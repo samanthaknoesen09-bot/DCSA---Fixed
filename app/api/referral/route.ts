@@ -1,29 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { Resend } from "resend"
+import { sendDualEmail } from "@/lib/emailDispatcher"
 
-function getResend() {
-  const key = process.env.RESEND_API_KEY
-  if (!key) return null
-  return new Resend(key)
-}
+export const runtime = "edge"
 
 export async function POST(request: NextRequest) {
+  const submissionId = crypto.randomUUID()
+  const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
+
   try {
     const body = await request.json()
 
     // Validate required fields
     if (!body.referrerName || !body.referrerEmail || !body.referrerPhone || !body.friendName || !body.friendPhone) {
-      console.error("[v0] Referral validation failed - missing required fields")
+      console.error("[v0] Referral validation failed", { submissionId })
       return NextResponse.json(
-        { error: "Please fill in all required fields.", code: "VALIDATION_ERROR" },
+        { ok: false, code: "VALIDATION_ERROR", submissionId },
         { status: 400 }
       )
     }
-
-    const referralId = `REF-${Date.now()}`
-    const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
-
-    console.log("[v0] Processing referral submission:", { referralId, referrerName: body.referrerName })
 
     // Email template
     const emailTemplate = `
@@ -55,143 +49,37 @@ export async function POST(request: NextRequest) {
 
         <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
           <p style="margin: 0; font-size: 12px; color: #666;">
-            <strong>Referral ID:</strong> ${referralId}<br/>
+            <strong>Reference ID:</strong> ${submissionId}<br/>
             <strong>Submitted:</strong> ${submittedTime}
           </p>
         </div>
       </div>
     `
 
-    let emailsSent = 0
-    let emailsFailed = 0
-
-    // Send email to BOTH addresses (MANDATORY PER MASTER AUDIT)
-    if (process.env.RESEND_API_KEY) {
-      try {
-        const resend = getResend()
-        if (!resend) throw new Error("Resend not configured")
-
-        console.log("[v0] Attempting to send referral emails via Resend...")
-        
-        // Send to info@dcsam.co.za
-        try {
-          await resend.emails.send({
-            from: "DCSA Website <noreply@dcsam.co.za>",
-            to: "info@dcsam.co.za",
-            replyTo: body.referrerEmail,
-            subject: `New Referral Submission - ${body.referrerName} referred ${body.friendName}`,
-            html: emailTemplate,
-          })
-          console.log("[v0] Email sent successfully to info@dcsam.co.za")
-          emailsSent++
-        } catch (e) {
-          console.error("[v0] Failed to send email to info@dcsam.co.za:", e)
-          emailsFailed++
-        }
-
-        // Send to samantha.knoesen09@gmail.com
-        try {
-          await resend.emails.send({
-            from: "DCSA Website <noreply@dcsam.co.za>",
-            to: "samantha.knoesen09@gmail.com",
-            replyTo: body.referrerEmail,
-            subject: `New Referral Submission - ${body.referrerName} referred ${body.friendName}`,
-            html: emailTemplate,
-          })
-          console.log("[v0] Email sent successfully to samantha.knoesen09@gmail.com")
-          emailsSent++
-        } catch (e) {
-          console.error("[v0] Failed to send email to samantha.knoesen09@gmail.com:", e)
-          emailsFailed++
-        }
-      } catch (emailError) {
-        console.error("[v0] Resend initialization error:", emailError)
-        emailsFailed = 2
-      }
-    } else {
-      console.warn("[v0] RESEND_API_KEY not configured")
-    }
-
-    // Send to Zapier webhook as backup
-    let zapierSent = false
-    const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL
-    if (zapierWebhookUrl) {
-      try {
-        console.log("[v0] Sending referral to Zapier webhook...")
-        const zapierResponse = await fetch(zapierWebhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            type: "Client Referral",
-            referralId,
-            referrerName: body.referrerName,
-            referrerEmail: body.referrerEmail,
-            referrerPhone: body.referrerPhone,
-            friendName: body.friendName,
-            friendPhone: body.friendPhone,
-            friendEmail: body.friendEmail || "",
-            referrerIdNumber: body.referrerIdNumber || "",
-            referrerBankName: body.referrerBankName || "",
-            referrerAccountNumber: body.referrerAccountNumber || "",
-            referrerBranchCode: body.referrerBranchCode || "",
-            friendRelationship: body.friendRelationship || "",
-            referralFee: "R350",
-            submittedAt: submittedTime,
-            source: "DCSA Website - Referral Form",
-          }),
-        })
-        if (zapierResponse.ok) {
-          console.log("[v0] Referral sent successfully to Zapier")
-          zapierSent = true
-        } else {
-          console.warn("[v0] Zapier webhook returned status:", zapierResponse.status)
-        }
-      } catch (zapierError) {
-        console.warn("[v0] Zapier webhook error:", zapierError)
-      }
-    }
-
-    // Structured logging for monitoring
-    console.log("[v0] REFERRAL SUBMISSION COMPLETED", {
-      referralId,
-      referrerName: body.referrerName,
-      referrerEmail: body.referrerEmail,
-      referrerPhone: body.referrerPhone,
-      friendName: body.friendName,
-      friendPhone: body.friendPhone,
-      submittedAt: submittedTime,
-      emailsSentTo: ["info@dcsam.co.za", "samantha.knoesen09@gmail.com"],
-      emailsSentCount: emailsSent,
-      emailsFailedCount: emailsFailed,
-      zapierSent,
+    // Send dual emails - if either fails, throws and we return 500
+    await sendDualEmail({
+      subject: `New Referral Submission - ${body.referrerName} referred ${body.friendName}`,
+      html: emailTemplate,
+      submissionId,
+      type: "referral",
+      replyTo: body.referrerEmail,
     })
 
-    // Return success only if at least one email was sent OR Zapier succeeded
-    if (emailsSent > 0 || zapierSent) {
-      return NextResponse.json({
-        success: true,
-        ok: true,
-        referralId,
-        message: "Referral submitted successfully! We've received it and will be in touch.",
-      })
-    } else {
-      console.error("[v0] Referral submission failed - no delivery method succeeded")
-      return NextResponse.json(
-        { 
-          error: "Failed to process referral. Please try again or contact us directly.",
-          code: "DELIVERY_FAILED",
-          ok: false
-        },
-        { status: 500 }
-      )
-    }
+    return NextResponse.json({
+      ok: true,
+      submissionId,
+    })
   } catch (error) {
-    console.error("[v0] Referral submission error:", error)
+    console.error("[v0] Referral submission failed", {
+      submissionId,
+      error: error instanceof Error ? error.message : String(error),
+    })
+
     return NextResponse.json(
-      { 
-        error: "Something went wrong. Please try again or call us directly.",
-        code: "SUBMISSION_ERROR",
-        ok: false
+      {
+        ok: false,
+        code: "DELIVERY_FAILED",
+        submissionId,
       },
       { status: 500 }
     )
