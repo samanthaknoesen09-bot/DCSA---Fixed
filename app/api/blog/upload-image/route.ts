@@ -21,58 +21,14 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  try {
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
-      return NextResponse.json(
-        { error: "Blog storage not configured. Set BLOB_READ_WRITE_TOKEN." },
-        { status: 500 },
-      )
-    }
-
-    const { put } = await import("@vercel/blob")
-
-    const formData = await request.formData()
-    const file = formData.get("file") as File
-
-    if (!file) {
-      return NextResponse.json(
-        { error: "No file provided", ok: false, code: "NO_FILE" },
-        { status: 400 }
-      )
-    }
-
-    const validTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"]
-    if (!validTypes.includes(file.type)) {
-      return NextResponse.json(
-        { error: "Invalid file type. Please upload an image." },
-        { status: 400 },
-      )
-    }
-
-    if (file.size > 5 * 1024 * 1024) {
-      return NextResponse.json(
-        { error: "File too large. Maximum size is 5MB." },
-        { status: 400 },
-      )
-    }
-
-    const filename = `blog-images/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`
-
-    const blob = await put(filename, file, {
-      access: "public",
-      contentType: file.type,
-    })
-
-    return NextResponse.json({
-      success: true,
-      url: blob.url,
-      filename: blob.pathname,
-    })
-  } catch (error) {
-    console.error("Error uploading image:", error)
-    return NextResponse.json(
-      { error: "Failed to upload image" },
-      { status: 500 },
-    )
-  }
+  // Blog image upload disabled - Vercel Blob removed due to free tier limits
+  // Migrate to Supabase Storage if blog functionality is needed
+  return NextResponse.json(
+    { 
+      error: "Blog image upload is currently disabled. Please use Supabase Storage for blog images.", 
+      ok: false, 
+      code: "FEATURE_DISABLED" 
+    },
+    { status: 503 }
+  )
 }

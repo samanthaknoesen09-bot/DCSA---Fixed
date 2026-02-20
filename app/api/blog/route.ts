@@ -1,12 +1,6 @@
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
-// Dynamic import to avoid build-time crash when BLOB_READ_WRITE_TOKEN is missing
-async function getBlobModule() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return null
-  return await import("@vercel/blob")
-}
-
 // Simple auth check
 function isAuthenticated(request: NextRequest): boolean {
   const authHeader = request.headers.get("authorization")
@@ -71,37 +65,9 @@ async function postToFacebook(
 
 // GET - List all blog posts
 export async function GET() {
-  try {
-    const blob = await getBlobModule()
-    if (!blob) return NextResponse.json({ posts: [] })
-
-    const { blobs } = await blob.list({ prefix: "blogs/" })
-    const now = new Date()
-
-    const posts = await Promise.all(
-      blobs
-        .filter((b) => b.pathname.endsWith(".json"))
-        .map(async (b) => {
-          const response = await fetch(b.url)
-          const post = await response.json()
-          return { ...post, blobUrl: b.url, pathname: b.pathname }
-        }),
-    )
-
-    const publishedPosts = posts.filter((post) => {
-      if (!post.scheduledFor) return true
-      return new Date(post.scheduledFor) <= now
-    })
-
-    publishedPosts.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    )
-
-    return NextResponse.json({ posts: publishedPosts })
-  } catch {
-    return NextResponse.json({ posts: [] })
-  }
+  // Blog feature disabled - Vercel Blob removed due to free tier limits
+  // Migrate to Supabase Storage if blog functionality is needed
+  return NextResponse.json({ posts: [] })
 }
 
 // POST - Create a new blog post
@@ -113,110 +79,16 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  try {
-    const blobMod = await getBlobModule()
-    if (!blobMod) {
-      return NextResponse.json(
-        { error: "Blog storage not configured. Set BLOB_READ_WRITE_TOKEN.", ok: false, code: "STORAGE_ERROR" },
-        { status: 500 },
-      )
-    }
-
-    const body = await request.json()
-    const { title, content, excerpt, category, featuredImage, scheduledFor } =
-      body
-
-    if (!title || !content) {
-      return NextResponse.json(
-        { error: "Title and content are required" },
-        { status: 400 },
-      )
-    }
-
-    const slug = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "")
-
-    const plainTextContent = content
-      .replace(/<[^>]*>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-
-    const now = new Date().toISOString()
-
-    const post = {
-      id: `post-${Date.now()}`,
-      slug,
-      title,
-      content,
-      excerpt: excerpt || `${plainTextContent.substring(0, 200)}...`,
-      category: category || "General",
-      author: "DCSA Team",
-      featuredImage: featuredImage || "",
-      scheduledFor: scheduledFor || null,
-      createdAt: now,
-      updatedAt: now,
-      publishedAt: !scheduledFor ? now : null,
-    }
-
-    const filename = `blogs/${slug}-${Date.now()}.json`
-    const blobResult = await blobMod.put(filename, JSON.stringify(post), {
-      access: "public",
-      contentType: "application/json",
-    })
-
-    let message = "Blog post created successfully."
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.dcsam.co.za"
-    const blogUrl = `${baseUrl}/blog/${slug}`
-
-    if (!scheduledFor || new Date(scheduledFor) <= new Date()) {
-      const fbResult = await postToFacebook(
-        title,
-        post.excerpt,
-        blogUrl,
-        featuredImage,
-      )
-
-      if (fbResult.success) {
-        message += " Posted to Facebook."
-      } else {
-        message += ` Facebook posting failed: ${fbResult.error}`
-      }
-
-      try {
-        const searchEngineResponse = await fetch(
-          `${baseUrl}/api/submit-to-search-engines`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url: blogUrl, type: "blog" }),
-          },
-        )
-
-        if (searchEngineResponse.ok) {
-          message += " Submitted to search engines for indexing."
-        }
-      } catch {
-        message += " (Search engine submission failed)"
-      }
-    } else {
-      message += ` Scheduled for ${new Date(scheduledFor).toLocaleString("en-ZA")}`
-    }
-
-    return NextResponse.json({
-      success: true,
-      post: { ...post, blobUrl: blobResult.url },
-      message,
-    })
-  } catch (error) {
-    console.error("Error creating blog post:", error)
-    return NextResponse.json(
-      { error: "Failed to create blog post" },
-      { status: 500 },
-    )
-  }
+  // Blog feature disabled - Vercel Blob removed due to free tier limits
+  // Migrate to Supabase Storage if blog functionality is needed
+  return NextResponse.json(
+    { 
+      error: "Blog feature is currently disabled. Please use Supabase Storage for blog content.", 
+      ok: false, 
+      code: "FEATURE_DISABLED" 
+    },
+    { status: 503 }
+  )
 }
 
 // DELETE - Delete a blog post
@@ -228,33 +100,14 @@ export async function DELETE(request: NextRequest) {
     )
   }
 
-  try {
-    const blobMod = await getBlobModule()
-    if (!blobMod) {
-      return NextResponse.json(
-        { error: "Blog storage not configured", ok: false, code: "STORAGE_ERROR" },
-        { status: 500 },
-      )
-    }
-
-    const { searchParams } = new URL(request.url)
-    const url = searchParams.get("url")
-
-    if (!url) {
-      return NextResponse.json(
-        { error: "URL is required" },
-        { status: 400 },
-      )
-    }
-
-    await blobMod.del(url)
-
-    return NextResponse.json({ success: true, message: "Blog post deleted" })
-  } catch (error) {
-    console.error("Error deleting blog post:", error)
-    return NextResponse.json(
-      { error: "Failed to delete blog post" },
-      { status: 500 },
-    )
-  }
+  // Blog feature disabled - Vercel Blob removed due to free tier limits
+  // Migrate to Supabase Storage if blog functionality is needed
+  return NextResponse.json(
+    { 
+      error: "Blog feature is currently disabled. Please use Supabase Storage for blog content.", 
+      ok: false, 
+      code: "FEATURE_DISABLED" 
+    },
+    { status: 503 }
+  )
 }
