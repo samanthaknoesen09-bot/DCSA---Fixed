@@ -1,16 +1,15 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
-import { Resend } from "resend"
+import { createClient as createAdminClient } from "@supabase/supabase-js"
+import { sendDualEmail } from "@/lib/emailDispatcher"
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024 // 50MB
 
-function getResend() {
-  const key = process.env.RESEND_API_KEY
-  if (!key) return null
-  return new Resend(key)
-}
-
 export async function POST(request: NextRequest) {
+  const submissionId = crypto.randomUUID()
+  const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
+  let documentSaved = false
+
   try {
     const supabase = await createClient()
 
@@ -20,7 +19,12 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ error: "Unauthorized", code: "UNAUTHORIZED" }, { status: 401 })
+      return NextResponse.json({ 
+        ok: false, 
+        code: "UNAUTHORIZED",
+        submissionId,
+        message: "Authentication required. Please log in.",
+      }, { status: 401 })
     }
 
     const formData = await request.formData()
@@ -28,19 +32,31 @@ export async function POST(request: NextRequest) {
     const documentType = formData.get("document_type") as string
 
     if (!file) {
-      return NextResponse.json({ error: "No file provided", code: "NO_FILE" }, { status: 400 })
+      return NextResponse.json({ 
+        ok: false,
+        code: "VALIDATION_ERROR", 
+        submissionId,
+        message: "No file provided",
+      }, { status: 400 })
     }
 
     if (!documentType) {
-      return NextResponse.json({ error: "Document type is required", code: "NO_TYPE" }, { status: 400 })
+      return NextResponse.json({ 
+        ok: false,
+        code: "VALIDATION_ERROR", 
+        submissionId,
+        message: "Document type is required",
+      }, { status: 400 })
     }
 
     // Validate file size (max 50MB)
     if (file.size > MAX_FILE_SIZE) {
       return NextResponse.json(
         { 
-          error: "File too large. Maximum allowed size is 50MB.",
+          ok: false,
           code: "FILE_TOO_LARGE",
+          submissionId,
+          message: "File too large. Maximum allowed size is 50MB.",
           maxSize: MAX_FILE_SIZE,
           fileSize: file.size
         }, 
@@ -66,32 +82,46 @@ export async function POST(request: NextRequest) {
       })
 
     if (uploadError) {
-      console.error("Storage upload error:", uploadError)
+      console.error("[v0] Storage upload error:", uploadError)
       // Check if error is related to file size
       if (uploadError.message?.includes("413") || uploadError.message?.includes("entity too large")) {
         return NextResponse.json(
           { 
-            error: "File too large. Maximum allowed size is 50MB.",
-            code: "FILE_TOO_LARGE"
+            ok: false,
+            code: "FILE_TOO_LARGE",
+            submissionId,
+            message: "File too large. Maximum allowed size is 50MB.",
           },
           { status: 413 }
         )
       }
       return NextResponse.json(
-        { error: "Failed to upload file. Please try again.", code: "UPLOAD_FAILED" },
+        { 
+          ok: false,
+          code: "UPLOAD_FAILED",
+          submissionId,
+          saved: false,
+          message: "Failed to upload file to storage. Please try again.",
+        },
         { status: 500 }
       )
     }
 
-    // Get the public URL
+    // Get the public URL or signed URL if bucket is private
     const { data: publicUrlData } = supabase.storage
       .from("client-documents")
       .getPublicUrl(storagePath)
 
     const fileUrl = publicUrlData?.publicUrl || storagePath
 
-    // Save document record to database
-    const { data: document, error: dbError } = await supabase
+    // Create admin client for DB insert (bypasses RLS)
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+
+    // Save document record to database using admin client
+    const { data: document, error: dbError } = await supabaseAdmin
       .from("documents")
       .insert({
         client_id: user.id,
@@ -100,64 +130,111 @@ export async function POST(request: NextRequest) {
         file_url: fileUrl,
         file_size: file.size,
         mime_type: file.type,
+        submission_id: submissionId,
       })
       .select()
       .single()
 
     if (dbError) {
-      console.error("Database error:", dbError)
+      console.error("[v0] Database insert error:", dbError)
       return NextResponse.json(
-        { error: "Failed to save document record", code: "DB_ERROR" },
+        { 
+          ok: false,
+          code: "SAVE_FAILED",
+          submissionId,
+          saved: false,
+          message: "Failed to save document record to database.",
+        },
         { status: 500 }
       )
     }
+
+    documentSaved = true
 
     // Get user details for email
     const userName = user.user_metadata?.first_name
       ? `${user.user_metadata.first_name} ${user.user_metadata.last_name || ""}`
       : user.email
 
-    // Send email notification to DCSA
+    // Send email notification using strict dual delivery
+    const emailTemplate = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #0D3B66; border-bottom: 3px solid #4DB6AC; padding-bottom: 10px;">New Document Uploaded</h2>
+        
+        <h3 style="color: #4DB6AC;">Client Information:</h3>
+        <ul>
+          <li><strong>Client:</strong> ${userName}</li>
+          <li><strong>Email:</strong> ${user.email}</li>
+          <li><strong>Client ID:</strong> ${user.id}</li>
+        </ul>
+        
+        <h3 style="color: #4DB6AC;">Document Details:</h3>
+        <ul>
+          <li><strong>Document Type:</strong> ${documentType}</li>
+          <li><strong>File Name:</strong> ${file.name}</li>
+          <li><strong>File Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</li>
+          <li><strong>Uploaded:</strong> ${submittedTime}</li>
+        </ul>
+        
+        <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
+          <p style="margin: 0; font-size: 12px; color: #666;">
+            <strong>Reference ID:</strong> ${submissionId}
+          </p>
+        </div>
+        
+        <p>Please review this document in the client portal admin panel.</p>
+        <p><a href="${fileUrl}" style="color: #4DB6AC;">Download Document</a></p>
+      </div>
+    `
+
     try {
-      if (process.env.RESEND_API_KEY) {
-        const resend = getResend()
-        if (!resend) throw new Error("Resend not configured")
-        await resend.emails.send({
-          from: "DCSA Client Portal <noreply@dcsam.co.za>",
-          to: "info@dcsam.co.za",
-          subject: `New Document Upload - ${userName} (${documentType})`,
-          html: `
-            <h2>New Document Uploaded</h2>
-            <h3>Client Information:</h3>
-            <ul>
-              <li><strong>Client:</strong> ${userName}</li>
-              <li><strong>Email:</strong> ${user.email}</li>
-            </ul>
-            <h3>Document Details:</h3>
-            <ul>
-              <li><strong>Document Type:</strong> ${documentType}</li>
-              <li><strong>File Name:</strong> ${file.name}</li>
-              <li><strong>File Size:</strong> ${(file.size / 1024).toFixed(1)} KB</li>
-              <li><strong>Uploaded At:</strong> ${new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })}</li>
-            </ul>
-            <p>Please review this document in the client portal admin panel.</p>
-            <p><a href="${fileUrl}">Download Document</a></p>
-          `,
-        })
-      }
+      await sendDualEmail({
+        subject: `New Document Upload - ${userName} (${documentType})`,
+        html: emailTemplate,
+        submissionId,
+        type: "document",
+      })
     } catch (emailError) {
-      console.error("Email notification error:", emailError)
-      // Don't fail upload if email fails
+      console.error("[v0] Document upload email failed after save:", {
+        submissionId,
+        documentId: document.id,
+        error: emailError instanceof Error ? emailError.message : String(emailError),
+      })
+      // Document is saved but email failed
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DELIVERY_FAILED",
+          submissionId,
+          saved: true,
+          documentId: document.id,
+          message: "Document uploaded but email notification failed.",
+        },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json({
+      ok: true,
+      saved: true,
+      submissionId,
       document,
       message: "Document uploaded successfully",
     })
   } catch (error) {
-    console.error("Upload error:", error)
+    console.error("[v0] Document upload error:", {
+      submissionId,
+      documentSaved,
+      error: error instanceof Error ? error.message : String(error),
+    })
     return NextResponse.json(
-      { error: "Upload failed. Please try again.", code: "UNKNOWN_ERROR" },
+      { 
+        ok: false,
+        code: "UPLOAD_ERROR",
+        submissionId,
+        saved: documentSaved,
+        message: "Upload failed. Please try again.",
+      },
       { status: 500 }
     )
   }

@@ -12,7 +12,12 @@ export async function POST(request: NextRequest) {
     if (!body.referrerName || !body.referrerEmail || !body.referrerPhone || !body.friendName || !body.friendPhone) {
       console.error("[v0] Referral validation failed", { submissionId })
       return NextResponse.json(
-        { ok: false, code: "VALIDATION_ERROR", submissionId },
+        { 
+          ok: false, 
+          code: "VALIDATION_ERROR", 
+          submissionId,
+          message: "Please fill in all required fields.",
+        },
         { status: 400 }
       )
     }
@@ -66,6 +71,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       submissionId,
+      saved: true,
     })
   } catch (error) {
     console.error("[v0] Referral submission failed", {
@@ -78,6 +84,7 @@ export async function POST(request: NextRequest) {
         ok: false,
         code: "DELIVERY_FAILED",
         submissionId,
+        message: "Failed to deliver email notifications. Please try again or contact us directly.",
       },
       { status: 500 }
     )

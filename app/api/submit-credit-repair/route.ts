@@ -1,11 +1,28 @@
 import { type NextRequest, NextResponse } from "next/server"
+import { sendDualEmail } from "@/lib/emailDispatcher"
 
 export async function POST(request: NextRequest) {
+  const submissionId = crypto.randomUUID()
+  const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
+
   try {
     const formData = await request.json()
+    
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "VALIDATION_ERROR",
+          submissionId,
+          message: "Please fill in all required fields.",
+        },
+        { status: 400 }
+      )
+    }
 
-    // Email to Sam
-    const emailBody = `
+    // Build email template
+    const emailTemplate = `
 <html>
   <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
     <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
@@ -103,39 +120,56 @@ export async function POST(request: NextRequest) {
       </ul>
 
       <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-left: 4px solid #4DB6AC;">
-        <p style="margin: 0;"><strong>Submission Date:</strong> ${new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })}</p>
+        <p style="margin: 0;"><strong>Reference ID:</strong> ${submissionId}</p>
+        <p style="margin: 5px 0 0 0;"><strong>Submitted:</strong> ${submittedTime}</p>
       </div>
     </div>
   </body>
 </html>
     `
 
-    // Send email via Resend
-    const resendResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: "DCSA Website <noreply@dcsam.co.za>",
-        to: ["sam@dcsam.co.za"],
+    // Send notification emails using strict dual delivery
+    try {
+      await sendDualEmail({
         subject: `New Credit Repair Application - ${formData.firstName} ${formData.lastName}`,
-        html: emailBody,
-      }),
-    })
-
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.text()
-      console.error("[v0] Resend API error:", errorData)
-      throw new Error("Failed to send email")
+        html: emailTemplate,
+        submissionId,
+        type: "credit_repair",
+        replyTo: formData.email,
+      })
+    } catch (emailError) {
+      console.error("[v0] Credit repair email delivery failed:", {
+        submissionId,
+        error: emailError instanceof Error ? emailError.message : String(emailError),
+      })
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DELIVERY_FAILED",
+          submissionId,
+          message: "Failed to deliver email notifications. Please try again or contact us directly.",
+        },
+        { status: 500 }
+      )
     }
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ 
+      ok: true,
+      submissionId,
+      saved: true,
+    })
   } catch (error) {
-    console.error("[v0] Credit repair submission error:", error)
+    console.error("[v0] Credit repair submission error:", {
+      submissionId,
+      error: error instanceof Error ? error.message : String(error),
+    })
     return NextResponse.json(
-      { error: "Failed to submit application", ok: false, code: "SUBMISSION_ERROR" },
+      { 
+        ok: false,
+        code: "SUBMISSION_ERROR",
+        submissionId,
+        message: "Failed to submit application. Please try again.",
+      },
       { status: 500 }
     )
   }
