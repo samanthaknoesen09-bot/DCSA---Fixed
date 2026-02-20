@@ -84,7 +84,7 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
     try {
       const formData = new FormData()
       formData.append("file", selectedFile)
-      formData.append("document_type", documentType)
+      formData.append("documentType", documentType)
 
       const response = await fetch("/api/client-portal/upload-document", {
         method: "POST",

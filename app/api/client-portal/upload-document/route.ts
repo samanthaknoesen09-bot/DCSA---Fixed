@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
 
     const formData = await request.formData()
     const file = formData.get("file") as File
-    const documentType = formData.get("document_type") as string
+    const documentType = formData.get("documentType") as string
 
     if (!file) {
       return NextResponse.json({ 
@@ -65,10 +65,28 @@ export async function POST(request: NextRequest) {
     }
 
     // Create admin client for Storage + DB operations (bypasses all policies)
-    const supabaseAdmin = createAdminClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    )
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (!supabaseUrl || !serviceRoleKey) {
+      console.error("[v0] Missing Supabase credentials:", { 
+        hasUrl: !!supabaseUrl, 
+        hasKey: !!serviceRoleKey 
+      })
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "CONFIG_ERROR",
+          submissionId,
+          saved: false,
+          message: "Server configuration error. Please contact support.",
+        },
+        { status: 500 }
+      )
+    }
+
+    const supabaseAdmin = createAdminClient(supabaseUrl, serviceRoleKey)
+    console.log("[v0] Admin client created for upload:", { userId: user.id, submissionId })
 
     // Generate path: userId/YYYY-MM/submissionId-safeFileName
     const now = new Date()
