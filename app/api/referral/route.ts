@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { sendDualEmail } from "@/lib/emailDispatcher"
 
-export const runtime = "edge"
-
 export async function POST(request: NextRequest) {
   const submissionId = crypto.randomUUID()
   const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
