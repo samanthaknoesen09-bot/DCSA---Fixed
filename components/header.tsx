@@ -1,180 +1,137 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Phone, Mail, ChevronDown } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { ClientDetailsForm } from "./client-details-form"
-import { EnhancedMobileNav } from "./enhanced-mobile-nav"
-import { SiteSearch } from "./site-search"
-import { LiveChatWidget } from "./live-chat-widget"
-import { MessageCircle } from "lucide-react"
-import Image from "next/image"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu, Phone, Mail } from "lucide-react"
 
 export function Header() {
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const navLinks = [
+    { label: "Services", href: "/services" },
+    { label: "Free Tools", href: "/calculator" },
+    { label: "Podcast", href: "/#podcast" },
+    { label: "Reviews", href: "/#reviews" },
+    { label: "Meet the Team", href: "/#team" },
+  ]
 
   return (
-    <>
-      <header className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between gap-4">
-            {/* Left Side: Logo + Contact Info */}
-            <div className="flex items-center gap-4 flex-shrink-0">
-              <a href="/" className="font-bold text-2xl hover:opacity-80 transition-opacity">
-                <span className="text-primary">DC</span><span className="text-black">SA</span>
-              </a>
-              
-              <div className="hidden lg:flex items-center gap-3 text-sm text-[#0D3B66]/70 border-l border-[#0D3B66]/20 pl-4">
-                <a href="tel:+27719006298" className="flex items-center gap-1.5 hover:text-primary transition-colors">
-                  <Phone className="w-4 h-4" />
-                  <span className="font-medium">071 900 6298</span>
-                </a>
-                <span className="text-[#0D3B66]/30">|</span>
-                <a
-                  href="mailto:info@dcsam.co.za"
-                  className="flex items-center gap-1.5 hover:text-primary transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  <span className="font-medium">info@dcsam.co.za</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Center: Search & Menu */}
-            <nav className="hidden md:flex items-center gap-2 flex-1 justify-center">
-              <SiteSearch />
-              
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center space-x-1 text-foreground hover:text-primary transition-colors font-medium">
-                  <span>Menu</span>
-                  <ChevronDown className="w-4 h-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-64">
-                  <DropdownMenuItem>
-                    <a href="/get-started" className="w-full font-semibold text-[#0D3B66]">
-                      Get Started
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/#services" className="w-full font-semibold text-[#0D3B66]">
-                      Services
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/#how-it-works" className="w-full">
-                      • How It Works
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/#debt-review-comparison" className="w-full">
-                      • Compare Debt Options
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/calculator" className="w-full font-semibold text-[#0D3B66]">
-                      Tools
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/calculator" className="w-full">
-                      • Money Map Calculator
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/interest-calculator" className="w-full">
-                      • Interest Calculator
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/blog" className="w-full font-semibold text-[#0D3B66]">
-                      Blog
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/faq" className="w-full font-semibold text-[#0D3B66]">
-                      FAQ
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/#testimonials" className="w-full">
-                      • Success Stories
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/refer-a-friend" className="w-full font-semibold text-[#FFD93D]">
-                      Refer a Friend - Earn R350
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/client-portal/auth/login" className="w-full font-semibold text-[#4DB6AC]">
-                      Client Portal
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="/#contact" className="w-full font-semibold text-[#0D3B66]">
-                      Contact Us
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="tel:+27719006298" className="w-full">
-                      • Call: 071 900 6298
-                    </a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <a href="mailto:info@dcsam.co.za" className="w-full">
-                      • Email: info@dcsam.co.za
-                    </a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </nav>
-
-            {/* Right Side: CTAs */}
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <EnhancedMobileNav />
-              
-              <div className="hidden md:flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  className="bg-[#4DB6AC] text-white hover:bg-[#4DB6AC]/90 border-[#4DB6AC] font-semibold"
-                  asChild
-                >
-                  <a href="/client-portal/auth/login">Client Portal</a>
-                </Button>
-                
-                <Button
-                  variant="outline"
-                  className="border-[#25D366] text-[#25D366] hover:bg-[#25D366]/10 font-semibold bg-transparent"
-                  onClick={() => setIsChatOpen(true)}
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Chat with Sam
-                </Button>
-                
-                <Button
-                  className="bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white font-semibold"
-                  onClick={() => setIsFormOpen(true)}
-                >
-                  Start Your Journey
-                </Button>
-              </div>
+    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex h-16 items-center justify-between">
+          {/* Left: Logo + NCR Badge */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
+              <span style={{ color: "#800020" }}>DC</span>
+              <span className="text-black">SA</span>
+            </Link>
+            <div className="hidden lg:block text-xs text-[#0D3B66]/60 border-l border-[#0D3B66]/20 pl-4">
+              NCR Registered • NCRDC3995
             </div>
           </div>
-        </div>
-      </header>
 
-      <ClientDetailsForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
-      
-      {/* Chat Widget - Only shows when triggered from header button */}
-      {isChatOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-end p-4 pointer-events-none">
-          <div className="pointer-events-auto">
-            <LiveChatWidget isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+          {/* Middle: Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-[#0D3B66]/80 hover:text-[#0D3B66] transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right: Primary CTA + Secondary Link */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/client-portal/auth/login"
+              className="hidden md:inline-block text-sm text-[#0D3B66]/60 hover:text-[#0D3B66] transition-colors"
+            >
+              Client Portal
+            </Link>
+
+            <Button
+              className="bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold hidden md:inline-flex"
+              asChild
+            >
+              <Link href="/contact">Book a Chat</Link>
+            </Button>
+
+            {/* Mobile Menu */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col gap-6 mt-8">
+                  <div className="text-xs text-[#0D3B66]/60 pb-4 border-b">
+                    NCR Registered • NCRDC3995
+                  </div>
+
+                  <nav className="flex flex-col gap-4">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="text-base font-medium text-[#0D3B66] hover:text-[#0D3B66]/70 transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+
+                  <div className="border-t pt-6 space-y-4">
+                    <Button
+                      className="w-full bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold"
+                      asChild
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link href="/contact">Book a Chat</Link>
+                    </Button>
+
+                    <Button
+                      variant="outline"
+                      className="w-full border-[#0D3B66] text-[#0D3B66]"
+                      asChild
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link href="/client-portal/auth/login">Client Portal</Link>
+                    </Button>
+                  </div>
+
+                  <div className="border-t pt-6 space-y-3 text-sm">
+                    <div className="text-[#0D3B66]/60 font-medium mb-2">Contact Us</div>
+                    <a href="tel:+27719006298" className="flex items-center gap-2 text-[#0D3B66] hover:text-[#0D3B66]/70">
+                      <Phone className="h-4 w-4" />
+                      +27 71 900 6298
+                    </a>
+                    <a href="mailto:info@dcsam.co.za" className="flex items-center gap-2 text-[#0D3B66] hover:text-[#0D3B66]/70">
+                      <Mail className="h-4 w-4" />
+                      info@dcsam.co.za
+                    </a>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            {/* Mobile CTA Button (visible alongside menu icon) */}
+            <Button
+              className="md:hidden bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold text-sm px-4"
+              asChild
+            >
+              <Link href="/contact">Book a Chat</Link>
+            </Button>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </header>
   )
 }
