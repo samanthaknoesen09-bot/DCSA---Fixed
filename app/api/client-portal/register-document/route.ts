@@ -70,11 +70,11 @@ export async function POST(request: Request) {
       throw new Error(`Database insert failed: ${dbError.message}`)
     }
 
-    // Send notification emails
+    // Send notification emails — strict enforcement (Fix #2)
     const emailTemplate = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #0D3B66; border-bottom: 3px solid #4DB6AC; padding-bottom: 10px;">New Client Document Submitted</h2>
-        
+
         <h3 style="color: #4DB6AC;">Document Details:</h3>
         <ul>
           <li><strong>Client ID:</strong> ${session.user.id}</li>
@@ -84,46 +84,49 @@ export async function POST(request: Request) {
           <li><strong>Submitted:</strong> ${submittedTime}</li>
           <li><strong>Reference ID:</strong> ${submissionId}</li>
         </ul>
-        
+
         <p>The document has been successfully uploaded to our secure storage.</p>
       </div>
     `
 
-    // Try to send emails, but don't fail the entire request if email fails
-    let emailDelivered = false
     try {
       await sendDualEmail({
-        subject: `New Document Submitted - Reference ${submissionId}`,
+        subject: `New Document Uploaded - ${fileName}`,
         html: emailTemplate,
         submissionId,
         type: "document",
       })
-      emailDelivered = true
-    } catch (emailError) {
-      console.error("[v0] Document notification email failed (non-critical)", {
+    } catch (err) {
+      console.error("[document] email failed", {
         submissionId,
-        error: emailError instanceof Error ? emailError.message : String(emailError),
+        error: err instanceof Error ? err.message : String(err),
       })
-      // Don't throw - document is saved, email is nice-to-have
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DELIVERY_FAILED",
+          saved: true,
+          submissionId,
+          message:
+            "Your document is uploaded and saved, but our notification email failed. If urgent, please WhatsApp us with this reference ID.",
+        },
+        { status: 500 }
+      )
     }
 
-    return NextResponse.json({
-      ok: true,
-      saved: true,
-      submissionId,
-      emailDelivered,
-    })
+    return NextResponse.json({ ok: true, saved: true, submissionId })
   } catch (error) {
-    console.error("[v0] Document registration failed", {
+    console.error("[document] registration failed", {
       submissionId,
       error: error instanceof Error ? error.message : String(error),
     })
-
     return NextResponse.json(
       {
         ok: false,
-        code: "REGISTRATION_FAILED",
+        code: "SAVE_FAILED",
+        saved: false,
         submissionId,
+        message: "Failed to register document. Please try again.",
       },
       { status: 500 }
     )
