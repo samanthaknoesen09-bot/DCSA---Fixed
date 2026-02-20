@@ -64,17 +64,24 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Generate a unique filename with user ID prefix
-    const timestamp = Date.now()
+    // Create admin client for Storage + DB operations (bypasses all policies)
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+
+    // Generate path: userId/YYYY-MM/submissionId-safeFileName
+    const now = new Date()
+    const yearMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`
     const sanitizedFilename = file.name.replace(/[^a-zA-Z0-9.-]/g, "_")
-    const storagePath = `${user.id}/${timestamp}-${sanitizedFilename}`
+    const storagePath = `${user.id}/${yearMonth}/${submissionId}-${sanitizedFilename}`
 
     // Convert file to buffer for Supabase Storage
     const arrayBuffer = await file.arrayBuffer()
     const buffer = Buffer.from(arrayBuffer)
 
-    // Upload to Supabase Storage
-    const { data: uploadData, error: uploadError } = await supabase.storage
+    // Upload to bucket "client-documents" using ADMIN client (bypasses storage policies)
+    const { data: uploadData, error: uploadError } = await supabaseAdmin.storage
       .from("client-documents")
       .upload(storagePath, buffer, {
         contentType: file.type,
@@ -107,30 +114,29 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Get the public URL or signed URL if bucket is private
-    const { data: publicUrlData } = supabase.storage
+    // Generate signed URL for 7 days (for email link)
+    const { data: signedUrlData, error: signedUrlError } = await supabaseAdmin.storage
       .from("client-documents")
-      .getPublicUrl(storagePath)
+      .createSignedUrl(storagePath, 60 * 60 * 24 * 7) // 7 days in seconds
 
-    const fileUrl = publicUrlData?.publicUrl || storagePath
+    const fileUrl = signedUrlData?.signedUrl || storagePath
 
-    // Create admin client for DB insert (bypasses RLS)
-    const supabaseAdmin = createAdminClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    )
+    if (signedUrlError) {
+      console.warn("[v0] Failed to generate signed URL, using path:", signedUrlError.message)
+    }
 
-    // Save document record to database using admin client
+    // Save document record to database using admin client (already created above)
     const { data: document, error: dbError } = await supabaseAdmin
       .from("documents")
       .insert({
         client_id: user.id,
         document_type: documentType,
         file_name: file.name,
-        file_url: fileUrl,
+        file_url: storagePath,
         file_size: file.size,
         mime_type: file.type,
         submission_id: submissionId,
+        status: "uploaded",
       })
       .select()
       .single()
@@ -173,6 +179,7 @@ export async function POST(request: NextRequest) {
           <li><strong>Document Type:</strong> ${documentType}</li>
           <li><strong>File Name:</strong> ${file.name}</li>
           <li><strong>File Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB</li>
+          <li><strong>Storage Path:</strong> ${storagePath}</li>
           <li><strong>Uploaded:</strong> ${submittedTime}</li>
         </ul>
         
@@ -182,8 +189,8 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
         
-        <p>Please review this document in the client portal admin panel.</p>
-        <p><a href="${fileUrl}" style="color: #4DB6AC;">Download Document</a></p>
+        <p>You can download this document using the secure link below (valid for 7 days):</p>
+        <p><a href="${fileUrl}" style="display: inline-block; padding: 12px 24px; background: #4DB6AC; color: white; text-decoration: none; border-radius: 4px; font-weight: bold;">Download Document</a></p>
       </div>
     `
 
