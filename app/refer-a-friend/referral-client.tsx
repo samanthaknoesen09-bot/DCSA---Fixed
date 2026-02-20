@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
@@ -61,6 +60,7 @@ export function ReferralClient() {
     friendRelationship: "",
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submissionId, setSubmissionId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -79,15 +79,31 @@ export function ReferralClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
-
-      const result = await response.json()
+      
+      const result = await response.json().catch(() => ({}))
 
       if (!response.ok) {
-        setError(result.error || "Something went wrong. Please try again.")
+        const submissionId = result?.submissionId
+        const code = result?.code
+
+        let message = "Something went wrong. Please try again."
+        if (code === "VALIDATION_ERROR") {
+          message = "Please complete all required fields (including your friend's name and phone)."
+        } else if (code === "DELIVERY_FAILED") {
+          message = submissionId
+            ? `We couldn't complete your referral. Please WhatsApp us with reference ID: ${submissionId}`
+            : "We couldn't complete your referral. Please WhatsApp us."
+        } else if (typeof result?.message === "string") {
+          message = result.message
+        }
+
+        setError(message)
+        if (submissionId) setSubmissionId(submissionId)
         setIsLoading(false)
         return
       }
 
+      setSubmissionId(result.submissionId)
       setIsSubmitted(true)
     } catch {
       setError(
@@ -98,10 +114,18 @@ export function ReferralClient() {
     }
   }
 
+  const canSubmit =
+    formData.referrerName.trim() &&
+    formData.referrerEmail.trim() &&
+    formData.referrerPhone.trim() &&
+    formData.friendName.trim() &&
+    formData.friendPhone.trim()
+
   const shareUrl =
     typeof window !== "undefined"
       ? window.location.origin
       : "https://www.dcsam.co.za"
+
   const shareMessage = `I found a really caring team that helps with debt counselling. If you're feeling overwhelmed, they can help. No judgment, just real support. ${shareUrl}/refer-a-friend`
 
   return (
@@ -112,11 +136,9 @@ export function ReferralClient() {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#FFD93D] mb-6">
             <Heart className="w-10 h-10 text-[#0D3B66]" />
           </div>
-
           <h1 className="text-4xl md:text-6xl font-bold text-[#0D3B66] mb-6 text-balance">
             Know Someone Who Needs a Fresh Start?
           </h1>
-
           <p className="text-xl md:text-2xl text-[#0D3B66]/70 max-w-2xl mx-auto mb-4 text-pretty leading-relaxed">
             When you refer a friend or family member to us, you're not just
             helping them find financial relief — you're giving them hope. And
@@ -124,7 +146,6 @@ export function ReferralClient() {
             <strong className="text-[#0D3B66]">R350 referral fee</strong> paid
             directly into your bank account.
           </p>
-
           <p className="text-base text-[#0D3B66]/50 max-w-lg mx-auto">
             Because kindness should be rewarded.
           </p>
@@ -137,7 +158,6 @@ export function ReferralClient() {
           <h2 className="text-3xl font-bold text-[#0D3B66] text-center mb-12">
             How It Works
           </h2>
-
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="text-center border-2 hover:border-[#4DB6AC] transition-all">
               <CardHeader>
@@ -190,7 +210,6 @@ export function ReferralClient() {
               </CardContent>
             </Card>
           </div>
-
           <div className="bg-[#FFD93D]/10 border border-[#FFD93D]/30 rounded-2xl p-6 text-center max-w-2xl mx-auto">
             <p className="text-[#0D3B66] font-medium">
               There's no limit to how many people you can refer. Every successful referral earns you R350.
@@ -229,7 +248,6 @@ export function ReferralClient() {
                         Your Details
                       </h3>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="referrerName">
@@ -261,7 +279,6 @@ export function ReferralClient() {
                         />
                       </div>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="referrerPhone">
@@ -310,7 +327,6 @@ export function ReferralClient() {
                         </span>
                       </h3>
                     </div>
-
                     <div className="bg-[#4DB6AC]/5 border border-[#4DB6AC]/20 rounded-lg p-3 flex items-start gap-2">
                       <Shield className="w-4 h-4 text-[#4DB6AC] mt-0.5 flex-shrink-0" />
                       <p className="text-xs text-[#0D3B66]/60">
@@ -318,7 +334,6 @@ export function ReferralClient() {
                         pay your referral fee. You can also provide these later.
                       </p>
                     </div>
-
                     <div className="space-y-1.5">
                       <Label htmlFor="referrerBankName">Bank Name</Label>
                       <Select
@@ -339,7 +354,6 @@ export function ReferralClient() {
                         </SelectContent>
                       </Select>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="referrerAccountNumber">
@@ -378,7 +392,6 @@ export function ReferralClient() {
                         Your Friend's Details
                       </h3>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="friendName">
@@ -412,7 +425,6 @@ export function ReferralClient() {
                         />
                       </div>
                     </div>
-
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <Label htmlFor="friendEmail">
@@ -465,7 +477,7 @@ export function ReferralClient() {
                     <Button
                       type="submit"
                       className="w-full h-12 text-lg bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white"
-                      disabled={isLoading}
+                      disabled={!canSubmit || isLoading}
                     >
                       {isLoading ? (
                         <>
@@ -479,7 +491,6 @@ export function ReferralClient() {
                         </>
                       )}
                     </Button>
-
                     <p className="text-xs text-[#0D3B66]/40 text-center mt-3">
                       By submitting, you confirm that your friend is aware you
                       are sharing their details with us.
@@ -495,6 +506,11 @@ export function ReferralClient() {
                 <h2 className="text-3xl font-bold text-[#0D3B66] mb-4 text-balance">
                   Thank You for Your Referral
                 </h2>
+                {submissionId && (
+                  <p className="text-sm font-mono bg-slate-50 p-2 rounded mb-4 text-[#0D3B66]/60">
+                    Reference ID: {submissionId}
+                  </p>
+                )}
                 <p className="text-lg text-[#0D3B66]/70 mb-4 max-w-md mx-auto text-pretty">
                   We've received your referral and will reach out to your friend
                   with care. Once we successfully help them, we'll pay the R350
@@ -508,6 +524,7 @@ export function ReferralClient() {
                   <Button
                     onClick={() => {
                       setIsSubmitted(false)
+                      setSubmissionId(null)
                       setFormData({
                         referrerName: "",
                         referrerEmail: "",
@@ -527,7 +544,7 @@ export function ReferralClient() {
                     Refer Another Friend
                   </Button>
                   <Button asChild variant="outline" className="bg-transparent">
-                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I just submitted a referral. Can you confirm you received it?")}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent(`Hi DCSA! I just submitted a referral${submissionId ? ` (Ref: ${submissionId})` : ""}. Can you confirm you received it?`)}`} target="_blank" rel="noopener noreferrer">
                       Confirm via WhatsApp
                     </a>
                   </Button>
