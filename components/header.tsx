@@ -4,7 +4,8 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Phone, Mail } from "lucide-react"
+import { Menu, Phone, Mail, Coffee } from "lucide-react"
+import { colors, WHATSAPP_URL } from "@/lib/colors"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,16 +19,16 @@ export function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b shadow-sm" style={{ backgroundColor: colors.warmCream, borderColor: colors.sandLight }}>
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Left: Logo + NCR Badge */}
           <div className="flex items-center gap-4">
             <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
-              <span style={{ color: "#800020" }}>DC</span>
-              <span className="text-black">SA</span>
+              <span style={{ color: colors.maroon }}>DC</span>
+              <span style={{ color: colors.black }}>SA</span>
             </Link>
-            <div className="hidden lg:block text-xs text-[#0D3B66]/60 border-l border-[#0D3B66]/20 pl-4">
+            <div className="hidden lg:block text-xs border-l pl-4" style={{ color: colors.warmGrey, borderColor: colors.sandLight }}>
               NCR Registered • NCRDC3995
             </div>
           </div>
@@ -38,7 +39,8 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-[#0D3B66]/80 hover:text-[#0D3B66] transition-colors"
+                className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4"
+                style={{ color: colors.charcoal }}
               >
                 {link.label}
               </Link>
@@ -49,29 +51,34 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/client-portal/auth/login"
-              className="hidden md:inline-block text-sm text-[#0D3B66]/60 hover:text-[#0D3B66] transition-colors"
+              className="hidden md:inline-block text-sm transition-colors hover:underline decoration-2 underline-offset-4"
+              style={{ color: colors.warmGrey }}
             >
               Client Portal
             </Link>
 
             <Button
-              className="bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold hidden md:inline-flex"
+              className="text-white font-semibold hidden md:inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
+              style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
               asChild
             >
-              <Link href="/contact">Book a Chat</Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Coffee className="h-4 w-4" />
+                Let's Chat
+              </a>
             </Button>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-6 w-6" style={{ color: colors.maroon }} />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]" style={{ backgroundColor: colors.warmCream }}>
                 <div className="flex flex-col gap-6 mt-8">
-                  <div className="text-xs text-[#0D3B66]/60 pb-4 border-b">
+                  <div className="text-xs pb-4 border-b" style={{ color: colors.warmGrey, borderColor: colors.sandLight }}>
                     NCR Registered • NCRDC3995
                   </div>
 
@@ -80,7 +87,8 @@ export function Header() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="text-base font-medium text-[#0D3B66] hover:text-[#0D3B66]/70 transition-colors"
+                        className="text-base font-medium transition-colors"
+                        style={{ color: colors.charcoal }}
                         onClick={() => setIsOpen(false)}
                       >
                         {link.label}
@@ -88,18 +96,23 @@ export function Header() {
                     ))}
                   </nav>
 
-                  <div className="border-t pt-6 space-y-4">
+                  <div className="border-t pt-6 space-y-4" style={{ borderColor: colors.sandLight }}>
                     <Button
-                      className="w-full bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold"
+                      className="w-full text-white font-semibold items-center gap-2 shadow-md"
+                      style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
                       asChild
                       onClick={() => setIsOpen(false)}
                     >
-                      <Link href="/contact">Book a Chat</Link>
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                        <Coffee className="h-4 w-4" />
+                        Let's Chat
+                      </a>
                     </Button>
 
                     <Button
                       variant="outline"
-                      className="w-full border-[#0D3B66] text-[#0D3B66]"
+                      className="w-full font-semibold"
+                      style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "12px" }}
                       asChild
                       onClick={() => setIsOpen(false)}
                     >
@@ -107,13 +120,13 @@ export function Header() {
                     </Button>
                   </div>
 
-                  <div className="border-t pt-6 space-y-3 text-sm">
-                    <div className="text-[#0D3B66]/60 font-medium mb-2">Contact Us</div>
-                    <a href="tel:+27719006298" className="flex items-center gap-2 text-[#0D3B66] hover:text-[#0D3B66]/70">
+                  <div className="border-t pt-6 space-y-3 text-sm" style={{ borderColor: colors.sandLight }}>
+                    <div className="font-medium mb-2" style={{ color: colors.warmGrey }}>Or reach us directly:</div>
+                    <a href="tel:+27719006298" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
                       <Phone className="h-4 w-4" />
                       +27 71 900 6298
                     </a>
-                    <a href="mailto:info@dcsam.co.za" className="flex items-center gap-2 text-[#0D3B66] hover:text-[#0D3B66]/70">
+                    <a href="mailto:info@dcsam.co.za" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
                       <Mail className="h-4 w-4" />
                       info@dcsam.co.za
                     </a>
@@ -124,10 +137,14 @@ export function Header() {
 
             {/* Mobile CTA Button (visible alongside menu icon) */}
             <Button
-              className="md:hidden bg-[#0D3B66] hover:bg-[#0D3B66]/90 text-white font-semibold text-sm px-4"
+              className="md:hidden text-white font-semibold text-sm px-4 shadow-md items-center gap-2"
+              style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
               asChild
             >
-              <Link href="/contact">Book a Chat</Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Coffee className="h-3 w-3" />
+                Let's Chat
+              </a>
             </Button>
           </div>
         </div>
