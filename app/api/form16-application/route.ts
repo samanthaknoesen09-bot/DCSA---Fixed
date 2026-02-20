@@ -1,76 +1,64 @@
 import { NextResponse } from "next/server"
+import { createClient } from "@/lib/supabase/server"
 import { sendDualEmail } from "@/lib/emailDispatcher"
 
 export async function POST(request: Request) {
   const submissionId = crypto.randomUUID()
+  const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
+  let applicationSaved = false
 
   try {
     const body = await request.json()
+    const supabase = await createClient()
 
-    const submittedAt = new Date().toISOString()
-    const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
-
-    // Prepare structured data for ClickUp via Zapier
-    const clickUpData = {
-      type: "Form 16 - Debt Review Application",
-      clientType: "New Client",
-      status: "New Application",
-      submissionId,
-      submittedAt,
-      
-      // Client Details
-      clientName: `${body.personalInfo?.firstName || ""} ${body.personalInfo?.surname || ""}`.trim(),
-      email: body.personalInfo?.email || "",
-      phone: body.personalInfo?.cellphone || body.personalInfo?.telephone || "",
-      idNumber: body.personalInfo?.idNumber || "",
-      
-      // Address
-      address: `${body.personalInfo?.streetAddress || ""}, ${body.personalInfo?.suburb || ""}, ${body.personalInfo?.city || ""}, ${body.personalInfo?.postalCode || ""}`.trim(),
-      
-      // Employment
-      employer: body.personalInfo?.employer || "",
-      occupation: body.personalInfo?.occupation || "",
-      employmentStartDate: body.personalInfo?.employmentStartDate || "",
-      
-      // Financial Summary
-      totalGrossIncome: body.income?.totalGross || 0,
-      totalDeductions: body.deductions?.totalDeductions || 0,
-      netIncome: body.income?.netIncome || 0,
-      totalMonthlyCommitments: body.monthlyCommitments?.totalCommitments || 0,
-      totalDebtObligations: body.debtObligations?.totalDebt || 0,
-      
-      // Full Application Data
-      fullApplication: body,
-      
-      // Metadata for routing
-      source: "DCSA Website - Form 16",
-      priority: "High",
+    // Validate required fields
+    if (!body.personalInfo?.firstName || !body.personalInfo?.surname || !body.personalInfo?.email || !body.personalInfo?.cellphone) {
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "VALIDATION_ERROR",
+          submissionId,
+        },
+        { status: 400 }
+      )
     }
 
-    // Send to Zapier webhook (which will create task in ClickUp)
-    let clickUpDelivered = false
-    const zapierWebhookUrl = process.env.ZAPIER_WEBHOOK_URL
+    const clientName = `${body.personalInfo.firstName} ${body.personalInfo.surname}`.trim()
 
-    if (zapierWebhookUrl) {
-      try {
-        const zapierResponse = await fetch(zapierWebhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(clickUpData),
-        })
+    // Save to Supabase form16_applications table
+    const { error: dbError } = await supabase.from("form16_applications").insert({
+      submission_id: submissionId,
+      first_name: body.personalInfo?.firstName || null,
+      last_name: body.personalInfo?.surname || null,
+      id_number: body.personalInfo?.idNumber || null,
+      email: body.personalInfo?.email || null,
+      phone: body.personalInfo?.cellphone || body.personalInfo?.telephone || null,
+      employer: body.personalInfo?.employer || null,
+      street_address: body.personalInfo?.streetAddress || null,
+      suburb: body.personalInfo?.suburb || null,
+      city: body.personalInfo?.city || null,
+      postal_code: body.personalInfo?.postalCode || null,
+      monthly_income: body.income?.totalGross ? parseFloat(String(body.income.totalGross)) : 0,
+      total_monthly_debt_payment: body.monthlyCommitments?.totalCommitments ? parseFloat(String(body.monthlyCommitments.totalCommitments)) : 0,
+      reason_for_debt_review: body.additionalInfo?.reasonForDebtReview || null,
+      current_financial_difficulties: body.additionalInfo?.currentFinancialDifficulties || null,
+      poa_agreement: body.consent?.poaAgreement || false,
+      consent_to_contact_creditors: body.consent?.consentToContactCreditors || false,
+      consent_to_process_personal_info: body.consent?.consentToProcessPersonalInfo || false,
+      understand_debt_review_process: body.consent?.understandDebtReviewProcess || false,
+      full_application: body,
+      status: "submitted",
+    })
 
-        if (!zapierResponse.ok) {
-          console.warn("[v0] Zapier webhook returned status:", zapierResponse.status)
-        } else {
-          console.log("[v0] Form 16 sent to Zapier/ClickUp successfully")
-          clickUpDelivered = true
-        }
-      } catch (zapierError) {
-        console.warn("[v0] Failed to send to Zapier:", zapierError instanceof Error ? zapierError.message : String(zapierError))
-      }
+    if (dbError) {
+      console.error("[v0] Form16 database insert failed:", dbError.message)
+      throw new Error(`Database save failed: ${dbError.message}`)
     }
 
-    // Send email notification to both addresses
+    applicationSaved = true
+    console.log("[v0] Form16 application saved to Supabase:", { submissionId, clientName })
+
+    // Build email template
     const emailTemplate = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #0D3B66; border-bottom: 3px solid #4DB6AC; padding-bottom: 10px;">New Debt Review Application Received</h2>
@@ -78,27 +66,26 @@ export async function POST(request: Request) {
         
         <h3 style="color: #4DB6AC;">Client Information</h3>
         <ul>
-          <li><strong>Name:</strong> ${clickUpData.clientName}</li>
-          <li><strong>ID Number:</strong> ${clickUpData.idNumber}</li>
-          <li><strong>Email:</strong> ${clickUpData.email}</li>
-          <li><strong>Phone:</strong> ${clickUpData.phone}</li>
-          <li><strong>Address:</strong> ${clickUpData.address}</li>
+          <li><strong>Name:</strong> ${clientName}</li>
+          <li><strong>ID Number:</strong> ${body.personalInfo?.idNumber || "Not provided"}</li>
+          <li><strong>Email:</strong> ${body.personalInfo?.email || "Not provided"}</li>
+          <li><strong>Phone:</strong> ${body.personalInfo?.cellphone || body.personalInfo?.telephone || "Not provided"}</li>
+          <li><strong>Address:</strong> ${[body.personalInfo?.streetAddress, body.personalInfo?.suburb, body.personalInfo?.city, body.personalInfo?.postalCode].filter(Boolean).join(", ") || "Not provided"}</li>
         </ul>
         
         <h3 style="color: #4DB6AC;">Employment Details</h3>
         <ul>
-          <li><strong>Employer:</strong> ${clickUpData.employer}</li>
-          <li><strong>Occupation:</strong> ${clickUpData.occupation}</li>
-          <li><strong>Employment Start:</strong> ${clickUpData.employmentStartDate}</li>
+          <li><strong>Employer:</strong> ${body.personalInfo?.employer || "Not provided"}</li>
+          <li><strong>Occupation:</strong> ${body.personalInfo?.occupation || "Not provided"}</li>
         </ul>
         
         <h3 style="color: #4DB6AC;">Financial Summary</h3>
         <ul>
-          <li><strong>Gross Income:</strong> R${clickUpData.totalGrossIncome.toLocaleString()}</li>
-          <li><strong>Total Deductions:</strong> R${clickUpData.totalDeductions.toLocaleString()}</li>
-          <li><strong>Net Income:</strong> R${clickUpData.netIncome.toLocaleString()}</li>
-          <li><strong>Monthly Commitments:</strong> R${clickUpData.totalMonthlyCommitments.toLocaleString()}</li>
-          <li><strong>Total Debt:</strong> R${clickUpData.totalDebtObligations.toLocaleString()}</li>
+          <li><strong>Gross Income:</strong> R${body.income?.totalGross ? parseFloat(String(body.income.totalGross)).toLocaleString() : "0"}</li>
+          <li><strong>Total Deductions:</strong> R${body.deductions?.totalDeductions ? parseFloat(String(body.deductions.totalDeductions)).toLocaleString() : "0"}</li>
+          <li><strong>Net Income:</strong> R${body.income?.netIncome ? parseFloat(String(body.income.netIncome)).toLocaleString() : "0"}</li>
+          <li><strong>Monthly Commitments:</strong> R${body.monthlyCommitments?.totalCommitments ? parseFloat(String(body.monthlyCommitments.totalCommitments)).toLocaleString() : "0"}</li>
+          <li><strong>Total Debt Obligations:</strong> R${body.debtObligations?.totalDebt ? parseFloat(String(body.debtObligations.totalDebt)).toLocaleString() : "0"}</li>
         </ul>
         
         <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
@@ -106,39 +93,63 @@ export async function POST(request: Request) {
             <strong>Reference ID:</strong> ${submissionId}
           </p>
         </div>
-        <p><em>Full application details have been sent to your ClickUp workspace.</em></p>
       </div>
     `
 
-    // Try to send dual emails, but don't fail request if they fail (ClickUp via Zapier is the critical path)
+    // Send dual emails - STRICT: if either fails, throw and return 500
     try {
       await sendDualEmail({
-        subject: `New Form 16 Application - ${clickUpData.clientName}`,
+        subject: `New Form 16 Application - ${clientName}`,
         html: emailTemplate,
         submissionId,
-        type: "referral", // Use referral type for consistency
+        type: "form16",
+        replyTo: body.personalInfo?.email,
       })
-      console.log("[v0] Form 16 notification emails sent")
+      console.log("[v0] Form16 dual emails sent successfully:", { submissionId })
     } catch (emailError) {
-      console.warn("[v0] Failed to send notification emails:", emailError instanceof Error ? emailError.message : String(emailError))
-      // Don't fail the request if email fails - ClickUp delivery is what matters
+      console.error("[v0] Form16 dual email delivery FAILED:", {
+        submissionId,
+        error: emailError instanceof Error ? emailError.message : String(emailError),
+      })
+      // Email failed after DB save - return 500 with saved:true
+      throw emailError
     }
 
-    return NextResponse.json({ 
-      ok: true,
-      success: true,
+    return NextResponse.json(
+      {
+        ok: true,
+        submissionId,
+        saved: true,
+      },
+      { status: 200 }
+    )
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    console.error("[v0] Form16 submission error:", {
       submissionId,
-      clickUpDelivered,
-      message: "Application submitted successfully" 
+      applicationSaved,
+      error: errorMessage,
     })
 
-  } catch (error) {
-    console.error("[v0] Form 16 submission error:", {
-      submissionId,
-      error: error instanceof Error ? error.message : String(error),
-    })
+    // Distinguish between email failure and other errors
+    if (error instanceof Error && error.message.includes("email") && applicationSaved) {
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DELIVERY_FAILED",
+          submissionId,
+          saved: true,
+        },
+        { status: 500 }
+      )
+    }
+
     return NextResponse.json(
-      { ok: false, error: "Internal server error" },
+      {
+        ok: false,
+        code: "SUBMISSION_ERROR",
+        submissionId,
+      },
       { status: 500 }
     )
   }

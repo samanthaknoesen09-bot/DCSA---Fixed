@@ -4,7 +4,7 @@ interface SendDualEmailOptions {
   subject: string
   html: string
   submissionId: string
-  type: "referral" | "document" | "callback" | "lead"
+  type: "referral" | "document" | "callback" | "lead" | "form16"
   replyTo?: string
 }
 
