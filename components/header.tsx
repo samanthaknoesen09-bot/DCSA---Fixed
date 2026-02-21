@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Phone, Mail, Coffee } from "lucide-react"
-import { colors, WHATSAPP_URL } from "@/lib/colors"
+import { colors, WHATSAPP_URL, OFFICE_NUMBER } from "@/lib/colors"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,9 +13,8 @@ export function Header() {
   const navLinks = [
     { label: "Services", href: "/services" },
     { label: "Free Tools", href: "/calculator" },
-    { label: "Podcast", href: "/#podcast" },
-    { label: "Reviews", href: "/#reviews" },
     { label: "Meet the Team", href: "/#team" },
+    { label: "Refer a Friend", href: "/refer-a-friend" },
   ]
 
   return (
@@ -47,15 +46,18 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Right: Primary CTA + Secondary Link */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="/client-portal/auth/login"
-              className="hidden md:inline-block text-sm transition-colors hover:underline decoration-2 underline-offset-4"
-              style={{ color: colors.warmGrey }}
-            >
-              Client Portal
-            </Link>
+          {/* Right: Office Number + Primary CTA */}
+          <div className="flex items-center gap-4">
+            <div className="hidden lg:flex flex-col items-end">
+              <span className="text-xs" style={{ color: colors.warmGrey }}>Office:</span>
+              <a 
+                href={`tel:${OFFICE_NUMBER}`} 
+                className="text-sm font-medium hover:underline"
+                style={{ color: colors.charcoal }}
+              >
+                071 900 6298
+              </a>
+            </div>
 
             <Button
               className="text-white font-semibold hidden md:inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"

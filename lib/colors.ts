@@ -24,5 +24,6 @@ export const colors = {
   black: "#000000",
 }
 
-export const WHATSAPP_NUMBER = "+27719006298"
-export const WHATSAPP_URL = `https://wa.me/27719006298?text=${encodeURIComponent("Hi DCSA! I'd like to chat about my options.")}`
+export const WHATSAPP_NUMBER = "+27661937596"
+export const OFFICE_NUMBER = "+27719006298"
+export const WHATSAPP_URL = `https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I'd like to chat about my options.")}`

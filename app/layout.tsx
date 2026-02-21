@@ -5,6 +5,8 @@ import { Suspense } from "react"
 import "./globals.css"
 import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
+import { FloatingChatButton } from "@/components/floating-chat-button"
+import { ExitIntentModal } from "@/components/exit-intent-modal"
 import { Analytics } from "@vercel/analytics/next"
 
 import { Nunito } from "next/font/google" // Added import for Nunito font
@@ -437,6 +439,8 @@ export default function RootLayout({
           <ViewTracker />
         </Suspense>
         {children}
+        <FloatingChatButton />
+        <ExitIntentModal />
         <Analytics />
       </body>
     </html>
