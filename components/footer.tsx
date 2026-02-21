@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Phone, Mail, MapPin, Facebook, CheckCircle, AlertCircle, Linkedin, Instagram } from "lucide-react"
 import { useState } from "react"
 import PhoneContact from "@/components/phone-contact"
+import { colors } from "@/lib/colors"
 
 const TikTokIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -62,7 +63,7 @@ Time: ${new Date().toLocaleTimeString()}`
   }
 
   return (
-    <footer id="contact" className="bg-foreground text-background">
+    <footer id="contact" className="text-foreground" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-4 gap-12">
           <div className="lg:col-span-2 space-y-6">
@@ -72,14 +73,14 @@ Time: ${new Date().toLocaleTimeString()}`
                 alt="DCSA Debt Counselling & Credit Repair"
                 width={120}
                 height={48}
-                className="h-10 w-auto brightness-0 invert"
+                className="h-10 w-auto"
               />
             </div>
-            <p className="text-background/80 leading-relaxed max-w-md text-pretty">
+            <p className="leading-relaxed max-w-md text-pretty" style={{ color: colors.charcoal }}>
               We're a small, caring team of debt counselling professionals helping South Africans find their way back to financial peace. Whatever your situation, you deserve support — not judgment.
             </p>
-            <div className="bg-primary/10 border-l-4 border-primary/50 rounded-r-lg p-4 max-w-md">
-              <p className="text-background/90 text-sm italic leading-relaxed">
+            <div className="rounded-r-lg p-4 max-w-md" style={{ backgroundColor: `${colors.mintCalm}15`, borderLeft: `4px solid ${colors.mintCalm}` }}>
+              <p className="text-sm italic leading-relaxed" style={{ color: colors.charcoal }}>
                 "Every person we've helped started exactly where you are now — uncertain but hopeful. That hope is enough. We'll take it from here, together."
               </p>
             </div>
