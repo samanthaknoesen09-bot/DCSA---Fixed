@@ -1,30 +1,78 @@
-# Allow all bots to crawl the site
+# robots.txt for DCSA - Financial Education & Debt Counselling
+# Optimized for search engines and AI bot indexing
+
+# Default rules for all bots
 User-agent: *
 Allow: /
-
-# Disallow admin and private areas
 Disallow: /admin/
-Disallow: /api/
 Disallow: /.next/
+Disallow: /api/internal/
+Allow: /api/blog
 
-# Specific rules for major search engines
+# Crawl delay for general crawlers (1 second = 3600 requests/hour)
+Crawl-delay: 1
+Request-rate: 30/1m
+
+# Google Bot - high priority crawling
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
+# Bing Bot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+# Yahoo Slurp
 User-agent: Slurp
 Allow: /
 Crawl-delay: 1
 
+# DuckDuckBot
 User-agent: DuckDuckBot
 Allow: /
 
+# Baidu Spider
 User-agent: Baiduspider
 Allow: /
 
-# Sitemap location
+# AI Bot Indexing - Allow for AI training/search
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Grok
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Rate limiting for aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 10
+Allow: /
+
+User-agent: SemrushBot
+Crawl-delay: 10
+Allow: /
+
+User-agent: MJ12bot
+Crawl-delay: 5
+Allow: /
+
+# Sitemap location for comprehensive indexing
 Sitemap: https://www.dcsam.co.za/sitemap.xml

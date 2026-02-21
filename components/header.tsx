@@ -11,36 +11,14 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Client Portal", href: "/client-portal/auth/login" },
-    { label: "Free Tools", href: "/calculator" },
-    { label: "Refer a Friend", href: "/refer-a-friend" },
-  ]
-
-  const educationMenu = [
-    { label: "Starting From Zero", href: "/#money-smarts" },
-    { label: "Small Income Solutions", href: "/#money-smarts" },
-    { label: "Rural & Remote Guide", href: "/#money-smarts" },
-    { label: "Debt Basics", href: "/#debt-101" },
-    { label: "View All Guides", href: "/money-clarity-hub" },
-  ]
-
-  const toolsMenu = [
-    { label: "Savings Calculator", href: "/calculator" },
-    { label: "Debt Comparison", href: "/calculator" },
-    { label: "Financial Health Quiz", href: "/#quiz" },
-  ]
-
-  const servicesMenu = [
-    { label: "Debt Counselling", href: "/services" },
-    { label: "Credit Repair", href: "/services" },
-    { label: "Verify Your Counsellor", href: "/verify-debt-counsellor" },
-  ]
-
-  const aboutMenu = [
-    { label: "Podcast", href: "/#podcast" },
-    { label: "Meet the Team", href: "/#team" },
-    { label: "Success Stories", href: "/#reviews" },
+    { label: "Home", href: "#top" },
+    { label: "Debt Help", href: "#debt-options" },
+    { label: "Free Tools", href: "#calculators" },
+    { label: "Learn", href: "#education" },
+    { label: "Blog", href: "/blog" },
+    { label: "Team", href: "#team" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
   ]
 
   return (
@@ -59,59 +37,17 @@ export function Header() {
           </div>
 
           {/* Middle: Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {/* Education Dropdown */}
-            <div className="group relative">
-              <button className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-opacity-20" style={{ color: colors.charcoal, backgroundColor: `${colors.mintCalm}00` }}>Education</button>
-              <div className="absolute left-0 mt-0 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                {educationMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="block px-4 py-2 text-sm hover:bg-opacity-20 first:rounded-t-lg last:rounded-b-lg transition-colors" style={{ color: colors.charcoal }}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Tools Dropdown */}
-            <div className="group relative">
-              <button className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-opacity-20" style={{ color: colors.charcoal }}>Tools</button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                {toolsMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="block px-4 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors" style={{ color: colors.charcoal }}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Services Dropdown */}
-            <div className="group relative">
-              <button className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-opacity-20" style={{ color: colors.charcoal }}>Services</button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                {servicesMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="block px-4 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors" style={{ color: colors.charcoal }}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* About Dropdown */}
-            <div className="group relative">
-              <button className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-opacity-20" style={{ color: colors.charcoal }}>About</button>
-              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                {aboutMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="block px-4 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors" style={{ color: colors.charcoal }}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact Link */}
-            <Link href="/#quick-contact" className="text-sm font-medium px-3 py-2 rounded-lg transition-all hover:bg-opacity-20" style={{ color: colors.charcoal }}>
-              Contact
-            </Link>
+          <nav className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4"
+                style={{ color: colors.charcoal }}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Right: Primary CTA Only */}
@@ -154,35 +90,6 @@ export function Header() {
                         {link.label}
                       </Link>
                     ))}
-                    <div className="border-t pt-4 mt-2" style={{ borderColor: colors.sandLight }}>
-                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>EDUCATION</p>
-                      {educationMenu.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block text-sm mb-2 transition-colors"
-                          style={{ color: colors.charcoal }}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                    
-                    <div className="border-t pt-4" style={{ borderColor: colors.sandLight }}>
-                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>TOOLS & SERVICES</p>
-                      {[...toolsMenu.slice(0, 2), ...servicesMenu.slice(0, 2)].map((item) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block text-sm mb-2 transition-colors"
-                          style={{ color: colors.charcoal }}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
                   </nav>
 
                   <div className="border-t pt-6 space-y-4" style={{ borderColor: colors.sandLight }}>

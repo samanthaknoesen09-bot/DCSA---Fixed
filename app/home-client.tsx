@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -13,39 +13,52 @@ import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
   ChevronDown,
+  ChevronUp,
   Lightbulb,
   PiggyBank,
   TrendingUp,
   HelpCircle,
-  Star,
-  Check,
-  AlertCircle,
-  Coffee,
+  ArrowUp,
   MessageCircle,
   Mail,
   Phone,
+  AlertCircle,
+  Check,
 } from "lucide-react"
 
 export function HomeClient() {
-  const [expandedAccordion, setExpandedAccordion] = useState<string | null>("starting-zero")
-  const [selectedPathway, setSelectedPathway] = useState<string | null>(null)
+  const [expandedAccordion, setExpandedAccordion] = useState<string | null>("money-reality")
+  const [showBackToTop, setShowBackToTop] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState<boolean[]>([])
   const [showExplanation, setShowExplanation] = useState(false)
   const [quizComplete, setQuizComplete] = useState(false)
+  const topRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   const quizQuestions = [
     { 
       id: 1, 
       statement: "Debt review is only for people who failed.", 
       answer: false,
-      explanation: "You're not alone — most people think that. Debt review is actually for anyone over-indebted, not a mark of failure."
+      explanation: "You're not alone — most people think that. Debt review is actually for anyone over-indebted, not a mark of failure. It's help, not shame."
     },
     { 
       id: 2, 
       statement: "Debt review gives legal protection from creditors.", 
       answer: true,
-      explanation: "That one's true, and it's why debt review can feel like breathing space."
+      explanation: "That one's true. It's one reason people often feel breathing space during debt review."
     },
     { 
       id: 3, 
@@ -57,13 +70,13 @@ export function HomeClient() {
       id: 4, 
       statement: "Interest can stretch repayments for months or years.", 
       answer: true,
-      explanation: "Absolutely true — interest rates make a huge difference to how long you'll be repaying."
+      explanation: "Yes. Interest rates make a huge difference to how long you'll be repaying. That's why understanding them matters."
     },
     { 
       id: 5, 
       statement: "Asking for help early usually gives you more options.", 
       answer: true,
-      explanation: "Yes! The earlier you reach out, the more paths are open to you."
+      explanation: "Absolutely. The earlier you reach out, the more paths are open to you. Don't wait."
     },
   ]
 
@@ -90,679 +103,685 @@ export function HomeClient() {
   const currentQuestion = quizQuestions[currentQuestionIndex]
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }} ref={topRef}>
       <main className="flex-1">
-        {/* HERO SECTION - EDUCATION FOCUS */}
-        <section className="relative py-16 md:py-24 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-4xl text-center space-y-6">
-            <div className="inline-block text-3xl mb-2">☕</div>
+        {/* HERO SECTION */}
+        <section className="relative py-16 md:py-28 px-4" style={{ 
+          background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)`
+        }}>
+          <div className="container mx-auto max-w-3xl space-y-6 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pretty leading-tight" style={{ color: colors.charcoal }}>
-              Financial Education Made Simple
+              Money stress is heavy. Let's fix it properly.
             </h1>
-            <p className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
-              You're not broken. You're just starting – no judgment, just plain facts to bridge the gaps.
+            <p className="text-lg md:text-xl text-pretty" style={{ color: colors.warmGrey }}>
+              We help you understand your money, fix debt problems, and rebuild credit — clearly, calmly, without shame or confusion.
             </p>
-            <Button
-              size="lg"
-              className="mt-4 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
-              style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
-              asChild
-            >
-              <Link href="#education-pathways">
-                Explore Free Guides
-              </Link>
-            </Button>
-            <div className="pt-4 text-sm" style={{ color: colors.warmGrey }}>
-              <p>→ For anyone building strong financial foundations</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Button 
+                size="lg" 
+                className="rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: colors.maroon }}
+                asChild
+              >
+                <Link href={WHATSAPP_URL + "?text=Hi%20DCSA!%20I'd%20like%20to%20chat%20about%20my%20options"}>
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Message Me – Free Chat
+                </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="rounded-lg font-semibold"
+                style={{ borderColor: colors.maroon, color: colors.maroon }}
+                asChild
+              >
+                <Link href="#calculators">
+                  Quick Money Check
+                </Link>
+              </Button>
             </div>
+            <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
+              ↓ No pressure, just clarity. Next: Try a quick check below.
+            </p>
           </div>
         </section>
 
-        {/* EDUCATION PATHWAYS - WHERE DO YOU START? */}
-        <section id="education-pathways" className="py-16 px-4" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-6xl">
+        {/* CALCULATORS SECTION - "Your Money Reality Check" */}
+        <section className="py-16 md:py-20 px-4" id="calculators" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: colors.charcoal }}>
-                Where Do You Start?
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Your Money Reality Check
               </h2>
-              <p style={{ color: colors.warmGrey }}>Choose your path. We'll guide you from there.</p>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Stressed about money? These simple tools help you get clarity—no sign-up, private. Start small, breathe easy.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {/* Pathway 1: Save Like You Mean It */}
-              <Card className="border-2 border-transparent hover:shadow-lg transition-all" style={{ borderColor: colors.softPeach }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-lg" style={{ backgroundColor: colors.softPeach }}>
-                      <PiggyBank className="h-6 w-6" style={{ color: colors.maroon }} />
-                    </div>
-                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Save Like You Mean It</h3>
-                  </div>
-                  <p style={{ color: colors.warmGrey }}>Start small – saving isn't just for the rich. R50/week tips for building financial strength.</p>
-                  <Button variant="outline" className="border-2 w-full" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                    <Link href="#money-smarts">Explore</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Pathway 2: Money Myths Busted */}
-              <Card className="border-2 border-transparent hover:shadow-lg transition-all" style={{ borderColor: colors.softPeach }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-lg" style={{ backgroundColor: colors.softPeach }}>
-                      <Lightbulb className="h-6 w-6" style={{ color: colors.maroon }} />
-                    </div>
-                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Money Myths Busted</h3>
-                  </div>
-                  <p style={{ color: colors.warmGrey }}>Finance basics without jargon – debunking myths for beginners.</p>
-                  <Button variant="outline" className="border-2 w-full" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                    <Link href="#money-smarts">Explore</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Pathway 3: Understanding Debt */}
-              <Card className="border-2 border-transparent hover:shadow-lg transition-all" style={{ borderColor: colors.softPeach }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-lg" style={{ backgroundColor: colors.softPeach }}>
-                      <TrendingUp className="h-6 w-6" style={{ color: colors.maroon }} />
-                    </div>
-                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Understanding Debt</h3>
-                  </div>
-                  <p style={{ color: colors.warmGrey }}>What it really means, in plain English – is it for you?</p>
-                  <Button variant="outline" className="border-2 w-full" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                    <Link href="#debt-101">Explore</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Pathway 4: Quick Navigator */}
-              <Card className="border-2 border-transparent hover:shadow-lg transition-all" style={{ borderColor: colors.softPeach }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-lg" style={{ backgroundColor: colors.softPeach }}>
-                      <HelpCircle className="h-6 w-6" style={{ color: colors.maroon }} />
-                    </div>
-                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Your Situation?</h3>
-                  </div>
-                  <p style={{ color: colors.warmGrey }}>Pick your path. New to saving? Budget guidance? Need tools?</p>
-                  <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                      <Link href="#money-smarts">New to Saving</Link>
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                      <Link href="#money-smarts">Budget Help</Link>
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                      <Link href="#tools">Free Tools</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURED CONTENT - QUICK MONEY SMARTS */}
-        <section className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center" style={{ color: colors.charcoal }}>Quick Money Smarts</h2>
-            
             <div className="grid md:grid-cols-3 gap-6">
-              {/* Tip 1 */}
-              <div className="p-6 rounded-lg border-l-4" style={{ backgroundColor: colors.softPeach, borderColor: colors.coralAccent }}>
-                <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>1-Minute Tip: Save on Subscriptions</h3>
-                <p className="text-sm mb-3" style={{ color: colors.charcoal }}>That R149 streaming service? R50 saved per month = R600/year. Start there.</p>
-                <p className="text-xs font-semibold" style={{ color: colors.maroon }}>→ R600 invested at 8% = R648 next year</p>
-              </div>
+              {/* Money Map Renamed */}
+              <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.mintCalm}` }}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <PiggyBank className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: colors.mintCalm }} />
+                    <div>
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Your Money Reality Check</h3>
+                      <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
+                        Plug in your income, bills, and those sneaky spends (coffee runs, extra groceries). See exactly where your cash goes. Helps spot leaks before they become big debt holes.
+                      </p>
+                    </div>
+                  </div>
+                  <Button 
+                    size="sm" 
+                    className="w-full rounded-lg"
+                    style={{ backgroundColor: colors.mintCalm, color: colors.charcoal }}
+                    asChild
+                  >
+                    <Link href="/calculator">Start Check</Link>
+                  </Button>
+                </CardContent>
+              </Card>
 
-              {/* Myth 1 */}
-              <div className="p-6 rounded-lg border-l-4" style={{ backgroundColor: colors.softPeach, borderColor: colors.coralAccent }}>
-                <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>Myth of the Week</h3>
-                <p className="text-sm mb-3" style={{ color: colors.charcoal }}>"You need big money to start saving."</p>
-                <p className="text-xs" style={{ color: colors.charcoal }}><strong>Truth:</strong> R50/week = R2,600/year. That's real wealth building.</p>
-              </div>
+              {/* Interest Calculator Renamed */}
+              <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.softPeach}` }}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <TrendingUp className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: colors.softPeach }} />
+                    <div>
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Interest Trap Checker</h3>
+                      <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
+                        Enter your loan details and watch how interest piles on over time. It's eye-opening: That R5k borrow could cost R2k extra. Understand why quick loans hurt long-term.
+                      </p>
+                    </div>
+                  </div>
+                  <Button 
+                    size="sm" 
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href="/calculator">Check Interest</Link>
+                  </Button>
+                </CardContent>
+              </Card>
 
-              {/* Stat 1 */}
-              <div className="p-6 rounded-lg border-l-4" style={{ backgroundColor: colors.softPeach, borderColor: colors.coralAccent }}>
-                <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>Did You Know?</h3>
-                <p className="text-sm mb-3" style={{ color: colors.charcoal }}>70% of South Africans <strong>can</strong> save – they just don't know how to start.</p>
-                <p className="text-xs font-semibold" style={{ color: colors.maroon }}>You can be in that 70%. Let's start.</p>
-              </div>
+              {/* Savings Calculator Renamed */}
+              <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.maroon}` }}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <Lightbulb className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                    <div>
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Debt Cut Preview</h3>
+                      <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
+                        See what you'd save by combining debts under review. No fancy math—just real numbers showing lower payments and faster freedom.
+                      </p>
+                    </div>
+                  </div>
+                  <Button 
+                    size="sm" 
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href="/calculator">See Savings</Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
+
+            <p className="text-center mt-8 text-sm" style={{ color: colors.warmGrey }}>
+              Spot something? <Link href={WHATSAPP_URL} className="font-semibold underline" style={{ color: colors.maroon }}>Message me for a personalized plan.</Link>
+            </p>
           </div>
         </section>
 
-        {/* MONEY SMARTS CORNER - EDUCATION HUBS */}
-        <section id="money-smarts" className="py-16 px-4" style={{ backgroundColor: colors.white }}>
+        {/* EDUCATION SECTION */}
+        <section className="py-16 md:py-20 px-4" id="education" style={{ backgroundColor: colors.mintCalm + "20" }}>
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: colors.charcoal }}>Your Money, Made Simple</h2>
-              <p style={{ color: colors.warmGrey }}>Accordion tabs for easy learning – click to explore.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Your Money, Made Simple
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Real-talk money education without the jargon or shame.
+              </p>
             </div>
 
-            <div className="space-y-3">
-              {/* Accordion 1: Starting From Zero */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("starting-zero")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "starting-zero" ? colors.mintCalm + "15" : "transparent" }}
-                >
-                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Starting From Zero</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "starting-zero" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "starting-zero" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
-                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>For beginners:</strong> Opening a bank account, saving your first R100, understanding interest.</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Real example:</p>
-                    <p className="text-xs" style={{ color: colors.charcoal }}>Save R100/month → R1,200/year. At 5% interest = R1,260. That's R60 you didn't work for.</p>
-                    <div className="bg-white p-3 rounded text-xs mt-3" style={{ backgroundColor: colors.white }}>
-                      <p className="font-semibold mb-1" style={{ color: colors.maroon }}>Jargon Glossary:</p>
-                      <p><strong>"Interest"</strong> = Money the bank pays you for letting them use your money</p>
-                      <p><strong>"Principal"</strong> = Your original R100 saved</p>
+            <div className="space-y-4">
+              {[
+                {
+                  id: "starting-zero",
+                  title: "Starting From Zero",
+                  content: "Never managed money formally? That's okay. Start with: open a savings account, save R50/week, understand what interest is. Small steps. Progress builds.",
+                  tips: ["Save in a separate account (it works)", "Start with R50/week—don't overthink it", "Track spending for one month—see patterns"]
+                },
+                {
+                  id: "everyday-tips",
+                  title: "Everyday Money Tips",
+                  content: "Quick wins that stick: pack lunch instead of buying, reduce data use, shop with a list. Small leaks become big holes. Find yours.",
+                  tips: ["Packed lunch: R200/month saved", "Brew coffee at home: R150/month saved", "Compare phone plans: often find better deals"]
+                },
+                {
+                  id: "small-income-wins",
+                  title: "Small Income Wins",
+                  content: "Budget tight? We get it. Prioritize: rent/food first. Then tackle debt step by step. Use our calculator to see exactly where R1 goes.",
+                  tips: ["List essentials first—everything else is secondary", "Debt doesn't grow overnight; solve it step by step", "Ask creditors about payment holidays (many agree)"]
+                },
+                {
+                  id: "know-before-borrow",
+                  title: "Know Before You Borrow",
+                  content: "Before taking a loan or using credit, understand: interest rates, fees, and repayment terms. They hugely impact your money. Get clear first.",
+                  tips: ["Interest adds up fast—compare rates always", "Fees matter: R50/month = R600/year", "Read the fine print; ask questions—no shame"]
+                },
+              ].map((section) => (
+                <div key={section.id}>
+                  <button
+                    onClick={() => toggleAccordion(section.id)}
+                    className="w-full text-left p-4 rounded-lg border-2 transition-all hover:bg-opacity-5 cursor-pointer"
+                    style={{ 
+                      backgroundColor: expandedAccordion === section.id ? colors.white : "transparent",
+                      borderColor: colors.sandLight
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>
+                        {section.title}
+                      </h3>
+                      {expandedAccordion === section.id ? (
+                        <ChevronUp className="w-5 h-5" style={{ color: colors.maroon }} />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" style={{ color: colors.maroon }} />
+                      )}
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Accordion 2: Money Management Essentials */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("cash-management")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "cash-management" ? colors.mintCalm + "15" : "transparent" }}
-                >
-                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Money Management Essentials</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "cash-management" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "cash-management" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
-                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>Cash-based economy tips:</strong> Managing money without debit orders, when to use stokvels, handling seasonal income.</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Real scenario:</p>
-                    <p className="text-xs" style={{ color: colors.charcoal }}>You earn R300 from selling vegetables. Put R50 in a stokvel = shared savings safety net. Your R250 covers food.</p>
-                    <div className="bg-white p-3 rounded text-xs mt-3" style={{ backgroundColor: colors.white }}>
-                      <p className="font-semibold mb-1" style={{ color: colors.maroon }}>What's a Stokvel?</p>
-                      <p>Group savings where everyone contributes R50/week, and one person gets the full pot each month. Your turn = R2,400 cash boost.</p>
+                  </button>
+                  {expandedAccordion === section.id && (
+                    <div className="p-6 bg-white rounded-b-lg border-2 border-t-0" style={{ borderColor: colors.sandLight }}>
+                      <p className="text-base mb-4" style={{ color: colors.charcoal }}>
+                        {section.content}
+                      </p>
+                      <div className="space-y-2">
+                        {section.tips.map((tip, idx) => (
+                          <div key={idx} className="flex gap-3">
+                            <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                            <p className="text-sm" style={{ color: colors.charcoal }}>
+                              {tip}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Accordion 3: Small Income Solutions */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("small-income")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "small-income" ? colors.mintCalm + "15" : "transparent" }}
-                >
-                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Small Income Solutions</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "small-income" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "small-income" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
-                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>Smart Budget Strategies:</strong> Avoiding predatory lending, managing debt on any budget, practical solutions that work.</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Monthly budget breakdown (R5,000):</p>
-                    <p className="text-xs" style={{ color: colors.charcoal }}>Rent R2,000 | Food R1,500 | Transport R500 | Savings R250 | Buffer R250 = Planned, not panicked.</p>
-                    <div className="bg-white p-3 rounded text-xs mt-3" style={{ backgroundColor: colors.white }}>
-                      <p className="font-semibold mb-1" style={{ color: colors.maroon }}>Avoid These Traps:</p>
-                      <p>❌ Payday loans (100%+ interest) | ❌ Buy-now-pay-later on food | ❌ Loan sharks</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Accordion 4: Know Before You Owe */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("know-before")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "know-before" ? colors.mintCalm + "15" : "transparent" }}
-                >
-                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Know Before You Owe</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "know-before" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "know-before" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
-                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>Credit basics:</strong> When borrowing makes sense, what a credit score actually means, prevention is easier than recovery.</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Good reason to borrow:</p>
-                    <p className="text-xs" style={{ color: colors.charcoal }}>✓ School fees for skills training (you'll earn it back) | ✓ Emergency medical (non-negotiable)</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Bad reason to borrow:</p>
-                    <p className="text-xs" style={{ color: colors.charcoal }}>✗ Subscription services | ✗ Matching others' spending | ✗ "Expecting a bonus"</p>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* FREE TOOLS - LEARNING TOOLS */}
-        <section id="tools" className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-6xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center" style={{ color: colors.charcoal }}>Try These Learning Tools</h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Tool 1 */}
-              <Card className="border-2 hover:shadow-lg transition-all cursor-pointer" style={{ borderColor: colors.mintCalm }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <TrendingUp className="h-6 w-6" style={{ color: colors.mintCalm }} />
-                    <h3 className="font-bold" style={{ color: colors.charcoal }}>Savings Growth Calculator</h3>
-                  </div>
-                  <p className="text-sm" style={{ color: colors.warmGrey }}>See how R50/week grows. Reality check: R2,600 → R2,912 at 8%.</p>
-                  <Button size="sm" style={{ backgroundColor: colors.maroon, color: colors.white }} asChild>
-                    <Link href="/calculator">Try It</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Tool 2 */}
-              <Card className="border-2 hover:shadow-lg transition-all cursor-pointer" style={{ borderColor: colors.mintCalm }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Calculator className="h-6 w-6" style={{ color: colors.mintCalm }} />
-                    <h3 className="font-bold" style={{ color: colors.charcoal }}>Debt Review Comparison</h3>
-                  </div>
-                  <p className="text-sm" style={{ color: colors.warmGrey }}>Compare consolidation vs debt review. See which saves you more.</p>
-                  <Button size="sm" style={{ backgroundColor: colors.maroon, color: colors.white }} asChild>
-                    <Link href="/calculator">Compare</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Tool 3 */}
-              <Card className="border-2 hover:shadow-lg transition-all cursor-pointer" style={{ borderColor: colors.mintCalm }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <PiggyBank className="h-6 w-6" style={{ color: colors.mintCalm }} />
-                    <h3 className="font-bold" style={{ color: colors.charcoal }}>Money Map</h3>
-                  </div>
-                  <p className="text-sm" style={{ color: colors.warmGrey }}>Track where your money goes. Simple, honest breakdown.</p>
-                  <Button size="sm" style={{ backgroundColor: colors.maroon, color: colors.white }} asChild>
-                    <Link href="/calculator">Track Now</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Tool 4 */}
-              <Card className="border-2 hover:shadow-lg transition-all cursor-pointer" style={{ borderColor: colors.mintCalm }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Lightbulb className="h-6 w-6" style={{ color: colors.mintCalm }} />
-                    <h3 className="font-bold" style={{ color: colors.charcoal }}>Financial Health Quiz</h3>
-                  </div>
-                  <p className="text-sm" style={{ color: colors.warmGrey }}>5 quick questions. Get your starting point + personalized tips.</p>
-                  <Button size="sm" style={{ backgroundColor: colors.maroon, color: colors.white }} asChild>
-                    <Link href="#quiz">Start Quiz</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* DEBT REVIEW 101 - EDUCATIONAL SECTION */}
-        <section id="debt-101" className="py-16 px-4" style={{ backgroundColor: colors.white }}>
+        {/* DEBT HELP SECTION */}
+        <section className="py-16 md:py-20 px-4" id="debt-options" style={{ backgroundColor: colors.white }}>
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: colors.charcoal }}>Debt Review Explained Simply</h2>
-              <p style={{ color: colors.warmGrey }}>No sales pitch. Just facts.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Debt Review Explained Simply
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                What it is, how it works, and if it's right for you—without the confusion.
+              </p>
             </div>
 
-            <div className="space-y-3 mb-8">
-              {/* Accordion 1: What It Is */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("what-is")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "what-is" ? colors.softPeach + "50" : "transparent" }}
-                >
-                  <span className="font-bold" style={{ color: colors.charcoal }}>What Is Debt Review?</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "what-is" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "what-is" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.softPeach + "20", borderColor: colors.sandLight }}>
-                    <p style={{ color: colors.charcoal }}>A legal process where a registered counsellor reviews your debts, negotiates with creditors, and restructures your payments so you can actually afford them.</p>
-                    <p className="text-sm font-semibold" style={{ color: colors.maroon }}>It's not:</p>
-                    <ul className="text-sm space-y-1" style={{ color: colors.charcoal }}>
-                      <li>❌ Bankruptcy</li>
-                      <li>❌ Debt erasure ("forgiveness")</li>
-                      <li>❌ A sign you're a failure</li>
-                    </ul>
-                  </div>
-                )}
-              </div>
-
-              {/* Accordion 2: How It Works */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("how-works")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "how-works" ? colors.softPeach + "50" : "transparent" }}
-                >
-                  <span className="font-bold" style={{ color: colors.charcoal }}>How It Works (Step by Step)</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "how-works" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "how-works" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.softPeach + "20", borderColor: colors.sandLight }}>
-                    <div className="space-y-2">
-                      <p className="text-sm"><strong>1. Assessment:</strong> We review your debts, income, expenses.</p>
-                      <p className="text-sm"><strong>2. Application:</strong> Submit to the court (free, legal process).</p>
-                      <p className="text-sm"><strong>3. Negotiation:</strong> We negotiate lower payments with creditors.</p>
-                      <p className="text-sm"><strong>4. Restructuring:</strong> New, affordable payment plan created.</p>
-                      <p className="text-sm"><strong>5. Payment:</strong> You pay 1 affordable monthly amount (we distribute).</p>
-                      <p className="text-sm"><strong>6. Clearance:</strong> 3-6 years later, you're debt-free + credit-ready.</p>
+            <div className="space-y-4 mb-12">
+              {[
+                {
+                  id: "what-is-debt-review",
+                  title: "What Is Debt Review?",
+                  content: "Debt review is a formal South African process where a registered counsellor helps over-indebted people restructure debts into affordable payments. It's protection under law, not shame."
+                },
+                {
+                  id: "how-it-works",
+                  title: "How It Works",
+                  content: "First, we assess your situation—income, debts, bills. Then we negotiate with creditors to lower your monthly payment (often by 30-40%). You make one payment to us; we distribute it. You get breathing space; creditors get paid."
+                },
+                {
+                  id: "is-it-for-you",
+                  title: "Is It For You?",
+                  content: "If you're over-indebted (can't pay debts in full), debt review protects you legally from creditors. It's not instant—typically 5-6 years—but it works. Message me to assess your situation."
+                },
+              ].map((section) => (
+                <div key={section.id}>
+                  <button
+                    onClick={() => toggleAccordion(section.id)}
+                    className="w-full text-left p-4 rounded-lg border-2 transition-all hover:bg-opacity-5 cursor-pointer"
+                    style={{ 
+                      backgroundColor: expandedAccordion === section.id ? colors.white : "transparent",
+                      borderColor: colors.sandLight
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>
+                        {section.title}
+                      </h3>
+                      {expandedAccordion === section.id ? (
+                        <ChevronUp className="w-5 h-5" style={{ color: colors.maroon }} />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" style={{ color: colors.maroon }} />
+                      )}
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Accordion 3: Is It For You? */}
-              <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
-                <button
-                  onClick={() => toggleAccordion("is-for-you")}
-                  className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "is-for-you" ? colors.softPeach + "50" : "transparent" }}
-                >
-                  <span className="font-bold" style={{ color: colors.charcoal }}>Is It Right For You?</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "is-for-you" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-                </button>
-                {expandedAccordion === "is-for-you" && (
-                  <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.softPeach + "20", borderColor: colors.sandLight }}>
-                    <p className="text-sm font-semibold" style={{ color: colors.maroon }}>You might benefit if:</p>
-                    <ul className="text-sm space-y-1 mb-3" style={{ color: colors.charcoal }}>
-                      <li>✓ You owe R3,000+</li>
-                      <li>✓ You're struggling to pay all debts</li>
-                      <li>✓ Creditors are calling/threatening</li>
-                      <li>✓ You want structured, manageable payments</li>
-                    </ul>
-                    <p className="text-sm font-semibold" style={{ color: colors.maroon }}>You might NOT need it if:</p>
-                    <ul className="text-sm space-y-1" style={{ color: colors.charcoal }}>
-                      <li>✗ You can afford all payments comfortably</li>
-                      <li>✗ Your debts are under R3,000</li>
-                      <li>✗ You just need budgeting help</li>
-                    </ul>
-                  </div>
-                )}
-              </div>
+                  </button>
+                  {expandedAccordion === section.id && (
+                    <div className="p-6 bg-white rounded-b-lg border-2 border-t-0" style={{ borderColor: colors.sandLight }}>
+                      <p className="text-base" style={{ color: colors.charcoal }}>
+                        {section.content}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Comparison Table */}
-            <div className="mt-12">
-              <h3 className="font-bold text-lg mb-4" style={{ color: colors.charcoal }}>Debt Review vs Other Options</h3>
-              <DebtReviewComparison />
+            {/* Debt Review Comparison Table */}
+            <DebtReviewComparison />
+
+            <div className="mt-12 p-6 rounded-lg" style={{ backgroundColor: colors.mintCalm + "20" }}>
+              <p className="text-center mb-4" style={{ color: colors.charcoal }}>
+                <strong>Affiliations:</strong> We work with major insurance partners and creditors across South Africa to make this work for you.
+              </p>
+              <div className="flex justify-center gap-6 flex-wrap">
+                <a href="https://www.firstforwomen.co.za" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg"
+                    alt="First for Women Insurance"
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto object-contain"
+                  />
+                </a>
+                <a href="https://www.autoandgeneral.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png"
+                    alt="Auto & General Insurance"
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto object-contain"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PODCAST SECTION */}
+        <section className="py-16 md:py-20 px-4" id="podcast" style={{ backgroundColor: colors.warmBeige }}>
+          <PodcastSection />
+        </section>
+
+        {/* TEAM SECTION */}
+        <section className="py-16 md:py-20 px-4" id="team" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Who You're Talking To
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Real people, honest conversations, from our calm office in Gqeberha.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div style={{ backgroundColor: colors.softPeach + "40", height: "200px" }} />
+                <CardContent className="p-6 text-center">
+                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Samantha</h3>
+                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
+                    Since 2014, honest talks from home. I've helped hundreds find calm again.
+                  </p>
+                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Founder, Debt Counsellor</p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div style={{ backgroundColor: colors.mintCalm + "40", height: "200px" }} />
+                <CardContent className="p-6 text-center">
+                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Kadene</h3>
+                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
+                    I help people understand their options without the jargon.
+                  </p>
+                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Financial Educator</p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div style={{ backgroundColor: colors.maroon + "20", height: "200px" }} />
+                <CardContent className="p-6 text-center">
+                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Cindy</h3>
+                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
+                    I make sure every conversation feels safe and every outcome is real.
+                  </p>
+                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Client Advocate</p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-12 text-center">
+              <p className="mb-6" style={{ color: colors.charcoal }}>
+                <strong>Ready to join the team?</strong> We're looking for caring people who want to help.
+              </p>
+              <Button 
+                className="rounded-lg text-white hover:opacity-90"
+                style={{ backgroundColor: colors.maroon }}
+                asChild
+              >
+                <Link href="/careers">View Careers</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* REVIEWS SECTION */}
+        <section className="py-16 md:py-20 px-4" id="stories" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Real People, Real Hope
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Stories from people who found their way forward.
+              </p>
+            </div>
+            <ReviewsCarousel />
+            <div className="mt-12 text-center">
+              <p className="mb-6" style={{ color: colors.charcoal }}>
+                Share your story? Help others find hope.
+              </p>
+              <ReviewSubmission />
             </div>
           </div>
         </section>
 
         {/* QUIZ SECTION */}
-        <section id="quiz" className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-2xl">
+        <section className="py-16 md:py-20 px-4" id="quiz" style={{ backgroundColor: colors.mintCalm + "20" }}>
+          <div className="container mx-auto max-w-3xl">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: colors.charcoal }}>Financial Health Quiz</h2>
-              <p style={{ color: colors.warmGrey }}>5 quick questions. No judgment. Just knowledge.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Know Your Money: Quick Quiz
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Five questions. No judgment. Just clarity about debt and money.
+              </p>
             </div>
 
             {!quizComplete ? (
-              <Card className="border-2" style={{ borderColor: colors.mintCalm }}>
+              <Card className="rounded-xl border-0 shadow-sm">
                 <CardContent className="p-8 space-y-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-semibold" style={{ color: colors.warmGrey }}>
-                      Question {currentQuestionIndex + 1} of {quizQuestions.length}
-                    </span>
-                    <div className="flex gap-1">
-                      {quizQuestions.map((_, i) => (
-                        <div
-                          key={i}
-                          className="h-2 w-2 rounded-full"
-                          style={{ backgroundColor: i < currentQuestionIndex + 1 ? colors.maroon : colors.sandLight }}
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-sm font-semibold" style={{ color: colors.warmGrey }}>
+                        Question {currentQuestionIndex + 1} of {quizQuestions.length}
+                      </span>
+                      <div className="w-32 h-2 rounded-full bg-gray-200">
+                        <div 
+                          className="h-full rounded-full transition-all"
+                          style={{ 
+                            width: `${((currentQuestionIndex + 1) / quizQuestions.length) * 100}%`,
+                            backgroundColor: colors.maroon
+                          }}
                         />
-                      ))}
+                      </div>
                     </div>
+                    <h3 className="text-xl font-bold text-center mb-8" style={{ color: colors.charcoal }}>
+                      {currentQuestion.statement}
+                    </h3>
                   </div>
 
-                  <h3 className="text-xl font-bold text-center" style={{ color: colors.charcoal }}>
-                    {currentQuestion.statement}
-                  </h3>
-
                   {!showExplanation ? (
-                    <div className="flex gap-4 justify-center pt-4">
-                      <Button
-                        onClick={() => handleQuizAnswer(true)}
-                        className="text-white font-semibold"
+                    <div className="flex gap-4 justify-center">
+                      <Button 
+                        size="lg"
+                        className="rounded-lg text-white hover:opacity-90"
                         style={{ backgroundColor: colors.maroon }}
+                        onClick={() => handleQuizAnswer(true)}
                       >
                         True
                       </Button>
-                      <Button
-                        onClick={() => handleQuizAnswer(false)}
+                      <Button 
+                        size="lg"
                         variant="outline"
-                        className="border-2"
+                        className="rounded-lg"
                         style={{ borderColor: colors.maroon, color: colors.maroon }}
+                        onClick={() => handleQuizAnswer(false)}
                       >
                         False
                       </Button>
                     </div>
                   ) : (
                     <div className="space-y-4">
-                      <div className="p-4 rounded-lg" style={{ backgroundColor: colors.softPeach }}>
-                        <p className="text-sm mb-2" style={{ color: colors.charcoal }}>
-                          <strong>{quizAnswers[currentQuestionIndex] ? "✓ Correct!" : "✗ Not quite, but now you know:"}</strong>
+                      <div 
+                        className="p-4 rounded-lg"
+                        style={{ 
+                          backgroundColor: quizAnswers[currentQuestionIndex] ? colors.mintCalm + "20" : colors.softPeach + "40"
+                        }}
+                      >
+                        <p className="font-semibold mb-2" style={{ color: colors.charcoal }}>
+                          {quizAnswers[currentQuestionIndex] ? "You got it! ✓" : "Not quite. Here's the truth:"}
                         </p>
-                        <p style={{ color: colors.charcoal }}>{currentQuestion.explanation}</p>
+                        <p style={{ color: colors.charcoal }}>
+                          {currentQuestion.explanation}
+                        </p>
                       </div>
-
-                      {currentQuestionIndex < quizQuestions.length - 1 && (
-                        <Button
-                          onClick={handleNextQuestion}
-                          className="w-full text-white font-semibold"
-                          style={{ backgroundColor: colors.maroon }}
-                        >
-                          Next Question
-                        </Button>
-                      )}
-                      {currentQuestionIndex === quizQuestions.length - 1 && (
-                        <Button
-                          onClick={handleNextQuestion}
-                          className="w-full text-white font-semibold"
-                          style={{ backgroundColor: colors.maroon }}
-                        >
-                          See Results
-                        </Button>
-                      )}
+                      <Button 
+                        size="lg"
+                        className="w-full rounded-lg text-white hover:opacity-90"
+                        style={{ backgroundColor: colors.maroon }}
+                        onClick={handleNextQuestion}
+                      >
+                        {currentQuestionIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                      </Button>
                     </div>
                   )}
                 </CardContent>
               </Card>
             ) : (
-              <Card className="border-2" style={{ borderColor: colors.mintCalm }}>
-                <CardContent className="p-8 space-y-6 text-center">
-                  <div className="text-5xl font-bold" style={{ color: colors.maroon }}>
-                    {correctAnswers}/{quizQuestions.length}
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-8 text-center space-y-6">
+                  <div>
+                    <p className="text-5xl font-bold mb-2" style={{ color: colors.maroon }}>
+                      {correctAnswers}/{quizQuestions.length}
+                    </p>
+                    <p className="text-xl font-semibold mb-4" style={{ color: colors.charcoal }}>
+                      {correctAnswers === 5 ? "Perfect! You know your stuff." : correctAnswers >= 3 ? "Good grasp on it." : "Getting clearer now?"}
+                    </p>
+                    <p style={{ color: colors.warmGrey }}>
+                      {correctAnswers === 5 
+                        ? "You've got solid understanding of debt and money. Now put it to work."
+                        : "This is what we help with—making it clear and real."}
+                    </p>
                   </div>
-                  <p className="text-lg" style={{ color: colors.charcoal }}>
-                    {correctAnswers === quizQuestions.length
-                      ? "Perfect! You're already thinking like a finance pro."
-                      : correctAnswers >= 3
-                      ? "Great effort! You know more than you thought."
-                      : "No worries! That's exactly why we built this site."}
-                  </p>
-                  <p style={{ color: colors.warmGrey }}>
-                    Ready for more? Explore the guides above to deepen your knowledge.
-                  </p>
-                  <Button
+                  <Button 
+                    size="lg"
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
                     onClick={() => {
                       setCurrentQuestionIndex(0)
                       setQuizAnswers([])
                       setShowExplanation(false)
                       setQuizComplete(false)
                     }}
-                    className="text-white font-semibold"
-                    style={{ backgroundColor: colors.maroon }}
                   >
-                    Retake Quiz
+                    Try Again
                   </Button>
+                  <div className="border-t pt-6" style={{ borderColor: colors.sandLight }}>
+                    <p className="mb-4" style={{ color: colors.charcoal }}>
+                      Ready to go deeper?
+                    </p>
+                    <Button 
+                      variant="outline"
+                      className="w-full rounded-lg"
+                      style={{ borderColor: colors.maroon, color: colors.maroon }}
+                      asChild
+                    >
+                      <Link href={WHATSAPP_URL + "?text=I%20did%20the%20quiz%20and%20want%20to%20talk%20about%20my%20situation"}>
+                        Message Me
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             )}
           </div>
         </section>
 
-        {/* SUCCESS STORIES - REAL REVIEWS */}
-        <section id="reviews" className="py-16 px-4" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-6xl">
+        {/* FAQ SECTION */}
+        <section className="py-16 md:py-20 px-4" id="faq" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-3xl">
             <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: colors.charcoal }}>Real People, Real Wins</h2>
-              <p style={{ color: colors.warmGrey }}>This is what happens when someone reaches out.</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Questions We Hear
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Real concerns, straight answers.
+              </p>
             </div>
 
-            <ReviewsCarousel />
-
-            <div className="text-center mt-12">
-              <Button
-                variant="outline"
-                className="border-2"
-                style={{ borderColor: colors.maroon, color: colors.maroon }}
-                asChild
-              >
-                <Link href="#reviews">
-                  <Share2 className="mr-2 h-4 w-4" />
-                  Share Your Story
-                </Link>
-              </Button>
+            <div className="space-y-4">
+              {[
+                {
+                  q: "What if I'm scared?",
+                  a: "That's normal. Most people start scared. We talk you through it calmly, step by step. No pressure, just real answers."
+                },
+                {
+                  q: "How long does debt review take?",
+                  a: "Usually 5-6 years. It's not instant, but you're protected the whole time—no creditor threats, just steady progress toward freedom."
+                },
+                {
+                  q: "Can I get credit again after debt review?",
+                  a: "Yes. Once you complete debt review and get clearance, you can apply for credit again. It's not permanent; it's a path forward."
+                },
+                {
+                  q: "What's the cost?",
+                  a: "We charge a small monthly fee (built into your new payment plan). No surprises, no hidden fees. We discuss it upfront."
+                },
+                {
+                  q: "What if I miss a payment?",
+                  a: "Life happens. Talk to us first. We work with you to catch up. One missed payment doesn't break the whole plan."
+                },
+              ].map((faq, idx) => (
+                <div key={idx}>
+                  <button
+                    onClick={() => toggleAccordion(`faq-${idx}`)}
+                    className="w-full text-left p-4 rounded-lg border-2 transition-all hover:bg-opacity-5 cursor-pointer"
+                    style={{ 
+                      backgroundColor: expandedAccordion === `faq-${idx}` ? colors.white : "transparent",
+                      borderColor: colors.sandLight
+                    }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>
+                        {faq.q}
+                      </h3>
+                      {expandedAccordion === `faq-${idx}` ? (
+                        <ChevronUp className="w-5 h-5" style={{ color: colors.maroon }} />
+                      ) : (
+                        <ChevronDown className="w-5 h-5" style={{ color: colors.maroon }} />
+                      )}
+                    </div>
+                  </button>
+                  {expandedAccordion === `faq-${idx}` && (
+                    <div className="p-6 bg-white rounded-b-lg border-2 border-t-0" style={{ borderColor: colors.sandLight }}>
+                      <p style={{ color: colors.charcoal }}>
+                        {faq.a}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* PODCAST SECTION */}
-        <section id="podcast" className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-6xl">
-            <PodcastSection />
-          </div>
-        </section>
-
-        {/* TEAM SECTION */}
-        <section id="team" className="py-16 px-4" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: colors.charcoal }}>Meet the Team</h2>
-              <p style={{ color: colors.warmGrey }}>Real people helping real people. That's it.</p>
+        {/* CONTACT SECTION */}
+        <section className="py-16 md:py-20 px-4" id="contact" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-3xl text-center space-y-8">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Ready to Talk?
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                No pressure. No judgment. Just a real conversation about your options.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="border-2 overflow-hidden hover:shadow-lg transition-all" style={{ borderColor: colors.sandLight }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="w-full h-48 bg-gradient-to-br rounded-lg" style={{ background: `linear-gradient(135deg, ${colors.maroon}, ${colors.softPeach})` }} />
-                  <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Samantha Knoesen</h3>
-                  <p style={{ color: colors.warmGrey }}>NCR Registered Debt Counsellor | NCRDC3995</p>
-                  <p className="text-sm" style={{ color: colors.charcoal }}>Helping South Africans understand money and debt since 2015. Coffee ☕ and honest conversations are my tools.</p>
-                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Nationwide from Gqeberha – Remote & in-person consultations available</p>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <MessageCircle className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Message Me</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>Quick reply, real answers</p>
+                  <Button 
+                    size="sm"
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href={WHATSAPP_URL}>WhatsApp</Link>
+                  </Button>
                 </CardContent>
               </Card>
 
-              <Card className="border-2 overflow-hidden hover:shadow-lg transition-all" style={{ borderColor: colors.sandLight }}>
-                <CardContent className="p-6 space-y-4">
-                  <div className="w-full h-48 bg-gradient-to-br rounded-lg" style={{ background: `linear-gradient(135deg, ${colors.mintCalm}, ${colors.coralAccent})` }} />
-                  <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>You Might Be Here</h3>
-                  <p style={{ color: colors.warmGrey }}>Growing Team</p>
-                  <p className="text-sm" style={{ color: colors.charcoal }}>We're building a team of financial educators committed to providing accessible financial guidance for all South Africans.</p>
-                  <Button
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <Phone className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Call Me</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>071 900 6298</p>
+                  <Button 
                     size="sm"
-                    variant="outline"
-                    className="border-2"
-                    style={{ borderColor: colors.maroon, color: colors.maroon }}
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="/careers">Join Us</Link>
+                    <a href="tel:+27719006298">Call Now</a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <Mail className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Email Me</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>info@dcsam.co.za</p>
+                  <Button 
+                    size="sm"
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <a href="mailto:info@dcsam.co.za">Email</a>
                   </Button>
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </section>
 
-        {/* QUICK CONTACT STRIP */}
-        <section id="quick-contact" className="py-12 px-4" style={{ backgroundColor: colors.softPeach }}>
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2" style={{ color: colors.charcoal }}>Ready to Chat?</h2>
-              <p style={{ color: colors.charcoal }}>No pressure. Just a conversation.</p>
-            </div>
-
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
-              <Button
-                size="lg"
-                className="text-white font-semibold w-full md:w-auto"
-                style={{ backgroundColor: colors.maroon }}
-                asChild
-              >
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  WhatsApp
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 w-full md:w-auto"
-                style={{ borderColor: colors.maroon, color: colors.maroon }}
-                asChild
-              >
-                <a href="tel:+27719006298">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Call 071 900 6298
-                </a>
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 w-full md:w-auto"
-                style={{ borderColor: colors.maroon, color: colors.maroon }}
-                asChild
-              >
-                <a href="mailto:info@dcsam.co.za">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Email
-                </a>
-              </Button>
-            </div>
-
-            <div className="text-center space-y-3">
-              <div className="flex items-center justify-center gap-2">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: colors.maroon }}>
-                  <Check className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-sm" style={{ color: colors.charcoal }}>NCR Registered • NCRDC3995</span>
-              </div>
-
-              {/* Insurance Partners */}
-              <div className="flex items-center justify-center gap-4 pt-3">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg" alt="First for Women" className="h-6 w-auto" />
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png" alt="Auto & General" className="h-6 w-auto" />
-              </div>
-
-              <p className="text-xs mt-4" style={{ color: colors.charcoal }}>
-                📍 81 6th Avenue, Newton Park, Gqeberha | Nationwide • Remote & In-Person Consultations Available
+            <div className="pt-8 border-t" style={{ borderColor: colors.sandLight }}>
+              <p className="font-semibold mb-2" style={{ color: colors.charcoal }}>
+                Office: Gqeberha, South Africa
               </p>
-
-              <p className="text-xs font-semibold" style={{ color: colors.maroon }}>💡 Did you know? Save R10/day = R3,650/year. Start today.</p>
+              <p style={{ color: colors.warmGrey }}>
+                We serve nationwide. Remote or in-person, we meet you where you are.
+              </p>
             </div>
-          </div>
-        </section>
-
-        {/* REVIEW SUBMISSION */}
-        <section className="py-16 px-4" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-4xl">
-            <ReviewSubmission />
           </div>
         </section>
       </main>
+
+      {/* BACK TO TOP BUTTON */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:opacity-90 z-40"
+          style={{ backgroundColor: colors.maroon, color: colors.white }}
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-6 h-6" />
+        </button>
+      )}
     </div>
   )
 }
-
-// Import Star icon that's missing
-import { Share2, Calculator } from "lucide-react"
