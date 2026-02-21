@@ -121,8 +121,6 @@ export function HomeClient() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
-      <Header />
-      
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 px-4" style={{ backgroundColor: colors.warmBeige }}>
