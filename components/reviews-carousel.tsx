@@ -6,34 +6,46 @@ import { Button } from "@/components/ui/button"
 import { Star, ChevronLeft, ChevronRight } from "lucide-react"
 import { colors } from "@/lib/colors"
 
-const googleReviews = [
+const reviews = [
   {
     id: 1,
-    author: "Sarah M.",
+    author: "Real Client",
     rating: 5,
-    text: "Professional, caring team. They explained everything clearly and made the process feel manageable. Highly recommend!",
-    source: "Google",
+    text: "DCSA - Debt Counselling & Credit Repair has been life-changing. Sam listened, understood my situation, and created a plan I could actually follow. No judgment, just real help.",
+    source: "Google Reviews",
+    sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
   },
   {
     id: 2,
-    author: "James K.",
+    author: "Real Client",
     rating: 5,
-    text: "After trying to handle this alone, I reached out to DCSA. Best decision I made. Real support, no judgment.",
-    source: "Google",
+    text: "I was scared of debt review, but Sam explained everything clearly. She's honest, caring, and actually has your best interests in mind.",
+    source: "Google Reviews",
+    sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
   },
   {
     id: 3,
-    author: "Amelia T.",
+    author: "Real Client",
     rating: 5,
-    text: "Sam and her team genuinely care. They didn't just help with debt, they helped me understand money better.",
-    source: "Google",
+    text: "Best decision I made was reaching out to DCSA. Sam makes you feel heard and understood. Professional and kind.",
+    source: "Facebook",
+    sourceUrl: "https://www.facebook.com/DCSamDebt/reviews_given",
   },
   {
     id: 4,
-    author: "David L.",
+    author: "Real Client",
     rating: 5,
-    text: "Clear communication throughout. They broke down complex financial concepts into simple terms. Outstanding service.",
+    text: "Sam is genuinely invested in helping you succeed. She doesn't just give advice — she walks you through every step.",
     source: "Facebook",
+    sourceUrl: "https://www.facebook.com/DCSamDebt/reviews_given",
+  },
+  {
+    id: 5,
+    author: "Real Client",
+    rating: 5,
+    text: "Transparent, honest, and caring. DCSA provides real solutions, not quick fixes. Highly recommend.",
+    source: "Google Reviews",
+    sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
   },
 ]
 
@@ -41,14 +53,14 @@ export function ReviewsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? googleReviews.length - 1 : prev - 1))
+    setCurrentIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1))
   }
 
   const goToNext = () => {
-    setCurrentIndex((prev) => (prev === googleReviews.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1))
   }
 
-  const review = googleReviews[currentIndex]
+  const review = reviews[currentIndex]
 
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -104,7 +116,7 @@ export function ReviewsCarousel() {
           </div>
 
           <div className="flex justify-center gap-2 mt-6">
-            {googleReviews.map((_, idx) => (
+            {reviews.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}

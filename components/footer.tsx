@@ -216,17 +216,29 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.facebook.com/DCSamDebt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
+                href="https://www.linkedin.com/in/samantha-knoesen-3b2967125"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
+                aria-label="Connect with Sam on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
                 href="https://www.linkedin.com/company/dcsam-dcsa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
-                aria-label="Connect with us on LinkedIn"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
+                aria-label="Connect with DCSA on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -234,7 +246,8 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.tiktok.com/@dcsam_debt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on TikTok"
               >
                 <TikTokIcon />
@@ -243,7 +256,8 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.instagram.com/debthelp_with_dcsam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
