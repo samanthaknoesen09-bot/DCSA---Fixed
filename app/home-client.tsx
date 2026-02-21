@@ -517,7 +517,7 @@ export function HomeClient() {
                       </div>
                     </div>
                     <h3 className="text-xl font-bold text-center mb-8" style={{ color: colors.charcoal }}>
-                      {currentQuestion.statement}
+                      {currentQuestion?.statement}
                     </h3>
                   </div>
 
@@ -553,7 +553,7 @@ export function HomeClient() {
                           {quizAnswers[currentQuestionIndex] ? "You got it! ✓" : "Not quite. Here's the truth:"}
                         </p>
                         <p style={{ color: colors.charcoal }}>
-                          {currentQuestion.explanation}
+                          {currentQuestion?.explanation}
                         </p>
                       </div>
                       <Button 

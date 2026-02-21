@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Coffee, ChevronDown, Phone, Mail } from "lucide-react"
+import { Menu, Coffee, ChevronDown, Mail } from "lucide-react"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 
 export function Header() {
@@ -160,8 +160,7 @@ export function Header() {
                   <div className="border-t pt-6 space-y-3 text-sm" style={{ borderColor: colors.sandLight }}>
                     <div className="font-medium mb-2" style={{ color: colors.warmGrey }}>Or reach us directly:</div>
                     <a href="tel:+27719006298" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
-                      <Phone className="h-4 w-4" />
-                      +27 71 900 6298
+                      📞 +27 71 900 6298
                     </a>
                     <a href="mailto:info@dcsam.co.za" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
                       <Mail className="h-4 w-4" />
