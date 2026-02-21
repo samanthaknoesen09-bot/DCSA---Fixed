@@ -461,18 +461,7 @@ export function HomeClient() {
               </Card>
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="mb-6" style={{ color: colors.charcoal }}>
-                <strong>Ready to join the team?</strong> We're looking for caring people who want to help.
-              </p>
-              <Button 
-                className="rounded-lg text-white hover:opacity-90"
-                style={{ backgroundColor: colors.maroon }}
-                asChild
-              >
-                <Link href="/careers">View Careers</Link>
-              </Button>
-            </div>
+
           </div>
         </section>
 
@@ -528,7 +517,7 @@ export function HomeClient() {
                       </div>
                     </div>
                     <h3 className="text-xl font-bold text-center mb-8" style={{ color: colors.charcoal }}>
-                      {currentQuestion.statement}
+                      {currentQuestion?.statement}
                     </h3>
                   </div>
 
@@ -564,7 +553,7 @@ export function HomeClient() {
                           {quizAnswers[currentQuestionIndex] ? "You got it! ✓" : "Not quite. Here's the truth:"}
                         </p>
                         <p style={{ color: colors.charcoal }}>
-                          {currentQuestion.explanation}
+                          {currentQuestion?.explanation}
                         </p>
                       </div>
                       <Button 

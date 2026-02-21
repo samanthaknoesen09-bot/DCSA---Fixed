@@ -4,41 +4,38 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Phone, Mail, Coffee } from "lucide-react"
-import { colors, WHATSAPP_URL, OFFICE_NUMBER } from "@/lib/colors"
+import { Menu, Coffee, ChevronDown, Mail } from "lucide-react"
+import { colors, WHATSAPP_URL } from "@/lib/colors"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [learnOpen, setLearnOpen] = useState(false)
 
-  const navLinks = [
-    { label: "Home", href: "#top" },
+  const mainNavLinks = [
     { label: "Debt Help", href: "#debt-options" },
     { label: "Free Tools", href: "#calculators" },
-    { label: "Learn", href: "#education" },
-    { label: "Blog", href: "/blog" },
-    { label: "Team", href: "#team" },
+  ]
+
+  const learnDropdown = [
+    { label: "Education Tips", href: "#education" },
     { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "#contact" },
+    { label: "Blog", href: "/blog" },
+    { label: "Podcast", href: "#podcast" },
   ]
 
   return (
     <header className="sticky top-0 z-50 w-full border-b shadow-sm" style={{ backgroundColor: colors.warmCream, borderColor: colors.sandLight }}>
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Left: Logo + NCR Badge */}
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
-              <span style={{ color: colors.maroon }}>DC</span>
-              <span style={{ color: colors.black }}>SA</span>
-            </Link>
-            <div className="hidden lg:block text-xs border-l pl-4" style={{ color: colors.warmGrey, borderColor: colors.sandLight }}>
-              NCR Registered • NCRDC3995
-            </div>
-          </div>
+          {/* Left: DCSA Logo - Home Button */}
+          <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
+            <span style={{ color: colors.maroon }}>DC</span>
+            <span style={{ color: colors.black }}>SA</span>
+          </Link>
 
           {/* Middle: Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
+            {mainNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -48,6 +45,30 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Learn Dropdown */}
+            <div className="relative group">
+              <button className="text-sm font-medium flex items-center gap-1 transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>
+                Learn <ChevronDown className="h-4 w-4" />
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {learnDropdown.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-4 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                    style={{ color: colors.charcoal }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link href="#team" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Team</Link>
+            <Link href="/client-portal" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Client Portal</Link>
+            <Link href="/refer-a-friend" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Refer a Friend</Link>
+            <Link href="#contact" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Contact</Link>
           </nav>
 
           {/* Right: Primary CTA Only */}
@@ -79,7 +100,7 @@ export function Header() {
                   </div>
 
                   <nav className="flex flex-col gap-4">
-                    {navLinks.map((link) => (
+                    {mainNavLinks.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
@@ -90,6 +111,26 @@ export function Header() {
                         {link.label}
                       </Link>
                     ))}
+                    
+                    <div className="border-t pt-4">
+                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>LEARN</p>
+                      {learnDropdown.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block text-sm mb-2 transition-colors"
+                          style={{ color: colors.charcoal }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                    
+                    <Link href="#team" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Team</Link>
+                    <Link href="/client-portal" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Client Portal</Link>
+                    <Link href="/refer-a-friend" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Refer a Friend</Link>
+                    <Link href="#contact" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Contact</Link>
                   </nav>
 
                   <div className="border-t pt-6 space-y-4" style={{ borderColor: colors.sandLight }}>
@@ -119,8 +160,7 @@ export function Header() {
                   <div className="border-t pt-6 space-y-3 text-sm" style={{ borderColor: colors.sandLight }}>
                     <div className="font-medium mb-2" style={{ color: colors.warmGrey }}>Or reach us directly:</div>
                     <a href="tel:+27719006298" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
-                      <Phone className="h-4 w-4" />
-                      +27 71 900 6298
+                      📞 +27 71 900 6298
                     </a>
                     <a href="mailto:info@dcsam.co.za" className="flex items-center gap-2 transition-colors" style={{ color: colors.maroon }}>
                       <Mail className="h-4 w-4" />
