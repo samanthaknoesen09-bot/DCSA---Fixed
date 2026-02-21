@@ -11,10 +11,21 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { label: "Services", href: "/services" },
+    { label: "Home", href: "/" },
+    { label: "Client Portal", href: "/client-portal/auth/login" },
     { label: "Free Tools", href: "/calculator" },
-    { label: "Meet the Team", href: "/#team" },
     { label: "Refer a Friend", href: "/refer-a-friend" },
+  ]
+
+  const menuItems = [
+    { label: "Services", href: "/services" },
+    { label: "Money Clarity Hub", href: "/money-clarity-hub" },
+    { label: "Money Reset", href: "/money-reset" },
+    { label: "Blog", href: "/blog" },
+    { label: "Meet the Team", href: "/#team" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Insurance Quotes", href: "/insurance-quotes" },
+    { label: "Contact", href: "/#contact" },
   ]
 
   return (
@@ -44,20 +55,31 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-          </nav>
-
-          {/* Right: Office Number + Primary CTA */}
-          <div className="flex items-center gap-4">
-            <div className="hidden lg:flex flex-col items-end">
-              <span className="text-xs" style={{ color: colors.warmGrey }}>Office:</span>
-              <a 
-                href={`tel:${OFFICE_NUMBER}`} 
-                className="text-sm font-medium hover:underline"
+            {/* Dropdown Menu */}
+            <div className="group relative">
+              <button
+                className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4"
                 style={{ color: colors.charcoal }}
               >
-                071 900 6298
-              </a>
+                Menu
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-4 py-3 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                    style={{ color: colors.charcoal }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
+          </nav>
+
+          {/* Right: Primary CTA Only */}
+          <div className="flex items-center gap-4">
 
             <Button
               className="text-white font-semibold hidden md:inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
@@ -96,6 +118,20 @@ export function Header() {
                         {link.label}
                       </Link>
                     ))}
+                    <div className="border-t pt-4 mt-2" style={{ borderColor: colors.sandLight }}>
+                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>MORE</p>
+                      {menuItems.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block text-sm mb-2 transition-colors"
+                          style={{ color: colors.charcoal }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
                   </nav>
 
                   <div className="border-t pt-6 space-y-4" style={{ borderColor: colors.sandLight }}>
