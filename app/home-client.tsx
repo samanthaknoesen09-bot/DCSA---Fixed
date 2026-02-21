@@ -5,8 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { PodcastSection } from "@/components/podcast-section"
 import { FloatingActionButtons } from "@/components/floating-action-buttons"
@@ -790,9 +788,6 @@ export function HomeClient() {
           </div>
         </section>
       </main>
-
-      <Footer />
-      <FloatingActionButtons />
     </div>
   )
 }
