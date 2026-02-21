@@ -111,6 +111,7 @@ Time: ${new Date().toLocaleTimeString()}`
 
           <div className="space-y-6">
             <h4 className="text-lg font-semibold" style={{ color: colors.charcoal }}>Quick Links</h4>
+            <p className="text-sm" style={{ color: colors.warmGrey }}>Navigate to our key pages and resources.</p>
             <ul className="space-y-3">
               <li>
                 <a href="/" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
@@ -271,11 +272,11 @@ Time: ${new Date().toLocaleTimeString()}`
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-12 pt-8 space-y-8">
+        <div className="border-t mt-12 pt-8 space-y-8" style={{ borderColor: colors.sandLight }}>
           {/* Google Maps Embed */}
           <div className="w-full">
-            <h4 className="text-lg font-semibold mb-4 text-background">Find Us</h4>
-            <div className="rounded-lg overflow-hidden border-2 border-background/20 shadow-lg">
+            <h4 className="text-lg font-semibold mb-4" style={{ color: colors.charcoal }}>Find Us</h4>
+            <div className="rounded-lg overflow-hidden border-2 shadow-lg" style={{ borderColor: colors.sandLight }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7879845932744!2d25.595891!3d-33.966111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad6a966656a61%3A0x4367e69da17840c!2s81%206th%20Ave%2C%20Newton%20Park%2C%20Gqeberha%2C%206045%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                 width="100%"
@@ -287,7 +288,7 @@ Time: ${new Date().toLocaleTimeString()}`
                 title="DCSA Office Location - 81 6th Avenue, Newton Park, Gqeberha"
               />
             </div>
-            <p className="text-background/70 text-sm mt-3 text-center">
+            <p className="text-sm mt-3 text-center" style={{ color: colors.charcoal }}>
               Click on the map to get directions or{" "}
               <a 
                 href="https://www.google.com/maps/dir/?api=1&destination=81+6th+Avenue,+Newton+Park,+Gqeberha,+South+Africa" 
