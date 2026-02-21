@@ -37,11 +37,11 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   title: {
-    default: "DCSA | DCSam | Samantha Knoesen - Debt Counselling & Credit Repair South Africa",
-    template: "%s | DCSA Debt Counselling",
+    default: "Financial Education & Debt Help for South Africans | DCSA",
+    template: "%s | DCSA - Financial Education",
   },
   description:
-    "DCSA - Professional debt counselling & credit repair by Samantha Knoesen (Sam). NCR registered (NCRDC3995). We help you understand debt, rebuild credit, and find real relief. Free tools, zero judgment. DCSam - debt counselling you can trust.",
+    "DCSA - Financial education made simple for every South African. Learn about saving, debt, credit without judgment. Free tools, calculators, and guidance in plain English. Plus professional debt counselling (NCR registered NCRDC3995) when you need it.",
   keywords: [
     // Brand Keywords
     "DCSA",
