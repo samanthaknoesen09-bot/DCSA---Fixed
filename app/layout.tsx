@@ -6,7 +6,6 @@ import "./globals.css"
 import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
 import { FloatingChatButton } from "@/components/floating-chat-button"
-import { LayoutWrapper } from "@/components/layout-wrapper"
 import { Analytics } from "@vercel/analytics/next"
 
 import { Nunito } from "next/font/google" // Added import for Nunito font
@@ -484,12 +483,10 @@ export default function RootLayout({
       </head>
       <body className={`${roboto.variable} ${poppins.variable} ${roboto.className}`}>
         <SkipToContent />
-        <LayoutWrapper>
-          <Suspense fallback={null}>
-            <ViewTracker />
-          </Suspense>
-          {children}
-        </LayoutWrapper>
+        <Suspense fallback={null}>
+          <ViewTracker />
+        </Suspense>
+        {children}
         <FloatingChatButton />
         <Analytics />
       </body>
