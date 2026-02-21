@@ -26,6 +26,7 @@ import {
   Coffee,
   MessageCircle,
   Mail,
+  Phone,
   Share2,
   Check,
   X,
