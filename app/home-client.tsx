@@ -453,6 +453,84 @@ export function HomeClient() {
           </div>
         </section>
 
+        {/* Compare Insurance Quotes (Optional) */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Compare Insurance Quotes (Optional)
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                While we help you sort out debt, you can also compare car insurance quotes to save on your monthly expenses.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* First for Women Card */}
+              <Card className="border-2 hover:shadow-xl transition-all" style={{ borderColor: colors.sandLight, borderRadius: "18px" }}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex justify-center items-center h-20 bg-white rounded-lg p-4">
+                    <Image
+                      src="/images/first-for-women-logo.png"
+                      alt="First for Women Insurance"
+                      width={180}
+                      height={72}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-center" style={{ color: colors.charcoal }}>
+                    First for Women
+                  </h3>
+                  <p className="text-center text-sm" style={{ color: colors.warmGrey }}>
+                    Designed for women, by women.
+                  </p>
+                  <Button
+                    className="w-full text-white font-semibold shadow-md hover:shadow-lg transition-all"
+                    style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
+                    asChild
+                  >
+                    <Link href="/insurance-quotes/first-for-women">
+                      Get a Quote
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Auto & General Card */}
+              <Card className="border-2 hover:shadow-xl transition-all" style={{ borderColor: colors.sandLight, borderRadius: "18px" }}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex justify-center items-center h-20 bg-white rounded-lg p-4">
+                    <Image
+                      src="/images/auto-and-general-logo.png"
+                      alt="Auto & General Insurance"
+                      width={180}
+                      height={72}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-center" style={{ color: colors.charcoal }}>
+                    Auto & General
+                  </h3>
+                  <p className="text-center text-sm" style={{ color: colors.warmGrey }}>
+                    Affordable, straightforward cover.
+                  </p>
+                  <Button
+                    className="w-full text-white font-semibold shadow-md hover:shadow-lg transition-all"
+                    style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
+                    asChild
+                  >
+                    <Link href="/insurance-quotes/auto-and-general">
+                      Get a Quote
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* Myth Buster Quiz */}
         <section className="py-20 px-4" style={{ background: `linear-gradient(135deg, ${colors.softPeach}40 0%, ${colors.mintCalm}20 100%)` }}>
           <div className="container mx-auto max-w-3xl">
