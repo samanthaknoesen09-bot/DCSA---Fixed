@@ -155,8 +155,23 @@ export function Header() {
                       </Link>
                     ))}
                     <div className="border-t pt-4 mt-2" style={{ borderColor: colors.sandLight }}>
-                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>MORE</p>
-                      {menuItems.map((item) => (
+                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>EDUCATION</p>
+                      {educationMenu.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="block text-sm mb-2 transition-colors"
+                          style={{ color: colors.charcoal }}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                    
+                    <div className="border-t pt-4" style={{ borderColor: colors.sandLight }}>
+                      <p className="text-xs font-semibold mb-3" style={{ color: colors.warmGrey }}>TOOLS & SERVICES</p>
+                      {[...toolsMenu.slice(0, 2), ...servicesMenu.slice(0, 2)].map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
