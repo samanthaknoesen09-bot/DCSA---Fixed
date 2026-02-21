@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Coffee, ChevronDown } from "lucide-react"
+import { Menu, Coffee, ChevronDown, Phone, Mail } from "lucide-react"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 
 export function Header() {
