@@ -65,8 +65,8 @@ Time: ${new Date().toLocaleTimeString()}`
   return (
     <footer id="contact" className="text-foreground" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto px-4 py-10">
-        <div className="grid lg:grid-cols-4 gap-8">
-          <div className="lg:col-span-2 space-y-3">
+        <div className="grid lg:grid-cols-4 gap-6">
+          <div className="lg:col-span-2 space-y-2">
             <div className="flex items-center space-x-2">
               <Image
                 src="/images/dcsa-logo.png"
@@ -267,7 +267,7 @@ Time: ${new Date().toLocaleTimeString()}`
           </div>
         </div>
 
-        <div className="border-t mt-8 pt-6 space-y-6" style={{ borderColor: colors.sandLight }}>
+        <div className="border-t mt-6 pt-4 space-y-4" style={{ borderColor: colors.sandLight }}>
           {/* Insurance Partners */}
           <div className="w-full">
             <h4 className="text-sm font-semibold mb-3" style={{ color: colors.charcoal }}>Insurance Partners</h4>

@@ -123,7 +123,7 @@ export function HomeClient() {
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-20 md:py-32 px-4" style={{ backgroundColor: colors.warmBeige }}>
+        <section className="relative py-16 md:py-24 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance" style={{ color: colors.charcoal }}>
@@ -199,10 +199,10 @@ export function HomeClient() {
         </section>
 
         {/* Debt Review vs Other Options */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Debt Review vs Other Options
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -212,7 +212,7 @@ export function HomeClient() {
 
             <DebtReviewComparison />
 
-            <div className="grid md:grid-cols-2 gap-6 mt-12">
+            <div className="grid md:grid-cols-2 gap-4 mt-12">
               <Card className="border-2 shadow-md" style={{ borderColor: colors.mintCalm, borderRadius: "16px" }}>
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-3" style={{ color: colors.charcoal }}>When debt review might fit:</h3>
@@ -241,10 +241,10 @@ export function HomeClient() {
         </section>
 
         {/* Free Tools / Calculators */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.white }}>
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Start With Clarity (Free Tools)
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -252,7 +252,7 @@ export function HomeClient() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-4">
               <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
                 <CardContent className="p-6 space-y-4">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${colors.mintCalm}20` }}>
@@ -326,10 +326,10 @@ export function HomeClient() {
         </section>
 
         {/* Compare Insurance Quotes (Optional) */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Compare Insurance Quotes (Optional)
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -404,10 +404,10 @@ export function HomeClient() {
         </section>
 
         {/* Myth Buster Quiz */}
-        <section className="py-20 px-4" style={{ background: `linear-gradient(135deg, ${colors.softPeach}40 0%, ${colors.mintCalm}20 100%)` }}>
+        <section className="py-16 px-4" style={{ background: `linear-gradient(135deg, ${colors.softPeach}40 0%, ${colors.mintCalm}20 100%)` }}>
           <div className="container mx-auto max-w-3xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Myth Buster ☕ (Quick & Painless)
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -557,10 +557,10 @@ export function HomeClient() {
         </section>
 
         {/* Podcast Section */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Learn before you commit
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -575,10 +575,10 @@ export function HomeClient() {
 
 
         {/* Meet the Team */}
-        <section className="py-20 px-4" id="team" style={{ backgroundColor: colors.warmBeige }}>
+        <section className="py-16 px-4" id="team" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Meet the Team (Real humans. Real help.)
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
@@ -657,7 +657,7 @@ export function HomeClient() {
         </section>
 
         {/* Referral Section */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.white }}>
           <div className="container mx-auto max-w-4xl">
             <Card className="border-2 shadow-xl" style={{ borderColor: colors.mintCalm, borderRadius: "20px" }}>
               <CardContent className="p-8 md:p-12">
@@ -666,7 +666,7 @@ export function HomeClient() {
                     <Heart className="w-8 h-8" style={{ color: colors.mintCalm }} />
                   </div>
                   
-                  <h2 className="text-3xl md:text-4xl font-bold" style={{ color: colors.charcoal }}>
+                  <h2 className="text-2xl md:text-3xl font-bold" style={{ color: colors.charcoal }}>
                     Know someone who could use help?
                   </h2>
 
@@ -696,10 +696,10 @@ export function HomeClient() {
         </section>
 
         {/* Reviews Section */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
+        <section className="py-16 px-4" style={{ backgroundColor: colors.white }}>
           <div className="container mx-auto max-w-5xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: colors.charcoal }}>
                 Real Stories From People Like You
               </h2>
               <p className="text-lg" style={{ color: colors.warmGrey }}>
