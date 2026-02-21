@@ -691,50 +691,61 @@ export function HomeClient() {
           <div className="container mx-auto max-w-3xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                Client Portal
+                Your Client Portal
               </h2>
               <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Access your account, track progress, and manage your debt review online.
+                Track your progress, access documents, and manage your debt review journey in one secure place.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="rounded-xl border-0 shadow-sm">
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-8 space-y-6">
                   <div>
-                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Already a Client?</h3>
-                    <p className="text-sm" style={{ color: colors.warmGrey }}>Sign in to your account to view your progress, payments, and documents.</p>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Already in the System?</h3>
+                    <ul className="text-sm space-y-2" style={{ color: colors.warmGrey }}>
+                      <li>• View your debt review status</li>
+                      <li>• Download agreements & documents</li>
+                      <li>• Track monthly payments</li>
+                      <li>• Access your counselor</li>
+                    </ul>
                   </div>
                   <Button 
-                    className="w-full rounded-lg text-white hover:opacity-90"
+                    className="w-full rounded-lg text-white hover:opacity-90 font-semibold"
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="/client-portal/auth/login">Sign In</Link>
+                    <Link href="/client-portal/auth/login">Sign Into Your Account</Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="rounded-xl border-0 shadow-sm">
+              <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-8 space-y-6">
                   <div>
-                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>New Client?</h3>
-                    <p className="text-sm" style={{ color: colors.warmGrey }}>Create an account to start your journey or track your application.</p>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Just Starting Out?</h3>
+                    <ul className="text-sm space-y-2" style={{ color: colors.warmGrey }}>
+                      <li>• Create your account</li>
+                      <li>• Submit your application</li>
+                      <li>• Start your evaluation</li>
+                      <li>• Real-time updates</li>
+                    </ul>
                   </div>
                   <Button 
-                    className="w-full rounded-lg text-white hover:opacity-90"
+                    className="w-full rounded-lg text-white hover:opacity-90 font-semibold"
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="/client-portal/auth/register">Create Account</Link>
+                    <Link href="/client-portal/auth/sign-up">Create Your Account</Link>
                   </Button>
                 </CardContent>
               </Card>
             </div>
 
-            <div className="mt-8 p-6 rounded-lg text-center" style={{ backgroundColor: colors.warmBeige }}>
-              <p style={{ color: colors.charcoal }}>
-                Need help? <a href={WHATSAPP_URL} className="font-bold hover:underline" style={{ color: colors.maroon }}>Message me on WhatsApp</a>
+            <div className="mt-8 p-6 rounded-lg border-l-4" style={{ backgroundColor: colors.warmBeige, borderColor: colors.maroon }}>
+              <p className="text-center" style={{ color: colors.charcoal }}>
+                <strong>Questions about your account?</strong><br />
+                <a href={WHATSAPP_URL} className="hover:underline" style={{ color: colors.maroon }}>Message me on WhatsApp</a> or <a href="tel:+27719006298" className="hover:underline" style={{ color: colors.maroon }}>call 071 900 6298</a>
               </p>
             </div>
           </div>
@@ -745,51 +756,65 @@ export function HomeClient() {
           <div className="container mx-auto max-w-3xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                Refer a Friend
+                Share the Help With Someone You Care About
               </h2>
               <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Know someone struggling with debt? Share the help that changed your life.
+                Know someone struggling with debt stress? Let them know there's a way through it—and get rewarded for the referral.
               </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="text-4xl font-bold" style={{ color: colors.maroon }}>1</div>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Share Your Link</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>Get your unique referral link and share it with friends</p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="text-4xl font-bold" style={{ color: colors.maroon }}>2</div>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>They Apply</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>They click your link and start their free consultation</p>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="text-4xl font-bold" style={{ color: colors.maroon }}>3</div>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>You Both Win</h3>
+                  <p className="text-sm" style={{ color: colors.warmGrey }}>When they start, you both get rewarded</p>
+                </CardContent>
+              </Card>
             </div>
 
             <Card className="rounded-xl border-0 shadow-md">
               <CardContent className="p-8 space-y-6">
                 <div>
-                  <h3 className="font-bold text-lg mb-3" style={{ color: colors.charcoal }}>How It Works</h3>
-                  <ul className="space-y-3 text-sm" style={{ color: colors.charcoal }}>
-                    <li className="flex gap-3">
-                      <span className="font-bold" style={{ color: colors.maroon }}>1.</span>
-                      <span>Share your referral link with someone you know</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold" style={{ color: colors.maroon }}>2.</span>
-                      <span>They get a free consultation to explore options</span>
-                    </li>
-                    <li className="flex gap-3">
-                      <span className="font-bold" style={{ color: colors.maroon }}>3.</span>
-                      <span>When they take action, you both get rewarded</span>
-                    </li>
-                  </ul>
+                  <h3 className="font-bold text-lg mb-4" style={{ color: colors.charcoal }}>Ready to Help Someone?</h3>
+                  <p className="text-sm mb-6" style={{ color: colors.warmGrey }}>
+                    Submit a friend's details or get your unique referral link to share. It takes 2 minutes and helps someone find their way to financial peace.
+                  </p>
                 </div>
 
-                <div className="border-t pt-6" style={{ borderColor: colors.sandLight }}>
-                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
-                    Share your unique referral link below or submit a friend's details.
-                  </p>
+                <div className="space-y-3">
                   <Button 
-                    className="w-full rounded-lg text-white hover:opacity-90"
+                    className="w-full rounded-lg text-white hover:opacity-90 font-semibold text-base py-6"
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <a href="https://dcsam.activecampaign.com/refer" target="_blank" rel="noopener noreferrer">
-                      Get Your Referral Link
-                    </a>
+                    <Link href="/refer-a-friend">Start a Referral</Link>
                   </Button>
+                  
+                  <p className="text-xs text-center" style={{ color: colors.warmGrey }}>
+                    Or share your unique link via <a href={WHATSAPP_URL} className="hover:underline font-semibold" style={{ color: colors.maroon }}>WhatsApp</a>
+                  </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg text-center text-sm" style={{ borderLeft: `4px solid ${colors.maroon}` }}>
+                <div className="bg-white p-4 rounded-lg border-l-4 text-center text-sm" style={{ borderColor: colors.maroon }}>
                   <p style={{ color: colors.charcoal }}>
-                    Every friend you help is someone finding their way to financial peace. No pressure—just good karma.
+                    "I referred my sister and we both got rewards. Best part? She finally got help with her debt." — Marcus
                   </p>
                 </div>
               </CardContent>
