@@ -25,6 +25,7 @@ export function Header() {
     { label: "Meet the Team", href: "/#team" },
     { label: "FAQ", href: "/faq" },
     { label: "Insurance Quotes", href: "/insurance-quotes" },
+    { label: "Verify Your Debt Counsellor", href: "/verify-debt-counsellor" },
     { label: "Contact", href: "/#contact" },
   ]
 

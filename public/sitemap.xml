@@ -84,6 +84,14 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- Verify Debt Counsellor -->
+  <url>
+    <loc>https://www.dcsam.co.za/verify-debt-counsellor</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
   <!-- FAQ & Blog -->
   <url>
     <loc>https://www.dcsam.co.za/faq</loc>

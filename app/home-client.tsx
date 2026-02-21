@@ -168,6 +168,38 @@ export function HomeClient() {
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle, ${colors.softPeach} 0%, transparent 70%)` }}></div>
         </section>
 
+        {/* Trust & Verification Badge */}
+        <section className="py-8 px-4" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 p-6 rounded-xl border-2" style={{ borderColor: colors.maroon, backgroundColor: `${colors.maroon}05` }}>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: colors.maroon }}>
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>
+                    NCR Registered Debt Counsellor
+                  </p>
+                  <p className="text-lg font-bold" style={{ color: colors.maroon }}>
+                    NCRDC3995
+                  </p>
+                </div>
+              </div>
+              <div className="hidden md:block h-12 w-px" style={{ backgroundColor: colors.sandLight }}></div>
+              <div>
+                <p className="text-sm mb-2" style={{ color: colors.charcoal }}>
+                  Want to verify our credentials? It's easy.
+                </p>
+                <Link href="/verify-debt-counsellor" className="text-sm font-semibold underline" style={{ color: colors.maroon }}>
+                  Learn how to verify any debt counsellor →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Debt Review vs Other Options */}
         <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">

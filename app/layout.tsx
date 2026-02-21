@@ -37,19 +37,28 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   title: {
-    default: "DCSA - Professional Debt Counselling & Credit Repair South Africa",
-    template: "%s | DCSA",
+    default: "DCSA | DCSam | Samantha Knoesen - Debt Counselling & Credit Repair South Africa",
+    template: "%s | DCSA Debt Counselling",
   },
   description:
-    "DCSA - Caring, professional debt counselling and credit repair in South Africa. NCR registered (NCRDC3995). We help real people find real relief through debt review, credit repair, and free financial tools. No judgment, just support.",
+    "DCSA - Professional debt counselling & credit repair by Samantha Knoesen (Sam). NCR registered (NCRDC3995). We help you understand debt, rebuild credit, and find real relief. Free tools, zero judgment. DCSam - debt counselling you can trust.",
   keywords: [
-    "debt counselling",
+    // Brand Keywords
     "DCSA",
-    "DCSA debt counsellors",
-    "dcsam",
-    "DCSam debt",
+    "DCSam",
+    "Samantha Knoesen",
+    "debt counselling",
+    "debt counsellor",
+    "credit repair",
     
-    // Primary Keywords - "Near Me" Local Search
+    // Brand + Service Combinations
+    "DCSA debt counselling",
+    "DCSam debt counsellor",
+    "Samantha Knoesen debt counsellor",
+    "DCSA South Africa",
+    "DCSam South Africa",
+    
+    // Near Me Searches
     "debt counsellor near me",
     "debt counselling near me",
     "credit repair near me",
@@ -57,6 +66,46 @@ export const metadata: Metadata = {
     "debt relief near me",
     "registered debt counsellor near me",
     "NCR debt counsellor near me",
+    "debt review near me",
+    "debt management near me",
+    "credit score help near me",
+    
+    // NCR Registration
+    "NCR registered debt counsellor",
+    "NCRDC3995",
+    "verified debt counsellor",
+    "registered debt counsellor South Africa",
+    "NCR debt counselling",
+    "National Credit Regulator debt counsellor",
+    
+    // Service Keywords
+    "debt review",
+    "debt management",
+    "credit repair guide",
+    "credit score improvement",
+    "financial counselling",
+    "debt consolidation advice",
+    "debt relief options",
+    "money management",
+    "financial education",
+    "debt counselling South Africa",
+    
+    // Content Keywords
+    "debt calculator",
+    "money map calculator",
+    "interest calculator",
+    "money habits",
+    "debt review process",
+    "how to rebuild credit",
+    "verifying debt counsellor credentials",
+    
+    // Local + Service
+    "South Africa debt counselling",
+    "South Africa credit repair",
+    "professional debt counsellor South Africa",
+    "affordable debt counselling",
+    "free financial tools",
+    "debt counselling consultation",
     
     // General Debt Help Keywords
     "debt help",

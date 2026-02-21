@@ -163,6 +163,11 @@ Time: ${new Date().toLocaleTimeString()}`
                 </a>
               </li>
               <li>
+                <a href="/verify-debt-counsellor" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Verify Your Debt Counsellor
+                </a>
+              </li>
+              <li>
                 <a href="/privacy-policy" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Privacy Policy
                 </a>
