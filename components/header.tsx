@@ -72,7 +72,7 @@ export function Header() {
           </nav>
 
           {/* Right: Primary CTA Only */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
 
             <Button
               className="text-white font-semibold hidden md:inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
@@ -84,6 +84,26 @@ export function Header() {
                 Let's Chat
               </a>
             </Button>
+
+            {/* Mobile Portal Buttons */}
+            <div className="md:hidden flex items-center gap-2">
+              <Button
+                className="text-xs font-medium px-2 py-1 h-auto"
+                variant="outline"
+                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "8px" }}
+                asChild
+              >
+                <Link href="/client-portal">Portal</Link>
+              </Button>
+              <Button
+                className="text-xs font-medium px-2 py-1 h-auto"
+                variant="outline"
+                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "8px" }}
+                asChild
+              >
+                <Link href="/refer-a-friend">Refer</Link>
+              </Button>
+            </div>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
