@@ -64,9 +64,9 @@ Time: ${new Date().toLocaleTimeString()}`
 
   return (
     <footer id="contact" className="text-foreground" style={{ backgroundColor: colors.warmBeige }}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-2 space-y-6">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center space-x-2">
               <Image
                 src="/images/dcsa-logo.png"
@@ -85,11 +85,7 @@ Time: ${new Date().toLocaleTimeString()}`
               </p>
             </div>
             <div className="space-y-3">
-              <PhoneContact /> {/* Declared PhoneContact component */}
-              <a href="tel:+27719006298" className="flex items-center space-x-3 hover:text-primary transition-colors">
-                <Phone className="w-5 h-5 text-primary" />
-                <span>071 900 6298 (Kadene)</span>
-              </a>
+              <PhoneContact />
               <a href="mailto:info@dcsam.co.za" className="flex items-center space-x-3 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5 text-primary" />
                 <span>info@dcsam.co.za</span>
@@ -109,9 +105,8 @@ Time: ${new Date().toLocaleTimeString()}`
             </div>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold" style={{ color: colors.charcoal }}>Quick Links</h4>
-            <p className="text-sm" style={{ color: colors.warmGrey }}>Navigate to our key pages and resources.</p>
+          <div className="space-y-2">
+            <h4 className="text-base font-semibold" style={{ color: colors.charcoal }}>Quick Links</h4>
             <ul className="space-y-3">
               <li>
                 <a href="/" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
@@ -181,12 +176,12 @@ Time: ${new Date().toLocaleTimeString()}`
             </ul>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="text-lg font-semibold" style={{ color: colors.charcoal }}>Stay Updated</h4>
-            <p className="text-sm" style={{ color: colors.charcoal }}>
+          <div className="space-y-3">
+            <h4 className="text-base font-semibold" style={{ color: colors.charcoal }}>Stay Updated</h4>
+            <p className="text-xs" style={{ color: colors.warmGrey }}>
               Get financial tips and debt management advice delivered to your inbox.
             </p>
-            <form onSubmit={handleSubscribe} className="space-y-3">
+            <form onSubmit={handleSubscribe} className="space-y-2">
               <Input
                 type="email"
                 placeholder="Enter your email"
@@ -272,15 +267,41 @@ Time: ${new Date().toLocaleTimeString()}`
           </div>
         </div>
 
-        <div className="border-t mt-12 pt-8 space-y-8" style={{ borderColor: colors.sandLight }}>
+        <div className="border-t mt-8 pt-6 space-y-6" style={{ borderColor: colors.sandLight }}>
+          {/* Insurance Partners */}
+          <div className="w-full">
+            <h4 className="text-sm font-semibold mb-3" style={{ color: colors.charcoal }}>Insurance Partners</h4>
+            <div className="flex items-center gap-6 flex-wrap">
+              <a href="https://www.firstforwomen.co.za" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="First for Women Insurance">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg"
+                  alt="First for Women Insurance"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                />
+              </a>
+              <a href="https://www.autoandgeneral.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="Auto & General Insurance">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png"
+                  alt="Auto & General Insurance"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                />
+              </a>
+            </div>
+            <p className="text-xs mt-2" style={{ color: colors.warmGrey }}>Trusted insurance partners for your peace of mind.</p>
+          </div>
+
           {/* Google Maps Embed */}
           <div className="w-full">
-            <h4 className="text-lg font-semibold mb-4" style={{ color: colors.charcoal }}>Find Us</h4>
-            <div className="rounded-lg overflow-hidden border-2 shadow-lg" style={{ borderColor: colors.sandLight }}>
+            <h4 className="text-sm font-semibold mb-2" style={{ color: colors.charcoal }}>Find Us</h4>
+            <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7879845932744!2d25.595891!3d-33.966111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad6a966656a61%3A0x4367e69da17840c!2s81%206th%20Ave%2C%20Newton%20Park%2C%20Gqeberha%2C%206045%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                 width="100%"
-                height="300"
+                height="200"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
@@ -288,17 +309,6 @@ Time: ${new Date().toLocaleTimeString()}`
                 title="DCSA Office Location - 81 6th Avenue, Newton Park, Gqeberha"
               />
             </div>
-            <p className="text-sm mt-3 text-center" style={{ color: colors.charcoal }}>
-              Click on the map to get directions or{" "}
-              <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=81+6th+Avenue,+Newton+Park,+Gqeberha,+South+Africa" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline font-medium"
-              >
-                open in Google Maps
-              </a>
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 text-sm text-background/70 mb-8">

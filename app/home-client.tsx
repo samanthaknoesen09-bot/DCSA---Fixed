@@ -572,69 +572,7 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* Google Reviews */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.white }} id="reviews">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                Real reviews from real people
-              </h2>
-              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
-                Verified Google reviews — no fluff, no fake testimonials.
-              </p>
-            </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  name: "Thandi M.",
-                  rating: 5,
-                  text: "I was so stressed about my debt, but Samantha explained everything calmly and helped me see a way forward. No pressure, just real help."
-                },
-                {
-                  name: "Johan V.",
-                  rating: 5,
-                  text: "Debt review seemed scary but DCSA made it simple. They walked me through every step and I finally feel like I can breathe."
-                },
-                {
-                  name: "Lerato K.",
-                  rating: 5,
-                  text: "Honestly the best decision I made was calling them. They don't judge, they just help. Professional and kind."
-                }
-              ].map((review, i) => (
-                <Card key={i} className="border-2 shadow-md" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
-                  <CardContent className="p-6 space-y-3">
-                    <div className="flex gap-1">
-                      {Array.from({ length: review.rating }).map((_, j) => (
-                        <Star key={j} className="w-5 h-5 fill-current" style={{ color: colors.coralAccent }} />
-                      ))}
-                    </div>
-                    <p className="text-pretty" style={{ color: colors.charcoal }}>
-                      "{review.text}"
-                    </p>
-                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>
-                      — {review.name}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Button
-                variant="outline"
-                className="border-2"
-                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "10px" }}
-                asChild
-              >
-                <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" rel="noopener noreferrer">
-                  See All Google Reviews
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
 
         {/* Meet the Team */}
         <section className="py-20 px-4" id="team" style={{ backgroundColor: colors.warmBeige }}>
@@ -781,39 +719,24 @@ export function HomeClient() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
-          <div className="container mx-auto max-w-3xl text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: colors.charcoal }}>
+        <section className="py-12 px-4" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-2xl text-center space-y-4">
+            <h2 className="text-2xl md:text-3xl font-bold" style={{ color: colors.charcoal }}>
               Ready to take the first step?
             </h2>
-            <p className="text-lg" style={{ color: colors.warmGrey }}>
+            <p className="text-base" style={{ color: colors.warmGrey }}>
               We're here. No judgment. Just real help.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
-                style={{ backgroundColor: colors.whatsapp, borderRadius: "12px" }}
-                asChild
-              >
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                  <Coffee className="h-5 w-5" />
-                  WhatsApp Us Now
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-14 font-semibold border-2"
-                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "12px" }}
-                asChild
-              >
-                <a href="tel:+27719006298">
-                  <Phone className="h-5 w-5 mr-2" />
-                  Call +27 71 900 6298
-                </a>
-              </Button>
-            </div>
+            <Button
+              className="text-white font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
+              style={{ backgroundColor: colors.whatsapp, borderRadius: "12px" }}
+              asChild
+            >
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Coffee className="h-5 w-5" />
+                WhatsApp Us Now
+              </a>
+            </Button>
           </div>
         </section>
       </main>
