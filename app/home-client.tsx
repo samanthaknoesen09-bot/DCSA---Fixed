@@ -113,7 +113,7 @@ export function HomeClient() {
               </Link>
             </Button>
             <div className="pt-4 text-sm" style={{ color: colors.warmGrey }}>
-              <p>→ For rural areas, low income brackets, or anyone starting from zero</p>
+              <p>→ For anyone building strong financial foundations</p>
             </div>
           </div>
         </section>
@@ -138,7 +138,7 @@ export function HomeClient() {
                     </div>
                     <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Save Like You Mean It</h3>
                   </div>
-                  <p style={{ color: colors.warmGrey }}>Start small – saving isn't just for the rich. R50/week tips for rural & low-income.</p>
+                  <p style={{ color: colors.warmGrey }}>Start small – saving isn't just for the rich. R50/week tips for building financial strength.</p>
                   <Button variant="outline" className="border-2 w-full" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
                     <Link href="#money-smarts">Explore</Link>
                   </Button>
@@ -186,13 +186,13 @@ export function HomeClient() {
                     </div>
                     <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Your Situation?</h3>
                   </div>
-                  <p style={{ color: colors.warmGrey }}>Pick your path. New to saving? Rural budget help? Need tools?</p>
+                  <p style={{ color: colors.warmGrey }}>Pick your path. New to saving? Budget guidance? Need tools?</p>
                   <div className="space-y-2">
                     <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
                       <Link href="#money-smarts">New to Saving</Link>
                     </Button>
                     <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
-                      <Link href="#money-smarts">Rural Budget</Link>
+                      <Link href="#money-smarts">Budget Help</Link>
                     </Button>
                     <Button variant="outline" size="sm" className="w-full text-xs" style={{ borderColor: colors.maroon, color: colors.maroon }} asChild>
                       <Link href="#tools">Free Tools</Link>
@@ -267,17 +267,17 @@ export function HomeClient() {
                 )}
               </div>
 
-              {/* Accordion 2: Rural & Remote Guide */}
+              {/* Accordion 2: Money Management Essentials */}
               <div className="border rounded-lg overflow-hidden" style={{ borderColor: colors.sandLight }}>
                 <button
-                  onClick={() => toggleAccordion("rural")}
+                  onClick={() => toggleAccordion("cash-management")}
                   className="w-full flex items-center justify-between p-4 hover:bg-opacity-5 transition-all"
-                  style={{ backgroundColor: expandedAccordion === "rural" ? colors.mintCalm + "15" : "transparent" }}
+                  style={{ backgroundColor: expandedAccordion === "cash-management" ? colors.mintCalm + "15" : "transparent" }}
                 >
-                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Rural & Remote Guide</span>
-                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "rural" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
+                  <span className="font-bold text-left" style={{ color: colors.charcoal }}>Money Management Essentials</span>
+                  <ChevronDown className="h-5 w-5" style={{ color: colors.maroon, transform: expandedAccordion === "cash-management" ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
                 </button>
-                {expandedAccordion === "rural" && (
+                {expandedAccordion === "cash-management" && (
                   <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
                     <p className="text-sm" style={{ color: colors.charcoal }}><strong>Cash-based economy tips:</strong> Managing money without debit orders, when to use stokvels, handling seasonal income.</p>
                     <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Real scenario:</p>
@@ -302,7 +302,7 @@ export function HomeClient() {
                 </button>
                 {expandedAccordion === "small-income" && (
                   <div className="p-4 border-t space-y-3" style={{ backgroundColor: colors.mintCalm + "05", borderColor: colors.sandLight }}>
-                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>Budget on R3-5k/month:</strong> Avoiding predatory lending, managing debt on low income, the system is hard but here's how.</p>
+                    <p className="text-sm" style={{ color: colors.charcoal }}><strong>Smart Budget Strategies:</strong> Avoiding predatory lending, managing debt on any budget, practical solutions that work.</p>
                     <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>Monthly budget breakdown (R5,000):</p>
                     <p className="text-xs" style={{ color: colors.charcoal }}>Rent R2,000 | Food R1,500 | Transport R500 | Savings R250 | Buffer R250 = Planned, not panicked.</p>
                     <div className="bg-white p-3 rounded text-xs mt-3" style={{ backgroundColor: colors.white }}>
@@ -666,7 +666,7 @@ export function HomeClient() {
                   <div className="w-full h-48 bg-gradient-to-br rounded-lg" style={{ background: `linear-gradient(135deg, ${colors.mintCalm}, ${colors.coralAccent})` }} />
                   <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>You Might Be Here</h3>
                   <p style={{ color: colors.warmGrey }}>Growing Team</p>
-                  <p className="text-sm" style={{ color: colors.charcoal }}>We're building a team of financial educators who genuinely care about bridging the financial literacy gap for rural and low-income South Africans.</p>
+                  <p className="text-sm" style={{ color: colors.charcoal }}>We're building a team of financial educators committed to providing accessible financial guidance for all South Africans.</p>
                   <Button
                     size="sm"
                     variant="outline"

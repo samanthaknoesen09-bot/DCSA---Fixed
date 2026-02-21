@@ -254,7 +254,7 @@ export function MoneyClarityClient() {
             "R100/month over 5 years = R6,000 (real emergency fund)",
             "R200/month = R12,000 in 5 years (life-changing money)",
             "The key: It comes from habits, not from having 'extra' money",
-            "Even in lower income brackets, small shifts add up",
+            "No matter your current situation, small shifts add up",
             "Most people find R500+ monthly in wasted subscriptions alone"
           ],
         },
