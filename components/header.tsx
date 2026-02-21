@@ -19,8 +19,8 @@ export function Header() {
 
   const menuItems = [
     { label: "Services", href: "/services" },
-    { label: "Money Clarity Hub", href: "/money-clarity-hub" },
-    { label: "Money Reset", href: "/money-reset" },
+  { label: "Money Clarity Hub", href: "/money-clarity-hub" },
+  { label: "Money Reset", href: "/money-reset-program" },
     { label: "Blog", href: "/blog" },
     { label: "Meet the Team", href: "/#team" },
     { label: "FAQ", href: "/faq" },

@@ -154,18 +154,25 @@ export function ReferralClient() {
             <Heart className="w-10 h-10 text-[#0D3B66]" />
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-[#0D3B66] mb-6 text-balance">
-            Know Someone Who Needs a Fresh Start?
+            Know someone who could use help?
           </h1>
-          <p className="text-xl md:text-2xl text-[#0D3B66]/70 max-w-2xl mx-auto mb-4 text-pretty leading-relaxed">
-            When you refer a friend or family member to us, you're not just
-            helping them find financial relief — you're giving them hope. And
-            when we successfully help them, we'll thank you with a{" "}
-            <strong className="text-[#0D3B66]">R350 referral fee</strong> paid
-            directly into your bank account.
-          </p>
-          <p className="text-base text-[#0D3B66]/50 max-w-lg mx-auto">
-            Because kindness should be rewarded.
-          </p>
+          <div className="max-w-3xl mx-auto space-y-4 text-pretty">
+            <p className="text-lg md:text-xl text-[#0D3B66]/70 leading-relaxed">
+              If someone you care about is drowning in debt and feeling alone, 
+              you can be the one who throws them a lifeline.
+            </p>
+            <p className="text-lg md:text-xl text-[#0D3B66]/70 leading-relaxed">
+              At DCSA Debt Counselling & Credit Repair, we help people fix what feels 
+              overwhelming — legally, properly, and without judgement.
+            </p>
+            <p className="text-xl md:text-2xl font-semibold text-[#0D3B66] leading-relaxed">
+              Refer someone who signs up successfully and we'll thank you with R350.
+            </p>
+            <div className="pt-4 space-y-2">
+              <p className="text-lg text-[#0D3B66]/80 font-medium">You help them take the first step.</p>
+              <p className="text-lg text-[#0D3B66]/80 font-medium">We handle the rest.</p>
+            </div>
+          </div>
         </div>
       </section>
 

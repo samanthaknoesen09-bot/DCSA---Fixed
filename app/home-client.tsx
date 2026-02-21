@@ -5,9 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { DebtReviewComparison } from "@/components/debt-review-comparison"
@@ -41,11 +38,7 @@ export function HomeClient() {
   const [quizComplete, setQuizComplete] = useState(false)
   const [shareMessage, setShareMessage] = useState("")
 
-  // Quick message form state
-  const [formData, setFormData] = useState({ name: "", mobile: "", message: "", consent: false })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formSuccess, setFormSuccess] = useState(false)
-  const [formError, setFormError] = useState("")
+
 
   const quizQuestions = [
     { 
@@ -127,34 +120,6 @@ export function HomeClient() {
     }
   }
 
-  const handleQuickMessageSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setFormError("")
-    setIsSubmitting(true)
-
-    try {
-      const response = await fetch("/api/quick-message", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
-
-      const result = await response.json()
-
-      if (!response.ok) {
-        setFormError(result.message || "Something went wrong. Please try WhatsApp.")
-        setIsSubmitting(false)
-        return
-      }
-
-      setFormSuccess(true)
-    } catch {
-      setFormError("Connection error. Please try WhatsApp or call us directly.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
       <Header />
@@ -217,113 +182,6 @@ export function HomeClient() {
 
           {/* Subtle decorative blob */}
           <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle, ${colors.softPeach} 0%, transparent 70%)` }}></div>
-        </section>
-
-        {/* Quick Message Form */}
-        <section className="py-16 px-4" id="quick-message" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-2xl">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                Send a Quick Message
-              </h2>
-              <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Not ready to call? No problem. Drop us a message and we'll get back to you.
-              </p>
-            </div>
-
-            {!formSuccess ? (
-              <Card className="border-2 shadow-lg" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
-                <CardContent className="p-8">
-                  <form onSubmit={handleQuickMessageSubmit} className="space-y-6">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>Your Name</label>
-                      <Input
-                        type="text"
-                        placeholder="e.g. Sarah"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        required
-                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>Your Mobile</label>
-                      <Input
-                        type="tel"
-                        placeholder="e.g. 071 234 5678"
-                        value={formData.mobile}
-                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                        required
-                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>What's on your mind?</label>
-                      <Textarea
-                        placeholder="Tell us briefly what's going on — we'll take it from there."
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        required
-                        rows={4}
-                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
-                      />
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id="consent"
-                        checked={formData.consent}
-                        onCheckedChange={(checked) => setFormData({ ...formData, consent: checked === true })}
-                        required
-                      />
-                      <label htmlFor="consent" className="text-sm leading-relaxed" style={{ color: colors.warmGrey }}>
-                        I consent to DCSA contacting me via phone or WhatsApp to discuss my options. (We won't spam you.)
-                      </label>
-                    </div>
-
-                    {formError && (
-                      <div className="text-sm p-3 rounded-lg" style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}>
-                        {formError}
-                      </div>
-                    )}
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting || !formData.consent}
-                      className="w-full h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
-                      style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="border-2 shadow-lg" style={{ borderColor: colors.mintCalm, borderRadius: "16px" }}>
-                <CardContent className="p-12 text-center space-y-4">
-                  <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style={{ backgroundColor: colors.mintCalm }}>
-                    <Check className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold" style={{ color: colors.charcoal }}>
-                    You did the hard part.
-                  </h3>
-                  <p className="text-lg" style={{ color: colors.warmGrey }}>
-                    We'll get back to you ASAP. Usually within a few hours during business hours.
-                  </p>
-                  <Button
-                    variant="outline"
-                    className="mt-4"
-                    style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "10px" }}
-                    asChild
-                  >
-                    <Link href="/">Back to Home</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
-          </div>
         </section>
 
         {/* Debt Review vs Other Options */}
