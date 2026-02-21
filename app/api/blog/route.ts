@@ -1,11 +1,7 @@
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
-
-// Dynamic import to avoid build-time crash when BLOB_READ_WRITE_TOKEN is missing
-async function getBlobModule() {
-  if (!process.env.BLOB_READ_WRITE_TOKEN) return null
-  return await import("@vercel/blob")
-}
+import { createClient } from "@/lib/supabase/server"
+import { createClient as createAdminClient } from "@supabase/supabase-js"
 
 // Simple auth check
 function isAuthenticated(request: NextRequest): boolean {
@@ -17,6 +13,18 @@ function isAuthenticated(request: NextRequest): boolean {
   const [username, password] = decoded.split(":")
 
   return username === "dcsam.admin" && password === "sam@august"
+}
+
+// Get admin client for write operations
+function getAdminClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error("Supabase credentials not configured")
+  }
+
+  return createAdminClient(supabaseUrl, serviceRoleKey)
 }
 
 // Post to Facebook Page
@@ -72,34 +80,25 @@ async function postToFacebook(
 // GET - List all blog posts
 export async function GET() {
   try {
-    const blob = await getBlobModule()
-    if (!blob) return NextResponse.json({ posts: [] })
+    const supabase = await createClient()
+    const now = new Date().toISOString()
 
-    const { blobs } = await blob.list({ prefix: "blogs/" })
-    const now = new Date()
+    // Fetch published posts (includes scheduled posts that are now past their publish time)
+    const { data: posts, error } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("status", "published")
+      .or(`scheduled_for.is.null,scheduled_for.lte.${now}`)
+      .order("published_at", { ascending: false })
 
-    const posts = await Promise.all(
-      blobs
-        .filter((b) => b.pathname.endsWith(".json"))
-        .map(async (b) => {
-          const response = await fetch(b.url)
-          const post = await response.json()
-          return { ...post, blobUrl: b.url, pathname: b.pathname }
-        }),
-    )
+    if (error) {
+      console.error("[v0] Blog GET error:", error)
+      return NextResponse.json({ posts: [] })
+    }
 
-    const publishedPosts = posts.filter((post) => {
-      if (!post.scheduledFor) return true
-      return new Date(post.scheduledFor) <= now
-    })
-
-    publishedPosts.sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    )
-
-    return NextResponse.json({ posts: publishedPosts })
-  } catch {
+    return NextResponse.json({ posts: posts || [] })
+  } catch (error) {
+    console.error("[v0] Blog GET error:", error)
     return NextResponse.json({ posts: [] })
   }
 }
@@ -114,69 +113,70 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const blobMod = await getBlobModule()
-    if (!blobMod) {
-      return NextResponse.json(
-        { error: "Blog storage not configured. Set BLOB_READ_WRITE_TOKEN.", ok: false, code: "STORAGE_ERROR" },
-        { status: 500 },
-      )
-    }
-
+    const supabaseAdmin = getAdminClient()
     const body = await request.json()
-    const { title, content, excerpt, category, featuredImage, scheduledFor } =
-      body
+    const { title, content, excerpt, category, featuredImage, scheduledFor } = body
 
     if (!title || !content) {
       return NextResponse.json(
-        { error: "Title and content are required" },
-        { status: 400 },
+        { error: "Title and content are required", ok: false, code: "VALIDATION_ERROR" },
+        { status: 400 }
       )
     }
 
+    // Generate slug
     const slug = title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "")
 
+    // Extract plain text for excerpt
     const plainTextContent = content
       .replace(/<[^>]*>/g, " ")
       .replace(/\s+/g, " ")
       .trim()
 
     const now = new Date().toISOString()
+    const isPublishNow = !scheduledFor || new Date(scheduledFor) <= new Date()
 
-    const post = {
-      id: `post-${Date.now()}`,
-      slug,
-      title,
-      content,
-      excerpt: excerpt || `${plainTextContent.substring(0, 200)}...`,
-      category: category || "General",
-      author: "DCSA Team",
-      featuredImage: featuredImage || "",
-      scheduledFor: scheduledFor || null,
-      createdAt: now,
-      updatedAt: now,
-      publishedAt: !scheduledFor ? now : null,
+    // Insert into blog_posts table
+    const { data: post, error: dbError } = await supabaseAdmin
+      .from("blog_posts")
+      .insert({
+        slug,
+        title,
+        content,
+        excerpt: excerpt || `${plainTextContent.substring(0, 200)}...`,
+        category: category || "General",
+        author: "DCSA Team",
+        featured_image: featuredImage || null,
+        status: "published",
+        scheduled_for: scheduledFor || null,
+        published_at: isPublishNow ? now : null,
+        created_by: "dcsam.admin",
+      })
+      .select()
+      .single()
+
+    if (dbError) {
+      console.error("[v0] Blog POST DB error:", dbError)
+      return NextResponse.json(
+        { error: "Failed to create blog post", ok: false, code: "DB_ERROR" },
+        { status: 500 }
+      )
     }
 
-    const filename = `blogs/${slug}-${Date.now()}.json`
-    const blobResult = await blobMod.put(filename, JSON.stringify(post), {
-      access: "public",
-      contentType: "application/json",
-    })
-
     let message = "Blog post created successfully."
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.dcsam.co.za"
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.dcsam.co.za"
     const blogUrl = `${baseUrl}/blog/${slug}`
 
-    if (!scheduledFor || new Date(scheduledFor) <= new Date()) {
+    // Post to Facebook if publishing now
+    if (isPublishNow) {
       const fbResult = await postToFacebook(
         title,
         post.excerpt,
         blogUrl,
-        featuredImage,
+        featuredImage
       )
 
       if (fbResult.success) {
@@ -185,6 +185,7 @@ export async function POST(request: NextRequest) {
         message += ` Facebook posting failed: ${fbResult.error}`
       }
 
+      // Submit to search engines
       try {
         const searchEngineResponse = await fetch(
           `${baseUrl}/api/submit-to-search-engines`,
@@ -192,7 +193,7 @@ export async function POST(request: NextRequest) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url: blogUrl, type: "blog" }),
-          },
+          }
         )
 
         if (searchEngineResponse.ok) {
@@ -207,14 +208,15 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      post: { ...post, blobUrl: blobResult.url },
+      ok: true,
+      post,
       message,
     })
   } catch (error) {
-    console.error("Error creating blog post:", error)
+    console.error("[v0] Blog POST error:", error)
     return NextResponse.json(
-      { error: "Failed to create blog post" },
-      { status: 500 },
+      { error: "Failed to create blog post", ok: false, code: "SUBMISSION_ERROR" },
+      { status: 500 }
     )
   }
 }
@@ -229,32 +231,47 @@ export async function DELETE(request: NextRequest) {
   }
 
   try {
-    const blobMod = await getBlobModule()
-    if (!blobMod) {
-      return NextResponse.json(
-        { error: "Blog storage not configured", ok: false, code: "STORAGE_ERROR" },
-        { status: 500 },
-      )
-    }
-
+    const supabaseAdmin = getAdminClient()
     const { searchParams } = new URL(request.url)
-    const url = searchParams.get("url")
+    const id = searchParams.get("id")
+    const slug = searchParams.get("slug")
 
-    if (!url) {
+    if (!id && !slug) {
       return NextResponse.json(
-        { error: "URL is required" },
-        { status: 400 },
+        { error: "Post ID or slug is required", ok: false, code: "VALIDATION_ERROR" },
+        { status: 400 }
       )
     }
 
-    await blobMod.del(url)
+    // Delete by ID or slug
+    const query = supabaseAdmin.from("blog_posts").delete()
+    
+    if (id) {
+      query.eq("id", id)
+    } else if (slug) {
+      query.eq("slug", slug)
+    }
 
-    return NextResponse.json({ success: true, message: "Blog post deleted" })
+    const { error } = await query
+
+    if (error) {
+      console.error("[v0] Blog DELETE error:", error)
+      return NextResponse.json(
+        { error: "Failed to delete blog post", ok: false, code: "DB_ERROR" },
+        { status: 500 }
+      )
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      ok: true,
+      message: "Blog post deleted successfully" 
+    })
   } catch (error) {
-    console.error("Error deleting blog post:", error)
+    console.error("[v0] Blog DELETE error:", error)
     return NextResponse.json(
-      { error: "Failed to delete blog post" },
-      { status: 500 },
+      { error: "Failed to delete blog post", ok: false, code: "SUBMISSION_ERROR" },
+      { status: 500 }
     )
   }
 }

@@ -1,14 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
-import { Resend } from "resend"
-
-function getResend() {
-  const key = process.env.RESEND_API_KEY
-  if (!key) return null
-  return new Resend(key)
-}
+import { createClient as createAdminClient } from "@supabase/supabase-js"
+import { sendDualEmail } from "@/lib/emailDispatcher"
 
 export async function POST(request: NextRequest) {
+  const submissionId = crypto.randomUUID()
+  const submittedTime = new Date().toLocaleString("en-ZA", { timeZone: "Africa/Johannesburg" })
+  let transferSaved = false
+
   try {
     const supabase = await createClient()
     
@@ -18,19 +17,31 @@ export async function POST(request: NextRequest) {
 
     if (!user) {
       return NextResponse.json(
-        { error: "Unauthorized", ok: false, code: "UNAUTHORIZED" },
+        { 
+          ok: false, 
+          code: "UNAUTHORIZED",
+          submissionId,
+          message: "Authentication required. Please log in.",
+        },
         { status: 401 }
       )
     }
 
     const formData = await request.json()
 
-    console.log("[v0] Processing transfer request for user:", user.id)
+    console.log("[v0] Processing transfer request", { submissionId, userId: user.id })
 
-    // Save to database
-    const { data: transfer, error: dbError } = await supabase
+    // Create admin client for DB insert (bypasses RLS)
+    const supabaseAdmin = createAdminClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+
+    // Save to database using admin client
+    const { data: transfer, error: dbError } = await supabaseAdmin
       .from("transfer_requests")
       .insert({
+        submission_id: submissionId,
         client_id: user.id,
         first_name: formData.firstName,
         last_name: formData.lastName,
@@ -56,113 +67,116 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (dbError) {
-      console.error("[v0] Database error:", dbError)
+      console.error("[v0] Transfer DB insert error:", dbError)
       return NextResponse.json(
-        { error: "Failed to save transfer request", ok: false, code: "DB_ERROR" },
+        { 
+          ok: false,
+          code: "SAVE_FAILED",
+          submissionId,
+          saved: false,
+          message: "Failed to save transfer request to database.",
+        },
         { status: 500 }
       )
     }
 
-    console.log("[v0] Transfer request saved, sending emails...")
+    transferSaved = true
+    console.log("[v0] Transfer request saved:", { submissionId, transferId: transfer.id })
 
-    // Send emails
+    // Send notification emails using strict dual delivery
+    const emailTemplate = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #0D3B66; border-bottom: 3px solid #4DB6AC; padding-bottom: 10px;">New Debt Review Transfer Request</h2>
+        
+        <h3 style="color: #4DB6AC;">Client Information:</h3>
+        <ul>
+          <li><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</li>
+          <li><strong>ID Number:</strong> ${formData.idNumber}</li>
+          <li><strong>Email:</strong> ${formData.email}</li>
+          <li><strong>Phone:</strong> ${formData.phone}</li>
+        </ul>
+        
+        <h3 style="color: #4DB6AC;">Current Debt Counsellor:</h3>
+        <ul>
+          <li><strong>Name:</strong> ${formData.currentDCName}</li>
+          <li><strong>NCR Number:</strong> ${formData.currentDCRegistrationNumber || "Not provided"}</li>
+          <li><strong>Contact:</strong> ${formData.currentDCContactNumber || "Not provided"}</li>
+          <li><strong>Email:</strong> ${formData.currentDCEmail || "Not provided"}</li>
+        </ul>
+        
+        <h3 style="color: #4DB6AC;">Debt Review Details:</h3>
+        <ul>
+          <li><strong>Start Date:</strong> ${formData.debtReviewStartDate || "Not provided"}</li>
+          <li><strong>Current Monthly Payment:</strong> R${formData.currentMonthlyPayment}</li>
+          <li><strong>Number of Creditors:</strong> ${formData.numberOfCreditors || "Not provided"}</li>
+        </ul>
+        
+        <h3 style="color: #4DB6AC;">Reason for Transfer:</h3>
+        <p>${formData.reasonForTransfer}</p>
+        ${formData.issuesWithCurrentDC ? `<h3 style="color: #4DB6AC;">Issues with Current DC:</h3><p>${formData.issuesWithCurrentDC}</p>` : ''}
+        
+        <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
+          <p style="margin: 0; font-size: 12px; color: #666;">
+            <strong>Reference ID:</strong> ${submissionId}<br/>
+            <strong>Transfer ID:</strong> ${transfer.id}<br/>
+            <strong>Submitted:</strong> ${submittedTime}
+          </p>
+        </div>
+        
+        <p>Please begin the transfer process by contacting ${formData.currentDCName}.</p>
+      </div>
+    `
+
     try {
-      const resend = getResend()
-      if (!resend) throw new Error("Resend not configured")
-      await resend.emails.send({
-        from: "DCSA Client Portal <noreply@dcsam.co.za>",
-        to: formData.email,
-        subject: "Transfer Request Received - DCSA",
-        html: `
-          <h2>Transfer Request Received</h2>
-          <p>Dear ${formData.firstName} ${formData.lastName},</p>
-          <p>We have received your request to transfer your debt review to DCSA. We'll begin the transfer process immediately.</p>
-          <h3>Request Summary:</h3>
-          <ul>
-            <li><strong>Request ID:</strong> ${transfer.id}</li>
-            <li><strong>Current Debt Counsellor:</strong> ${formData.currentDCName}</li>
-            <li><strong>Current Monthly Payment:</strong> R${formData.currentMonthlyPayment}</li>
-            <li><strong>Status:</strong> Submitted</li>
-          </ul>
-          <h3>Next Steps:</h3>
-          <ol>
-            <li>We'll contact ${formData.currentDCName} to initiate the transfer</li>
-            <li>Request your debt review file and payment history</li>
-            <li>Notify credit bureaus of the transfer</li>
-            <li>Contact you to confirm the transfer is complete</li>
-          </ol>
-          <p><strong>Important:</strong> Please continue making your monthly payments until we notify you otherwise.</p>
-          <p>If you have questions, contact us:</p>
-          <p>Phone: +27 71 900 6298<br/>Email: info@dcsam.co.za</p>
-          <p>Best regards,<br/>DCSA Team</p>
-        `,
-      })
-
-      await resend.emails.send({
-        from: "DCSA Client Portal <noreply@dcsam.co.za>",
-        to: "info@dcsam.co.za",
+      await sendDualEmail({
         subject: `New Transfer Request - ${formData.firstName} ${formData.lastName}`,
-        html: `
-          <h2>New Debt Review Transfer Request</h2>
-          <h3>Client Information:</h3>
-          <ul>
-            <li><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</li>
-            <li><strong>ID Number:</strong> ${formData.idNumber}</li>
-            <li><strong>Email:</strong> ${formData.email}</li>
-            <li><strong>Phone:</strong> ${formData.phone}</li>
-          </ul>
-          <h3>Current Debt Counsellor:</h3>
-          <ul>
-            <li><strong>Name:</strong> ${formData.currentDCName}</li>
-            <li><strong>NCR Number:</strong> ${formData.currentDCRegistrationNumber || "Not provided"}</li>
-            <li><strong>Contact:</strong> ${formData.currentDCContactNumber || "Not provided"}</li>
-            <li><strong>Email:</strong> ${formData.currentDCEmail || "Not provided"}</li>
-          </ul>
-          <h3>Debt Review Details:</h3>
-          <ul>
-            <li><strong>Start Date:</strong> ${formData.debtReviewStartDate || "Not provided"}</li>
-            <li><strong>Current Monthly Payment:</strong> R${formData.currentMonthlyPayment}</li>
-            <li><strong>Number of Creditors:</strong> ${formData.numberOfCreditors || "Not provided"}</li>
-          </ul>
-          <h3>Reason for Transfer:</h3>
-          <p>${formData.reasonForTransfer}</p>
-          ${formData.issuesWithCurrentDC ? `<h3>Issues with Current DC:</h3><p>${formData.issuesWithCurrentDC}</p>` : ''}
-          <p><strong>Request ID:</strong> ${transfer.id}</p>
-          <p>Please begin the transfer process by contacting ${formData.currentDCName}.</p>
-        `,
+        html: emailTemplate,
+        submissionId,
+        type: "transfer",
+        replyTo: formData.email,
       })
-
-      console.log("[v0] Emails sent successfully")
-
-      await supabase.from("email_logs").insert([
-        {
-          recipient: formData.email,
-          subject: "Transfer Request Received - DCSA",
-          application_type: "transfer",
-          application_id: transfer.id,
-          status: "sent",
-        },
-        {
-          recipient: "info@dcsam.co.za",
-          subject: `New Transfer Request - ${formData.firstName} ${formData.lastName}`,
-          application_type: "transfer",
-          application_id: transfer.id,
-          status: "sent",
-        },
-      ])
+      console.log("[v0] Transfer dual emails sent successfully:", { submissionId })
     } catch (emailError) {
-      console.error("[v0] Email error:", emailError)
+      console.error("[v0] Transfer email failed after save:", {
+        submissionId,
+        transferId: transfer.id,
+        error: emailError instanceof Error ? emailError.message : String(emailError),
+      })
+      // Transfer saved but email failed
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "DELIVERY_FAILED",
+          submissionId,
+          saved: true,
+          transferId: transfer.id,
+          message: "Transfer request saved but email notification failed.",
+        },
+        { status: 500 }
+      )
     }
 
     return NextResponse.json({
-      success: true,
-      transfer,
+      ok: true,
+      saved: true,
+      submissionId,
+      transferId: transfer.id,
       message: "Transfer request submitted successfully",
     })
   } catch (error) {
-    console.error("[v0] Transfer request error:", error)
+    console.error("[v0] Transfer submission error:", {
+      submissionId,
+      transferSaved,
+      error: error instanceof Error ? error.message : String(error),
+    })
     return NextResponse.json(
-      { error: "Failed to submit transfer request" },
+      { 
+        ok: false,
+        code: "SUBMISSION_ERROR",
+        submissionId,
+        saved: transferSaved,
+        message: "Failed to submit transfer request. Please try again.",
+      },
       { status: 500 }
     )
   }

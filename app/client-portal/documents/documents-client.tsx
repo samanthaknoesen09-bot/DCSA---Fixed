@@ -84,7 +84,7 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
     try {
       const formData = new FormData()
       formData.append("file", selectedFile)
-      formData.append("document_type", documentType)
+      formData.append("documentType", documentType)
 
       const response = await fetch("/api/client-portal/upload-document", {
         method: "POST",
@@ -94,11 +94,10 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
       const data = await response.json()
 
       if (!response.ok) {
-        // Handle specific error codes
-        if (response.status === 413 || data.code === "FILE_TOO_LARGE") {
-          throw new Error("File too large. Maximum allowed size is 50MB.")
-        }
-        throw new Error(data.error || "Upload failed")
+        // Show detailed error message with submissionId if available
+        const errorMessage = data.message || data.error || "Upload failed"
+        const submissionId = data.submissionId ? ` (Ref: ${data.submissionId})` : ""
+        throw new Error(`${errorMessage}${submissionId}`)
       }
 
       console.log("[v0] Document uploaded successfully")

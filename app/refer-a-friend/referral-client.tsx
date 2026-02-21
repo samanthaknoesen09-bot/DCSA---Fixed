@@ -63,9 +63,20 @@ export function ReferralClient() {
   const [submissionId, setSubmissionId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [submissionId, setSubmissionId] = useState<string | null>(null)
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const isFormValid = () => {
+    return (
+      formData.referrerName.trim() &&
+      formData.referrerEmail.trim() &&
+      formData.referrerPhone.trim() &&
+      formData.friendName.trim() &&
+      formData.friendPhone.trim()
+    )
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -83,6 +94,12 @@ export function ReferralClient() {
       const result = await response.json().catch(() => ({}))
 
       if (!response.ok) {
+        const errorMessage = result.message || result.error || "Something went wrong. Please try again."
+        const refId = result.submissionId ? ` (Ref: ${result.submissionId})` : ""
+        setError(`${errorMessage}${refId}`)
+        if (result.submissionId) {
+          setSubmissionId(result.submissionId)
+        }
         const submissionId = result?.submissionId
         const code = result?.code
 
@@ -107,7 +124,7 @@ export function ReferralClient() {
       setIsSubmitted(true)
     } catch {
       setError(
-        "Unable to submit your referral. Please try again or call us directly."
+        "Unable to submit your referral. Please try again or call us directly at +27 71 900 6298."
       )
     } finally {
       setIsLoading(false)
@@ -477,6 +494,7 @@ export function ReferralClient() {
                     <Button
                       type="submit"
                       className="w-full h-12 text-lg bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white"
+                      disabled={isLoading || !isFormValid()}
                       disabled={!canSubmit || isLoading}
                     >
                       {isLoading ? (
@@ -516,6 +534,13 @@ export function ReferralClient() {
                   with care. Once we successfully help them, we'll pay the R350
                   referral fee into your account.
                 </p>
+                {submissionId && (
+                  <div className="bg-[#4DB6AC]/10 border border-[#4DB6AC]/30 rounded-lg p-3 mb-4 max-w-md mx-auto">
+                    <p className="text-xs text-[#0D3B66]/60">
+                      <strong>Reference ID:</strong> {submissionId}
+                    </p>
+                  </div>
+                )}
                 <p className="text-sm text-[#0D3B66]/50 mb-8">
                   You can refer as many people as you'd like — every successful
                   referral earns you R350.

@@ -5,333 +5,444 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ReassuranceBanner } from "@/components/reassurance-banner"
-import { BookingCalendar } from "@/components/booking-calendar"
-
-import { SocialMediaFeed } from "@/components/social-media-feed"
-import { LiveSuccessCounter } from "@/components/live-success-counter"
-import { VideoTestimonials } from "@/components/video-testimonials"
-import { FloatingActionButtons } from "@/components/floating-action-buttons"
-import { ExitIntentPopup } from "@/components/exit-intent-popup"
-import { GetInTouchForm } from "@/components/get-in-touch-form"
-import { HowItWorks } from "@/components/how-it-works"
-import { MeetTheTeam } from "@/components/meet-the-team"
-import { VideoIntroduction } from "@/components/video-introduction"
-import { SuccessStories } from "@/components/success-stories"
-import { SavingsCalculator } from "@/components/savings-calculator"
 import { DebtReviewComparison } from "@/components/debt-review-comparison"
-import { CalculatorsShowcase } from "@/components/calculators-showcase"
-import { POPIComplianceBanner } from "@/components/popi-compliance-banner"
 import { PodcastSection } from "@/components/podcast-section"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { WhatsAppWidget } from "@/components/whatsapp-widget" // Import WhatsAppWidget here
+import { FloatingActionButtons } from "@/components/floating-action-buttons"
+import { brandCopy } from "@/lib/brandCopy"
+import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
-  CheckCircle, 
-  TrendingDown, 
-  Shield, 
-  Users, 
   Calculator,
-  Calendar,
   ArrowRight,
   Star,
-  Award,
-  Phone,
-  Mail,
+  Shield,
+  Heart,
+  CheckCircle,
+  TrendingDown,
+  Coffee,
   MessageCircle,
-  FileCheck,
-  Heart
+  Mail,
+  Share2,
+  Check,
+  X,
+  ChevronRight
 } from "lucide-react"
 
 export function HomeClient() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false)
-  const [selectedService, setSelectedService] = useState("")
+  // Quiz state
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [quizAnswers, setQuizAnswers] = useState<boolean[]>([])
+  const [showExplanation, setShowExplanation] = useState(false)
+  const [quizComplete, setQuizComplete] = useState(false)
+  const [shareMessage, setShareMessage] = useState("")
 
-  const openBooking = (service: string) => {
-    setSelectedService(service)
-    setIsBookingOpen(true)
+  // Quick message form state
+  const [formData, setFormData] = useState({ name: "", mobile: "", message: "", consent: false })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formSuccess, setFormSuccess] = useState(false)
+  const [formError, setFormError] = useState("")
+
+  const quizQuestions = [
+    { 
+      id: 1, 
+      statement: "Debt review is only for people who failed.", 
+      answer: false,
+      explanation: "You're not alone — most people think that. Debt review is actually for anyone over-indebted, not a mark of failure."
+    },
+    { 
+      id: 2, 
+      statement: "Debt review gives legal protection from creditors.", 
+      answer: true,
+      explanation: "That one's true, and it's why debt review can feel like breathing space."
+    },
+    { 
+      id: 3, 
+      statement: "Debt review means you'll never get credit again.", 
+      answer: false,
+      explanation: "Myth! Once you complete debt review and get clearance, you can apply for credit again."
+    },
+    { 
+      id: 4, 
+      statement: "Interest can stretch repayments for months or years.", 
+      answer: true,
+      explanation: "Absolutely true — interest rates make a huge difference to how long you'll be repaying."
+    },
+    { 
+      id: 5, 
+      statement: "Asking for help early usually gives you more options.", 
+      answer: true,
+      explanation: "Yes! The earlier you reach out, the more paths are open to you."
+    },
+  ]
+
+  const currentQuestion = quizQuestions[currentQuestionIndex]
+
+  const handleQuizAnswer = (userAnswer: boolean) => {
+    const isCorrect = userAnswer === currentQuestion.answer
+    setQuizAnswers([...quizAnswers, isCorrect])
+    setShowExplanation(true)
+  }
+
+  const handleNext = () => {
+    setShowExplanation(false)
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+    } else {
+      setQuizComplete(true)
+    }
+  }
+
+  const calculateScore = () => {
+    return quizAnswers.filter(Boolean).length
+  }
+
+  const getScoreMessage = (score: number) => {
+    if (score <= 2) return "No stress — everyone starts somewhere. Let's chat about what's actually true."
+    if (score === 3 || score === 4) return "You're getting it! A few truths can change everything."
+    return "Look at you — basically honorary debt counsellor. ☕"
+  }
+
+  const handleShare = async () => {
+    const score = calculateScore()
+    const message = `I scored ${score}/5 on DCSA's Myth Buster ☕ — turns out I didn't know this about debt review... https://www.dcsam.co.za?score=${score}`
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: message })
+      } catch (err) {
+        // Fallback to clipboard
+        navigator.clipboard.writeText(message)
+        setShareMessage("Copied to clipboard!")
+        setTimeout(() => setShareMessage(""), 2000)
+      }
+    } else {
+      navigator.clipboard.writeText(message)
+      setShareMessage("Copied to clipboard!")
+      setTimeout(() => setShareMessage(""), 2000)
+    }
+  }
+
+  const handleQuickMessageSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormError("")
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/quick-message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setFormError(result.message || "Something went wrong. Please try WhatsApp.")
+        setIsSubmitting(false)
+        return
+      }
+
+      setFormSuccess(true)
+    } catch {
+      setFormError("Connection error. Please try WhatsApp or call us directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
       <Header />
       
       <main className="flex-1">
-        {/* Hero + Trust Combined Section */}
-        <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-[#FFE5D9]/30 via-[#FFD93D]/10 to-[#4DB6AC]/5">
-          {/* Decorative background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-[#FFD93D]/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#4DB6AC]/10 rounded-full blur-3xl"></div>
-          </div>
-          
-          <div className="container mx-auto max-w-6xl relative z-10">
-            {/* Main Hero */}
-            <div className="text-center space-y-8 mb-16">
-              <Badge className="mx-auto bg-gradient-to-r from-[#FFD93D] to-[#FFD93D]/80 text-[#0D3B66] px-6 py-2.5 text-sm font-bold hover:shadow-lg transition-all border border-[#FFD93D]/30">
-                NCR Registered • NCRDC3995
-              </Badge>
-              
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance text-[#0D3B66]">
-                Debt Doesn{"'"}t Define You. Let{"'"}s Fix This Together.
+        {/* Hero Section */}
+        <section className="relative py-20 md:py-32 px-4" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance" style={{ color: colors.charcoal }}>
+                Debt struggles are real.<br />So is the way out.
               </h1>
               
-              <p className="text-lg md:text-xl text-[#0D3B66]/70 max-w-3xl mx-auto text-pretty leading-relaxed">
-                You{"'"}re not broken. You{"'"}re not bad with money. You just need someone in your corner. <strong className="text-[#0D3B66]">Your turn.</strong>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed" style={{ color: colors.warmGrey }}>
+                Calm support. Clear options. Zero judgment.
+              </p>
+
+              <p className="text-lg max-w-2xl mx-auto text-pretty leading-relaxed" style={{ color: colors.warmGrey }}>
+                Debt can feel heavy — and it's not just the numbers. At DCSA Debt Counselling & Credit Repair, we help you understand your options properly and choose what fits your life. No lectures. No pressure. Just real help.
+              </p>
+
+              <p className="text-base italic pt-2" style={{ color: colors.warmGrey }}>
+                "Pop the kettle on — we'll figure this out together."
               </p>
               
-              <div className="flex flex-col items-center gap-6 pt-6">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white text-lg px-10 h-16 rounded-2xl shadow-2xl font-bold transition-all hover:scale-105 group" asChild>
-                    <Link href="/calculator" className="flex items-center gap-3">
-                      <Calculator className="h-6 w-6 group-hover:scale-110 transition-transform" />
-                      Free Calculator - See Where You Stand
-                    </Link>
-                  </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
-                    className="text-foreground border-3 border-foreground text-lg px-12 h-16 rounded-2xl shadow-xl bg-white/80 backdrop-blur-sm hover:bg-foreground hover:text-white transition-all hover:scale-105" 
-                    onClick={() => openBooking("Request Callback")}
-                  >
-                    Call Me Back
-                  </Button>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  FREE calculator · No sign-up needed · Instant results · 100% private
-                </p>
-              </div>
-            </div>
-
-            {/* Trust Benefits - Part of Hero Now */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 pt-8 border-t border-[#4DB6AC]/20">
-              <div className="text-center space-y-2 py-4">
-                <div className="flex flex-col items-center">
-                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">NCR Regulated</div>
-                </div>
-                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
-                  NCRDC3995
-                </div>
-              </div>
-              
-              <div className="text-center space-y-2 py-4">
-                <div className="flex flex-col items-center">
-                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
-                  </svg>
-                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">Personalized</div>
-                </div>
-                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
-                  Debt Solutions
-                </div>
-              </div>
-              
-              <div className="text-center space-y-2 py-4">
-                <div className="flex flex-col items-center">
-                  <svg className="h-8 w-8 text-[#4DB6AC] mb-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-                  </svg>
-                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">No Judgement</div>
-                </div>
-                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
-                  Just Support
-                </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                <Button 
+                  size="lg" 
+                  className="text-white text-base px-8 h-14 font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
+                  style={{ backgroundColor: colors.whatsapp, borderRadius: "14px" }}
+                  asChild
+                >
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                    <Coffee className="h-5 w-5" />
+                    WhatsApp Us (Coffee optional ☕)
+                  </a>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="text-base px-8 h-14 font-semibold border-2 shadow-md hover:shadow-lg transition-all"
+                  style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "14px" }}
+                  asChild
+                >
+                  <Link href="#quick-message">
+                    Send a Quick Message
+                  </Link>
+                </Button>
               </div>
 
-              <div className="text-center space-y-2 py-4">
-                <div className="flex flex-col items-center">
-                  <div className="text-3xl md:text-2xl font-bold text-[#4DB6AC] mb-1">✓</div>
-                  <div className="text-sm md:text-base font-semibold text-[#0D3B66]">Protection</div>
-                </div>
-                <div className="text-xs md:text-sm text-[#0D3B66]/70 font-medium">
-                  One Plan, Less Stress
-                </div>
-              </div>
+              <p className="text-sm pt-4" style={{ color: colors.warmGrey }}>
+                No pressure. Tell us what's going on — we'll reply as soon as we can.
+              </p>
+
+              <p className="text-xs pt-2" style={{ color: colors.warmGrey }}>
+                {brandCopy.reassurance.firstStepHardest}
+              </p>
             </div>
           </div>
+
+          {/* Subtle decorative blob */}
+          <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle, ${colors.softPeach} 0%, transparent 70%)` }}></div>
         </section>
 
-        {/* Live Success Counter - Moved Up Near Top */}
-        <LiveSuccessCounter />
+        {/* Quick Message Form */}
+        <section className="py-16 px-4" id="quick-message" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-2xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Send a Quick Message
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Not ready to call? No problem. Drop us a message and we'll get back to you.
+              </p>
+            </div>
 
-        {/* Debt Review Comparison - Moved Up */}
-        <DebtReviewComparison />
+            {!formSuccess ? (
+              <Card className="border-2 shadow-lg" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
+                <CardContent className="p-8">
+                  <form onSubmit={handleQuickMessageSubmit} className="space-y-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>Your Name</label>
+                      <Input
+                        type="text"
+                        placeholder="e.g. Sarah"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
+                      />
+                    </div>
 
-        {/* Calculators Showcase - High Priority */}
-        <CalculatorsShowcase />
+                    <div>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>Your Mobile</label>
+                      <Input
+                        type="tel"
+                        placeholder="e.g. 071 234 5678"
+                        value={formData.mobile}
+                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                        required
+                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
+                      />
+                    </div>
 
-        {/* Potential Savings Calculator - Moved Up */}
-        <SavingsCalculator />
+                    <div>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: colors.charcoal }}>What's on your mind?</label>
+                      <Textarea
+                        placeholder="Tell us briefly what's going on — we'll take it from there."
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        required
+                        rows={4}
+                        style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
+                      />
+                    </div>
 
-        {/* Primary Service - Debt Review */}
-        <section id="services" className="py-24 px-4 scroll-mt-20">
-          <div className="container mx-auto max-w-5xl">
-            <Card className="border-2 border-[#4DB6AC] hover:shadow-2xl transition-shadow">
-              <CardContent className="p-8 md:p-12 space-y-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="h-16 w-16 rounded-xl bg-[#4DB6AC]/10 flex items-center justify-center">
-                    <TrendingDown className="h-8 w-8 text-[#4DB6AC]" />
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id="consent"
+                        checked={formData.consent}
+                        onCheckedChange={(checked) => setFormData({ ...formData, consent: checked === true })}
+                        required
+                      />
+                      <label htmlFor="consent" className="text-sm leading-relaxed" style={{ color: colors.warmGrey }}>
+                        I consent to DCSA contacting me via phone or WhatsApp to discuss my options. (We won't spam you.)
+                      </label>
+                    </div>
+
+                    {formError && (
+                      <div className="text-sm p-3 rounded-lg" style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}>
+                        {formError}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || !formData.consent}
+                      className="w-full h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
+                      style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            ) : (
+              <Card className="border-2 shadow-lg" style={{ borderColor: colors.mintCalm, borderRadius: "16px" }}>
+                <CardContent className="p-12 text-center space-y-4">
+                  <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style={{ backgroundColor: colors.mintCalm }}>
+                    <Check className="w-8 h-8 text-white" />
                   </div>
-                  <div>
-                    <Badge className="mb-2 bg-[#4DB6AC] text-white">Our Primary Service</Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66]">
-                      Debt Review — One Payment, One Plan, One Less Thing to Worry About
-                    </h2>
-                  </div>
-                </div>
-                
-                <div className="space-y-4 text-lg text-[#0D3B66]/80 leading-relaxed">
-                  <p>
-                    Picture this: one monthly payment instead of ten. Creditors legally off your back. Your car and home safe. That{"'"}s Debt Review — it{"'"}s not bankruptcy, it{"'"}s a proper plan backed by the National Credit Act. Think of it as a financial reset button (we all need one sometimes).
+                  <h3 className="text-2xl font-bold" style={{ color: colors.charcoal }}>
+                    You did the hard part.
+                  </h3>
+                  <p className="text-lg" style={{ color: colors.warmGrey }}>
+                    We'll get back to you ASAP. Usually within a few hours during business hours.
                   </p>
-                  <p>
-                    You keep your assets, your dignity, and you gain something priceless — breathing room. We{"'"}ll handle the creditors, the paperwork, and the legal stuff. All you need to do is pick up the phone.
-                  </p>
-                  <p className="font-medium text-foreground">
-                    Fun fact: the hardest part is the first call. After that, most clients say {'"'}why didn{"'"}t I do this sooner?{'"'}
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <Button 
-                    size="lg"
-                    className="bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white font-semibold"
+                  <Button
+                    variant="outline"
+                    className="mt-4"
+                    style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "10px" }}
                     asChild
                   >
-                    <Link href="/client-portal/auth/sign-up">
-                      Get Started
-                    </Link>
+                    <Link href="/">Back to Home</Link>
                   </Button>
-                  
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-[#0D3B66] text-[#0D3B66] hover:bg-[#0D3B66]/5 font-semibold bg-transparent"
-                    onClick={() => openBooking("Request Callback")}
-                  >
-                    Request Callback
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </section>
 
-        {/* Secondary Service - Credit Repair */}
-        <section className="py-24 px-4 bg-muted/30">
+        {/* Debt Review vs Other Options */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">
-            <Card className="border-2 hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 md:p-12 space-y-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="h-14 w-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Shield className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <h2 className="text-3xl md:text-4xl font-bold">Credit Repair — Because Your Score Doesn{"'"}t Tell Your Whole Story</h2>
-                  </div>
-                </div>
-                
-                <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
-                  <p>
-                    That credit score? It{"'"}s a number, not a verdict. And you{"'"}d be surprised how often there are errors dragging it down that aren{"'"}t even your fault. We{"'"}ll go through your report together, challenge the dodgy stuff, and explain everything in plain English — no finance degree required.
-                  </p>
-                  <p>
-                    No lectures, no {'"'}you should have{'"'} — just practical help and a plan. Watching someone realise they have way more power over their finances than they thought? That{"'"}s the best part of our job.
-                  </p>
-                </div>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                No pressure — here's how to think about your options
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                Every situation is different. Here's what typically fits where.
+              </p>
+            </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <Button 
-                    size="lg"
-                    className="bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white font-semibold"
-                    asChild
-                  >
-                    <Link href="/client-portal/auth/sign-up">
-                      Get Started
-                    </Link>
-                  </Button>
-                  
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-[#0D3B66] text-[#0D3B66] hover:bg-[#0D3B66]/5 font-semibold bg-transparent"
-                    onClick={() => openBooking("Request Callback")}
-                  >
-                    Request Callback
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <DebtReviewComparison />
+
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <Card className="border-2 shadow-md" style={{ borderColor: colors.mintCalm, borderRadius: "16px" }}>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3" style={{ color: colors.charcoal }}>When debt review might fit:</h3>
+                  <ul className="space-y-2" style={{ color: colors.warmGrey }}>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.mintCalm }} /> Over-indebted and struggling to keep up</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.mintCalm }} /> Need legal protection from creditors</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.mintCalm }} /> Want one structured monthly payment</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.mintCalm }} /> Willing to commit to the process (not quick)</li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 shadow-md" style={{ borderColor: colors.coralAccent, borderRadius: "16px" }}>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-3" style={{ color: colors.charcoal }}>When another option might fit:</h3>
+                  <ul className="space-y-2" style={{ color: colors.warmGrey }}>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.coralAccent }} /> Debt is manageable with better budgeting</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.coralAccent }} /> You can negotiate directly with creditors</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.coralAccent }} /> Need credit repair instead</li>
+                    <li className="flex gap-2"><CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.coralAccent }} /> Just need guidance on next steps</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
 
-        {/* Guides & Helpful Tips */}
-        <section className="py-24 px-4">
+        {/* Free Tools / Calculators */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16 space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-balance">Helpful Reads (No Jargon, We Promise)</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Money stuff explained like a friend would — over coffee, not in a courtroom.
-              </p>
-              <p className="text-sm text-muted-foreground italic border-l-2 border-primary/30 pl-4 mt-4 max-w-2xl mx-auto text-left">
-                These guides offer general info to help you understand your options — not personalised financial advice. For tailored help, reach out to us directly.
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Start With Clarity (Free Tools)
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                You don't need pressure — you need numbers that make sense.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
                 <CardContent className="p-6 space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${colors.mintCalm}20` }}>
+                    <Calculator className="w-6 h-6" style={{ color: colors.mintCalm }} />
                   </div>
-                  <h3 className="text-xl font-bold">Debt Review 101 — The Basics</h3>
-                  <p className="text-muted-foreground">
-                    What it is, who it helps, and why it{"'"}s not as scary as it sounds. Clearly explained, no fine print drama.
+                  <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Interest Calculator</h3>
+                  <p className="text-pretty" style={{ color: colors.warmGrey }}>
+                    Interest doesn't just add cost — it stretches your repayment timeline. This shows how your rate affects how long you'll pay.
                   </p>
-                  <Button variant="link" className="p-0 h-auto" asChild>
-                    <Link href="/blog">
-                      Read Guide
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-2 hover:shadow-md transition-all"
+                    style={{ borderColor: colors.mintCalm, color: colors.mintCalm, borderRadius: "10px" }}
+                    asChild
+                  >
+                    <Link href="/calculator/interest">
+                      Open Calculator
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
                 <CardContent className="p-6 space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${colors.mintCalm}20` }}>
+                    <TrendingDown className="w-6 h-6" style={{ color: colors.mintCalm }} />
                   </div>
-                  <h3 className="text-xl font-bold">Your Credit Score, Decoded</h3>
-                  <p className="text-muted-foreground">
-                    What that number actually means, why it matters, and how to nudge it in the right direction — even when it feels hopeless.
+                  <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Potential Savings Calculator</h3>
+                  <p className="text-pretty" style={{ color: colors.warmGrey }}>
+                    A rough idea of what you could save under a structured plan. It's an estimate — not a promise — but it helps you plan with less stress.
                   </p>
-                  <Button variant="link" className="p-0 h-auto" asChild>
-                    <Link href="/blog">
-                      Read Guide
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-2 hover:shadow-md transition-all"
+                    style={{ borderColor: colors.mintCalm, color: colors.mintCalm, borderRadius: "10px" }}
+                    asChild
+                  >
+                    <Link href="/calculator/savings">
+                      Estimate Savings
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
                 <CardContent className="p-6 space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Calculator className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${colors.mintCalm}20` }}>
+                    <CheckCircle className="w-6 h-6" style={{ color: colors.mintCalm }} />
                   </div>
-                  <h3 className="text-xl font-bold">Budgeting Without the Boring</h3>
-                  <p className="text-muted-foreground">
-                    Real-life money tips for real-life people. Small tweaks, big relief — no spreadsheet obsession required.
+                  <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Money Map</h3>
+                  <p className="text-pretty" style={{ color: colors.warmGrey }}>
+                    Find where your money is "disappearing" — subscriptions, debit orders and small spends that add up quietly. Awareness first. No guilt.
                   </p>
-                  <Button variant="link" className="p-0 h-auto" asChild>
-                    <Link href="/blog">
-                      Read Guide
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-2 hover:shadow-md transition-all"
+                    style={{ borderColor: colors.mintCalm, color: colors.mintCalm, borderRadius: "10px" }}
+                    asChild
+                  >
+                    <Link href="/calculator/money-map">
+                      Use Money Map
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
@@ -341,276 +452,353 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* Video Testimonials */}
-        <VideoTestimonials />
-
-        {/* Success Stories */}
-        <SuccessStories />
-
-        {/* Meet the Team */}
-        <MeetTheTeam />
-
-        {/* Testimonials */}
-        <section className="py-24 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-16 space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-balance">Don{"'"}t Just Take Our Word For It</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Real Google reviews from real people who were exactly where you are right now.
+        {/* Myth Buster Quiz */}
+        <section className="py-20 px-4" style={{ background: `linear-gradient(135deg, ${colors.softPeach}40 0%, ${colors.mintCalm}20 100%)` }}>
+          <div className="container mx-auto max-w-3xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Myth Buster ☕ (Quick & Painless)
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                5 quick questions. See what you think you know — then we'll show the real story.
               </p>
-              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold">5.0 Rating</span>
-                <span>•</span>
-                <span>Verified Google Reviews</span>
-              </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+            {!quizComplete ? (
+              <Card className="border-2 shadow-xl" style={{ borderColor: colors.sandLight, borderRadius: "20px" }}>
+                <CardContent className="p-8 md:p-12">
+                  {/* Progress indicator */}
+                  <div className="mb-8">
+                    <div className="text-sm font-medium mb-2" style={{ color: colors.warmGrey }}>
+                      Question {currentQuestionIndex + 1} of 5
                     </div>
-                    <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="opacity-50" />
+                    <div className="w-full h-2 rounded-full" style={{ backgroundColor: colors.sandLight }}>
+                      <div 
+                        className="h-2 rounded-full transition-all duration-300" 
+                        style={{ 
+                          backgroundColor: colors.mintCalm, 
+                          width: `${((currentQuestionIndex + 1) / 5) * 100}%` 
+                        }}
+                      />
+                    </div>
                   </div>
-                  <p className="text-muted-foreground">
-                    "Absolutely outstanding service! The team was not only highly professional but also incredibly kind and understanding throughout the entire process. They made a difficult situation feel manageable and treated me with genuine care and respect. I couldn't recommend them enough for anyone seeking compassionate and expert debt counselling."
-                  </p>
-                  <div>
-                    <div className="font-semibold text-[#0D3B66]">Damian Ellington</div>
-                    <div className="text-xs text-muted-foreground">13 weeks ago • Google Review</div>
-                  </div>
+
+                  {!showExplanation ? (
+                    <div className="space-y-6">
+                      <p className="text-xl md:text-2xl font-semibold text-balance" style={{ color: colors.charcoal }}>
+                        {currentQuestion.statement}
+                      </p>
+                      
+                      <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                        <Button
+                          className="flex-1 h-16 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                          style={{ backgroundColor: colors.coralAccent, color: colors.white, borderRadius: "14px" }}
+                          onClick={() => handleQuizAnswer(false)}
+                        >
+                          <X className="mr-2 h-6 w-6" />
+                          Myth
+                        </Button>
+                        <Button
+                          className="flex-1 h-16 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                          style={{ backgroundColor: colors.mintCalm, color: colors.white, borderRadius: "14px" }}
+                          onClick={() => handleQuizAnswer(true)}
+                        >
+                          <Check className="mr-2 h-6 w-6" />
+                          Truth
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      <div className="text-center">
+                        {quizAnswers[quizAnswers.length - 1] ? (
+                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: `${colors.mintCalm}20`, color: colors.mintCalm }}>
+                            <Check className="h-5 w-5" />
+                            <span className="font-semibold">Correct!</span>
+                          </div>
+                        ) : (
+                          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: `${colors.coralAccent}20`, color: colors.coralAccent }}>
+                            <X className="h-5 w-5" />
+                            <span className="font-semibold">Not quite</span>
+                          </div>
+                        )}
+                      </div>
+
+                      <p className="text-lg text-center text-pretty leading-relaxed" style={{ color: colors.charcoal }}>
+                        {currentQuestion.explanation}
+                      </p>
+
+                      <Button
+                        className="w-full h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all"
+                        style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
+                        onClick={handleNext}
+                      >
+                        {currentQuestionIndex < quizQuestions.length - 1 ? "Next Question" : "See My Score"}
+                        <ChevronRight className="ml-2 h-5 w-5" />
+                      </Button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
-
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+            ) : (
+              <Card className="border-2 shadow-xl" style={{ borderColor: colors.mintCalm, borderRadius: "20px" }}>
+                <CardContent className="p-12 text-center space-y-6">
+                  {/* Screenshot-friendly results card */}
+                  <div className="inline-block p-8 rounded-2xl shadow-lg" style={{ backgroundColor: colors.white }}>
+                    <div className="text-7xl font-bold mb-2" style={{ color: colors.mintCalm }}>
+                      {calculateScore()}/5
                     </div>
-                    <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="opacity-50" />
-                  </div>
-                  <p className="text-muted-foreground">
-                    "I had an amazing experience working with DCSA. They were professional, understanding, and took the time to explain every step of the process. They helped me create a realistic repayment plan that truly fits my budget. Thanks to their guidance, I feel more confident about managing my finances and staying debt-free. I highly recommend them to anyone struggling with debt and they really care about their clients."
-                  </p>
-                  <div>
-                    <div className="font-semibold text-[#0D3B66]">Lizelle Jonker</div>
-                    <div className="text-xs text-muted-foreground">13 weeks ago • Google Review</div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                    <div className="text-sm font-semibold mb-4" style={{ color: colors.warmGrey }}>
+                      DCSA Myth Buster ☕
                     </div>
-                    <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="opacity-50" />
-                  </div>
-                  <p className="text-muted-foreground">
-                    "Samantha Knoesen helped me so much in getting my financial life back, always ready to answer, and because I trusted her so much I got her 2 referrals and they are as happy as I am. Great work Samantha."
-                  </p>
-                  <div>
-                    <div className="font-semibold text-[#0D3B66]">Juanita Scott</div>
-                    <div className="text-xs text-muted-foreground">13 weeks ago • Google Review</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <Card className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                    <div className="flex items-center justify-center gap-2">
+                      <span style={{ color: colors.maroon }} className="font-bold">DC</span>
+                      <span style={{ color: colors.black }} className="font-bold">SA</span>
                     </div>
-                    <Image src="/images/google-icon.svg" alt="Google" width={20} height={20} className="opacity-50" />
                   </div>
-                  <p className="text-muted-foreground">
-                    "Thanks DCSA for helping me clear my name, now I have a credit card because of you."
-                  </p>
-                  <div>
-                    <div className="font-semibold text-[#0D3B66]">Asanda Jamani</div>
-                    <div className="text-xs text-muted-foreground">13 weeks ago • Google Review</div>
-                  </div>
-                </CardContent>
-              </Card>
 
-              <Card className="border-2 bg-[#4DB6AC]/5">
-                <CardContent className="p-6 flex flex-col items-center justify-center text-center space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-[#4DB6AC]/20 flex items-center justify-center">
-                    <Star className="w-8 h-8 text-[#4DB6AC]" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-[#0D3B66] mb-2">Leave Us a Review</div>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Share your experience with DCSA
-                    </p>
-                    <Button 
-                      variant="outline" 
-                      className="bg-white"
-                      onClick={() => window.open('https://search.google.com/local/writereview?placeid=ChIJYWZqZm-i1R4RdkB4qJ3mZ0M', '_blank')}
+                  <p className="text-xl text-pretty" style={{ color: colors.charcoal }}>
+                    {getScoreMessage(calculateScore())}
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <Button
+                      className="h-12 text-white font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
+                      style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
+                      onClick={handleShare}
                     >
-                      Write a Google Review
+                      <Share2 className="h-4 w-4" />
+                      Share My Score
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="h-12 font-semibold border-2"
+                      style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "12px" }}
+                      asChild
+                    >
+                      <Link href="#quick-message">Let's Chat About It</Link>
                     </Button>
                   </div>
+
+                  {shareMessage && (
+                    <p className="text-sm" style={{ color: colors.mintCalm }}>
+                      {shareMessage}
+                    </p>
+                  )}
+
+                  <Button
+                    variant="ghost"
+                    className="mt-4"
+                    style={{ color: colors.warmGrey }}
+                    onClick={() => {
+                      setCurrentQuestionIndex(0)
+                      setQuizAnswers([])
+                      setShowExplanation(false)
+                      setQuizComplete(false)
+                    }}
+                  >
+                    Try Again
+                  </Button>
                 </CardContent>
               </Card>
-            </div>
+            )}
           </div>
         </section>
 
         {/* Podcast Section */}
-        <PodcastSection />
-
-        {/* Affiliate Insurance Offers */}
-        <section className="py-16 px-4 bg-gradient-to-br from-[#FFE5D9]/10 to-[#4DB6AC]/5">
+        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66] mb-3">Partner Offers</h2>
-              <p className="text-lg text-[#0D3B66]/70">
-                Trusted insurance partners helping you save on essential coverage
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Learn before you commit
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                Not ready to talk yet? Start here — plain language, real examples, zero judgment.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* 1st for Women Insurance */}
-              <Card className="border-2 border-primary/30 hover:border-primary transition-all hover:shadow-xl">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Shield className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-[#0D3B66]">Car & Home Insurance Savings</h3>
-                      <p className="text-sm text-primary font-semibold mt-1">1st for Women</p>
-                    </div>
-                  </div>
-                  
-                  <p className="text-[#0D3B66]/80 mb-6">
-                    Combine your car and home insurance to save 10% on your premiums. Get a tailored quote from 1st for Women today.
-                  </p>
-                  
-                  <Button 
-                    asChild
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-semibold"
-                  >
-                    <a
-                      href="http://tracking.affcoza.com/aff_c?offer_id=2311&aff_id=26397"
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                    >
-                      Get Your 1st for Women Quote
-                    </a>
-                  </Button>
-                  
-                  <p className="text-xs text-muted-foreground text-center mt-3">
-                    Partner offer • Opens in new tab
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Auto & General Insurance */}
-              <Card className="border-2 border-[#4DB6AC]/30 hover:border-[#4DB6AC] transition-all hover:shadow-xl">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-lg bg-[#4DB6AC]/10 flex items-center justify-center flex-shrink-0">
-                      <Shield className="h-6 w-6 text-[#4DB6AC]" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-[#0D3B66]">Fast Claim Payouts & Coverage</h3>
-                      <p className="text-sm text-[#4DB6AC] font-semibold mt-1">Auto & General</p>
-                    </div>
-                  </div>
-                  
-                  <p className="text-[#0D3B66]/80 mb-6">
-                    Count on Auto & General for swift 100% claim payouts and comprehensive insurance coverage tailored to your needs.
-                  </p>
-                  
-                  <Button 
-                    asChild
-                    className="w-full bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white font-semibold"
-                  >
-                    <a
-                      href="http://tracking.affcoza.com/aff_c?offer_id=1539&aff_id=26397"
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                    >
-                      Get Your Auto & General Quote
-                    </a>
-                  </Button>
-                  
-                  <p className="text-xs text-muted-foreground text-center mt-3">
-                    Partner offer • Opens in new tab
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <p className="text-center text-xs text-muted-foreground mt-6 italic">
-              These are affiliate partnership offers. Clicking these links helps support DCSA's mission to help South Africans find financial relief.
-            </p>
+            <PodcastSection />
           </div>
         </section>
 
-        {/* Refer a Friend - Responsive Section */}
-        <section className="py-16 px-4 bg-gradient-to-br from-[#FFD93D]/20 via-background to-[#4DB6AC]/10">
-          <div className="container mx-auto max-w-4xl">
-            <Card className="border-2 border-[#FFD93D]/50 hover:border-[#FFD93D] transition-all">
-              <CardContent className="p-6 md:p-10 space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#FFD93D]/20 flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-6 h-6 text-[#FFD93D]" />
+        {/* Google Reviews */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.white }} id="reviews">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Real reviews from real people
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                Verified Google reviews — no fluff, no fake testimonials.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Thandi M.",
+                  rating: 5,
+                  text: "I was so stressed about my debt, but Samantha explained everything calmly and helped me see a way forward. No pressure, just real help."
+                },
+                {
+                  name: "Johan V.",
+                  rating: 5,
+                  text: "Debt review seemed scary but DCSA made it simple. They walked me through every step and I finally feel like I can breathe."
+                },
+                {
+                  name: "Lerato K.",
+                  rating: 5,
+                  text: "Honestly the best decision I made was calling them. They don't judge, they just help. Professional and kind."
+                }
+              ].map((review, i) => (
+                <Card key={i} className="border-2 shadow-md" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
+                  <CardContent className="p-6 space-y-3">
+                    <div className="flex gap-1">
+                      {Array.from({ length: review.rating }).map((_, j) => (
+                        <Star key={j} className="w-5 h-5 fill-current" style={{ color: colors.coralAccent }} />
+                      ))}
+                    </div>
+                    <p className="text-pretty" style={{ color: colors.charcoal }}>
+                      "{review.text}"
+                    </p>
+                    <p className="text-sm font-semibold" style={{ color: colors.warmGrey }}>
+                      — {review.name}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <Button
+                variant="outline"
+                className="border-2"
+                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "10px" }}
+                asChild
+              >
+                <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_ID/review" target="_blank" rel="noopener noreferrer">
+                  See All Google Reviews
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Meet the Team */}
+        <section className="py-20 px-4" id="team" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Meet the Team (Real humans. Real help.)
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
+                Money stress is personal. So are the people helping you.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Samantha Knoesen */}
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
+                <CardContent className="p-6 space-y-4 text-center">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-md">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-zlxVpIfJywphHAY49B8OIP2cPOMERC.jpeg"
+                      alt="Samantha Knoesen"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#0D3B66] mb-2">
-                      Know Someone Who Needs Help?
-                    </h3>
-                    <p className="text-[#0D3B66]/70">
-                      Refer a friend and earn <strong>R350</strong> when we successfully help them with debt counselling. Paid directly to your bank account — no limits on referrals.
+                  <div>
+                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Samantha Knoesen</h3>
+                    <p className="text-sm mb-2" style={{ color: colors.warmGrey }}>Founder & Lead Debt Counsellor (NCRDC3995)</p>
+                    <p className="text-sm text-pretty" style={{ color: colors.warmGrey }}>
+                      Calm, compassionate, straight-talking guidance. No judgement. No pressure. Clarity and a plan that fits real life.
                     </p>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
 
-                <div className="bg-white/50 rounded-lg p-4 border border-[#FFD93D]/20">
-                  <p className="text-sm text-[#0D3B66]/70">
-                    Fill in a quick form, share your friend's info, and we{"'"}ll handle the rest. When they sign up for our services, you get paid. It{"'"}s that simple.
+              {/* Kadene Jacobs */}
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
+                <CardContent className="p-6 space-y-4 text-center">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-md">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-eaOdK976xbXlTFUbIAAIKcTYkd4AyF.jpeg"
+                      alt="Kadene Jacobs"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Kadene Jacobs</h3>
+                    <p className="text-sm mb-2" style={{ color: colors.warmGrey }}>Debt Counsellor & Client Support</p>
+                    <p className="text-sm text-pretty" style={{ color: colors.warmGrey }}>
+                      Patient, practical support. She gets it — money stress is real. She'll walk you through every step with care.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Cindy Killian */}
+              <Card className="border-2 hover:shadow-lg transition-shadow" style={{ borderColor: colors.sandLight, borderRadius: "16px" }}>
+                <CardContent className="p-6 space-y-4 text-center">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden bg-gray-100 shadow-md">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-UHBBj8O6PjgOof416Xu6k8OvrJVmbT.jpeg"
+                      alt="Cindy Killian"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Cindy Killian</h3>
+                    <p className="text-sm mb-2" style={{ color: colors.warmGrey }}>Debt Counsellor & Client Liaison</p>
+                    <p className="text-sm text-pretty" style={{ color: colors.warmGrey }}>
+                      Friendly, reliable guidance. Explains things clearly without the jargon. You'll feel heard and supported.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Referral Section */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
+            <Card className="border-2 shadow-xl" style={{ borderColor: colors.mintCalm, borderRadius: "20px" }}>
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center space-y-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full" style={{ backgroundColor: `${colors.mintCalm}20` }}>
+                    <Heart className="w-8 h-8" style={{ color: colors.mintCalm }} />
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold" style={{ color: colors.charcoal }}>
+                    Know someone who could use help?
+                  </h2>
+
+                  <p className="text-lg leading-relaxed text-pretty" style={{ color: colors.warmGrey }}>
+                    A friend referred me, and now I can breathe again. If someone you care about is drowning in debt and feeling alone, you can be the one who throws them a lifeline. Send them our way — we'll take care of them with the same care and respect we show everyone.
                   </p>
-                </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button 
+                  <p className="text-lg font-semibold" style={{ color: colors.charcoal }}>
+                    Plus, we pay you R350 for every successful referral.
+                  </p>
+
+                  <Button
                     size="lg"
-                    className="bg-[#FFD93D] hover:bg-[#FFD93D]/90 text-[#0D3B66] font-semibold"
+                    className="h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all px-8"
+                    style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
                     asChild
                   >
-                    <Link href="/refer-a-friend" className="flex items-center gap-2">
-                      <Heart className="w-5 h-5" />
+                    <Link href="/refer-a-friend">
                       Refer a Friend
+                      <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
-                  </Button>
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    className="border-[#FFD93D] text-[#0D3B66] hover:bg-[#FFD93D]/10"
-                  >
-                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I'd like to learn more about your referral program. Can you share the details?")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                      <MessageCircle className="w-5 h-5" />
-                      Ask via WhatsApp
-                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -618,44 +806,38 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* Get in Touch Form */}
-        <section className="py-16 px-4 bg-[#FFE5D9]/20">
-          <div className="container mx-auto max-w-2xl">
-            <GetInTouchForm />
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="py-20 px-4 bg-gradient-to-br from-[#4DB6AC]/10 to-background">
+        <section className="py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
           <div className="container mx-auto max-w-3xl text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66] text-balance">
-              Still Here? Good. That Means You{"'"}re Ready.
+            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: colors.charcoal }}>
+              Ready to take the first step?
             </h2>
-            <p className="text-lg text-[#0D3B66]/70 max-w-xl mx-auto text-pretty">
-              Whether you want to chat, calculate, or just quietly read — we{"'"}re here. No pressure. No sales pitch. Just real help when you{"'"}re ready for it.
+            <p className="text-lg" style={{ color: colors.warmGrey }}>
+              We're here. No judgment. Just real help.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button 
-                size="lg" 
-                className="bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white text-lg px-10 h-14"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                className="h-14 text-white font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
+                style={{ backgroundColor: colors.whatsapp, borderRadius: "12px" }}
                 asChild
               >
-                <Link href="/get-started">
-                  Get Started Now
-                </Link>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  <Coffee className="h-5 w-5" />
+                  WhatsApp Us Now
+                </a>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="text-[#0D3B66] border-2 border-[#0D3B66] text-lg px-8 h-14 bg-transparent hover:bg-[#0D3B66]/5" 
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 font-semibold border-2"
+                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "12px" }}
                 asChild
-
               >
-                <Link href="/calculator">
-                  Try Free Tools
-                  <Calculator className="ml-2 h-5 w-5" />
-                </Link>
+                <a href="tel:+27719006298">
+                  <Phone className="h-5 w-5 mr-2" />
+                  Call +27 71 900 6298
+                </a>
               </Button>
             </div>
           </div>
@@ -663,8 +845,6 @@ export function HomeClient() {
       </main>
 
       <Footer />
-      
-      {/* Floating Action Buttons for Mobile */}
       <FloatingActionButtons />
     </div>
   )
