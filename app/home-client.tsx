@@ -10,6 +10,8 @@ import { Footer } from "@/components/footer"
 import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { PodcastSection } from "@/components/podcast-section"
 import { FloatingActionButtons } from "@/components/floating-action-buttons"
+import { ReviewsCarousel } from "@/components/reviews-carousel"
+import { ReviewSubmission } from "@/components/review-submission"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -141,11 +143,15 @@ export function HomeClient() {
                 Debt can feel heavy — and it's not just the numbers. At DCSA Debt Counselling & Credit Repair, we help you understand your options properly and choose what fits your life. No lectures. No pressure. Just real help.
               </p>
 
-              <p className="text-base italic pt-2" style={{ color: colors.warmGrey }}>
-                "Pop the kettle on — we'll figure this out together."
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+              <div className="space-y-4 pt-8">
+                <p className="text-base italic" style={{ color: colors.warmGrey }}>
+                  "The first step is the hardest — but we will figure it out together."
+                </p>
+                
+                <p className="text-sm" style={{ color: colors.warmGrey }}>
+                  No pressure. Tell us what's going on — we'll reply as soon as we can.
+                </p>
+
                 <Button 
                   size="lg" 
                   className="text-white text-base px-8 h-14 font-semibold shadow-lg hover:shadow-xl transition-all items-center gap-2"
@@ -154,29 +160,10 @@ export function HomeClient() {
                 >
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                     <Coffee className="h-5 w-5" />
-                    WhatsApp Us (Coffee optional ☕)
+                    Let's Chat ☕
                   </a>
                 </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-base px-8 h-14 font-semibold border-2 shadow-md hover:shadow-lg transition-all"
-                  style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "14px" }}
-                  asChild
-                >
-                  <Link href="#quick-message">
-                    Send a Quick Message
-                  </Link>
-                </Button>
               </div>
-
-              <p className="text-sm pt-4" style={{ color: colors.warmGrey }}>
-                No pressure. Tell us what's going on — we'll reply as soon as we can.
-              </p>
-
-              <p className="text-xs pt-2" style={{ color: colors.warmGrey }}>
-                {brandCopy.reassurance.firstStepHardest}
-              </p>
             </div>
           </div>
 
@@ -189,10 +176,10 @@ export function HomeClient() {
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                No pressure — here's how to think about your options
+                Debt Review vs Other Options
               </h2>
               <p className="text-lg max-w-2xl mx-auto" style={{ color: colors.warmGrey }}>
-                Every situation is different. Here's what typically fits where.
+                No pressure — here's how to think about your options. Every situation is different. Here's what typically fits where.
               </p>
             </div>
 
@@ -740,6 +727,29 @@ export function HomeClient() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Reviews Section */}
+        <section className="py-20 px-4" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-5xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Real Stories From People Like You
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Don't just take our word for it — hear from people who trusted us with their financial journey.
+              </p>
+            </div>
+
+            <ReviewsCarousel />
+
+            <div className="mt-16">
+              <p className="text-center text-sm mb-8" style={{ color: colors.warmGrey }}>
+                Have your own story? Help others by sharing your experience.
+              </p>
+              <ReviewSubmission />
+            </div>
           </div>
         </section>
 
