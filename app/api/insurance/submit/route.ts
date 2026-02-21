@@ -1,118 +1,148 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 
-const LEADBYTE_URL = "https://returnxdigital.leadbyte.co.uk/api/submit.php"
-const BASE_PARAMS = {
-  campid: "CAR-INSURANCE",
-  sid: "26397",
-  returnjson: "yes",
+function formatOptInDate(date = new Date()) {
+  const pad = (n: number) => String(n).padStart(2, "0")
+  const dd = pad(date.getDate())
+  const mm = pad(date.getMonth() + 1)
+  const yyyy = date.getFullYear()
+  const hh = pad(date.getHours())
+  const mi = pad(date.getMinutes())
+  const ss = pad(date.getSeconds())
+  return `${dd}/${mm}/${yyyy} ${hh}:${mi}:${ss}`
 }
 
-// Partner configurations
-const PARTNER_CONFIG = {
+function isValidSaMobile(phone: string) {
+  const digits = phone.replace(/\D/g, "")
+  return digits.length >= 9 && digits.length <= 12
+}
+
+const PARTNER_CONFIG: Record<string, { offer_id: number; affiliateshortcode: string }> = {
   "first-for-women": {
+    offer_id: 2311,
     affiliateshortcode: "JMAFFSite26159",
-    offer_id: "2311",
   },
   "auto-and-general": {
+    offer_id: 1539,
     affiliateshortcode: "JMAFFSite26160",
-    offer_id: "1539",
+  },
+  ffw: {
+    offer_id: 2311,
+    affiliateshortcode: "JMAFFSite26159",
+  },
+  aag: {
+    offer_id: 1539,
+    affiliateshortcode: "JMAFFSite26160",
   },
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json()
-    const { firstname, lastname, phone1, partner, optinurl } = body
+    const body = await req.json()
 
-    // Validation
-    if (!firstname || !lastname || !phone1 || !partner) {
+    // Support both "campaign" (ffw/aag) and "partner" (first-for-women/auto-and-general)
+    const campaignKey = String(body?.campaign || body?.partner || "").trim()
+    const firstname = String(body?.firstname || "").trim()
+    const lastname = String(body?.lastname || "").trim()
+    const phone1 = String(body?.phone1 || "").trim()
+    // Support both "acceptterms" and "consent" field names
+    const acceptterms = Boolean(body?.acceptterms ?? body?.consent)
+    const optinurl =
+      String(body?.optinurl || "").trim() ||
+      req.headers.get("referer") ||
+      "https://www.dcsam.co.za/insurance-quotes"
+
+    if (!firstname || !lastname || !phone1 || !acceptterms) {
       return NextResponse.json(
         {
           ok: false,
           code: "VALIDATION_ERROR",
-          message: "Missing required fields: firstname, lastname, phone1, partner",
+          message: "Please complete all required fields and accept the consent checkbox.",
         },
         { status: 400 }
       )
     }
 
-    if (!PARTNER_CONFIG[partner as keyof typeof PARTNER_CONFIG]) {
+    if (!isValidSaMobile(phone1)) {
       return NextResponse.json(
         {
           ok: false,
-          code: "INVALID_PARTNER",
-          message: "Invalid partner specified",
+          code: "VALIDATION_ERROR",
+          message: "Please enter a valid South African mobile number.",
         },
         { status: 400 }
       )
     }
 
-    const config = PARTNER_CONFIG[partner as keyof typeof PARTNER_CONFIG]
+    const config = PARTNER_CONFIG[campaignKey]
+    if (!config) {
+      return NextResponse.json(
+        {
+          ok: false,
+          code: "VALIDATION_ERROR",
+          message: "Invalid campaign or partner selection.",
+        },
+        { status: 400 }
+      )
+    }
 
-    // Format optindate as dd/mm/yyyy hh:mm:ss
-    const now = new Date()
-    const optindate = `${String(now.getDate()).padStart(2, "0")}/${String(now.getMonth() + 1).padStart(2, "0")}/${now.getFullYear()} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`
-
-    // Build LeadByte payload
-    const leadBytePayload = {
-      ...BASE_PARAMS,
+    const payload = new URLSearchParams({
+      campid: "CAR-INSURANCE",
+      sid: "26397",
+      returnjson: "yes",
       firstname,
       lastname,
       phone1,
-      optinurl: optinurl || request.headers.get("referer") || "https://www.dcsam.co.za",
-      optindate,
+      optinurl,
+      optindate: formatOptInDate(),
       channel: "JMAff",
       acceptterms: "true",
-      offer_id: config.offer_id,
+      offer_id: String(config.offer_id),
       product: "JMCar",
       leadsource: "DCSA",
       affiliateshortcode: config.affiliateshortcode,
+    })
+
+    const endpoint = "https://returnxdigital.leadbyte.co.uk/api/submit.php"
+
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: payload.toString(),
+      cache: "no-store",
+    })
+
+    const text = await res.text()
+    let data: any = null
+    try {
+      data = JSON.parse(text)
+    } catch {
+      data = null
     }
 
-    console.log("[v0] Submitting to LeadByte:", { partner, phone1 })
-
-    // Submit to LeadByte
-    const leadByteResponse = await fetch(
-      `${LEADBYTE_URL}?${new URLSearchParams(leadBytePayload).toString()}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
-    )
-
-    const leadByteData = await leadByteResponse.json()
-
-    console.log("[v0] LeadByte response:", leadByteData)
-
-    // Check for success (code=1)
-    if (leadByteData.code === 1 || leadByteData.code === "1") {
-      return NextResponse.json({
-        ok: true,
-        leadId: leadByteData.leadId || leadByteData.id || "submitted",
-        message: "Quote request submitted successfully",
-        partner,
-      })
-    } else {
-      // LeadByte returned an error
+    if (!res.ok || !data || (Number(data?.code) !== 1 && data?.code !== "1")) {
       return NextResponse.json(
         {
           ok: false,
-          code: "LEADBYTE_ERROR",
-          message: leadByteData.message || "Failed to submit quote request",
-          details: leadByteData,
+          code: "DELIVERY_FAILED",
+          message:
+            "We couldn't submit your quote request right now. Please WhatsApp us and we'll help you manually.",
+          raw: process.env.NODE_ENV === "production" ? undefined : text,
         },
-        { status: 500 }
+        { status: 502 }
       )
     }
-  } catch (error) {
-    console.error("[v0] Insurance submission error:", error)
+
+    return NextResponse.json({
+      ok: true,
+      leadId: data.leadId ?? data.id ?? null,
+      message: "Quote request submitted successfully",
+    })
+  } catch (err) {
     return NextResponse.json(
       {
         ok: false,
-        code: "SUBMISSION_ERROR",
-        message: "An error occurred while submitting your quote request",
+        code: "SERVER_ERROR",
+        message: "Something went wrong. Please try again or WhatsApp us.",
       },
       { status: 500 }
     )
