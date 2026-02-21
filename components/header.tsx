@@ -28,7 +28,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Left: DCSA Logo - Home Button */}
-          <Link href="#top" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
             <span style={{ color: colors.maroon }}>DC</span>
             <span style={{ color: colors.black }}>SA</span>
           </Link>
@@ -66,8 +66,8 @@ export function Header() {
             </div>
 
             <Link href="#team" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Team</Link>
-            <Link href="#client-portal" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Client Portal</Link>
-            <Link href="#refer" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Refer a Friend</Link>
+            <Link href="/client-portal" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Client Portal</Link>
+            <Link href="/refer-a-friend" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Refer a Friend</Link>
             <Link href="#contact" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Contact</Link>
           </nav>
 
@@ -128,8 +128,8 @@ export function Header() {
                     </div>
                     
                     <Link href="#team" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Team</Link>
-                    <Link href="#client-portal" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Client Portal</Link>
-                    <Link href="#refer" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Refer a Friend</Link>
+                    <Link href="/client-portal" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Client Portal</Link>
+                    <Link href="/refer-a-friend" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Refer a Friend</Link>
                     <Link href="#contact" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Contact</Link>
                   </nav>
 
