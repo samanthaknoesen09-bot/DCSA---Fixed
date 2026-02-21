@@ -28,7 +28,6 @@ export function FirstForWomenClient() {
     e.preventDefault()
     setError("")
     setIsSubmitting(true)
-
     try {
       const response = await fetch("/api/insurance/submit", {
         method: "POST",
@@ -39,9 +38,7 @@ export function FirstForWomenClient() {
           optinurl: window.location.href,
         }),
       })
-
       const result = await response.json()
-
       if (result.ok) {
         setSuccess(true)
         setLeadId(result.leadId)
@@ -64,7 +61,6 @@ export function FirstForWomenClient() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
       <Header />
-
       <main className="flex-1 py-12 px-4">
         <div className="container mx-auto max-w-2xl">
           {/* Back Link */}
@@ -76,7 +72,6 @@ export function FirstForWomenClient() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to All Quotes
           </Link>
-
           <Card className="border-2" style={{ borderColor: colors.sandLight, borderRadius: "20px" }}>
             <CardContent className="p-8">
               {/* Logo */}
@@ -91,7 +86,6 @@ export function FirstForWomenClient() {
                   />
                 </div>
               </div>
-
               {success ? (
                 <div className="text-center space-y-6">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full" style={{ backgroundColor: `${colors.mintCalm}20` }}>
@@ -128,14 +122,13 @@ export function FirstForWomenClient() {
                       Fill in your details below and First for Women will contact you with a personalized car insurance quote. No obligation.
                     </p>
                   </div>
-
-                  {/* Test Note */}
-                  <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: colors.warmBeige }}>
-                    <p className="text-xs" style={{ color: colors.warmGrey }}>
-                      <strong>Testing:</strong> Use first name "Test" and last name "Testing" for test submissions.
-                    </p>
-                  </div>
-
+                  {process.env.NODE_ENV !== "production" && (
+                    <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: colors.warmBeige }}>
+                      <p className="text-xs" style={{ color: colors.warmGrey }}>
+                        <strong>Dev note:</strong> Use first name &quot;Test&quot; and last name &quot;Testing&quot; for test submissions.
+                      </p>
+                    </div>
+                  )}
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -151,7 +144,6 @@ export function FirstForWomenClient() {
                           style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
                         />
                       </div>
-
                       <div className="space-y-2">
                         <label className="text-sm font-medium" style={{ color: colors.charcoal }}>
                           Last Name <span style={{ color: colors.maroon }}>*</span>
@@ -166,7 +158,6 @@ export function FirstForWomenClient() {
                         />
                       </div>
                     </div>
-
                     <div className="space-y-2">
                       <label className="text-sm font-medium" style={{ color: colors.charcoal }}>
                         Mobile Number <span style={{ color: colors.maroon }}>*</span>
@@ -181,7 +172,6 @@ export function FirstForWomenClient() {
                         style={{ borderColor: colors.sandLight, borderRadius: "10px" }}
                       />
                     </div>
-
                     <div className="flex items-start space-x-3">
                       <Checkbox
                         id="consent"
@@ -194,13 +184,11 @@ export function FirstForWomenClient() {
                         <span style={{ color: colors.maroon }}>*</span>
                       </label>
                     </div>
-
                     {error && (
                       <div className="p-4 rounded-lg" style={{ backgroundColor: `${colors.maroon}10`, color: colors.maroon }}>
                         <p className="text-sm">{error}</p>
                       </div>
                     )}
-
                     <Button
                       type="submit"
                       disabled={!isFormValid || isSubmitting}
@@ -223,7 +211,6 @@ export function FirstForWomenClient() {
           </Card>
         </div>
       </main>
-
       <Footer />
     </div>
   )
