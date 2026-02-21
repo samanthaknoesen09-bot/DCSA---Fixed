@@ -461,18 +461,7 @@ export function HomeClient() {
               </Card>
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="mb-6" style={{ color: colors.charcoal }}>
-                <strong>Ready to join the team?</strong> We're looking for caring people who want to help.
-              </p>
-              <Button 
-                className="rounded-lg text-white hover:opacity-90"
-                style={{ backgroundColor: colors.maroon }}
-                asChild
-              >
-                <Link href="/careers">View Careers</Link>
-              </Button>
-            </div>
+
           </div>
         </section>
 
@@ -694,6 +683,117 @@ export function HomeClient() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CLIENT PORTAL SECTION */}
+        <section className="py-16 md:py-20 px-4" id="client-portal" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-3xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Client Portal
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Access your account, track progress, and manage your debt review online.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-8 space-y-6">
+                  <div>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Already a Client?</h3>
+                    <p className="text-sm" style={{ color: colors.warmGrey }}>Sign in to your account to view your progress, payments, and documents.</p>
+                  </div>
+                  <Button 
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href="/client-portal/auth/login">Sign In</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="rounded-xl border-0 shadow-sm">
+                <CardContent className="p-8 space-y-6">
+                  <div>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>New Client?</h3>
+                    <p className="text-sm" style={{ color: colors.warmGrey }}>Create an account to start your journey or track your application.</p>
+                  </div>
+                  <Button 
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href="/client-portal/auth/register">Create Account</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="mt-8 p-6 rounded-lg text-center" style={{ backgroundColor: colors.warmBeige }}>
+              <p style={{ color: colors.charcoal }}>
+                Need help? <a href={WHATSAPP_URL} className="font-bold hover:underline" style={{ color: colors.maroon }}>Message me on WhatsApp</a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* REFER A FRIEND SECTION */}
+        <section className="py-16 md:py-20 px-4" id="refer" style={{ backgroundColor: colors.softPeach + "20" }}>
+          <div className="container mx-auto max-w-3xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                Refer a Friend
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Know someone struggling with debt? Share the help that changed your life.
+              </p>
+            </div>
+
+            <Card className="rounded-xl border-0 shadow-md">
+              <CardContent className="p-8 space-y-6">
+                <div>
+                  <h3 className="font-bold text-lg mb-3" style={{ color: colors.charcoal }}>How It Works</h3>
+                  <ul className="space-y-3 text-sm" style={{ color: colors.charcoal }}>
+                    <li className="flex gap-3">
+                      <span className="font-bold" style={{ color: colors.maroon }}>1.</span>
+                      <span>Share your referral link with someone you know</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold" style={{ color: colors.maroon }}>2.</span>
+                      <span>They get a free consultation to explore options</span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="font-bold" style={{ color: colors.maroon }}>3.</span>
+                      <span>When they take action, you both get rewarded</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="border-t pt-6" style={{ borderColor: colors.sandLight }}>
+                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
+                    Share your unique referral link below or submit a friend's details.
+                  </p>
+                  <Button 
+                    className="w-full rounded-lg text-white hover:opacity-90"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <a href="https://dcsam.activecampaign.com/refer" target="_blank" rel="noopener noreferrer">
+                      Get Your Referral Link
+                    </a>
+                  </Button>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg text-center text-sm" style={{ borderLeft: `4px solid ${colors.maroon}` }}>
+                  <p style={{ color: colors.charcoal }}>
+                    Every friend you help is someone finding their way to financial peace. No pressure—just good karma.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
