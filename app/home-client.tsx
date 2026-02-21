@@ -132,24 +132,24 @@ export function HomeClient() {
           <div className="container mx-auto max-w-5xl">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance" style={{ color: colors.charcoal }}>
-                Debt struggles are real.<br />So is the way out.
+                You're not broken.<br />You're just stuck.
               </h1>
               
               <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed" style={{ color: colors.warmGrey }}>
-                Calm support. Clear options. Zero judgment.
+                And stuck is fixable.
               </p>
 
               <p className="text-lg max-w-2xl mx-auto text-pretty leading-relaxed" style={{ color: colors.warmGrey }}>
-                Debt can feel heavy — and it's not just the numbers. At DCSA Debt Counselling & Credit Repair, we help you understand your options properly and choose what fits your life. No lectures. No pressure. Just real help.
+                I'm Sam. I've sat down with hundreds of people in your exact situation — same panic, same sleepless nights, same feeling like it's all too much. The truth? It's not. You just need someone to be honest with you, show you what's actually possible, and walk you through it step by step. No judgment. No BS. Just facts and a plan that actually works for YOUR life.
               </p>
 
               <div className="space-y-4 pt-8">
                 <p className="text-base italic" style={{ color: colors.warmGrey }}>
-                  "The first step is the hardest — but we will figure it out together."
+                  "Pull up a chair, grab a coffee, and let's figure this out together."
                 </p>
                 
                 <p className="text-sm" style={{ color: colors.warmGrey }}>
-                  No pressure. Tell us what's going on — we'll reply as soon as we can.
+                  Seriously — message me directly. I read every single message and I'll get back to you fast.
                 </p>
 
                 <Button 
