@@ -87,6 +87,7 @@ export function HomeClient() {
   }
 
   const correctAnswers = quizAnswers.filter((answer) => answer).length
+  const currentQuestion = quizQuestions[currentQuestionIndex]
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }}>
