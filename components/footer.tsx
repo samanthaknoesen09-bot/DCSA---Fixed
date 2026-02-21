@@ -85,6 +85,10 @@ Time: ${new Date().toLocaleTimeString()}`
             </div>
             <div className="space-y-3">
               <PhoneContact /> {/* Declared PhoneContact component */}
+              <a href="tel:+27719006298" className="flex items-center space-x-3 hover:text-primary transition-colors">
+                <Phone className="w-5 h-5 text-primary" />
+                <span>071 900 6298 (Kadene)</span>
+              </a>
               <a href="mailto:info@dcsam.co.za" className="flex items-center space-x-3 hover:text-primary transition-colors">
                 <Mail className="w-5 h-5 text-primary" />
                 <span>info@dcsam.co.za</span>
@@ -107,6 +111,11 @@ Time: ${new Date().toLocaleTimeString()}`
           <div className="space-y-6">
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-3">
+              <li>
+                <a href="/" className="text-background/80 hover:text-primary transition-colors">
+                  Home
+                </a>
+              </li>
               <li>
                 <a href="/get-started" className="text-background/80 hover:text-primary transition-colors">
                   Get Started
@@ -281,7 +290,7 @@ Time: ${new Date().toLocaleTimeString()}`
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 text-sm text-background/70">
+          <div className="grid md:grid-cols-2 gap-6 text-sm text-background/70 mb-8">
             <div>
               <h4 className="font-semibold text-background mb-2">NCR Registration</h4>
               <p>DCSA is a registered debt counsellor with the National Credit Regulator (NCR).</p>
@@ -295,6 +304,12 @@ Time: ${new Date().toLocaleTimeString()}`
                 Your trusted partner for debt counselling and financial freedom
               </p>
             </div>
+          </div>
+
+          <div className="bg-background/10 border-t border-b border-background/20 py-6 my-6 px-4 rounded-lg">
+            <p className="text-background/80 text-sm leading-relaxed">
+              The information on this site is for educational purposes only and does not constitute financial advice. We do not provide investment advisory services.
+            </p>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 pt-4">
