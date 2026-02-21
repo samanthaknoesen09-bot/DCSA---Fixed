@@ -110,84 +110,74 @@ Time: ${new Date().toLocaleTimeString()}`
           </div>
 
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg font-semibold" style={{ color: colors.charcoal }}>Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <a href="/" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Home
                 </a>
               </li>
               <li>
-                <a href="/get-started" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/get-started" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Get Started
                 </a>
               </li>
               <li>
-                <a href="/interest-calculator" className="text-background/80 hover:text-primary transition-colors">
-                  Interest Calculator
+                <a href="/calculator" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Calculators
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/services" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Our Services
                 </a>
               </li>
               <li>
-                <a href="#calculator" className="text-background/80 hover:text-primary transition-colors">
-                  Budget Calculator
+                <a href="/money-clarity-hub" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Money Clarity Hub
                 </a>
               </li>
               <li>
-                <a href="#testimonials" className="text-background/80 hover:text-primary transition-colors">
-                  Success Stories
+                <a href="/money-reset-program" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Money Reset Program
                 </a>
               </li>
               <li>
-                <a href="/blog" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/blog" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Financial Education
                 </a>
               </li>
               <li>
-                <a href="/faq" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/faq" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="/#contact" className="text-background/80 hover:text-primary transition-colors">
-                  Book Consultation
+                <a href="/insurance-quotes" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Insurance Quotes
                 </a>
               </li>
               <li>
-                <a href="/pricing" className="text-background/80 hover:text-primary transition-colors">
-                  Pricing & Fees
+                <a href="/refer-a-friend" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
+                  Refer a Friend
                 </a>
               </li>
               <li>
-                <a href="/privacy-policy" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/privacy-policy" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/terms" className="text-background/80 hover:text-primary transition-colors">
+                <a href="/terms" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a href="/sitemap-html" className="text-background/80 hover:text-primary transition-colors">
-                  Sitemap
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-background/80 hover:text-primary transition-colors">
-                  Contact
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Stay Updated</h4>
-            <p className="text-background/80 text-sm">
+            <h4 className="text-lg font-semibold" style={{ color: colors.charcoal }}>Stay Updated</h4>
+            <p className="text-sm" style={{ color: colors.charcoal }}>
               Get financial tips and debt management advice delivered to your inbox.
             </p>
             <form onSubmit={handleSubscribe} className="space-y-3">
@@ -226,17 +216,29 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.facebook.com/DCSamDebt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
+                href="https://www.linkedin.com/in/samantha-knoesen-3b2967125"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
+                aria-label="Connect with Sam on LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
                 href="https://www.linkedin.com/company/dcsam-dcsa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
-                aria-label="Connect with us on LinkedIn"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
+                aria-label="Connect with DCSA on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -244,7 +246,8 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.tiktok.com/@dcsam_debt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on TikTok"
               >
                 <TikTokIcon />
@@ -253,7 +256,8 @@ Time: ${new Date().toLocaleTimeString()}`
                 href="https://www.instagram.com/debthelp_with_dcsam"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors"
+                className="hover:scale-110 transition-transform"
+                style={{ color: colors.charcoal }}
                 aria-label="Follow us on Instagram"
               >
                 <Instagram className="w-5 h-5" />
