@@ -63,7 +63,6 @@ export function ReferralClient() {
   const [submissionId, setSubmissionId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [submissionId, setSubmissionId] = useState<string | null>(null)
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
