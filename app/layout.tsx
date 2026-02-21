@@ -42,6 +42,43 @@ export const metadata: Metadata = {
   },
   description:
     "DCSA - Financial education made simple for every South African. Learn about saving, debt, credit without judgment. Free tools, calculators, and guidance in plain English. Plus professional debt counselling (NCR registered NCRDC3995) when you need it.",
+  openGraph: {
+    type: "website",
+    locale: "en_ZA",
+    url: "https://www.dcsam.co.za",
+    siteName: "DCSA - Financial Education & Debt Counselling",
+    title: "Financial Education & Debt Help for South Africans | DCSA",
+    description: "Free plain-language financial education for South Africans. Learn saving, debt management, credit repair without judgment. Tools, calculators, and NCR-registered debt counselling.",
+    images: [
+      {
+        url: "https://www.dcsam.co.za/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "DCSA - Financial Education for All South Africans",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Financial Education & Debt Help for South Africans | DCSA",
+    description: "Free financial tools and debt counselling. No judgment, just real help.",
+    images: ["https://www.dcsam.co.za/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://www.dcsam.co.za",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   keywords: [
     // Brand Keywords
     "DCSA",
@@ -280,205 +317,203 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
+    <html
+      lang="en"
+      className={`${poppins.variable} ${roboto.variable} ${nunito.variable} antialiased`}
+    >
       <head>
-        {/* Facebook SDK - add your actual App ID when ready */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT5LCR9SW4"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-RT5LCR9SW4', {
-                anonymize_ip: true
-              });
-            `,
-          }}
-        />
+        {/* LocalBusiness Schema - for Google Business Profile & local SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@graph": [
-                {
-        "@type": "FinancialService",
-        "@id": "https://www.dcsam.co.za/#organization",
-        name: "DCSA Debt Counsellors",
-        alternateName: ["DCSA", "DCSA Debt Counselling", "Debt Clear SA"],
-        description:
-          "DCSA - Professional debt counselling, debt help and debt relief services in South Africa. NCR registered debt counsellor (NCRDC3995) helping South Africans achieve financial freedom.",
-                  url: "https://www.dcsam.co.za",
-                  logo: {
-                    "@type": "ImageObject",
-                    url: "https://www.dcsam.co.za/images/dcsa-logo.jpg",
-                    width: 512,
-                    height: 512,
-                  },
-                  image: "https://www.dcsam.co.za/images/dcsa-logo.jpg",
-                  telephone: "+27719006298",
-                  email: "info@dcsam.co.za",
-                  sameAs: [
-                    "https://www.facebook.com/DCSamDebt",
-                    "https://www.linkedin.com/company/dcsam-dcsa",
-                    "https://www.tiktok.com/@dcsam_debt",
-                    "https://www.instagram.com/debthelp_with_dcsam"
-                  ],
-                  address: {
-                    "@type": "PostalAddress",
-                    streetAddress: "81 6th Avenue, Newton Park",
-                    addressLocality: "Gqeberha",
-                    addressRegion: "Eastern Cape",
-                    postalCode: "6045",
-                    addressCountry: "ZA",
-                  },
-                  geo: {
-                    "@type": "GeoCoordinates",
-                    latitude: "-33.966111",
-                    longitude: "25.595891",
-                  },
-                  areaServed: {
-                    "@type": "Country",
-                    name: "South Africa",
-                  },
-                  serviceType: [
-                    "Debt Help",
-                    "Debt Relief",
-                    "Debt Counselling",
-                    "Debt Management",
-                    "Financial Counselling",
-                    "Budget Planning",
-                    "Debt Review",
-                    "Credit Repair",
-                    "Savings Coaching",
-                  ],
-                  priceRange: "$$",
-                  currenciesAccepted: "ZAR",
-                  paymentAccepted: "Cash, Credit Card, Bank Transfer",
-                  openingHours: "Mo-Fr 08:00-17:00",
-                  hasOfferCatalog: {
-                    "@type": "OfferCatalog",
-                    name: "Debt Counselling Services",
-                    itemListElement: [
-                      {
-                        "@type": "Offer",
-                        itemOffered: {
-                          "@type": "Service",
-                          name: "Debt Help & Debt Relief Services",
-                          description:
-                            "Professional debt help and debt relief including debt review, budget planning, and personalized debt management strategies.",
-                          provider: {
-                            "@id": "https://www.dcsam.co.za/#organization",
-                          },
-                        },
-                      },
-                      {
-                        "@type": "Offer",
-                        itemOffered: {
-                          "@type": "Service",
-                          name: "Credit Repair Services",
-                          description:
-                            "Professional credit repair services to help improve your credit score and financial standing in South Africa.",
-                          provider: {
-                            "@id": "https://www.dcsam.co.za/#organization",
-                          },
-                        },
-                      },
-                      {
-                        "@type": "Offer",
-                        itemOffered: {
-                          "@type": "Service",
-                          name: "Budget Planning & Savings Coaching",
-                          description:
-                            "Expert budget planning and savings coaching to help you manage expenses, track spending, and build financial stability.",
-                          provider: {
-                            "@id": "https://www.dcsam.co.za/#organization",
-                          },
-                        },
-                      },
-                      {
-                        "@type": "Offer",
-                        itemOffered: {
-                          "@type": "Service",
-                          name: "Free Debt Calculators",
-                          description:
-                            "Free online calculators including Money Map budget tracker, savings calculator, and interest calculator to help manage your finances.",
-                          provider: {
-                            "@id": "https://www.dcsam.co.za/#organization",
-                          },
-                        },
-                      },
-                    ],
-                  },
-                  aggregateRating: {
-                    "@type": "AggregateRating",
-                    ratingValue: "4.9",
-                    bestRating: "5",
-                    worstRating: "1",
-                    ratingCount: "150",
-                  },
-        founder: {
-          "@type": "Person",
-          name: "Samantha Knoesen",
-          jobTitle: "NCR Registered Debt Counsellor",
-                  },
-                },
-                {
-        "@type": "WebSite",
-        "@id": "https://www.dcsam.co.za/#website",
-        url: "https://www.dcsam.co.za",
-        name: "DCSA Debt Counsellors",
-        description: "DCSA - Professional debt help, debt relief and debt counselling in South Africa",
-                  publisher: {
-                    "@id": "https://www.dcsam.co.za/#organization",
-                  },
-                  inLanguage: "en-ZA",
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: {
-                      "@type": "EntryPoint",
-                      urlTemplate: "https://www.dcsam.co.za/?s={search_term_string}",
-                    },
-                    "query-input": "required name=search_term_string",
-                  },
-                },
-                {
-        "@type": "WebPage",
-        "@id": "https://www.dcsam.co.za/#webpage",
-        url: "https://www.dcsam.co.za",
-        name: "DCSA - Professional Debt Help & Debt Relief South Africa",
-        description:
-          "DCSA - Get professional debt help, debt relief and debt counselling services. NCR registered (NCRDC3995). Free consultation available.",
-                  isPartOf: {
-                    "@id": "https://www.dcsam.co.za/#website",
-                  },
-                  about: {
-                    "@id": "https://www.dcsam.co.za/#organization",
-                  },
-                  primaryImageOfPage: {
-                    "@type": "ImageObject",
-                    url: "https://www.dcsam.co.za/images/dcsa-logo.jpg",
-                  },
-                  inLanguage: "en-ZA",
-                  breadcrumb: {
-                    "@id": "https://www.dcsam.co.za/#breadcrumb",
-                  },
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  "@id": "https://www.dcsam.co.za/#breadcrumb",
-                  itemListElement: [
-                    {
-                      "@type": "ListItem",
-                      position: 1,
-                      name: "Home",
-                      item: "https://www.dcsam.co.za",
-                    },
-                  ],
-                },
+              "@type": "LocalBusiness",
+              "@id": "https://www.dcsam.co.za",
+              "name": "DCSA - Financial Education & Debt Counselling",
+              "url": "https://www.dcsam.co.za",
+              "description": "Financial education and debt counselling services in South Africa. NCR registered debt counsellor.",
+              "telephone": "+27719006298",
+              "email": "info@dcsam.co.za",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "81 6th Avenue",
+                "addressLocality": "Newton Park",
+                "addressRegion": "Gqeberha",
+                "postalCode": "6045",
+                "addressCountry": "ZA"
+              },
+              "image": "https://www.dcsam.co.za/og-image.png",
+              "priceRange": "Consultation based",
+              "areaServed": {
+                "@type": "Country",
+                "name": "South Africa"
+              },
+              "sameAs": [
+                "https://www.facebook.com/DCSamDebt",
+                "https://www.linkedin.com/company/dcsa-debt-counselling",
+                "https://www.youtube.com/@dcsam"
               ],
-            }),
+              "knowsAbout": [
+                "Debt Counselling",
+                "Credit Repair",
+                "Financial Education",
+                "Debt Review",
+                "Money Management"
+              ],
+              "jobTitle": "Debt Counsellor, Financial Educator",
+              "sponsor": {
+                "@type": "Organization",
+                "name": "National Credit Regulator",
+                "url": "https://www.ncr.org.za"
+              },
+              "makesOffer": [
+                {
+                  "@type": "Offer",
+                  "name": "Debt Counselling",
+                  "description": "Professional debt review and counselling services"
+                },
+                {
+                  "@type": "Offer",
+                  "name": "Financial Education",
+                  "description": "Free financial literacy courses and tools"
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* BreadcrumbList Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.dcsam.co.za"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Financial Education",
+                  "item": "https://www.dcsam.co.za/#money-smarts"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Free Tools",
+                  "item": "https://www.dcsam.co.za/#tools"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "Debt Counselling",
+                  "item": "https://www.dcsam.co.za/#debt-101"
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "DCSA",
+              "url": "https://www.dcsam.co.za",
+              "description": "Financial education platform and debt counselling services",
+              "logo": "https://www.dcsam.co.za/logo.png",
+              "founder": {
+                "@type": "Person",
+                "name": "Samantha Knoesen"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "telephone": "+27719006298",
+                "email": "info@dcsam.co.za"
+              },
+              "sameAs": [
+                "https://www.facebook.com/DCSamDebt",
+                "https://www.linkedin.com/company/dcsa-debt-counselling"
+              ]
+            })
+          }}
+        />
+
+        {/* FAQ Schema - Financial Myths & Education Questions */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Is saving only for rich people?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Saving is for everyone. You can start with R50/week and build momentum. Small consistent deposits add up quickly — R50/week becomes R2,600/year, which can cover emergencies or build toward goals."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What exactly is debt review?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Debt review is a formal process under South African law where a registered debt counsellor helps over-indebted individuals restructure their debts into affordable repayments. It protects you from legal action and can reduce monthly payments by up to 40%."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I rebuild my credit score after debt?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Credit repair is possible. After debt review, paying on time, reducing debt, and addressing disputes improves your score gradually. Most people see improvements within 12-24 months of consistent payments."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is financial education really important?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Understanding money — budgeting, saving, debt, credit — changes outcomes. Most financial stress comes from not knowing options. Education removes shame and builds confidence."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does an interest calculator help?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An interest calculator shows you exactly how much debt grows over time. It demonstrates the cost of delay and helps you understand why paying extra on principal saves thousands."
+                  }
+                }
+              ]
+            })
+          }}
+        />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXXXXX');
+            `,
           }}
         />
       </head>

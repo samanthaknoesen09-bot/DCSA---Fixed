@@ -275,7 +275,7 @@ Time: ${new Date().toLocaleTimeString()}`
               <a href="https://www.firstforwomen.co.za" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="First for Women Insurance">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg"
-                  alt="First for Women Insurance"
+                  alt="First for Women Insurance - women-focused insurance solutions and protection products"
                   width={120}
                   height={40}
                   className="h-8 w-auto object-contain"
@@ -284,7 +284,7 @@ Time: ${new Date().toLocaleTimeString()}`
               <a href="https://www.autoandgeneral.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="Auto & General Insurance">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png"
-                  alt="Auto & General Insurance"
+                  alt="Auto & General Insurance - vehicle and general insurance partner for South Africans"
                   width={120}
                   height={40}
                   className="h-8 w-auto object-contain"

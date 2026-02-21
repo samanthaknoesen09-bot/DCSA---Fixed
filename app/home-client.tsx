@@ -740,8 +740,8 @@ export function HomeClient() {
 
               {/* Insurance Partners */}
               <div className="flex items-center justify-center gap-4 pt-3">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg" alt="First for Women" className="h-6 w-auto" />
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png" alt="Auto & General" className="h-6 w-auto" />
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg" alt="First for Women Insurance - trusted insurance partner offering protection and peace of mind" className="h-6 w-auto" />
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png" alt="Auto & General Insurance - comprehensive insurance solutions for South Africans" className="h-6 w-auto" />
               </div>
 
               <p className="text-xs mt-4" style={{ color: colors.charcoal }}>
