@@ -10,6 +10,7 @@ import { PodcastSection } from "@/components/podcast-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
 import { AffiliateIcons } from "@/components/affiliate-icons"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -742,6 +743,9 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* GENTLE AFFILIATE FOOTER */}
+        <GentleAffiliateFooter buttonText="Check Insurance Savings" />
       </main>
 
       {/* BACK TO TOP BUTTON */}

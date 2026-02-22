@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { ContactOptionsHub } from "@/components/contact-options-hub"
 
 export const metadata: Metadata = {
@@ -18,6 +19,9 @@ export default function GetStartedPage() {
           <ContactOptionsHub />
         </div>
       </main>
+
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
+
       <Footer />
     </>
   )

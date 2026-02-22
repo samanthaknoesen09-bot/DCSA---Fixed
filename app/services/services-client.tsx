@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Coffee, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 
 export function ServicesClient() {
   const services = [
@@ -135,6 +136,9 @@ export function ServicesClient() {
           </div>
         </div>
       </section>
+
+      {/* GENTLE AFFILIATE FOOTER */}
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
     </main>
   )
 }
