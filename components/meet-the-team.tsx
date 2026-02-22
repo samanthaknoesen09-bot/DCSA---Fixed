@@ -63,7 +63,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-primary to-primary/60">
                 {!imageErrors["sam"] ? (
                   <Image
-                    src="/images/team/sam.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-41Bq7n134gq1QlpHuSdEJHUxepHoFZ.jpeg"
                     alt="Sam (Samantha Knoesen) - DCSA Founder & Lead Debt Counsellor"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -163,7 +163,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FFD93D] to-[#FFD93D]/60">
                 {!imageErrors["kadene"] ? (
                   <Image
-                    src="/images/team/kadene.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-X5NGKCisNaMVGsIVcnbPyjJ2eS1ELI.jpeg"
                     alt="Kadene - DCSA Administrative Assistant"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -217,7 +217,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FF6B6B] to-[#FF6B6B]/60">
                 {!imageErrors["cindy"] ? (
                   <Image
-                    src="/images/team/cindy.jpg"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-jE3ZexuxzP8dLrmgQV7EYhgq9LHEWG.jpeg"
                     alt="Cindy Killian - Attorney representing DCSA"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
