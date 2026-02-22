@@ -175,6 +175,7 @@ export default function PricingPage() {
             <p className="text-sm text-muted-foreground mt-4">
               No obligation. We'll explain all costs before you commit.
             </p>
+          </div>
         </div>
       </main>
 
