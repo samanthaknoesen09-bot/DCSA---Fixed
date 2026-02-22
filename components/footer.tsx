@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Phone, Mail, MapPin, Facebook, CheckCircle, AlertCircle, Linkedin, Instagram } from "lucide-react"
 import { useState } from "react"
 import PhoneContact from "@/components/phone-contact"
+import { AffiliateIcons } from "@/components/affiliate-icons"
 import { colors } from "@/lib/colors"
 
 const TikTokIcon = () => (
@@ -271,26 +272,7 @@ Time: ${new Date().toLocaleTimeString()}`
           {/* Insurance Partners */}
           <div className="w-full">
             <h4 className="text-sm font-semibold mb-3" style={{ color: colors.charcoal }}>Insurance Partners</h4>
-            <div className="flex items-center gap-6 flex-wrap">
-              <a href="https://www.firstforwomen.co.za" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="First for Women Insurance">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg"
-                  alt="First for Women Insurance - women-focused insurance solutions and protection products"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto object-contain"
-                />
-              </a>
-              <a href="https://www.autoandgeneral.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity" title="Auto & General Insurance">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png"
-                  alt="Auto & General Insurance - vehicle and general insurance partner for South Africans"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto object-contain"
-                />
-              </a>
-            </div>
+            <AffiliateIcons gap="gap-6" iconSize={40} />
             <p className="text-xs mt-2" style={{ color: colors.warmGrey }}>Trusted insurance partners for your peace of mind.</p>
           </div>
 
