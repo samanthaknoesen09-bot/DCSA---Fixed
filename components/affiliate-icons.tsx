@@ -66,11 +66,12 @@ export function AffiliateIcons({ showLabels = false, gap = "gap-6", iconSize = 4
             <Image
               src={partner.logo}
               alt={partner.alt}
-              width={120}
-              height={40}
+              width={150}
+              height={iconSize}
               className={`${heightClass} w-auto object-contain group-hover:scale-105 transition-transform`}
               priority={false}
               loading="lazy"
+              quality={85}
             />
             {showLabels && <span className="text-xs text-center text-muted-foreground">{partner.name}</span>}
           </div>
