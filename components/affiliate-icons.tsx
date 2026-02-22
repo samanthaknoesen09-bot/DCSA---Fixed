@@ -8,8 +8,6 @@ interface AffiliatePartner {
   shortcode: string
   offerId: string
   sid: string
-  apiGuide: string
-  cpl?: string
   title: string
   alt: string
 }
@@ -21,7 +19,6 @@ const affiliatePartners: AffiliatePartner[] = [
     shortcode: "JMAFFSite26159",
     offerId: "2311",
     sid: "26397",
-    apiGuide: "https://returnxdigital.leadbyte.co.uk/integration?slice=6996cb7d69684727783075",
     title: "First for Women Insurance",
     alt: "First for Women Insurance - women-focused insurance solutions and protection products",
   },
@@ -31,8 +28,6 @@ const affiliatePartners: AffiliatePartner[] = [
     shortcode: "JMAFFSite26160",
     offerId: "1539",
     sid: "26397",
-    apiGuide: "https://returnxdigital.leadbyte.co.uk/integration?slice=6996cb7d69684727783075",
-    cpl: "R70",
     title: "Auto & General Insurance",
     alt: "Auto & General Insurance - vehicle and general insurance partner for South Africans",
   },
@@ -45,16 +40,26 @@ export interface AffiliateIconsProps {
 }
 
 export function AffiliateIcons({ showLabels = false, gap = "gap-6", iconSize = 40 }: AffiliateIconsProps) {
+  // Build consistent height class based on iconSize
+  const getHeightClass = (size: number): string => {
+    if (size <= 32) return "h-6"
+    if (size <= 40) return "h-8"
+    if (size <= 48) return "h-10"
+    return "h-12"
+  }
+
+  const heightClass = getHeightClass(iconSize)
+
   return (
-    <div className={`flex items-center ${gap} flex-wrap`}>
+    <div className={`flex items-center ${gap} flex-wrap justify-center`}>
       {affiliatePartners.map((partner) => (
         <a
           key={partner.shortcode}
-          href={`${partner.apiGuide}?shortcode=${partner.shortcode}&offer=${partner.offerId}&sid=${partner.sid}`}
+          href="https://www.leadbyte.co.uk"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:opacity-75 transition-opacity duration-200 group"
-          title={partner.title}
+          title={`${partner.title} - Partner affiliate link`}
           aria-label={partner.title}
         >
           <div className="flex flex-col items-center gap-1">
@@ -62,8 +67,10 @@ export function AffiliateIcons({ showLabels = false, gap = "gap-6", iconSize = 4
               src={partner.logo}
               alt={partner.alt}
               width={120}
-              height={iconSize}
-              className={`h-${iconSize === 40 ? "8" : "10"} w-auto object-contain group-hover:scale-105 transition-transform`}
+              height={40}
+              className={`${heightClass} w-auto object-contain group-hover:scale-105 transition-transform`}
+              priority={false}
+              loading="lazy"
             />
             {showLabels && <span className="text-xs text-center text-muted-foreground">{partner.name}</span>}
           </div>
