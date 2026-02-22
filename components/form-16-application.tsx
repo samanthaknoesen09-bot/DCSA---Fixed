@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Plus, Trash2, CheckCircle2, AlertCircle, FileText, User, Briefcase, DollarSign, CreditCard } from "lucide-react"
+import { Plus, Trash2, CheckCircle2, AlertCircle, FileText, User, Briefcase, DollarSign, CreditCard, Download, Upload } from "lucide-react"
 
 interface Dependent {
   name: string
@@ -36,10 +36,18 @@ interface CommitmentItem {
   amount: string
 }
 
+interface SpouseInfo {
+  name: string
+  surname: string
+  contactNumber: string
+  hasConsent: boolean
+}
+
 export function Form16Application() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [showDownloadButton, setShowDownloadButton] = useState(false)
 
   // Part 1 - Personal Information
   const [personalInfo, setPersonalInfo] = useState({
@@ -55,6 +63,14 @@ export function Form16Application() {
     email: "",
     employerName: "",
     employerAddress: "",
+  })
+
+  // Spouse Information (for community of property marriages)
+  const [spouseInfo, setSpouseInfo] = useState<SpouseInfo>({
+    name: "",
+    surname: "",
+    contactNumber: "",
+    hasConsent: false,
   })
 
   const [dependents, setDependents] = useState<Dependent[]>([])
@@ -144,21 +160,43 @@ export function Form16Application() {
 
   const updateDebt = (index: number, field: keyof DebtItem, value: string) => {
     const updated = [...debts]
-    updated[field] = value
+    updated[index][field] = value
     setDebts(updated)
   }
 
+  // Calculate total monthly debt payments
+  const calculateTotalMonthlyDebt = () => {
+    return debts.reduce((total, debt) => {
+      const monthlyAmount = parseFloat(debt.monthly) || 0
+      return total + monthlyAmount
+    }, 0)
+  }
+
   const handleSubmit = async () => {
+    // Validate spouse consent if married in community of property
+    if (personalInfo.maritalStatus === "married-cop") {
+      if (!spouseInfo.name || !spouseInfo.surname || !spouseInfo.contactNumber) {
+        alert("Please complete spouse information before submitting")
+        return
+      }
+      if (!spouseInfo.hasConsent) {
+        alert("Please confirm spouse consent before submitting")
+        return
+      }
+    }
+
     setIsSubmitting(true)
     try {
       const applicationData = {
         personalInfo,
+        spouseInfo: personalInfo.maritalStatus === "married-cop" ? spouseInfo : null,
         dependents,
         income: incomeItems,
         deductions: deductionItems,
         commitments,
         debts,
         declarations,
+        totalMonthlyDebt: calculateTotalMonthlyDebt(),
         submittedAt: new Date().toISOString(),
       }
 
@@ -170,6 +208,7 @@ export function Form16Application() {
 
       if (response.ok) {
         setIsSuccess(true)
+        setShowDownloadButton(true)
       }
     } catch (error) {
       console.error("[v0] Form 16 submission error:", error)
@@ -189,14 +228,59 @@ export function Form16Application() {
           <p className="text-muted-foreground mb-6">
             Thank you for submitting your debt review application. We will review your information and contact you within 1-2 business days.
           </p>
-          <div className="space-y-2 text-sm text-left max-w-md mx-auto">
-            <p className="font-semibold text-[#0D3B66]">What happens next:</p>
-            <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-              <li>Your debt counsellor will review your application</li>
-              <li>You will be contacted to verify information</li>
-              <li>Required documents will be requested</li>
-              <li>Credit providers will be notified of your debt review status</li>
-            </ul>
+          
+          <div className="space-y-4 max-w-md mx-auto">
+            {/* Download Copy Section */}
+            {showDownloadButton && (
+              <div className="bg-[#4DB6AC]/10 border border-[#4DB6AC] rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Download className="h-5 w-5 text-[#4DB6AC]" />
+                  <h4 className="font-semibold text-[#0D3B66]">Download Your Copy</h4>
+                </div>
+                <Button 
+                  className="w-full bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white"
+                  onClick={() => window.print()}
+                >
+                  Download PDF Copy
+                </Button>
+                <p className="text-xs text-muted-foreground mt-2">
+                  This will allow you to print or save your application for your records
+                </p>
+              </div>
+            )}
+
+            {/* Upload Reminder Section */}
+            <div className="bg-[#FFD93D]/10 border border-[#FFD93D] rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Upload className="h-5 w-5 text-[#FFD93D]" />
+                <h4 className="font-semibold text-[#0D3B66]">Complete Your Profile</h4>
+              </div>
+              <p className="text-sm text-[#0D3B66]/80 mb-3 text-left">
+                To complete your application, please upload the following documents:
+              </p>
+              <ul className="text-sm text-left space-y-1 mb-3 list-disc list-inside text-[#0D3B66]/70">
+                <li>Copy of your ID</li>
+                <li>Recent payslip</li>
+                <li>Bank statement</li>
+              </ul>
+              <Button 
+                className="w-full bg-[#FFD93D] hover:bg-[#FFD93D]/90 text-[#0D3B66]"
+                onClick={() => window.location.href = "/client-portal/documents"}
+              >
+                Go to Uploads
+              </Button>
+            </div>
+
+            {/* Next Steps */}
+            <div className="space-y-2 text-sm text-left bg-gray-50 rounded-lg p-4">
+              <p className="font-semibold text-[#0D3B66]">What happens next:</p>
+              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                <li>Your debt counsellor will review your application</li>
+                <li>You will be contacted to verify information</li>
+                <li>Required documents will be requested</li>
+                <li>Credit providers will be notified of your debt review status</li>
+              </ul>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -300,6 +384,70 @@ export function Form16Application() {
                   </Select>
                 </div>
               </div>
+
+              {/* Spouse Information Section - Show when married in community of property */}
+              {personalInfo.maritalStatus === "married-cop" && (
+                <Card className="border-2 border-[#FFD93D]/30 bg-[#FFD93D]/5">
+                  <CardHeader>
+                    <CardTitle className="text-lg text-[#0D3B66] flex items-center gap-2">
+                      <AlertCircle className="h-5 w-5 text-[#FFD93D]" />
+                      Spouse Information Required
+                    </CardTitle>
+                    <CardDescription>
+                      Since you are married in community of property, we need your spouse's details and consent
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="spouseName">Spouse Name *</Label>
+                        <Input
+                          id="spouseName"
+                          value={spouseInfo.name}
+                          onChange={(e) => setSpouseInfo({ ...spouseInfo, name: e.target.value })}
+                          placeholder="First name"
+                          required
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="spouseSurname">Spouse Surname *</Label>
+                        <Input
+                          id="spouseSurname"
+                          value={spouseInfo.surname}
+                          onChange={(e) => setSpouseInfo({ ...spouseInfo, surname: e.target.value })}
+                          placeholder="Surname"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="spouseContact">Spouse Contact Number *</Label>
+                      <Input
+                        id="spouseContact"
+                        type="tel"
+                        value={spouseInfo.contactNumber}
+                        onChange={(e) => setSpouseInfo({ ...spouseInfo, contactNumber: e.target.value })}
+                        placeholder="e.g., 082 123 4567"
+                        required
+                      />
+                    </div>
+
+                    <div className="flex items-start space-x-3 p-3 bg-white border border-[#FFD93D]/20 rounded-lg">
+                      <Checkbox
+                        id="spouseConsent"
+                        checked={spouseInfo.hasConsent}
+                        onCheckedChange={(checked) => setSpouseInfo({ ...spouseInfo, hasConsent: checked as boolean })}
+                        required
+                      />
+                      <Label htmlFor="spouseConsent" className="font-normal cursor-pointer text-sm leading-relaxed">
+                        I confirm that my spouse is aware of and consents to this debt review application *
+                      </Label>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
 
               <div className="space-y-2">
                 <Label htmlFor="physicalAddress">Physical Address *</Label>
@@ -726,6 +874,23 @@ export function Form16Application() {
                     No debts added yet. Click "Add Debt" to list your obligations.
                   </p>
                 )}
+
+                {/* Total Monthly Debt Payments */}
+                {debts.length > 0 && (
+                  <div className="mt-6 p-4 bg-gradient-to-r from-[#4DB6AC]/10 to-[#FFD93D]/10 border-2 border-[#4DB6AC]/30 rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-[#0D3B66]/70 font-medium">Total Monthly Debt Payments</p>
+                        <p className="text-xs text-muted-foreground">Automatically calculated from the monthly payments above</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-3xl font-bold text-[#4DB6AC]">
+                          R {calculateTotalMonthlyDebt().toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -734,81 +899,120 @@ export function Form16Application() {
           {currentStep === 5 && (
             <div className="space-y-6">
               <div className="flex items-center gap-2 mb-4">
-                <CheckCircle2 className="h-5 w-5 text-[#4DB6AC]" />
+                <FileText className="h-5 w-5 text-[#4DB6AC]" />
                 <h3 className="text-lg font-semibold text-[#0D3B66]">Part 5: Declaration by Consumer</h3>
               </div>
 
-              <Alert className="border-[#FF6B6B] bg-[#FF6B6B]/10">
-                <AlertCircle className="h-4 w-4 text-[#FF6B6B]" />
-                <AlertDescription className="text-sm">
-                  <strong>Please read carefully:</strong> By signing this declaration, you agree to the debt review process and understand your rights and obligations under the National Credit Act.
-                </AlertDescription>
+              <Alert className="border-[#FF6B6B] bg-[#FF6B6B]/10 p-4">
+                <AlertCircle className="h-5 w-5 text-[#FF6B6B] mt-1" />
+                <div>
+                  <AlertDescription className="text-sm font-semibold text-[#FF6B6B] mb-2">
+                    Important - Please Read Carefully
+                  </AlertDescription>
+                  <AlertDescription className="text-sm text-[#FF6B6B]/90">
+                    By accepting these declarations, you agree to the debt review process and understand your rights and obligations under the National Credit Act. You must tick <strong>all boxes</strong> below to proceed.
+                  </AlertDescription>
+                </div>
               </Alert>
 
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
+              <div className="bg-[#4DB6AC]/5 border-l-4 border-[#4DB6AC] p-4 rounded">
+                <h4 className="font-semibold text-[#0D3B66] mb-2">What you are agreeing to:</h4>
+                <ul className="text-sm text-[#0D3B66]/80 space-y-1 list-disc list-inside">
+                  <li>Work with our debt counsellor to manage your debts</li>
+                  <li>Your information will be sent to credit bureaus</li>
+                  <li>You will not be able to get new credit while under review</li>
+                  <li>All information provided is true and correct</li>
+                  <li>You understand the debt review process and costs</li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                {/* Declaration 1 */}
+                <div className="flex items-start gap-3 p-4 bg-white border-2 border-gray-200 hover:border-[#4DB6AC]/30 rounded-lg transition-colors">
                   <Checkbox
                     id="dec1"
                     checked={declarations.declaration1}
                     onCheckedChange={(checked) =>
                       setDeclarations({ ...declarations, declaration1: checked as boolean })
                     }
+                    className="mt-1"
                   />
                   <Label htmlFor="dec1" className="text-sm leading-relaxed cursor-pointer">
                     I/We undertake to comply with all requests from the debt counsellor to assist in evaluating my/our state of indebtedness and prospects for responsible debt restructuring.
                   </Label>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {/* Declaration 2 */}
+                <div className="flex items-start gap-3 p-4 bg-white border-2 border-gray-200 hover:border-[#4DB6AC]/30 rounded-lg transition-colors">
                   <Checkbox
                     id="dec2"
                     checked={declarations.declaration2}
                     onCheckedChange={(checked) =>
                       setDeclarations({ ...declarations, declaration2: checked as boolean })
                     }
+                    className="mt-1"
                   />
                   <Label htmlFor="dec2" className="text-sm leading-relaxed cursor-pointer">
                     I/We consent to the submission of my/our information to all registered credit bureaus and understand that I/we will be listed as under debt review.
                   </Label>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {/* Declaration 3 */}
+                <div className="flex items-start gap-3 p-4 bg-white border-2 border-gray-200 hover:border-[#4DB6AC]/30 rounded-lg transition-colors">
                   <Checkbox
                     id="dec3"
                     checked={declarations.declaration3}
                     onCheckedChange={(checked) =>
                       setDeclarations({ ...declarations, declaration3: checked as boolean })
                     }
+                    className="mt-1"
                   />
                   <Label htmlFor="dec3" className="text-sm leading-relaxed cursor-pointer">
                     I/We undertake NOT to enter into any further credit agreements until the debt counsellor rejects my/our application, the court determines I/we are not over-indebted, or all obligations are fulfilled.
                   </Label>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {/* Declaration 4 */}
+                <div className="flex items-start gap-3 p-4 bg-white border-2 border-gray-200 hover:border-[#4DB6AC]/30 rounded-lg transition-colors">
                   <Checkbox
                     id="dec4"
                     checked={declarations.declaration4}
                     onCheckedChange={(checked) =>
                       setDeclarations({ ...declarations, declaration4: checked as boolean })
                     }
+                    className="mt-1"
                   />
                   <Label htmlFor="dec4" className="text-sm leading-relaxed cursor-pointer">
                     I/We confirm that the information provided in this document is, to the best of my/our knowledge, true and correct.
                   </Label>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {/* Declaration 5 */}
+                <div className="flex items-start gap-3 p-4 bg-white border-2 border-gray-200 hover:border-[#4DB6AC]/30 rounded-lg transition-colors">
                   <Checkbox
                     id="dec5"
                     checked={declarations.declaration5}
                     onCheckedChange={(checked) =>
                       setDeclarations({ ...declarations, declaration5: checked as boolean })
                     }
+                    className="mt-1"
                   />
                   <Label htmlFor="dec5" className="text-sm leading-relaxed cursor-pointer">
                     I/We confirm that the Debt Review Process and Fee Structure has been explained and is understood and accepted. I/We authorize DCSA and its agents to process and store my/our personal information in accordance with POPI Act.
                   </Label>
+                </div>
+              </div>
+
+              {/* Acceptance Summary */}
+              <div className="p-4 bg-[#FFD93D]/10 border-2 border-[#FFD93D]/30 rounded-lg">
+                <p className="text-sm text-[#0D3B66] font-semibold mb-2">Acceptance Status:</p>
+                <div className="flex items-center gap-2">
+                  <div className={`h-3 w-3 rounded-full ${declarations.declaration1 && declarations.declaration2 && declarations.declaration3 && declarations.declaration4 && declarations.declaration5 ? 'bg-green-500' : 'bg-gray-300'}`} />
+                  <p className="text-sm text-[#0D3B66]/70">
+                    {declarations.declaration1 && declarations.declaration2 && declarations.declaration3 && declarations.declaration4 && declarations.declaration5
+                      ? "✓ All declarations accepted - Ready to submit"
+                      : "Please accept all declarations to continue"}
+                  </p>
                 </div>
               </div>
             </div>
