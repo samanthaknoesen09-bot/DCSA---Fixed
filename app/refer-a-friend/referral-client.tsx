@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Heart,
   Users,
@@ -59,6 +60,7 @@ export function ReferralClient() {
     friendPhone: "",
     friendRelationship: "",
   })
+  const [referrerConsent, setReferrerConsent] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submissionId, setSubmissionId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -74,7 +76,8 @@ export function ReferralClient() {
       formData.referrerEmail.trim() &&
       formData.referrerPhone.trim() &&
       formData.friendName.trim() &&
-      formData.friendPhone.trim()
+      formData.friendPhone.trim() &&
+      referrerConsent
     )
   }
 
@@ -135,7 +138,8 @@ export function ReferralClient() {
     formData.referrerEmail.trim() &&
     formData.referrerPhone.trim() &&
     formData.friendName.trim() &&
-    formData.friendPhone.trim()
+    formData.friendPhone.trim() &&
+    referrerConsent
 
   const shareUrl =
     typeof window !== "undefined"
@@ -493,6 +497,21 @@ export function ReferralClient() {
                           </SelectContent>
                         </Select>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Referrer Consent */}
+                  <div className="bg-[#FFD93D]/10 border-2 border-[#FFD93D]/30 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id="referrerConsent"
+                        checked={referrerConsent}
+                        onCheckedChange={(checked) => setReferrerConsent(checked as boolean)}
+                        required
+                      />
+                      <Label htmlFor="referrerConsent" className="font-normal cursor-pointer text-sm leading-relaxed">
+                        I confirm that my friend is aware you are sharing their details with DCSA for debt counselling services. *
+                      </Label>
                     </div>
                   </div>
 
