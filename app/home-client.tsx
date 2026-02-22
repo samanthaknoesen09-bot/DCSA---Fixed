@@ -9,6 +9,8 @@ import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { PodcastSection } from "@/components/podcast-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
+import { AffiliateIcons } from "@/components/affiliate-icons"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -385,25 +387,8 @@ export function HomeClient() {
               <p className="text-center mb-4" style={{ color: colors.charcoal }}>
                 <strong>Affiliations:</strong> We work with major insurance partners and creditors across South Africa to make this work for you.
               </p>
-              <div className="flex justify-center gap-6 flex-wrap">
-                <a href="https://www.firstforwomen.co.za" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg"
-                    alt="First for Women Insurance"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto object-contain"
-                  />
-                </a>
-                <a href="https://www.autoandgeneral.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75 transition-opacity">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png"
-                    alt="Auto & General Insurance"
-                    width={120}
-                    height={40}
-                    className="h-8 w-auto object-contain"
-                  />
-                </a>
+              <div className="flex justify-center">
+                <AffiliateIcons gap="gap-6" iconSize={40} />
               </div>
             </div>
           </div>
@@ -758,6 +743,9 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* GENTLE AFFILIATE FOOTER */}
+        <GentleAffiliateFooter buttonText="Check Insurance Savings" />
       </main>
 
       {/* BACK TO TOP BUTTON */}

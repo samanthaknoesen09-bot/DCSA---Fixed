@@ -536,7 +536,12 @@ NCR Registered: NCRDC3995
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+      <div className="max-w-4xl mx-auto space-y-8">
+        {/* Title and Description */}
+        <div className="space-y-2 text-center mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66]">Expenses Calculator</h2>
+          <p className="text-lg text-[#0D3B66]/70">See where your money goes</p>
+        </div>
       {/* Stress Level Rating Modal */}
       {showStressRating && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">

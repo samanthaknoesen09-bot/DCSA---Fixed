@@ -1,11 +1,13 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Debt Counselling Costs & Fees | DCSA Transparent Pricing",
   description: "Clear breakdown of debt counselling costs in South Africa. NCR regulated fees, no hidden charges. Understand exactly what you'll pay for debt review services.",
 }
@@ -177,6 +179,9 @@ export default function PricingPage() {
           </div>
         </div>
       </main>
+
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
+
       <Footer />
     </>
   )

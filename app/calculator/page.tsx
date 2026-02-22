@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { ClientCalculatorPage } from "./calculator-client"
 
 export const metadata: Metadata = {
@@ -225,6 +226,9 @@ export default function CalculatorPage() {
           </p>
         </div>
       </main>
+
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
+
       <Footer />
     </div>
   )

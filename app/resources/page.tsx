@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { WhatsAppWidget } from "@/components/whatsapp-widget"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertCircle } from "lucide-react"
@@ -163,8 +164,9 @@ export default function ResourcesPage() {
         </div>
       </main>
 
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
+
       <Footer />
-      <WhatsAppWidget />
     </div>
   )
 }

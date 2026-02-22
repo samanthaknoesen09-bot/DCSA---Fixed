@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import {
   Accordion,
   AccordionContent,
@@ -362,6 +363,8 @@ export default function FAQPage() {
           </Card>
         </div>
       </main>
+
+      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
 
       <Footer />
     </div>

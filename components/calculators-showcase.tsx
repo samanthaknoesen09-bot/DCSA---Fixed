@@ -27,7 +27,7 @@ export function CalculatorsShowcase() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* Money Map Calculator */}
+          {/* Expenses Calculator */}
           <Card className="border-2 border-primary/30 hover:border-primary hover:shadow-2xl transition-all group">
             <CardContent className="p-8 space-y-6">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -35,7 +35,8 @@ export function CalculatorsShowcase() {
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-[#0D3B66] mb-3">Money Map</h3>
+                <h3 className="text-2xl font-bold text-[#0D3B66] mb-3">Expenses Calculator</h3>
+                <p className="text-[#0D3B66]/70 leading-relaxed mb-1 text-sm font-medium text-[#4DB6AC]">See where your money goes</p>
                 <p className="text-[#0D3B66]/70 leading-relaxed mb-4">
                   Track every Rand coming in and going out. See exactly where your money goes each month with our interactive budget calculator.
                 </p>
@@ -60,7 +61,7 @@ export function CalculatorsShowcase() {
                 asChild
               >
                 <Link href="/calculator">
-                  Try Money Map
+                  Try Expenses Calculator
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -107,7 +108,7 @@ export function CalculatorsShowcase() {
             </CardContent>
           </Card>
 
-          {/* Savings Calculator */}
+          {/* Potential Savings Calculator */}
           <Card className="border-2 border-[#FFD93D]/30 hover:border-[#FFD93D] hover:shadow-2xl transition-all group">
             <CardContent className="p-8 space-y-6">
               <div className="w-16 h-16 rounded-full bg-[#FFD93D]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -115,7 +116,7 @@ export function CalculatorsShowcase() {
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-[#0D3B66] mb-3">Potential Savings Calculator</h3>
+                <h3 className="text-2xl font-bold text-[#0D3B66] mb-3">How Much Could You Save?</h3>
                 <p className="text-[#0D3B66]/70 leading-relaxed mb-4">
                   See how much you could save through debt counselling. Compare your current payments to restructured payments.
                 </p>
@@ -130,7 +131,7 @@ export function CalculatorsShowcase() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#FFD93D] mr-2">✓</span>
-                    <span>Counselling benefit analysis</span>
+                    <span>Free assessment available</span>
                   </li>
                 </ul>
               </div>
@@ -144,7 +145,7 @@ export function CalculatorsShowcase() {
                   }
                 }}
               >
-                Calculate Savings
+                Calculate Potential Savings
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </CardContent>
@@ -158,7 +159,7 @@ export function CalculatorsShowcase() {
               Not sure which calculator to use?
             </p>
             <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-              Start with the Money Map to understand your full financial picture, then use our other calculators to explore specific scenarios.
+              Start with the Expenses Calculator to understand your full financial picture, then use our other calculators to explore specific scenarios.
             </p>
             <Button 
               size="lg" 
@@ -166,7 +167,7 @@ export function CalculatorsShowcase() {
               asChild
             >
               <Link href="/calculator">
-                Start with Money Map
+                Start with Expenses Calculator
               </Link>
             </Button>
           </CardContent>
