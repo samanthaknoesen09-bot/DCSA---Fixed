@@ -11,6 +11,10 @@ import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
 import { AffiliateIcons } from "@/components/affiliate-icons"
 import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
+import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
+import { HowThisWorksStrip } from "@/components/how-this-works-strip"
+import { TransparentFeesSection } from "@/components/transparent-fees-section"
+import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -113,12 +117,20 @@ export function HomeClient() {
         }}>
           <div className="container mx-auto max-w-3xl space-y-6 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pretty leading-tight" style={{ color: colors.charcoal }}>
-              Money stress is heavy. Let's fix it properly.
+              Accounts are piling up. Your salary doesn't stretch the way it used to.
             </h1>
-            <p className="text-lg md:text-xl text-pretty" style={{ color: colors.warmGrey }}>
-              We help you understand your money, fix debt problems, and rebuild credit — clearly, calmly, without shame or confusion.
+            <p className="text-lg md:text-xl text-pretty leading-relaxed" style={{ color: colors.charcoal }}>
+              If your accounts are controlling your life, you deserve to take control back.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <div className="space-y-4 pt-4">
+              <p className="text-base text-pretty font-semibold" style={{ color: colors.charcoal }}>
+                Not with another quick fix. Not with another loan.
+              </p>
+              <p className="text-base text-pretty" style={{ color: colors.warmGrey }}>
+                With a proper plan — explained clearly, handled legally, and done properly. And you won't have to do it alone.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
               <Button 
                 size="lg" 
                 className="rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
@@ -127,7 +139,7 @@ export function HomeClient() {
               >
                 <Link href={WHATSAPP_URL + "?text=Hi%20DCSA!%20I'd%20like%20to%20chat%20about%20my%20options"}>
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Message Me – Free Chat
+                  Book a Gentle Chat
                 </Link>
               </Button>
               <Button 
@@ -137,15 +149,23 @@ export function HomeClient() {
                 style={{ borderColor: colors.maroon, color: colors.maroon }}
                 asChild
               >
-                <Link href="#calculators">
-                  Quick Money Check
+                <Link href="#how-this-works">
+                  See How This Works
                 </Link>
               </Button>
             </div>
             <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
-              ↓ No pressure, just clarity. Next: Try a quick check below.
+              ↓ No pressure, no judgment. Let's see your options.
             </p>
           </div>
+        </section>
+
+        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
+        <EmotionalMirrorSection />
+
+        {/* HOW THIS WORKS SECTION */}
+        <section id="how-this-works">
+          <HowThisWorksStrip />
         </section>
 
         {/* CALCULATORS SECTION - "Your Money Reality Check" */}
@@ -393,6 +413,12 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* TRANSPARENT FEES SECTION */}
+        <TransparentFeesSection />
+
+        {/* FAQ REASSURANCE SECTION */}
+        <FAQReassuranceSection />
 
         {/* PODCAST SECTION */}
         <section className="py-16 md:py-20 px-4" id="podcast" style={{ backgroundColor: colors.warmBeige }}>
