@@ -12,16 +12,22 @@ export function ServicesClient() {
       subtitle: "NCR Registered Debt Counselling",
       description: "Understand if debt review is right for you",
       details: [
-        "Debt review is a legal process regulated by the South African National Credit Regulator (NCR). It's designed to help over-indebted consumers manage multiple debts responsibly.",
-        "A registered debt counsellor works with your creditors to restructure your debt into a single, affordable monthly payment. It's not a bailout — it's a structured, legal path to financial stability.",
-        "Yes, it shows on your credit record. But here's what matters: so does defaulting. Debt review shows you're taking action, which matters when you rebuild later.",
+        "Debt review is a legal process regulated by the South African National Credit Regulator (NCR) under the National Credit Act. It's designed to help over-indebted consumers restructure their debts into a manageable plan.",
+        "When you enter debt review, a registered debt counsellor (like Sam) assesses your income and expenses, then negotiates with your creditors to restructure your debts. The goal is to create a single monthly payment that works with your actual budget.",
+        "Debt review will appear on your credit record. This is important to understand. However, it shows you're taking responsible action — which matters when you rebuild your credit later.",
       ],
       whatToExpect: [
-        "Honest assessment of your financial situation (no judgment, no shame)",
-        "Detailed negotiation with creditors on your behalf",
-        "A restructured payment plan that fits your actual budget",
-        "Legal protection from creditor harassment while in the process",
-        "Ongoing support and guidance throughout your journey",
+        "Honest assessment of your full financial situation — no judgment",
+        "Detailed negotiation with creditors on your behalf to restructure payments",
+        "A manageable monthly payment plan (based on what you can realistically afford)",
+        "Legal protection from creditor harassment while your case is in review",
+        "Ongoing counselling and support throughout the restructuring process",
+      ],
+      important: [
+        "Debt review does not automatically reduce the total amount you owe",
+        "Interest rate reductions are negotiated with creditors — they are not guaranteed",
+        "Your payment reduction depends on restructured terms, not on reducing the principal balance",
+        "The timeline for completion typically ranges from 3-7 years, depending on your agreement with creditors",
       ],
     },
     {
@@ -29,16 +35,22 @@ export function ServicesClient() {
       subtitle: "Rebuild Your Financial Reputation",
       description: "Rebuild your credit score step by step",
       details: [
-        "Your credit score is your financial reputation. It affects loans, interest rates, rental applications, and even job prospects. If yours is damaged, it limits your options.",
-        "Credit repair isn't magic or quick fixes. It's about understanding what damages your score, fixing what you can now, and systematically rebuilding trust over time.",
-        "We help you understand the rules of the credit system so you can play the game smarter and protect yourself against future debt traps.",
+        "Your credit score is your financial reputation in the system. It affects your ability to access loans, interest rates you're offered, rental applications, and even affects some employment opportunities.",
+        "Credit repair isn't a quick fix. It's about understanding what damages your score, fixing inaccuracies that exist, and systematically rebuilding positive credit behaviour over time.",
+        "We help you understand how the credit system works so you can make smarter financial decisions and protect yourself from future debt traps.",
       ],
       whatToExpect: [
-        "Full credit report review and error identification",
-        "Dispute resolution with credit bureaus for inaccuracies",
-        "Actionable guidance on building good credit habits",
-        "Monitoring and ongoing support as your score improves",
-        "Education on avoiding common credit mistakes",
+        "Full credit report review from all three major bureaus",
+        "Identification and dispute of errors or inaccuracies on your record",
+        "Guidance on building positive credit habits going forward",
+        "Regular monitoring and support as your score improves",
+        "Education on how to maintain good credit long-term",
+      ],
+      important: [
+        "Credit score improvement takes time — typically 6-24 months depending on your situation",
+        "Negative items remain on your record for set periods (judgements, defaults, etc.)",
+        "Credit repair works best when combined with stable payment behaviour",
+        "We provide guidance, but ultimately your actions determine your score improvement",
       ],
     },
   ]
@@ -101,6 +113,28 @@ export function ServicesClient() {
                       ))}
                     </ul>
                   </div>
+
+                  {service.important && (
+                    <div 
+                      className="rounded-lg p-6 border-2"
+                      style={{ 
+                        borderColor: colors.maroon + "30",
+                        backgroundColor: colors.maroon + "05"
+                      }}
+                    >
+                      <h3 className="font-bold mb-4" style={{ color: colors.charcoal }}>
+                        Important to Know
+                      </h3>
+                      <ul className="space-y-2">
+                        {service.important.map((item, i) => (
+                          <li key={i} className="flex gap-3" style={{ color: colors.charcoal }}>
+                            <span className="text-xs font-bold mt-1" style={{ color: colors.maroon }}>•</span>
+                            <span className="text-sm">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
