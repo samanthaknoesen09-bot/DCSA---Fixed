@@ -8,33 +8,37 @@ import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 export function ServicesClient() {
   const services = [
     {
-      title: "Debt Review",
+      title: "Debt Review in South Africa",
+      subtitle: "NCR Registered Debt Counselling",
       description: "Understand if debt review is right for you",
       details: [
-        "Debt review is a legal process that helps over-indebted consumers manage multiple debts. It's not a free pass — it's a structured plan.",
-        "A debt counsellor (like us) works with your creditors to create a budget and payment plan that actually fits your life.",
-        "It shows up on your credit record, but it also shows you're taking action. That matters.",
+        "Debt review is a legal process regulated by the South African National Credit Regulator (NCR). It's designed to help over-indebted consumers manage multiple debts responsibly.",
+        "A registered debt counsellor works with your creditors to restructure your debt into a single, affordable monthly payment. It's not a bailout — it's a structured, legal path to financial stability.",
+        "Yes, it shows on your credit record. But here's what matters: so does defaulting. Debt review shows you're taking action, which matters when you rebuild later.",
       ],
       whatToExpect: [
-        "Assessment of your financial situation (honestly, without judgment)",
-        "Negotiation with your creditors on your behalf",
-        "A monthly payment plan you can actually stick to",
-        "Support throughout the process",
+        "Honest assessment of your financial situation (no judgment, no shame)",
+        "Detailed negotiation with creditors on your behalf",
+        "A restructured payment plan that fits your actual budget",
+        "Legal protection from creditor harassment while in the process",
+        "Ongoing support and guidance throughout your journey",
       ],
     },
     {
-      title: "Credit Repair",
+      title: "Credit Repair Services",
+      subtitle: "Rebuild Your Financial Reputation",
       description: "Rebuild your credit score step by step",
       details: [
-        "Your credit score is like a financial reputation. If it's damaged, it affects everything — loans, rates, even job prospects.",
-        "Credit repair isn't magic. It's about understanding what hurts your score, fixing what you can, and giving time to heal the rest.",
-        "We help you understand the rules so you can play the game better.",
+        "Your credit score is your financial reputation. It affects loans, interest rates, rental applications, and even job prospects. If yours is damaged, it limits your options.",
+        "Credit repair isn't magic or quick fixes. It's about understanding what damages your score, fixing what you can now, and systematically rebuilding trust over time.",
+        "We help you understand the rules of the credit system so you can play the game smarter and protect yourself against future debt traps.",
       ],
       whatToExpect: [
-        "Credit report review and error correction",
-        "Dispute resolution with credit bureaus",
-        "Guidance on building good credit habits",
-        "Ongoing support as your score improves",
+        "Full credit report review and error identification",
+        "Dispute resolution with credit bureaus for inaccuracies",
+        "Actionable guidance on building good credit habits",
+        "Monitoring and ongoing support as your score improves",
+        "Education on avoiding common credit mistakes",
       ],
     },
   ]
@@ -45,7 +49,7 @@ export function ServicesClient() {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: colors.charcoal }}>
-            Our Services
+            Debt Counselling & Credit Repair in South Africa
           </h1>
           <p className="text-xl" style={{ color: colors.warmGrey }}>
             We don't sell quick fixes. We offer real solutions built on education, honesty, and your specific situation.
@@ -64,9 +68,16 @@ export function ServicesClient() {
                 style={{ borderColor: colors.sandLight, borderRadius: "18px" }}
               >
                 <CardContent className="p-8 space-y-6">
-                  <h2 className="text-3xl font-bold" style={{ color: colors.maroon }}>
-                    {service.title}
-                  </h2>
+                  <div>
+                    <h2 className="text-3xl font-bold" style={{ color: colors.maroon }}>
+                      {service.title}
+                    </h2>
+                    {service.subtitle && (
+                      <p className="text-sm font-semibold mt-2" style={{ color: colors.mintCalm }}>
+                        {service.subtitle}
+                      </p>
+                    )}
+                  </div>
 
                   <div className="space-y-4">
                     {service.details.map((detail, i) => (
