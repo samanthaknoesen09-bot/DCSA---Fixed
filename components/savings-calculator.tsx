@@ -131,10 +131,10 @@ export function SavingsCalculator() {
         <CardHeader>
           <CardTitle className="text-2xl text-[#0D3B66] flex items-center gap-2">
             <Sparkles className="h-6 w-6 text-[#FFD93D]" />
-            How much could you possibly save under debt review?
+            Estimated Restructuring Outcome
           </CardTitle>
           <p className="text-sm text-muted-foreground mt-2">
-            This is just a rough estimation of what debt counselling could possibly be saving you
+            Based on affordability and possible negotiated terms — not guaranteed. Final outcomes depend on creditor responses and legal confirmation.
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
