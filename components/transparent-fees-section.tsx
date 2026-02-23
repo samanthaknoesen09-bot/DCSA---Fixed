@@ -46,7 +46,7 @@ export function TransparentFeesSection() {
                   </div>
                   <div className="flex justify-between">
                     <span style={{ color: colors.charcoal }}>Years to repay (minimum payments):</span>
-                    <strong style={{ color: colors.maroon }}>7-10 years</strong>
+                    <strong style={{ color: colors.maroon }}>7-10+ years</strong>
                   </div>
                   <div className="flex justify-between pt-3 border-t" style={{ borderColor: colors.sandLight }}>
                     <span style={{ color: colors.charcoal }}>Total interest paid:</span>
@@ -93,16 +93,16 @@ export function TransparentFeesSection() {
                     <strong style={{ color: colors.mintCalm }}>~R9,200</strong>
                   </div>
                   <div className="flex justify-between">
-                    <span style={{ color: colors.charcoal }}>DCSA counselling fee (average):</span>
-                    <strong style={{ color: colors.charcoal }}>~R650</strong>
+                    <span style={{ color: colors.charcoal }}>Counselling fee (example):</span>
+                    <strong style={{ color: colors.charcoal }}>~R300</strong>
                   </div>
                   <div className="flex justify-between">
                     <span style={{ color: colors.charcoal }}>Repayment timeline:</span>
                     <strong style={{ color: colors.mintCalm }}>5-6 years</strong>
                   </div>
                   <div className="flex justify-between pt-3 border-t" style={{ borderColor: colors.mintCalm }}>
-                    <span style={{ color: colors.charcoal }}>You save approximately:</span>
-                    <strong style={{ color: colors.mintCalm }}>R300,000+</strong>
+                    <span style={{ color: colors.charcoal }}>Potential savings*:</span>
+                    <strong style={{ color: colors.mintCalm }}>R200,000+</strong>
                   </div>
                 </div>
 
@@ -112,9 +112,13 @@ export function TransparentFeesSection() {
                 >
                   <Check className="w-5 h-5 flex-shrink-0" style={{ color: colors.mintCalm }} />
                   <p className="text-sm" style={{ color: colors.charcoal }}>
-                    Legal protection from creditors. You can breathe again.
+                    Legal protection. Breathing room. A plan that works.
                   </p>
                 </div>
+
+                <p className="text-xs" style={{ color: colors.warmGrey }}>
+                  *Based on negotiated interest reductions and structured repayment.
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -129,37 +133,57 @@ export function TransparentFeesSection() {
           }}
         >
           <h4 
-            className="font-bold mb-3"
+            className="font-bold mb-4"
             style={{ color: colors.charcoal }}
           >
-            Our Fees Breakdown (Transparent)
+            NCR-Regulated Fees (Transparent Breakdown)
           </h4>
-          <ul className="space-y-2">
-            <li className="flex gap-3">
-              <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
-              <span style={{ color: colors.charcoal }}>
-                <strong>Initial Assessment:</strong> Free consultation to understand your situation
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
-              <span style={{ color: colors.charcoal }}>
-                <strong>Monthly Counselling Fee:</strong> NCR-regulated (varies by debt size, typically R400-R800/month)
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
-              <span style={{ color: colors.charcoal }}>
-                <strong>No hidden charges:</strong> What we quote is what you pay
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
-              <span style={{ color: colors.charcoal }}>
-                <strong>We only succeed when you do:</strong> Our incentive is your financial freedom
-              </span>
-            </li>
-          </ul>
+          <div className="space-y-3 text-sm">
+            <p style={{ color: colors.warmGrey }}>
+              All fees are set by NCR guidelines. Here's exactly what to expect:
+            </p>
+            <ul className="space-y-2">
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Application Fee:</strong> R50 (excl VAT)
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Restructuring Fee:</strong> Capped at R6,000 or first instalment (whichever is lower) excl VAT
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Aftercare Fee (First 24 months):</strong> 5% up to R400 excl VAT per month
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Aftercare Fee (Thereafter):</strong> 3% up to R400 excl VAT per month
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Consent Order Legal Fee:</strong> R750 excl VAT
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Payment Distribution Agent (PDA):</strong> Fees apply as per your PDA agreement
+                </span>
+              </li>
+            </ul>
+            <p className="pt-3 border-t" style={{ borderColor: colors.sandLight, color: colors.warmGrey }}>
+              <strong>No hidden charges:</strong> What we quote is exactly what you pay. All fees are NCR-compliant and transparent from day one.
+            </p>
+          </div>
         </div>
       </div>
     </section>

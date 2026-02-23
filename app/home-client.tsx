@@ -15,6 +15,7 @@ import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
 import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { TransparentFeesSection } from "@/components/transparent-fees-section"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
+import { MeetTheTeam } from "@/components/meet-the-team"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -426,55 +427,7 @@ export function HomeClient() {
         </section>
 
         {/* TEAM SECTION */}
-        <section className="py-16 md:py-20 px-4" id="team" style={{ backgroundColor: colors.white }}>
-          <div className="container mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
-                Who You're Talking To
-              </h2>
-              <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Real people, honest conversations, from our calm office in Gqeberha.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                <div style={{ backgroundColor: colors.softPeach + "40", height: "200px" }} />
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Samantha</h3>
-                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
-                    Since 2014, honest talks from home. I've helped hundreds find calm again.
-                  </p>
-                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Founder, Debt Counsellor</p>
-                </CardContent>
-              </Card>
-
-              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                <div style={{ backgroundColor: colors.mintCalm + "40", height: "200px" }} />
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Kadene</h3>
-                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
-                    I help people understand their options without the jargon.
-                  </p>
-                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Financial Educator</p>
-                </CardContent>
-              </Card>
-
-              <Card className="rounded-xl border-0 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                <div style={{ backgroundColor: colors.maroon + "20", height: "200px" }} />
-                <CardContent className="p-6 text-center">
-                  <h3 className="font-bold text-lg mb-2" style={{ color: colors.charcoal }}>Cindy</h3>
-                  <p className="text-sm mb-4" style={{ color: colors.warmGrey }}>
-                    I make sure every conversation feels safe and every outcome is real.
-                  </p>
-                  <p className="text-xs font-semibold" style={{ color: colors.maroon }}>Client Advocate</p>
-                </CardContent>
-              </Card>
-            </div>
-
-
-          </div>
-        </section>
+        <MeetTheTeam />
 
         {/* REVIEWS SECTION */}
         <section className="py-16 md:py-20 px-4" id="stories" style={{ backgroundColor: colors.white }}>
