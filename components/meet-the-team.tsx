@@ -63,8 +63,8 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-primary to-primary/60">
                 {!imageErrors["sam"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-41Bq7n134gq1QlpHuSdEJHUxepHoFZ.jpeg"
-                    alt="Sam (Samantha Knoesen) - DCSA Founder & Lead Debt Counsellor"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-1VJIQpN7Uhf5TVVKUNGmueFnkcZ1sA.jpeg"
+                    alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DCSA"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -88,22 +88,23 @@ export function MeetTheTeam() {
                 
                 <div className="text-left space-y-3 text-[#0D3B66]/80 leading-relaxed text-sm">
                   <p>
-                    For over 12 years, I've had the privilege of helping people navigate some of the most stressful moments of their financial lives. 
-                    One thing I want you to know from the start is this: <strong className="text-[#0D3B66]">debt does not define you</strong>.
+                    <strong className="text-[#0D3B66]">Sam believes debt is never just about money.</strong>
                   </p>
                   
                   <p>
-                    Life can change quickly. Sometimes it's a series of difficult decisions, sometimes it's circumstances beyond your control — often it's both. 
-                    Whatever brought you here, you'll never be judged or lectured. My role is to support you, guide you, and help you feel calm and in control again.
+                    It's about stress that follows you home. It's about pressure that affects your confidence, your relationships, and your peace of mind.
                   </p>
                   
                   <p>
-                    I believe in honest conversations, clear guidance, and practical solutions that work in real life — <em>your life</em>. 
-                    I'll always be straightforward with you, but I'll also be kind. You'll be met with understanding, respect, and genuine care every step of the way.
+                    Known for her friendly and welcoming nature, Sam creates a space where clients feel understood — not judged. But behind that warmth is someone who will stand firm and advocate fiercely for the people she represents.
+                  </p>
+                  
+                  <p>
+                    She treats every client as a person, not a number — and every case as personal.
                   </p>
                   
                   <p className="text-[#0D3B66] font-medium">
-                    Think of our first conversation as a quiet moment to pause and breathe. You talk, I listen, and together we create a plan that feels realistic, supportive, and achievable.
+                    Because to Sam, fixing debt isn't about spreadsheets. It's about helping people reclaim control, stability, and dignity in their lives.
                   </p>
                 </div>
 
@@ -163,8 +164,8 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FFD93D] to-[#FFD93D]/60">
                 {!imageErrors["kadene"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-X5NGKCisNaMVGsIVcnbPyjJ2eS1ELI.jpeg"
-                    alt="Kadene - DCSA Administrative Assistant"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-gtl6PDjLWsApKD4RP4tDYTUGZwPzIm.jpeg"
+                    alt="Kadene Jacobs - DCSA Administrative Assistant"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -178,15 +179,19 @@ export function MeetTheTeam() {
               <div className="text-center space-y-3">
                 <div className="inline-flex items-center gap-2 bg-[#FFD93D]/20 px-3 py-1 rounded-full">
                   <Heart className="w-4 h-4 text-[#FFD93D]" />
-                  <span className="text-xs font-semibold text-[#0D3B66]">The Heartbeat of DCSA</span>
+                  <span className="text-xs font-semibold text-[#0D3B66]">The Heart of Our Admin Team</span>
                 </div>
                 
                 <h3 className="text-2xl font-bold text-[#0D3B66]">Kadene Jacobs</h3>
-                <p className="text-sm font-semibold text-[#FFD93D]">Administrative Assistant</p>
                 
-                <p className="text-[#0D3B66]/80 leading-relaxed">
-                  When you reach out to DCSA, Kadene's the one making sure everything runs smoothly behind the scenes. 
-                  She's got a gift for turning challenges into solutions and making everyone feel heard and valued.
+                <p className="text-[#0D3B66]/80 leading-relaxed text-sm space-y-3">
+                  <p>If you've ever felt heard, reassured, or gently guided through our process — that's probably Kadene.</p>
+                  
+                  <p>She is the calm behind the scenes and the steady hand keeping everything moving. Kadene goes above and beyond for every client, not because she has to — but because she genuinely cares.</p>
+                  
+                  <p>From paperwork to follow-ups, from small questions to big worries, she treats every situation with patience and respect.</p>
+                  
+                  <p className="text-[#0D3B66] font-medium">She's not just admin. She's the heart that keeps everything flowing.</p>
                 </p>
 
                 <div className="pt-4 space-y-2 text-sm text-[#0D3B66]/70">
@@ -217,8 +222,8 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FF6B6B] to-[#FF6B6B]/60">
                 {!imageErrors["cindy"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-jE3ZexuxzP8dLrmgQV7EYhgq9LHEWG.jpeg"
-                    alt="Cindy Killian - Attorney representing DCSA"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-H5SA90sGvX975cC1R1tExeeR8Szl2X.jpeg"
+                    alt="Cindy Killian - Attorney & Acting Magistrate"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -232,15 +237,19 @@ export function MeetTheTeam() {
               <div className="text-center space-y-3">
                 <div className="inline-flex items-center gap-2 bg-[#FF6B6B]/10 px-3 py-1 rounded-full">
                   <Sparkles className="w-4 h-4 text-[#FF6B6B]" />
-                  <span className="text-xs font-semibold text-[#FF6B6B]">Our Legal Guardian</span>
+                  <span className="text-xs font-semibold text-[#FF6B6B]">Attorney | Acting Magistrate</span>
                 </div>
                 
                 <h3 className="text-2xl font-bold text-[#0D3B66]">Cindy Killian</h3>
-                <p className="text-sm font-semibold text-[#FF6B6B]">Attorney - Cindy Killian Attorneys Inc.</p>
                 
-                <p className="text-[#0D3B66]/80 leading-relaxed">
-                  Cindy isn't your typical attorney - she's been through life's struggles herself and brings real empathy to every case. 
-                  She understands what it's like to face financial stress because she's lived it, not just studied it.
+                <p className="text-[#0D3B66]/80 leading-relaxed text-sm space-y-3">
+                  <p>Cindy from Cindy Killian Attorneys is our trusted legal partner — and a powerhouse in her field.</p>
+                  
+                  <p>With extensive experience in debt law, criminal law, family disputes, divorce matters, and broader litigation, she brings depth, authority, and clarity to every legal process connected to our work.</p>
+                  
+                  <p>She is also currently serving as an Acting Magistrate, which speaks to both her expertise and professional standing.</p>
+                  
+                  <p className="text-[#0D3B66] font-medium">When legal protection matters — you want someone who understands the system from every angle. Cindy does.</p>
                 </p>
 
                 <div className="pt-4 space-y-2 text-sm text-[#0D3B66]/70">
