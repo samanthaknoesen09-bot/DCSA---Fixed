@@ -82,24 +82,3 @@ export function EmotionalMirrorSection() {
     </section>
   )
 }
-        </div>
-
-        <div 
-          className="mt-12 p-6 md:p-8 rounded-xl text-center border-2"
-          style={{ 
-            backgroundColor: colors.mintCalm + "10",
-            borderColor: colors.mintCalm
-          }}
-        >
-          <p 
-            className="text-lg leading-relaxed text-pretty"
-            style={{ color: colors.charcoal }}
-          >
-            <strong>Here's what matters:</strong> These problems have a solution. You don't have to feel this way forever. 
-            With the right plan — one built specifically for your situation — you can take control back.
-          </p>
-        </div>
-      </div>
-    </section>
-  )
-}
