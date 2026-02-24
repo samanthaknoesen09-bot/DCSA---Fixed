@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Check, X, Share2, Bookmark } from "lucide-react"
+import { Check, X, Share2, Bookmark, Info } from "lucide-react"
 
 export function DebtReviewComparison() {
   const features = [
@@ -21,11 +21,11 @@ export function DebtReviewComparison() {
       bankruptcy: true,
     },
     {
-      feature: "Lower Interest Rates",
-      debtReview: true,
-      consolidation: false,
-      adminOrder: false,
-      bankruptcy: false,
+      feature: "Interest Rate Negotiation (Not Guaranteed)",
+      debtReview: "May be negotiated",
+      consolidation: "No reduction",
+      adminOrder: "No reduction",
+      bankruptcy: "No reduction",
     },
     {
       feature: "Keep Your Assets",
@@ -64,154 +64,148 @@ export function DebtReviewComparison() {
     },
   ]
 
-  const CheckIcon = () => <Check className="h-5 w-5 text-[#4DB6AC]" />
-  const XIcon = () => <X className="h-5 w-5 text-red-500" />
+  const CheckIcon = () => <Check className="h-5 w-5 text-green-600 mx-auto" />
+  const XIcon = () => <X className="h-5 w-5 text-red-500 mx-auto" />
 
   return (
-    <section id="debt-review-comparison" className="py-20 px-4 bg-gradient-to-b from-[#F8F9FA] to-background">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <div className="inline-block bg-[#FFD93D]/20 px-4 py-2 rounded-full mb-4">
-            <span className="text-sm font-semibold text-[#0D3B66]">💡 Make an Informed Decision</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0D3B66] mb-4">
-            Debt Review vs Other Options
-          </h2>
-          <p className="text-lg text-[#0D3B66]/70 max-w-2xl mx-auto">
-            Understanding your debt relief options helps you make the right choice
-          </p>
-        </div>
+    <div className="space-y-6">
+      <div className="text-center">
+        <span className="inline-flex items-center gap-1 text-sm font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+          <Info className="h-4 w-4" /> Understand Your Options
+        </span>
+      </div>
 
-        {/* Promotional Callout */}
-        <Card className="mb-8 border-2 border-[#4DB6AC] bg-gradient-to-r from-[#4DB6AC]/10 to-[#FFD93D]/10">
-          <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-[#0D3B66] mb-2">
-                  Not Sure Which Option is Right for You?
-                </h3>
-                <p className="text-[#0D3B66]/80">
-                  Compare all debt relief solutions side-by-side and discover why Debt Review is the most comprehensive, 
-                  legally protected option for South Africans struggling with debt.
+      <Card>
+        <CardHeader>
+          <CardTitle>Debt Review vs Other Options</CardTitle>
+          <p className="text-sm text-muted-foreground">
+            Understanding your debt relief options helps you make an informed decision
+          </p>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Information Callout */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="flex items-start gap-2">
+              <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="text-sm font-medium text-blue-800">Not Sure Which Option is Right for You?</p>
+                <p className="text-sm text-blue-700 mt-1">
+                  Compare these debt relief options to understand the differences. Each person&apos;s situation is unique —
+                  speak to a registered debt counsellor (NCRDC 3110) for a personalised assessment.
                 </p>
               </div>
-              <div className="flex-shrink-0">
-                <a 
-                  href="#contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white font-semibold rounded-lg transition-colors"
-                >
-                  Get Free Advice
-                </a>
-              </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-[#0D3B66] text-white">
-                <th className="p-4 text-left font-semibold">Feature</th>
-                <th className="p-4 text-center font-semibold bg-[#4DB6AC]">
-                  <div className="text-lg">Debt Review</div>
-                  <div className="text-xs font-normal">(Recommended)</div>
-                </th>
-                <th className="p-4 text-center font-semibold">Debt Consolidation</th>
-                <th className="p-4 text-center font-semibold">Administration Order</th>
-                <th className="p-4 text-center font-semibold">Bankruptcy/Sequestration</th>
-              </tr>
-            </thead>
-            <tbody>
-              {features.map((row, index) => (
-                <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-[#F8F9FA]"}>
-                  <td className="p-4 font-medium text-[#0D3B66] border-b">{row.feature}</td>
-                  <td className="p-4 text-center border-b border-l-4 border-l-[#4DB6AC] bg-[#4DB6AC]/5">
-                    {typeof row.debtReview === "boolean" ? (
-                      row.debtReview ? <CheckIcon /> : <XIcon />
-                    ) : (
-                      <span className="text-sm text-[#0D3B66]">{row.debtReview}</span>
-                    )}
-                  </td>
-                  <td className="p-4 text-center border-b">
-                    {typeof row.consolidation === "boolean" ? (
-                      row.consolidation ? <CheckIcon /> : <XIcon />
-                    ) : (
-                      <span className="text-sm text-[#0D3B66]">{row.consolidation}</span>
-                    )}
-                  </td>
-                  <td className="p-4 text-center border-b">
-                    {typeof row.adminOrder === "boolean" ? (
-                      row.adminOrder ? <CheckIcon /> : <XIcon />
-                    ) : (
-                      <span className="text-sm text-[#0D3B66]">{row.adminOrder}</span>
-                    )}
-                  </td>
-                  <td className="p-4 text-center border-b">
-                    {typeof row.bankruptcy === "boolean" ? (
-                      row.bankruptcy ? <CheckIcon /> : <XIcon />
-                    ) : (
-                      <span className="text-sm text-[#0D3B66]">{row.bankruptcy}</span>
-                    )}
-                  </td>
+          {/* Get Advice Link */}
+          <div className="text-center">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center text-sm font-medium text-blue-600 hover:text-blue-800 underline"
+            >
+              Get a Free Assessment
+            </a>
+          </div>
+
+          {/* Comparison Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="bg-muted">
+                  <th className="text-left p-3 font-medium">Feature</th>
+                  <th className="text-center p-3 font-medium text-green-700">Debt Review (NCR Regulated)</th>
+                  <th className="text-center p-3 font-medium">Debt Consolidation</th>
+                  <th className="text-center p-3 font-medium">Administration Order</th>
+                  <th className="text-center p-3 font-medium">Bankruptcy / Sequestration</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {features.map((row, index) => (
+                  <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-muted/30"}>
+                    <td className="p-3 font-medium">{row.feature}</td>
+                    <td className="p-3 text-center">
+                      {typeof row.debtReview === "boolean" ? (
+                        row.debtReview ? <CheckIcon /> : <XIcon />
+                      ) : (
+                        <span className="text-xs text-green-700 font-medium">{row.debtReview}</span>
+                      )}
+                    </td>
+                    <td className="p-3 text-center">
+                      {typeof row.consolidation === "boolean" ? (
+                        row.consolidation ? <CheckIcon /> : <XIcon />
+                      ) : (
+                        <span className="text-xs">{row.consolidation}</span>
+                      )}
+                    </td>
+                    <td className="p-3 text-center">
+                      {typeof row.adminOrder === "boolean" ? (
+                        row.adminOrder ? <CheckIcon /> : <XIcon />
+                      ) : (
+                        <span className="text-xs">{row.adminOrder}</span>
+                      )}
+                    </td>
+                    <td className="p-3 text-center">
+                      {typeof row.bankruptcy === "boolean" ? (
+                        row.bankruptcy ? <CheckIcon /> : <XIcon />
+                      ) : (
+                        <span className="text-xs">{row.bankruptcy}</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        <div className="flex flex-wrap gap-3 justify-center mb-6">
-          <Button
-            variant="outline"
-            className="bg-white"
-            onClick={() => {
-              if (navigator.share) {
-                navigator.share({
-                  title: 'Debt Review vs Other Options - DCSA',
-                  text: 'Compare debt relief solutions and find the right option for you',
-                  url: window.location.href + '#debt-review-comparison'
-                })
-              }
-            }}
-          >
-            <Share2 className="h-4 w-4 mr-2" />
-            Share This Comparison
-          </Button>
-          <Button
-            variant="outline"
-            className="bg-white"
-            onClick={() => window.print()}
-          >
-            <Bookmark className="h-4 w-4 mr-2" />
-            Save as PDF
-          </Button>
-        </div>
+          {/* Share / Save */}
+          <div className="flex gap-2 justify-end">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                if (navigator.share) {
+                  navigator.share({
+                    title: "Debt Review vs Other Options - DCSA",
+                    text: "Compare debt relief solutions and find the right option for you",
+                    url: window.location.href + "#debt-review-comparison",
+                  })
+                }
+              }}
+            >
+              <Share2 className="h-4 w-4 mr-1" /> Share This Comparison
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => window.print()}>
+              <Bookmark className="h-4 w-4 mr-1" /> Save as PDF
+            </Button>
+          </div>
 
-        <Card className="mt-8 border-2 border-[#4DB6AC]/30 bg-[#4DB6AC]/5">
-          <CardHeader>
-            <CardTitle className="text-xl text-[#0D3B66]">Why Choose Debt Review?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2 text-[#0D3B66]/80">
+          {/* Key Facts about Debt Review - Compliant */}
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+            <p className="text-sm font-semibold text-green-800 mb-2">Key Facts About Debt Review</p>
+            <ul className="space-y-1 text-sm text-green-700">
               <li className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-[#4DB6AC] shrink-0 mt-0.5" />
-                <span>NCR regulated process with legal protection</span>
+                <CheckIcon />
+                <span>NCR regulated process with legal protection under the National Credit Act</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-[#4DB6AC] shrink-0 mt-0.5" />
-                <span>Negotiated lower interest rates and extended payment terms</span>
+                <CheckIcon />
+                <span>Interest rate reductions may be negotiated — outcomes depend on individual circumstances and are not guaranteed</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-[#4DB6AC] shrink-0 mt-0.5" />
-                <span>One affordable monthly payment covering all debts</span>
+                <CheckIcon />
+                <span>One structured monthly payment covering all included debts</span>
               </li>
               <li className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-[#4DB6AC] shrink-0 mt-0.5" />
-                <span>Keep your assets and avoid bankruptcy consequences</span>
+                <CheckIcon />
+                <span>Assets are protected while under debt review, provided payments are maintained</span>
               </li>
             </ul>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+            <p className="text-xs text-green-600 mt-3">
+              * Debt review requires some ability to pay each month. Final repayment terms depend on a court or NCT order.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -42,6 +41,7 @@ export function HomeClient() {
   const [quizAnswers, setQuizAnswers] = useState<boolean[]>([])
   const [showExplanation, setShowExplanation] = useState(false)
   const [quizComplete, setQuizComplete] = useState(false)
+  
   const topRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -61,31 +61,31 @@ export function HomeClient() {
       id: 1, 
       statement: "Debt review is only for people who failed.", 
       answer: false,
-      explanation: "You're not alone — most people think that. Debt review is actually for anyone over-indebted, not a mark of failure. It's help, not shame."
+      explanation: "You're not alone — most people think that. Debt review is actually for anyone over-indebted, not a mark of failure. It's help, not shame. (Plus, we promise not to tell your high school teacher.)"
     },
     { 
       id: 2, 
       statement: "Debt review gives legal protection from creditors.", 
       answer: true,
-      explanation: "That one's true. It's one reason people often feel breathing space during debt review."
+      explanation: "That one's true. It's one reason people often feel breathing space during debt review. No more scary phone calls at dinner time."
     },
     { 
       id: 3, 
       statement: "Debt review means you'll never get credit again.", 
       answer: false,
-      explanation: "Myth! Once you complete debt review and get clearance, you can apply for credit again."
+      explanation: "Myth! Once you complete debt review and get clearance, you can apply for credit again. It's a reset button, not a life sentence."
     },
     { 
       id: 4, 
       statement: "Interest can stretch repayments for months or years.", 
       answer: true,
-      explanation: "Yes. Interest rates make a huge difference to how long you'll be repaying. That's why understanding them matters."
+      explanation: "Yes. Interest rates make a huge difference to how long you'll be repaying. That's why understanding them matters. It's the difference between a sprint and a marathon uphill."
     },
     { 
       id: 5, 
       statement: "Asking for help early usually gives you more options.", 
       answer: true,
-      explanation: "Absolutely. The earlier you reach out, the more paths are open to you. Don't wait."
+      explanation: "Absolutely. The earlier you reach out, the more paths are open to you. Don't wait until the debt starts charging you rent."
     },
   ]
 
@@ -232,7 +232,7 @@ export function HomeClient() {
                     <div>
                       <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Your Money Reality Check</h3>
                       <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
-                        Plug in your income, bills, and those sneaky spends (coffee runs, extra groceries). See exactly where your cash goes. Helps spot leaks before they become big debt holes.
+                        Plug in your income, accounts, and those sneaky spends (coffee runs, extra groceries). See exactly where your cash goes. Helps spot leaks before they become big holes.
                       </p>
                     </div>
                   </div>
@@ -276,9 +276,9 @@ export function HomeClient() {
                   <div className="flex items-start gap-3">
                     <Lightbulb className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                     <div>
-                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Debt Cut Preview</h3>
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Debt Reset Preview</h3>
                       <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
-                        See what you'd save by combining debts under review. No fancy math—just real numbers showing lower payments and faster freedom.
+                        See an estimated restructuring outcome by combining debts under review. No fancy math—just real numbers showing potentially lower payments and a clear path forward.
                       </p>
                     </div>
                   </div>
@@ -293,7 +293,7 @@ export function HomeClient() {
                 </CardContent>
               </Card>
             </div>
-
+            
             <p className="text-center mt-8 text-sm" style={{ color: colors.warmGrey }}>
               Spot something? <Link href={WHATSAPP_URL} className="font-semibold underline" style={{ color: colors.maroon }}>Message me for a personalized plan.</Link>
             </p>
@@ -399,17 +399,17 @@ export function HomeClient() {
                 {
                   id: "what-is-debt-review",
                   title: "What Is Debt Review?",
-                  content: "Debt review is a formal South African process where a registered counsellor helps over-indebted people restructure debts into affordable payments. It's protection under law, not shame."
+                  content: "Debt review is a formal South African process where a registered counsellor helps over-indebted people restructure debts into affordable payments. It's protection under law, not a life sentence."
                 },
                 {
                   id: "how-it-works",
                   title: "How It Works",
-                  content: "First, we assess your situation—income, debts, bills. Then we negotiate with creditors to lower your monthly payment (often by 30-40%). You make one payment to us; we distribute it. You get breathing space; creditors get paid."
+                  content: "First, we assess your situation—income, debts, essential costs. Then we negotiate with creditors to potentially lower your monthly payments. You make one payment; we handle the distribution. You get breathing space; creditors get paid."
                 },
                 {
                   id: "is-it-for-you",
                   title: "Is It For You?",
-                  content: "If you're over-indebted (can't pay debts in full), debt review protects you legally from creditors. It's not instant—typically 5-6 years—but it works. Message me to assess your situation."
+                  content: "If you're over-indebted (can't pay all your accounts in full), debt review protects you legally from creditors. It's a commitment—typically 5-6 years—but it works for those looking for a clean start. Message me to see if it fits your life."
                 },
               ].map((section) => (
                 <div key={section.id}>
@@ -485,7 +485,9 @@ export function HomeClient() {
                 Stories from people who found their way forward.
               </p>
             </div>
+
             <ReviewsCarousel />
+
             <div className="mt-12 text-center">
               <p className="mb-6" style={{ color: colors.charcoal }}>
                 Share your story? Help others find hope.
@@ -541,7 +543,7 @@ export function HomeClient() {
                         True
                       </Button>
                       <Button 
-                        size="lg"
+                        size="lg" 
                         variant="outline"
                         className="rounded-lg"
                         style={{ borderColor: colors.maroon, color: colors.maroon }}
@@ -617,7 +619,7 @@ export function HomeClient() {
                       asChild
                     >
                       <Link href={WHATSAPP_URL + "?text=I%20did%20the%20quiz%20and%20want%20to%20talk%20about%20my%20situation"}>
-                        Message Me
+                        Chat to Sam
                       </Link>
                     </Button>
                   </div>
@@ -655,11 +657,11 @@ export function HomeClient() {
                 },
                 {
                   q: "What's the cost?",
-                  a: "We charge a small monthly fee (built into your new payment plan). No surprises, no hidden fees. We discuss it upfront."
+                  a: "The fees are regulated by the NCR and are built into your new payment plan. No surprises, no hidden fees. We discuss it upfront."
                 },
                 {
                   q: "What if I miss a payment?",
-                  a: "Life happens. Talk to us first. We work with you to catch up. One missed payment doesn't break the whole plan."
+                  a: "Life happens. Talk to us first. We work with you to catch up. One missed payment doesn't break the whole plan, but communication is key."
                 },
               ].map((faq, idx) => (
                 <div key={idx}>
@@ -711,7 +713,7 @@ export function HomeClient() {
               <Card className="rounded-xl border-0 shadow-sm">
                 <CardContent className="p-6 text-center space-y-4">
                   <MessageCircle className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
-                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Message Me</h3>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Message Sam</h3>
                   <p className="text-sm" style={{ color: colors.warmGrey }}>Quick reply, real answers</p>
                   <Button 
                     size="sm"
@@ -727,7 +729,7 @@ export function HomeClient() {
               <Card className="rounded-xl border-0 shadow-sm">
                 <CardContent className="p-6 text-center space-y-4">
                   <Phone className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
-                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Call Me</h3>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Call Sam</h3>
                   <p className="text-sm" style={{ color: colors.warmGrey }}>071 900 6298</p>
                   <Button 
                     size="sm"
@@ -743,7 +745,7 @@ export function HomeClient() {
               <Card className="rounded-xl border-0 shadow-sm">
                 <CardContent className="p-6 text-center space-y-4">
                   <Mail className="w-8 h-8 mx-auto" style={{ color: colors.maroon }} />
-                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Email Me</h3>
+                  <h3 className="font-bold" style={{ color: colors.charcoal }}>Email Sam</h3>
                   <p className="text-sm" style={{ color: colors.warmGrey }}>info@dcsam.co.za</p>
                   <Button 
                     size="sm"
@@ -763,6 +765,9 @@ export function HomeClient() {
               </p>
               <p style={{ color: colors.warmGrey }}>
                 We serve nationwide. Remote or in-person, we meet you where you are.
+              </p>
+              <p className="text-xs mt-4" style={{ color: colors.warmGrey }}>
+                NCR Registration: NCRDC 3110
               </p>
             </div>
           </div>

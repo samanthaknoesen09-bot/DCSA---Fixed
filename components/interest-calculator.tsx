@@ -36,21 +36,18 @@ const DEBT_TYPES = [
 
 export function InterestCalculator() {
   const [debtType, setDebtType] = useState("")
-  const [principal, setPrincipal] = useState<number>(0)
-  const [interestRate, setInterestRate] = useState<number>(0)
-  const [term, setTerm] = useState<number>(12)
+  const [principal, setPrincipal] = useState(0)
+  const [interestRate, setInterestRate] = useState(0)
+  const [term, setTerm] = useState(12)
 
   // Calculate monthly payment using amortization formula
   const calculateMonthlyPayment = () => {
     if (principal <= 0 || interestRate <= 0 || term <= 0) return 0
-    
     const monthlyRate = interestRate / 100 / 12
     const numberOfPayments = term
-    
     const monthlyPayment =
       (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
       (Math.pow(1 + monthlyRate, numberOfPayments) - 1)
-    
     return monthlyPayment
   }
 
@@ -70,9 +67,12 @@ export function InterestCalculator() {
 
   return (
     <div className="space-y-6">
-      <Card className="border-2 border-[#0D3B66]/10">
+      <Card>
         <CardHeader>
-          <CardTitle className="text-2xl text-[#0D3B66]">Interest Rate Impact Calculator</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5" />
+            Interest Rate Impact Calculator
+          </CardTitle>
           <p className="text-sm text-muted-foreground">
             See how interest rates affect your total debt repayment
           </p>
@@ -80,9 +80,7 @@ export function InterestCalculator() {
         <CardContent className="space-y-6">
           {/* Debt Type Selection */}
           <div className="space-y-2">
-            <Label htmlFor="debt-type" className="text-base font-semibold text-[#0D3B66]">
-              Type of Debt
-            </Label>
+            <Label htmlFor="debt-type">Type of Debt</Label>
             <Select value={debtType} onValueChange={setDebtType}>
               <SelectTrigger id="debt-type" className="h-12">
                 <SelectValue placeholder="Select debt type" />
@@ -102,9 +100,7 @@ export function InterestCalculator() {
 
           {/* Amount Borrowed */}
           <div className="space-y-2">
-            <Label htmlFor="principal" className="text-base font-semibold text-[#0D3B66]">
-              Amount Borrowed
-            </Label>
+            <Label htmlFor="principal">Amount Borrowed</Label>
             <Input
               id="principal"
               type="number"
@@ -117,9 +113,7 @@ export function InterestCalculator() {
 
           {/* Interest Rate */}
           <div className="space-y-2">
-            <Label htmlFor="interest" className="text-base font-semibold text-[#0D3B66]">
-              Annual Interest Rate (%)
-            </Label>
+            <Label htmlFor="interest">Annual Interest Rate (%)</Label>
             <Input
               id="interest"
               type="number"
@@ -133,9 +127,7 @@ export function InterestCalculator() {
 
           {/* Loan Term */}
           <div className="space-y-2">
-            <Label htmlFor="term" className="text-base font-semibold text-[#0D3B66]">
-              Loan Term (Months)
-            </Label>
+            <Label htmlFor="term">Loan Term (Months)</Label>
             <Input
               id="term"
               type="number"
@@ -183,84 +175,95 @@ export function InterestCalculator() {
               </Button>
             </div>
           </div>
-        </CardContent>
-      </Card>
 
-      {/* Results */}
-      {principal > 0 && interestRate > 0 && term > 0 && (
-        <>
-          <Card className="border-2 border-[#0D3B66]/20">
-            <CardHeader>
-              <CardTitle className="text-xl text-[#0D3B66]">Your Repayment Breakdown</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Key Metrics */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">Amount Borrowed</p>
-                  <p className="text-2xl font-bold text-[#0D3B66]">{formatCurrency(principal)}</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">Interest Rate</p>
-                  <p className="text-2xl font-bold text-[#0D3B66]">{interestRate.toFixed(2)}%</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">Monthly Payment</p>
-                  <p className="text-2xl font-bold text-[#FF6B6B]">{formatCurrency(monthlyPayment)}</p>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">Loan Term</p>
-                  <p className="text-2xl font-bold text-[#0D3B66]">{term} months</p>
-                </div>
-              </div>
+          {/* Results */}
+          {principal > 0 && interestRate > 0 && term > 0 && (
+            <>
+              <div className="border-t pt-4">
+                <h3 className="font-semibold text-lg mb-4">Your Repayment Breakdown</h3>
 
-              {/* Total Costs */}
-              <div className="border-t pt-4 space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-base font-medium text-[#0D3B66]">Total Interest Paid</span>
-                  <span className="text-xl font-bold text-[#FF6B6B]">{formatCurrency(totalInterest)}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-base font-medium text-[#0D3B66]">Total Amount Repaid</span>
-                  <span className="text-xl font-bold text-[#0D3B66]">{formatCurrency(totalRepayment)}</span>
-                </div>
-              </div>
-
-              {/* Visual Breakdown */}
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-[#0D3B66]">Repayment Breakdown</p>
-                <div className="flex h-8 rounded-lg overflow-hidden">
-                  <div
-                    className="bg-[#4DB6AC] flex items-center justify-center text-xs text-white"
-                    style={{ width: `${(principal / totalRepayment) * 100}%` }}
-                  >
-                    {((principal / totalRepayment) * 100).toFixed(0)}%
+                {/* Key Metrics */}
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="bg-muted rounded-lg p-3">
+                    <p className="text-xs text-muted-foreground">Amount Borrowed</p>
+                    <p className="text-xl font-bold">{formatCurrency(principal)}</p>
                   </div>
-                  <div
-                    className="bg-[#FF6B6B] flex items-center justify-center text-xs text-white"
-                    style={{ width: `${(totalInterest / totalRepayment) * 100}%` }}
-                  >
-                    {((totalInterest / totalRepayment) * 100).toFixed(0)}%
+                  <div className="bg-muted rounded-lg p-3">
+                    <p className="text-xs text-muted-foreground">Interest Rate</p>
+                    <p className="text-xl font-bold">{interestRate.toFixed(2)}%</p>
+                  </div>
+                  <div className="bg-muted rounded-lg p-3">
+                    <p className="text-xs text-muted-foreground">Monthly Payment</p>
+                    <p className="text-xl font-bold">{formatCurrency(monthlyPayment)}</p>
+                  </div>
+                  <div className="bg-muted rounded-lg p-3">
+                    <p className="text-xs text-muted-foreground">Loan Term</p>
+                    <p className="text-xl font-bold">{term} months</p>
                   </div>
                 </div>
-                <div className="flex justify-between text-xs text-muted-foreground">
-                  <span>🟢 Principal ({formatCurrency(principal)})</span>
-                  <span>🔴 Interest ({formatCurrency(totalInterest)})</span>
+
+                {/* Total Costs */}
+                <div className="space-y-2 mb-4">
+                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-200">
+                    <span className="flex items-center gap-2">
+                      <AlertTriangle className="h-4 w-4 text-orange-500" />
+                      Total Interest Paid
+                    </span>
+                    <span className="font-bold text-orange-600">{formatCurrency(totalInterest)}</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <span className="font-medium">Total Amount Repaid</span>
+                    <span className="font-bold text-blue-700">{formatCurrency(totalRepayment)}</span>
+                  </div>
+                </div>
+
+                {/* Visual Breakdown */}
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">Repayment Breakdown</p>
+                  <div className="flex rounded-full overflow-hidden h-6">
+                    <div
+                      className="bg-green-500 flex items-center justify-center text-white text-xs"
+                      style={{ width: `${(principal / totalRepayment) * 100}%` }}
+                    >
+                      {((principal / totalRepayment) * 100).toFixed(0)}%
+                    </div>
+                    <div
+                      className="bg-red-500 flex items-center justify-center text-white text-xs"
+                      style={{ width: `${(totalInterest / totalRepayment) * 100}%` }}
+                    >
+                      {((totalInterest / totalRepayment) * 100).toFixed(0)}%
+                    </div>
+                  </div>
+                  <div className="flex gap-4 text-xs">
+                    <span>🟢 Principal ({formatCurrency(principal)})</span>
+                    <span>🔴 Interest ({formatCurrency(totalInterest)})</span>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
 
-          {/* Enhanced Comparison Card */}
-          {interestRate > 10 && (
-            <InterestRateComparison
-              loanAmount={principal}
-              currentRate={interestRate}
-              term={term}
-              currentMonthly={monthlyPayment}
-              currentTotal={totalRepayment}
-      />
-      )}
+              {/* Enhanced Comparison Card */}
+              {interestRate > 10 && (
+                <InterestRateComparison
+                  principal={principal}
+                  currentRate={interestRate}
+                  term={term}
+                  savingsWithLowerRate={savingsWithLowerRate}
+                  lowerRate={lowerRate}
+                />
+              )}
+
+              {/* Share Calculator */}
+              <ShareResults
+                title="My Interest Calculation"
+                data={{
+                  principal,
+                  interestRate,
+                  term,
+                  monthlyPayment,
+                  totalRepayment,
+                  totalInterest,
+                }}
+              />
 
       {/* Share Calculator */}
       <ShareResults
