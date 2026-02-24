@@ -5,7 +5,6 @@ import { Suspense } from "react"
 import "./globals.css"
 import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
-import { FloatingChatButton } from "@/components/floating-chat-button"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -525,7 +524,6 @@ export default function RootLayout({
           </Suspense>
           {children}
         </LayoutWrapper>
-        <FloatingChatButton />
         <Analytics />
       </body>
     </html>
