@@ -16,6 +16,8 @@ import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { TransparentFeesSection } from "@/components/transparent-fees-section"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { MeetTheTeam } from "@/components/meet-the-team"
+import { SalaryCycleVisual } from "@/components/salary-cycle-visual"
+import { FinalCTASection } from "@/components/final-cta-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -116,47 +118,87 @@ export function HomeClient() {
         <section className="relative py-16 md:py-28 px-4" style={{ 
           background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)`
         }}>
-          <div className="container mx-auto max-w-3xl space-y-6 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-pretty leading-tight" style={{ color: colors.charcoal }}>
-              Accounts are piling up. Your salary doesn't stretch the way it used to.
-            </h1>
-            <p className="text-lg md:text-xl text-pretty leading-relaxed" style={{ color: colors.charcoal }}>
-              If your accounts are controlling your life, you deserve to take control back.
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Left: Copy */}
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight" style={{ color: colors.charcoal }}>
+                  Your salary lands… and it's gone.
+                </h1>
+                
+                <div className="space-y-4">
+                  <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
+                    The debit orders hit and there's nothing left.
+                  </p>
+                  
+                  <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
+                    You're juggling accounts every month just to stay afloat.
+                    It feels like you're constantly playing catch-up.
+                  </p>
+                  
+                  <p className="text-lg font-semibold pt-2" style={{ color: colors.charcoal }}>
+                    That's not failure.
+                  </p>
+                  <p className="text-lg" style={{ color: colors.charcoal }}>
+                    That's pressure.
+                  </p>
+                  
+                  <p className="text-lg font-bold pt-4" style={{ color: colors.maroon }}>
+                    This is where it changes.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                  <Button 
+                    size="lg" 
+                    className="rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: colors.maroon }}
+                    asChild
+                  >
+                    <Link href={WHATSAPP_URL + "?text=Hi%20DCSA!%20Let's%20sort%20this%20out"}>
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Let's Sort This Out
+                    </Link>
+                  </Button>
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="rounded-lg font-semibold"
+                    style={{ borderColor: colors.maroon, color: colors.maroon }}
+                    asChild
+                  >
+                    <Link href="#calculators">
+                      Show Me My Options
+                    </Link>
+                  </Button>
+                </div>
+
+                <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
+                  No judgement. Just clarity.
+                </p>
+              </div>
+
+              {/* Right: Visual */}
+              <div className="hidden md:flex items-center justify-center">
+                <SalaryCycleVisual />
+              </div>
+            </div>
+
+            {/* Mobile visual - displayed below on small screens */}
+            <div className="md:hidden pt-8">
+              <SalaryCycleVisual />
+            </div>
+          </div>
+        </section>
+
+        {/* TRANSITION LINE */}
+        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
+          <div className="container mx-auto max-w-3xl text-center space-y-3">
+            <p className="text-lg font-semibold" style={{ color: colors.charcoal }}>
+              You're not behind in life.
             </p>
-            <div className="space-y-4 pt-4">
-              <p className="text-base text-pretty font-semibold" style={{ color: colors.charcoal }}>
-                Not with another quick fix. Not with another loan.
-              </p>
-              <p className="text-base text-pretty" style={{ color: colors.warmGrey }}>
-                With a proper plan — explained clearly, handled legally, and done properly. And you won't have to do it alone.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <Button 
-                size="lg" 
-                className="rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: colors.maroon }}
-                asChild
-              >
-                <Link href={WHATSAPP_URL + "?text=Hi%20DCSA!%20I'd%20like%20to%20chat%20about%20my%20options"}>
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Book a Gentle Chat
-                </Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="rounded-lg font-semibold"
-                style={{ borderColor: colors.maroon, color: colors.maroon }}
-                asChild
-              >
-                <Link href="#how-this-works">
-                  See How This Works
-                </Link>
-              </Button>
-            </div>
-            <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
-              ↓ No pressure, no judgment. Let's see your options.
+            <p className="text-lg" style={{ color: colors.charcoal }}>
+              You're just stuck in a cycle that needs restructuring.
             </p>
           </div>
         </section>
@@ -428,6 +470,9 @@ export function HomeClient() {
 
         {/* TEAM SECTION */}
         <MeetTheTeam />
+
+        {/* FINAL CTA SECTION */}
+        <FinalCTASection />
 
         {/* REVIEWS SECTION */}
         <section className="py-16 md:py-20 px-4" id="stories" style={{ backgroundColor: colors.white }}>
