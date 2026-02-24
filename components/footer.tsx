@@ -310,8 +310,11 @@ Time: ${new Date().toLocaleTimeString()}`
           </div>
 
           <div className="bg-background/10 border-t border-b border-background/20 py-6 my-6 px-4 rounded-lg">
-            <p className="text-background/80 text-sm leading-relaxed">
-              The information on this site is for educational purposes only and does not constitute financial advice. We do not provide investment advisory services.
+            <p className="text-background/80 text-sm leading-relaxed mb-3">
+              <strong>Important Disclaimer:</strong> The information on this site is for educational purposes only and does not constitute financial or legal advice. Debt review outcomes depend on creditor responses. Interest reductions are negotiated and not guaranteed. All projections are estimates. Always consult with a registered debt counsellor for your specific situation.
+            </p>
+            <p className="text-background/70 text-xs">
+              DCSA (Debt Counselling South Africa) is NCR Registered under number NCRDC3995. We operate under the National Credit Act, 2005. All services comply with NCR guidelines.
             </p>
           </div>
           

@@ -167,6 +167,22 @@ export function ClientCalculatorPage() {
           </Card>
         </CardContent>
       </Card>
+
+      {/* IMPORTANT DISCLAIMER */}
+      <Card className="border-2 border-orange-300 bg-orange-50">
+        <CardContent className="p-6">
+          <h3 className="font-bold text-lg text-orange-900 mb-3">Important Disclaimer</h3>
+          <ul className="text-sm text-orange-800 space-y-2">
+            <li>• These calculators are <strong>estimates only</strong> based on the information you provide</li>
+            <li>• Actual debt review outcomes depend on creditor responses and negotiated terms</li>
+            <li>• Interest reductions are <strong>not guaranteed</strong> — they must be negotiated with individual creditors</li>
+            <li>• Final payment amounts require court or National Credit Tribunal (NCT) confirmation</li>
+            <li>• Timelines may vary based on your specific circumstances and creditor agreements</li>
+            <li>• These tools are for educational purposes and should not be considered legal or financial advice</li>
+            <li>• Always discuss your specific situation with a registered debt counsellor for accurate projections</li>
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   )
 }

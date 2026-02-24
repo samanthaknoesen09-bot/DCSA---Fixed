@@ -289,6 +289,23 @@ export function InterestCalculator() {
               </p>
             </CardContent>
           </Card>
+
+        {/* IMPORTANT DISCLAIMER */}
+        <Card className="border-2 border-orange-300 bg-orange-50">
+          <CardContent className="p-6">
+            <h3 className="font-bold text-sm text-orange-900 mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" /> Important Disclaimer
+            </h3>
+            <ul className="text-sm text-orange-800 space-y-2">
+              <li>• This calculator provides <strong>estimates only</strong> for educational purposes</li>
+              <li>• Actual interest rates, payment terms, and amounts may vary based on your specific situation</li>
+              <li>• Interest calculations are approximations and may not reflect exact creditor calculations</li>
+              <li>• This is not financial or legal advice</li>
+              <li>• For debt review, actual outcomes depend on creditor responses and negotiated terms</li>
+              <li>• Always consult with a registered debt counsellor for your specific situation</li>
+            </ul>
+          </CardContent>
+        </Card>
         </>
       )}
     </div>
