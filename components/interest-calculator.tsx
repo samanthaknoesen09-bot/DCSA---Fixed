@@ -309,8 +309,6 @@ export function InterestCalculator() {
             </ul>
           </CardContent>
         </Card>
-        </>
-      )}
-    </div>
-  )
-}
+      </div>
+    )
+  }
