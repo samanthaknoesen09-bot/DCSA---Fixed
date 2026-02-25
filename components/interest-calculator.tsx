@@ -264,6 +264,8 @@ export function InterestCalculator() {
                   totalInterest,
                 }}
               />
+            </>
+          )}
 
       {/* Share Calculator */}
       <ShareResults
@@ -274,41 +276,41 @@ export function InterestCalculator() {
       
       {/* Educational Note */}
       <Card className="border border-[#0D3B66]/10">
-            <CardHeader>
-              <CardTitle className="text-base text-[#0D3B66] flex items-center gap-2">
-                <Info className="h-5 w-5 text-[#4DB6AC]" />
-                Understanding Your Interest
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-[#0D3B66]/80">
-              <p>
-                <strong>Interest</strong> is the cost of borrowing money. The higher the interest rate and the longer the loan term, the more you'll pay in total.
-              </p>
-              <p>
-                <strong>Why it matters:</strong> A {interestRate.toFixed(1)}% interest rate means you're paying {formatCurrency(totalInterest)} extra on top of the {formatCurrency(principal)} you borrowed - that's {((totalInterest / principal) * 100).toFixed(0)}% more than you borrowed!
-              </p>
-              <p className="font-semibold text-[#0D3B66]">
-                Through debt counselling, we can help negotiate lower interest rates and restructure your debt to reduce these costs significantly.
-              </p>
-            </CardContent>
-          </Card>
+        <CardHeader>
+          <CardTitle className="text-base text-[#0D3B66] flex items-center gap-2">
+            <Info className="h-5 w-5 text-[#4DB6AC]" />
+            Understanding Your Interest
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm text-[#0D3B66]/80">
+          <p>
+            <strong>Interest</strong> is the cost of borrowing money. The higher the interest rate and the longer the loan term, the more you'll pay in total.
+          </p>
+          <p>
+            <strong>Why it matters:</strong> A {interestRate.toFixed(1)}% interest rate means you're paying {formatCurrency(totalInterest)} extra on top of the {formatCurrency(principal)} you borrowed - that's {((totalInterest / principal) * 100).toFixed(0)}% more than you borrowed!
+          </p>
+          <p className="font-semibold text-[#0D3B66]">
+            Through debt counselling, we can help negotiate lower interest rates and restructure your debt to reduce these costs significantly.
+          </p>
+        </CardContent>
+      </Card>
 
-        {/* IMPORTANT DISCLAIMER */}
-        <Card className="border-2 border-orange-300 bg-orange-50">
-          <CardContent className="p-6">
-            <h3 className="font-bold text-sm text-orange-900 mb-3 flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4" /> Important Disclaimer
-            </h3>
-            <ul className="text-sm text-orange-800 space-y-2">
-              <li>• This calculator provides <strong>estimates only</strong> for educational purposes</li>
-              <li>• Actual interest rates, payment terms, and amounts may vary based on your specific situation</li>
-              <li>• Interest calculations are approximations and may not reflect exact creditor calculations</li>
-              <li>• This is not financial or legal advice</li>
-              <li>• For debt review, actual outcomes depend on creditor responses and negotiated terms</li>
-              <li>• Always consult with a registered debt counsellor for your specific situation</li>
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
+      {/* IMPORTANT DISCLAIMER */}
+      <Card className="border-2 border-orange-300 bg-orange-50">
+        <CardContent className="p-6">
+          <h3 className="font-bold text-sm text-orange-900 mb-3 flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4" /> Important Disclaimer
+          </h3>
+          <ul className="text-sm text-orange-800 space-y-2">
+            <li>• This calculator provides <strong>estimates only</strong> for educational purposes</li>
+            <li>• Actual interest rates, payment terms, and amounts may vary based on your specific situation</li>
+            <li>• Interest calculations are approximations and may not reflect exact creditor calculations</li>
+            <li>• This is not financial or legal advice</li>
+            <li>• For debt review, actual outcomes depend on creditor responses and negotiated terms</li>
+            <li>• Always consult with a registered debt counsellor for your specific situation</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
