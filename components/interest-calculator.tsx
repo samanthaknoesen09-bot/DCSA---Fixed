@@ -98,48 +98,49 @@ export function InterestCalculator() {
             </Select>
           </div>
 
-          {/* Amount Borrowed */}
+          {/* Principal Amount */}
           <div className="space-y-2">
-            <Label htmlFor="principal">Amount Borrowed</Label>
+            <Label htmlFor="principal">Loan Amount (R)</Label>
             <Input
               id="principal"
               type="number"
               placeholder="e.g., 50000"
               value={principal || ""}
-              onChange={(e) => setPrincipal(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
+              onChange={(e) => setPrincipal(Number(e.target.value))}
+              className="h-12"
             />
           </div>
 
           {/* Interest Rate */}
           <div className="space-y-2">
-            <Label htmlFor="interest">Annual Interest Rate (%)</Label>
+            <Label htmlFor="interest-rate">Annual Interest Rate (%)</Label>
             <Input
-              id="interest"
+              id="interest-rate"
               type="number"
-              step="0.1"
-              placeholder="e.g., 18.5"
+              placeholder="e.g., 15"
               value={interestRate || ""}
-              onChange={(e) => setInterestRate(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
+              onChange={(e) => setInterestRate(Number(e.target.value))}
+              className="h-12"
+              step="0.1"
             />
           </div>
 
           {/* Loan Term */}
           <div className="space-y-2">
-            <Label htmlFor="term">Loan Term (Months)</Label>
-            <Input
-              id="term"
-              type="number"
-              placeholder="e.g., 24"
-              value={term || ""}
-              onChange={(e) => setTerm(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
-            />
-            <div className="flex gap-2 text-xs">
+            <Label>Loan Term (Months)</Label>
+            <div className="flex gap-2 flex-wrap">
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 6 ? "default" : "outline"}
+                size="sm"
+                onClick={() => setTerm(6)}
+                className="bg-transparent"
+              >
+                6 months
+              </Button>
+              <Button
+                type="button"
+                variant={term === 12 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(12)}
                 className="bg-transparent"
@@ -148,7 +149,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 24 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(24)}
                 className="bg-transparent"
@@ -157,7 +158,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 36 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(36)}
                 className="bg-transparent"
@@ -166,7 +167,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 60 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(60)}
                 className="bg-transparent"
@@ -266,6 +267,8 @@ export function InterestCalculator() {
               />
             </>
           )}
+        </CardContent>
+      </Card>
 
       {/* Share Calculator */}
       <ShareResults
@@ -273,7 +276,7 @@ export function InterestCalculator() {
         description="Calculate your loan interest, monthly payments, and total cost for any debt type with DCSA's free calculator"
         calculatorType="interest"
       />
-      
+
       {/* Educational Note */}
       <Card className="border border-[#0D3B66]/10">
         <CardHeader>
