@@ -12,10 +12,11 @@ interface AffiliatePartner {
   alt: string
 }
 
+// Updated affiliate partners with corrected logos
 const affiliatePartners: AffiliatePartner[] = [
   {
     name: "First for Women",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FFW_Horizontal_Logo.png-4iWA5aRAI4E5D4yawATMO5nUy0dg1Q.jpeg",
+    logo: "https://www.1stforwomen.co.za/assets/img/logo.png",
     shortcode: "JMAFFSite26159",
     offerId: "2311",
     sid: "26397",
@@ -24,7 +25,7 @@ const affiliatePartners: AffiliatePartner[] = [
   },
   {
     name: "Auto & General",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/auto-general-new-logo%20%281%29-vYRMIPexeVI34Dm8wDBMeHo4HHGp3P.png",
+    logo: "https://www.autoandgeneral.co.za/Shared/images/AutoandGeneral_Logo.png",
     shortcode: "JMAFFSite26160",
     offerId: "1539",
     sid: "26397",
@@ -72,6 +73,7 @@ export function AffiliateIcons({ showLabels = false, gap = "gap-6", iconSize = 4
               priority={false}
               loading="lazy"
               quality={85}
+              unoptimized={true}
             />
             {showLabels && <span className="text-xs text-center text-muted-foreground">{partner.name}</span>}
           </div>

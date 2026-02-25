@@ -98,48 +98,49 @@ export function InterestCalculator() {
             </Select>
           </div>
 
-          {/* Amount Borrowed */}
+          {/* Principal Amount */}
           <div className="space-y-2">
-            <Label htmlFor="principal">Amount Borrowed</Label>
+            <Label htmlFor="principal">Loan Amount (R)</Label>
             <Input
               id="principal"
               type="number"
               placeholder="e.g., 50000"
               value={principal || ""}
-              onChange={(e) => setPrincipal(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
+              onChange={(e) => setPrincipal(Number(e.target.value))}
+              className="h-12"
             />
           </div>
 
           {/* Interest Rate */}
           <div className="space-y-2">
-            <Label htmlFor="interest">Annual Interest Rate (%)</Label>
+            <Label htmlFor="interest-rate">Annual Interest Rate (%)</Label>
             <Input
-              id="interest"
+              id="interest-rate"
               type="number"
-              step="0.1"
-              placeholder="e.g., 18.5"
+              placeholder="e.g., 15"
               value={interestRate || ""}
-              onChange={(e) => setInterestRate(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
+              onChange={(e) => setInterestRate(Number(e.target.value))}
+              className="h-12"
+              step="0.1"
             />
           </div>
 
           {/* Loan Term */}
           <div className="space-y-2">
-            <Label htmlFor="term">Loan Term (Months)</Label>
-            <Input
-              id="term"
-              type="number"
-              placeholder="e.g., 24"
-              value={term || ""}
-              onChange={(e) => setTerm(Number.parseFloat(e.target.value) || 0)}
-              className="text-lg h-12"
-            />
-            <div className="flex gap-2 text-xs">
+            <Label>Loan Term (Months)</Label>
+            <div className="flex gap-2 flex-wrap">
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 6 ? "default" : "outline"}
+                size="sm"
+                onClick={() => setTerm(6)}
+                className="bg-transparent"
+              >
+                6 months
+              </Button>
+              <Button
+                type="button"
+                variant={term === 12 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(12)}
                 className="bg-transparent"
@@ -148,7 +149,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 24 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(24)}
                 className="bg-transparent"
@@ -157,7 +158,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 36 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(36)}
                 className="bg-transparent"
@@ -166,7 +167,7 @@ export function InterestCalculator() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
+                variant={term === 60 ? "default" : "outline"}
                 size="sm"
                 onClick={() => setTerm(60)}
                 className="bg-transparent"
@@ -264,32 +265,53 @@ export function InterestCalculator() {
                   totalInterest,
                 }}
               />
-
-              {/* Educational Note - Compliance Compliant */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <div className="flex items-start gap-2">
-                  <Info className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <div className="space-y-2">
-                    <p className="font-semibold text-blue-800">Understanding Your Interest</p>
-                    <p className="text-sm text-blue-700">
-                      <strong>Interest</strong> is the cost of borrowing money. The higher the interest rate and the longer
-                      the loan term, the more you&apos;ll pay in total.
-                    </p>
-                    <p className="text-sm text-blue-700">
-                      <strong>Why it matters:</strong> A {interestRate.toFixed(1)}% interest rate means you&apos;re paying{" "}
-                      {formatCurrency(totalInterest)} extra on top of the {formatCurrency(principal)} you borrowed &mdash;
-                      that&apos;s {((totalInterest / principal) * 100).toFixed(0)}% more than you borrowed!
-                    </p>
-                    <p className="text-sm text-blue-700">
-                      Through debt counselling, interest rate reductions may be negotiated with creditors, but outcomes
-                      are not guaranteed. Every situation is assessed individually based on affordability. Speak to a
-                      registered debt counsellor (NCRDC 3110) to understand your specific options.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </>
           )}
+        </CardContent>
+      </Card>
+
+      {/* Share Calculator */}
+      <ShareResults
+        title="Free Interest Rate Calculator"
+        description="Calculate your loan interest, monthly payments, and total cost for any debt type with DCSA's free calculator"
+        calculatorType="interest"
+      />
+
+      {/* Educational Note */}
+      <Card className="border border-[#0D3B66]/10">
+        <CardHeader>
+          <CardTitle className="text-base text-[#0D3B66] flex items-center gap-2">
+            <Info className="h-5 w-5 text-[#4DB6AC]" />
+            Understanding Your Interest
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm text-[#0D3B66]/80">
+          <p>
+            <strong>Interest</strong> is the cost of borrowing money. The higher the interest rate and the longer the loan term, the more you'll pay in total.
+          </p>
+          <p>
+            <strong>Why it matters:</strong> A {interestRate.toFixed(1)}% interest rate means you're paying {formatCurrency(totalInterest)} extra on top of the {formatCurrency(principal)} you borrowed - that's {((totalInterest / principal) * 100).toFixed(0)}% more than you borrowed!
+          </p>
+          <p className="font-semibold text-[#0D3B66]">
+            Through debt counselling, we can help negotiate lower interest rates and restructure your debt to reduce these costs significantly.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* IMPORTANT DISCLAIMER */}
+      <Card className="border-2 border-orange-300 bg-orange-50">
+        <CardContent className="p-6">
+          <h3 className="font-bold text-sm text-orange-900 mb-3 flex items-center gap-2">
+            <AlertTriangle className="h-4 w-4" /> Important Disclaimer
+          </h3>
+          <ul className="text-sm text-orange-800 space-y-2">
+            <li>• This calculator provides <strong>estimates only</strong> for educational purposes</li>
+            <li>• Actual interest rates, payment terms, and amounts may vary based on your specific situation</li>
+            <li>• Interest calculations are approximations and may not reflect exact creditor calculations</li>
+            <li>• This is not financial or legal advice</li>
+            <li>• For debt review, actual outcomes depend on creditor responses and negotiated terms</li>
+            <li>• Always consult with a registered debt counsellor for your specific situation</li>
+          </ul>
         </CardContent>
       </Card>
     </div>
