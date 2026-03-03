@@ -39,43 +39,61 @@ export function TransparentFeesSection() {
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>Application Fee:</strong> R1,000 (excl VAT) - Initial processing
+                  <strong>Application Fee:</strong> As per Schedule 2(2) of the National Credit Act (excl VAT)
                 </span>
               </li>
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>Restructuring Fee:</strong> Capped at R6,000 (excl VAT) or first instalment, whichever is lower
+                  <strong>Administration Fee:</strong> R300 (excl VAT) - Covers consultation, Form 17.1 process, and DHS loading
                 </span>
               </li>
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>After-Care Fee (Months 1-24):</strong> 5% of distributable amount up to R400 (excl VAT) per month
+                  <strong>Restructuring Fee:</strong> Lesser of first instalment or R8,000 (excl VAT). Joint applications: up to R9,000
                 </span>
               </li>
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>After-Care Fee (After 24 months):</strong> 3% of distributable amount up to R400 (excl VAT) per month
+                  <strong>Reckless Lending Fee:</strong> Up to R1,500 (excl VAT) per application if applicable, after assessment
                 </span>
               </li>
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>Consent Order/Court Application Fee:</strong> As per attorney schedule
+                  <strong>Monthly Care Fee:</strong> 5% (excl VAT) of monthly instalment, maximum R450 (excl VAT) per month
                 </span>
               </li>
               <li className="flex gap-3">
                 <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
                 <span style={{ color: colors.charcoal }}>
-                  <strong>Payment Distribution Agent (PDA):</strong> Fees apply as per your PDA agreement (usually built into after-care)
+                  <strong>Consent Order Fee:</strong> R500 (excl VAT) submission fee plus attorney filing fees as applicable
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <Check className="w-4 h-4 mt-1 flex-shrink-0" style={{ color: colors.maroon }} />
+                <span style={{ color: colors.charcoal }}>
+                  <strong>Payment Distribution Agent:</strong> R5-R15 per payment distributed, depending on amount (see details below)
                 </span>
               </li>
             </ul>
             <p className="pt-3 border-t" style={{ borderColor: colors.sandLight, color: colors.warmGrey }}>
-              <strong>No hidden charges:</strong> What we quote is exactly what you pay. All fees are NCR-compliant under the 2018 Fee Guidelines and transparent from day one.
+              <strong>No hidden charges:</strong> What we quote is exactly what you pay. All fees are NCR-compliant and transparent from day one.
             </p>
+
+            {/* PDA Fee Breakdown */}
+            <div className="mt-4 p-3 rounded-lg" style={{ backgroundColor: colors.warmBeige + "30" }}>
+              <p className="text-xs font-semibold mb-2" style={{ color: colors.charcoal }}>
+                Payment Distribution Agent (PDA) Fees per distribution:
+              </p>
+              <ul className="text-xs space-y-1" style={{ color: colors.charcoal }}>
+                <li>• R5.00 per payment between R100-R200 per credit agreement</li>
+                <li>• R10.00 per payment between R201-R500 per credit agreement</li>
+                <li>• R15.00 per payment exceeding R500 per credit agreement</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
