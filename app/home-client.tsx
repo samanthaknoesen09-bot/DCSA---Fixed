@@ -16,6 +16,7 @@ import { TransparentFeesSection } from "@/components/transparent-fees-section"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryCycleVisual } from "@/components/salary-cycle-visual"
+import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
@@ -122,29 +123,13 @@ export function HomeClient() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Left: Copy */}
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight" style={{ color: colors.charcoal }}>
-                  Your salary lands… and it's gone.
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-balance" style={{ color: colors.charcoal }}>
+                  Take back control of your money.
                 </h1>
                 
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    The debit orders hit and there's nothing left.
-                  </p>
-                  
-                  <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    You're juggling accounts every month just to stay afloat.
-                    It feels like you're constantly playing catch-up.
-                  </p>
-                  
-                  <p className="text-lg font-semibold pt-2" style={{ color: colors.charcoal }}>
-                    That's not failure.
-                  </p>
-                  <p className="text-lg" style={{ color: colors.charcoal }}>
-                    That's pressure.
-                  </p>
-                  
-                  <p className="text-lg font-bold pt-4" style={{ color: colors.maroon }}>
-                    This is where it changes.
+                    If your salary disappears into debit orders before you've even breathed, you're not alone. We help you restructure your debt legally and realistically — with one affordable payment and a clear end date.
                   </p>
                 </div>
 
@@ -155,9 +140,9 @@ export function HomeClient() {
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href={WHATSAPP_URL + "?text=Hi%20DCSA!%20Let's%20sort%20this%20out"}>
+                    <Link href="https://www.dcsam.co.za/calculator">
                       <MessageCircle className="w-5 h-5 mr-2" />
-                      Let's Sort This Out
+                      See what I could pay instead
                     </Link>
                   </Button>
                   <Button 
@@ -167,14 +152,14 @@ export function HomeClient() {
                     style={{ borderColor: colors.maroon, color: colors.maroon }}
                     asChild
                   >
-                    <Link href="#calculators">
-                      Show Me My Options
+                    <Link href="#salary-flow">
+                      How debt review works
                     </Link>
                   </Button>
                 </div>
 
                 <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
-                  No judgement. Just clarity.
+                  NCR Registered Debt Counsellor. Honest guidance. No pressure.
                 </p>
               </div>
 
@@ -299,6 +284,21 @@ export function HomeClient() {
             </p>
           </div>
         </section>
+
+        {/* TRANSITION BLOCK */}
+        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
+          <div className="container mx-auto max-w-2xl text-center space-y-4">
+            <p className="text-sm uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
+              Now let's look at the pattern.
+            </p>
+            <p className="text-lg" style={{ color: colors.charcoal }}>
+              Most people aren't bad with money — the system just takes first. Here's what usually happens, and how debt review changes it.
+            </p>
+          </div>
+        </section>
+
+        {/* SALARY COMPARISON SECTION */}
+        <SalaryComparisonSection />
 
         {/* EDUCATION SECTION */}
         <section className="py-16 md:py-20 px-4" id="education" style={{ backgroundColor: colors.mintCalm + "20" }}>
