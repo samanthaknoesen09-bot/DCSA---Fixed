@@ -4,7 +4,7 @@ import { colors } from "@/lib/colors"
 
 export function SalaryCycleVisual() {
   return (
-    <div className="flex flex-col items-center justify-center gap-6 py-8 px-6">
+    <div className="flex flex-col items-center justify-center gap-8 py-8 px-6">
       <style>{`
         @keyframes repeat-rotate {
           from {
@@ -28,7 +28,7 @@ export function SalaryCycleVisual() {
         </p>
       </div>
 
-      {/* Arrow */}
+      {/* Arrow down */}
       <div className="h-8 flex items-center justify-center">
         <svg width="2" height="32" viewBox="0 0 2 32" fill="none">
           <line x1="1" y1="0" x2="1" y2="24" stroke={colors.maroon} strokeWidth="2" />
@@ -36,29 +36,30 @@ export function SalaryCycleVisual() {
         </svg>
       </div>
 
-      {/* Debit Orders */}
-      <div className="text-center">
-        <p className="font-semibold text-lg" style={{ color: colors.charcoal }}>
-          DEBIT ORDERS
-        </p>
+      {/* Distribution Methods (Horizontal) */}
+      <div className="flex items-center gap-12 justify-center">
+        {/* Debit Orders */}
+        <div className="text-center">
+          <p className="font-semibold text-lg" style={{ color: colors.charcoal }}>
+            DEBIT ORDERS
+          </p>
+        </div>
+
+        {/* OR Divider */}
+        <div 
+          className="h-12 w-px"
+          style={{ backgroundColor: colors.sandLight }}
+        />
+
+        {/* Accounts */}
+        <div className="text-center">
+          <p className="font-semibold text-lg" style={{ color: colors.charcoal }}>
+            ACCOUNTS
+          </p>
+        </div>
       </div>
 
-      {/* Arrow */}
-      <div className="h-8 flex items-center justify-center">
-        <svg width="2" height="32" viewBox="0 0 2 32" fill="none">
-          <line x1="1" y1="0" x2="1" y2="24" stroke={colors.maroon} strokeWidth="2" />
-          <polygon points="1,32 -2,24 4,24" fill={colors.maroon} />
-        </svg>
-      </div>
-
-      {/* Accounts */}
-      <div className="text-center">
-        <p className="font-semibold text-lg" style={{ color: colors.charcoal }}>
-          ACCOUNTS
-        </p>
-      </div>
-
-      {/* Arrow */}
+      {/* Arrow down */}
       <div className="h-8 flex items-center justify-center">
         <svg width="2" height="32" viewBox="0 0 2 32" fill="none">
           <line x1="1" y1="0" x2="1" y2="24" stroke={colors.maroon} strokeWidth="2" />
