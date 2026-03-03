@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "Is DCSA actually legitimate?",
-    answer: "Yes. We're NCR-regulated (NCR Registration Number on file). Sam is also an Acting Magistrate, which means she's been vetted by the South African legal system. We operate under the National Credit Act and follow NCR guidelines strictly. You can verify our registration anytime with the National Credit Regulator.",
+    answer: "Yes. We're NCR-regulated (NCR Registration Number on file). Cindy Killian, our team member, is an Acting Magistrate, which means she's been vetted by the South African legal system. We operate under the National Credit Act and follow NCR guidelines strictly. You can verify our registration anytime with the National Credit Regulator.",
   },
   {
     question: "What if my situation changes and I can't make the payment?",
