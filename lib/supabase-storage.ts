@@ -25,7 +25,7 @@ export function getSupabaseStorageUrl(bucket: string, path: string): string {
  * All images stored in Supabase Storage under 'assets/team/' bucket
  */
 export const TEAM_IMAGES = {
-  samantha: getSupabaseStorageUrl("assets", "team/samantha.jpg"),
-  kadene: getSupabaseStorageUrl("assets", "team/kadene.jpg"),
-  cindy: getSupabaseStorageUrl("assets", "team/cindy.jpg"),
+  samantha: getSupabaseStorageUrl("assets", "team/samantha-knoesen.jpg"),
+  kadene: getSupabaseStorageUrl("assets", "team/kadene-jacobs.jpg"),
+  cindy: getSupabaseStorageUrl("assets", "team/cindy-killian.jpg"),
 }
