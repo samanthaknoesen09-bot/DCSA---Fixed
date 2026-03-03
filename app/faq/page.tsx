@@ -85,7 +85,7 @@ export default function FAQPage() {
         name: "How much does debt counselling cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "NCR-regulated fees are built into your plan. They include an application fee (R50), admin fee (R300), and restructuring fees based on your first month's payment (capped). Monthly aftercare fees also apply. Your first consultation is completely FREE.",
+          text: "NCR-regulated fees under the 2018 Guidelines include: Application fee (R1,000), Restructuring fee (up to R6,000), and After-care fees (5% up to R400/month for first 24 months, then 3% up to R400/month). Your first consultation is completely FREE.",
         },
       },
       {
