@@ -6,6 +6,7 @@ import { Heart, Sparkles, Users, Calendar, Phone } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { BookingCalendar } from "@/components/booking-calendar"
+import { TEAM_IMAGES } from "@/lib/supabase-storage"
 
 export function MeetTheTeam() {
   const [isBookingOpen, setIsBookingOpen] = useState(false)
@@ -63,7 +64,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-primary to-primary/60">
                 {!imageErrors["sam"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-1VJIQpN7Uhf5TVVKUNGmueFnkcZ1sA.jpeg"
+                    src={TEAM_IMAGES.samantha}
                     alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DCSA"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -164,7 +165,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FFD93D] to-[#FFD93D]/60">
                 {!imageErrors["kadene"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-gtl6PDjLWsApKD4RP4tDYTUGZwPzIm.jpeg"
+                    src={TEAM_IMAGES.kadene}
                     alt="Kadene Jacobs - DCSA Administrative Assistant"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -222,7 +223,7 @@ export function MeetTheTeam() {
               <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FF6B6B] to-[#FF6B6B]/60">
                 {!imageErrors["cindy"] ? (
                   <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-H5SA90sGvX975cC1R1tExeeR8Szl2X.jpeg"
+                    src={TEAM_IMAGES.cindy}
                     alt="Cindy Killian - Attorney & Acting Magistrate"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"

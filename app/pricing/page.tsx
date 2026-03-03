@@ -30,46 +30,54 @@ export default function PricingPage() {
           {/* NCR Regulated Fees */}
           <Card className="mb-8 border-2 border-[#4DB6AC]/30">
             <CardHeader>
-              <CardTitle className="text-2xl text-[#0D3B66]">NCR Regulated Fees</CardTitle>
+              <CardTitle className="text-2xl text-[#0D3B66]">NCR Regulated Fees (2018 Guidelines)</CardTitle>
               <p className="text-sm text-muted-foreground">
-                All debt counselling fees in South Africa are regulated by the National Credit Regulator (NCR)
+                All debt counselling fees in South Africa are regulated by the National Credit Regulator (NCR) under the 2018 Fee Guidelines
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
                 <h3 className="font-semibold text-lg text-[#0D3B66] mb-3">Application Fee</h3>
                 <div className="bg-[#FFD93D]/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-[#0D3B66]">R50</div>
-                  <p className="text-sm text-muted-foreground mt-1">One-time payment when you apply</p>
+                  <div className="text-3xl font-bold text-[#0D3B66]">R1,000</div>
+                  <p className="text-sm text-muted-foreground mt-1">One-time payment when you apply (excl VAT)</p>
                 </div>
               </div>
 
               <div>
                 <h3 className="font-semibold text-lg text-[#0D3B66] mb-3">Restructuring Fee</h3>
                 <div className="bg-[#4DB6AC]/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-[#0D3B66]">Maximum R8,000</div>
+                  <div className="text-3xl font-bold text-[#0D3B66]">Up to R6,000</div>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Paid over the first months of debt review (not upfront). The actual amount depends on your debt amount and is capped by NCR regulations.
+                    Capped at R6,000 or first instalment (whichever is lower). Excl VAT. Paid over the first months of debt review.
                   </p>
-                  <div className="mt-3 space-y-1 text-sm text-[#0D3B66]/80">
-                    <p>• Debts under R50,000: Lower fee (approximately R3,000-R5,000)</p>
-                    <p>• Debts R50,000-R150,000: Medium fee (approximately R5,000-R6,500)</p>
-                    <p>• Debts over R150,000: Maximum R8,000</p>
-                  </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg text-[#0D3B66] mb-3">Monthly After-Care Fee</h3>
+                <h3 className="font-semibold text-lg text-[#0D3B66] mb-3">After-Care Fee (First 24 Months)</h3>
                 <div className="bg-[#4DB6AC]/10 rounded-lg p-4">
-                  <div className="text-3xl font-bold text-[#0D3B66]">5% of monthly payment</div>
+                  <div className="text-3xl font-bold text-[#0D3B66]">5% up to R400/month</div>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Maximum R450 per month for managing and distributing your payments to creditors
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-2 italic">
-                    Example: If your new monthly payment is R5,000, the after-care fee would be R250/month
+                    5% of your distributable amount, capped at R400 per month (excl VAT). Includes payment distribution to creditors.
                   </p>
                 </div>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-lg text-[#0D3B66] mb-3">After-Care Fee (After 24 Months)</h3>
+                <div className="bg-[#4DB6AC]/10 rounded-lg p-4">
+                  <div className="text-3xl font-bold text-[#0D3B66]">3% up to R400/month</div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    3% of your distributable amount, capped at R400 per month (excl VAT). Reduced after the first 24 months of debt review.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border-t pt-4">
+                <p className="text-sm text-muted-foreground">
+                  <strong>Other potential fees:</strong> Attorney/legal fees for court applications, Payment Distribution Agent (PDA) coordination (typically included in after-care), and any National Credit Tribunal (NCT) application fees as set by the tribunal.
+                </p>
               </div>
             </CardContent>
           </Card>
