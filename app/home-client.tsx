@@ -141,7 +141,6 @@ export function HomeClient() {
                     asChild
                   >
                     <Link href="https://www.dcsam.co.za/calculator">
-                      <MessageCircle className="w-5 h-5 mr-2" />
                       See what I could pay instead
                     </Link>
                   </Button>
@@ -176,35 +175,15 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* TRANSITION LINE */}
-        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
-          <div className="container mx-auto max-w-3xl text-center space-y-3">
-            <p className="text-lg font-semibold" style={{ color: colors.charcoal }}>
-              You're not behind in life.
-            </p>
-            <p className="text-lg" style={{ color: colors.charcoal }}>
-              You're just stuck in a cycle that needs restructuring.
-            </p>
-          </div>
-        </section>
-
-        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
-        <EmotionalMirrorSection />
-
-        {/* HOW THIS WORKS SECTION */}
-        <section id="how-this-works">
-          <HowThisWorksStrip />
-        </section>
-
         {/* CALCULATORS SECTION - "Your Money Reality Check" */}
-        <section className="py-16 md:py-20 px-4" id="calculators" style={{ backgroundColor: colors.white }}>
+        <section className="py-16 md:py-20 px-4" id="money-reality-check" style={{ backgroundColor: "#F8F8F8" }}>
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{ color: colors.charcoal }}>
                 Your Money Reality Check
               </h2>
-              <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Stressed about money? These simple tools help you get clarity—no sign-up, private. Start small, breathe easy.
+              <p className="text-lg text-balance" style={{ color: colors.warmGrey }}>
+                Stressed about money? These simple tools give you clarity — no sign-up, completely private. Start small. Breathe easier.
               </p>
             </div>
 
@@ -288,7 +267,18 @@ export function HomeClient() {
         {/* TRANSITION BLOCK */}
         <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
           <div className="container mx-auto max-w-2xl text-center space-y-4">
-            <p className="text-sm uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
+            <p className="text-xs uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
+              Now let's look at the pattern.
+            </p>
+            <p className="text-lg" style={{ color: colors.charcoal }}>
+              Most people aren't bad with money — the system just takes first. Here's what usually happens, and how debt review changes it.
+            </p>
+          </div>
+
+        {/* TRANSITION BLOCK */}
+        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
+          <div className="container mx-auto max-w-2xl text-center space-y-4">
+            <p className="text-xs uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
               Now let's look at the pattern.
             </p>
             <p className="text-lg" style={{ color: colors.charcoal }}>
@@ -299,6 +289,14 @@ export function HomeClient() {
 
         {/* SALARY COMPARISON SECTION */}
         <SalaryComparisonSection />
+
+        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
+        <EmotionalMirrorSection />
+
+        {/* HOW THIS WORKS SECTION */}
+        <section id="how-this-works">
+          <HowThisWorksStrip />
+        </section>
 
         {/* EDUCATION SECTION */}
         <section className="py-16 md:py-20 px-4" id="education" style={{ backgroundColor: colors.mintCalm + "20" }}>
