@@ -141,7 +141,6 @@ export function HomeClient() {
                     asChild
                   >
                     <Link href="https://www.dcsam.co.za/calculator">
-                      <MessageCircle className="w-5 h-5 mr-2" />
                       See what I could pay instead
                     </Link>
                   </Button>
@@ -176,48 +175,28 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* TRANSITION LINE */}
-        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
-          <div className="container mx-auto max-w-3xl text-center space-y-3">
-            <p className="text-lg font-semibold" style={{ color: colors.charcoal }}>
-              You're not behind in life.
-            </p>
-            <p className="text-lg" style={{ color: colors.charcoal }}>
-              You're just stuck in a cycle that needs restructuring.
-            </p>
-          </div>
-        </section>
-
-        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
-        <EmotionalMirrorSection />
-
-        {/* HOW THIS WORKS SECTION */}
-        <section id="how-this-works">
-          <HowThisWorksStrip />
-        </section>
-
         {/* CALCULATORS SECTION - "Your Money Reality Check" */}
-        <section className="py-16 md:py-20 px-4" id="calculators" style={{ backgroundColor: colors.white }}>
+        <section className="py-16 md:py-20 px-4" id="money-reality-check" style={{ backgroundColor: "#F8F8F8" }}>
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance" style={{ color: colors.charcoal }}>
                 Your Money Reality Check
               </h2>
-              <p className="text-lg" style={{ color: colors.warmGrey }}>
-                Stressed about money? These simple tools help you get clarity—no sign-up, private. Start small, breathe easy.
+              <p className="text-lg text-balance" style={{ color: colors.warmGrey }}>
+                Stressed about money? These simple tools give you clarity — no sign-up, completely private. Start small. Breathe easier.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {/* Money Map Renamed */}
+              {/* CARD 1: Money Map */}
               <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.mintCalm}` }}>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-3">
                     <PiggyBank className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: colors.mintCalm }} />
                     <div>
-                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Your Money Reality Check</h3>
+                      <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Money Map</h3>
                       <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
-                        Plug in your income, accounts, and those sneaky spends (coffee runs, extra groceries). See exactly where your cash goes. Helps spot leaks before they become big holes.
+                        Add your income, accounts, and everyday spending. See exactly where your money goes — and where it quietly leaks each month.
                       </p>
                     </div>
                   </div>
@@ -227,12 +206,12 @@ export function HomeClient() {
                     style={{ backgroundColor: colors.mintCalm, color: colors.charcoal }}
                     asChild
                   >
-                    <Link href="/calculator">Start Check</Link>
+                    <Link href="https://www.dcsam.co.za/calculator">Start My Check</Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* Interest Calculator Renamed */}
+              {/* CARD 2: Interest Trap Checker */}
               <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.softPeach}` }}>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-3">
@@ -240,7 +219,7 @@ export function HomeClient() {
                     <div>
                       <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Interest Trap Checker</h3>
                       <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
-                        Enter your loan details and watch how interest piles on over time. It's eye-opening: That R5k borrow could cost R2k extra. Understand why quick loans hurt long-term.
+                        Enter your loan details and see how interest builds over time. That "small" R5 000 loan could cost thousands more than you expect.
                       </p>
                     </div>
                   </div>
@@ -250,12 +229,12 @@ export function HomeClient() {
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="/calculator">Check Interest</Link>
+                    <Link href="https://www.dcsam.co.za/calculator">Check My Interest</Link>
                   </Button>
                 </CardContent>
               </Card>
 
-              {/* Savings Calculator Renamed */}
+              {/* CARD 3: Debt Reset Preview */}
               <Card className="rounded-xl border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderLeft: `4px solid ${colors.maroon}` }}>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-3">
@@ -263,7 +242,7 @@ export function HomeClient() {
                     <div>
                       <h3 className="font-bold text-lg" style={{ color: colors.charcoal }}>Debt Reset Preview</h3>
                       <p className="text-sm mt-2" style={{ color: colors.warmGrey }}>
-                        See an estimated restructuring outcome by combining debts under review. No fancy math—just real numbers showing potentially lower payments and a clear path forward.
+                        Combine your debts and see a realistic estimate of what a structured repayment plan could look like — lower instalments, clear direction.
                       </p>
                     </div>
                   </div>
@@ -273,14 +252,14 @@ export function HomeClient() {
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="/calculator">See Savings</Link>
+                    <Link href="https://www.dcsam.co.za/calculator">See My Estimate</Link>
                   </Button>
                 </CardContent>
               </Card>
             </div>
             
             <p className="text-center mt-8 text-sm" style={{ color: colors.warmGrey }}>
-              Spot something? <Link href={WHATSAPP_URL} className="font-semibold underline" style={{ color: colors.maroon }}>Message me for a personalized plan.</Link>
+              No personal details saved. These tools are for guidance only.
             </p>
           </div>
         </section>
@@ -288,7 +267,7 @@ export function HomeClient() {
         {/* TRANSITION BLOCK */}
         <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
           <div className="container mx-auto max-w-2xl text-center space-y-4">
-            <p className="text-sm uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
+            <p className="text-xs uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
               Now let's look at the pattern.
             </p>
             <p className="text-lg" style={{ color: colors.charcoal }}>
@@ -299,6 +278,14 @@ export function HomeClient() {
 
         {/* SALARY COMPARISON SECTION */}
         <SalaryComparisonSection />
+
+        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
+        <EmotionalMirrorSection />
+
+        {/* HOW THIS WORKS SECTION */}
+        <section id="how-this-works">
+          <HowThisWorksStrip />
+        </section>
 
         {/* EDUCATION SECTION */}
         <section className="py-16 md:py-20 px-4" id="education" style={{ backgroundColor: colors.mintCalm + "20" }}>
