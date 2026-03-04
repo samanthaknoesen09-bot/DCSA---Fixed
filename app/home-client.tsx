@@ -274,17 +274,6 @@ export function HomeClient() {
               Most people aren't bad with money — the system just takes first. Here's what usually happens, and how debt review changes it.
             </p>
           </div>
-
-        {/* TRANSITION BLOCK */}
-        <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
-          <div className="container mx-auto max-w-2xl text-center space-y-4">
-            <p className="text-xs uppercase tracking-wider font-semibold" style={{ color: colors.warmGrey }}>
-              Now let's look at the pattern.
-            </p>
-            <p className="text-lg" style={{ color: colors.charcoal }}>
-              Most people aren't bad with money — the system just takes first. Here's what usually happens, and how debt review changes it.
-            </p>
-          </div>
         </section>
 
         {/* SALARY COMPARISON SECTION */}
