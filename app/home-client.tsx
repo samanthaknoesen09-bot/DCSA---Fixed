@@ -15,7 +15,6 @@ import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { TransparentFeesSection } from "@/components/transparent-fees-section"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { MeetTheTeam } from "@/components/meet-the-team"
-import { SalaryCycleVisual } from "@/components/salary-cycle-visual"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { brandCopy } from "@/lib/brandCopy"
@@ -161,16 +160,6 @@ export function HomeClient() {
                   NCR Registered Debt Counsellor. Honest guidance. No pressure.
                 </p>
               </div>
-
-              {/* Right: Visual */}
-              <div className="hidden md:flex items-center justify-center">
-                <SalaryCycleVisual />
-              </div>
-            </div>
-
-            {/* Mobile visual - displayed below on small screens */}
-            <div className="md:hidden pt-8">
-              <SalaryCycleVisual />
             </div>
           </div>
         </section>
