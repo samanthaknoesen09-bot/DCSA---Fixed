@@ -14,6 +14,7 @@ const reviews = [
     text: "DCSA - Debt Counselling & Credit Repair has been life-changing. Sam listened, understood my situation, and created a plan I could actually follow. No judgment, just real help.",
     source: "Google Reviews",
     sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
+    tag: "Single Parent",
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ const reviews = [
     text: "I was scared of debt review, but Sam explained everything clearly. She's honest, caring, and actually has your best interests in mind.",
     source: "Google Reviews",
     sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
+    tag: "Government Worker",
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const reviews = [
     text: "Best decision I made was reaching out to DCSA. Sam makes you feel heard and understood. Professional and kind.",
     source: "Google Reviews",
     sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
+    tag: "Self-Employed",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const reviews = [
     text: "Sam is genuinely invested in helping you succeed. She doesn't just give advice — she walks you through every step.",
     source: "Google Reviews",
     sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
+    tag: "Private Sector",
   },
   {
     id: 5,
@@ -46,6 +50,7 @@ const reviews = [
     text: "Transparent, honest, and caring. DCSA provides real solutions, not quick fixes. Highly recommend.",
     source: "Google Reviews",
     sourceUrl: "https://g.page/r/CWOXo2cj2ZfyEBM/review",
+    tag: "Healthcare Worker",
   },
 ]
 
@@ -113,9 +118,14 @@ export function ReviewsCarousel() {
                 <p className="font-semibold text-sm md:text-base" style={{ color: colors.charcoal }}>
                   {review.author}
                 </p>
-                <p className="text-xs" style={{ color: colors.warmGrey }}>
-                  Verified Review
-                </p>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: colors.mintCalm + "30", color: colors.charcoal }}>
+                    {review.tag}
+                  </span>
+                  <p className="text-xs" style={{ color: colors.warmGrey }}>
+                    Verified Review
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>

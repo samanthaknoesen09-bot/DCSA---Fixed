@@ -39,7 +39,7 @@ export function SalaryComparisonSection() {
         {/* Comparison Cards */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* WITHOUT A PLAN */}
-          <Card className="border-2 rounded-2xl overflow-hidden" style={{ borderColor: colors.sandLight, backgroundColor: colors.white }}>
+          <Card className="rounded-2xl overflow-hidden border-l-4" style={{ borderLeftColor: colors.softPeach, borderTop: `1px solid ${colors.sandLight}`, borderRight: `1px solid ${colors.sandLight}`, borderBottom: `1px solid ${colors.sandLight}`, backgroundColor: colors.white }}>
             <CardContent className="p-8">
               <div className="mb-6 pb-6 border-b" style={{ borderColor: colors.sandLight }}>
                 <p className="font-semibold text-sm uppercase tracking-wide" style={{ color: colors.warmGrey }}>
@@ -79,7 +79,7 @@ export function SalaryComparisonSection() {
           </Card>
 
           {/* WITH DEBT REVIEW */}
-          <Card className="border-2 rounded-2xl overflow-hidden shadow-lg" style={{ borderColor: colors.maroon, backgroundColor: colors.white }}>
+          <Card className="rounded-2xl overflow-hidden border-l-4 shadow-lg" style={{ borderLeftColor: colors.maroon, borderTop: `1px solid ${colors.maroon}30`, borderRight: `1px solid ${colors.maroon}30`, borderBottom: `1px solid ${colors.maroon}30`, backgroundColor: colors.white }}>
             <CardContent className="p-8">
               <div className="mb-6 pb-6 border-b" style={{ borderColor: colors.maroon }}>
                 <p className="font-semibold text-sm uppercase tracking-wide" style={{ color: colors.maroon }}>
