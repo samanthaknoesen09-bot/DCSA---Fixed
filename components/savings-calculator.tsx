@@ -175,7 +175,7 @@ export function SavingsCalculator() {
                 <div className="space-y-6">
                   <p className="text-center leading-relaxed" style={{ color: colors.charcoal }}>
                     This estimate shows how we could combine your debts into one affordable monthly payment. 
-                    No judgment. Just a clear path forward with a registered debt counsellor (NCRDC 3110).
+                    No judgment. Just a clear path forward with a registered debt counsellor (NCRDC3995).
                   </p>
 
                   <Button className="w-full py-6 text-lg font-bold"

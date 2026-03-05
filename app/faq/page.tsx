@@ -101,7 +101,7 @@ export default function FAQPage() {
         name: "Is DCSA registered with the NCR?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, DCSA is fully registered with the National Credit Regulator (NCR). You can verify our registration (NCRDC 3110) on the NCR website.",
+          text: "Yes, DCSA is fully registered with the National Credit Regulator (NCR). You can verify our registration (NCRDC3995) on the NCR website.",
         },
       },
     ],
@@ -133,7 +133,7 @@ export default function FAQPage() {
               <AccordionItem value="what-is-dcsa" className="border rounded-lg px-6 bg-white">
                 <AccordionTrigger className="text-left">What is DCSA and what do you offer?</AccordionTrigger>
                 <AccordionContent className="text-[#0D3B66]/80 leading-relaxed">
-                  We&apos;re DCSA &mdash; a professional, NCR-registered debt counselling practice (NCRDC 3110). We offer 
+                  We&apos;re DCSA &mdash; a professional, NCR-registered debt counselling practice (NCRDC3995). We offer 
                   <strong>Debt Review</strong> (restructuring your debt into one affordable payment with legal protection) and 
                   <strong>Credit Repair</strong> (helping you understand and improve your credit information). 
                   We provide expert, judgment-free support to help South Africans find financial stability.

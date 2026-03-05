@@ -48,7 +48,7 @@ export function GentleAffiliateFooter({
             </Button>
           </div>
           <p className="text-center text-[10px] uppercase tracking-widest mt-8 opacity-50" style={{ color: colors.charcoal }}>
-            Registered Debt Counsellor: NCRDC 3110
+            Registered Debt Counsellor: NCRDC3995
           </p>
         </div>
       </div>
