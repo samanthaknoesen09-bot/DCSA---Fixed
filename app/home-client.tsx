@@ -12,7 +12,6 @@ import { AffiliateIcons } from "@/components/affiliate-icons"
 import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
 import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
 import { HowThisWorksStrip } from "@/components/how-this-works-strip"
-import { TransparentFeesSection } from "@/components/transparent-fees-section"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
@@ -22,6 +21,7 @@ import { ClarityBanner } from "@/components/clarity-banner"
 import { WhatsappChecklist } from "@/components/whatsapp-checklist"
 import { MobileHelpBar } from "@/components/mobile-help-bar"
 import { TrustBadges } from "@/components/trust-badges"
+import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -446,9 +446,6 @@ export function HomeClient() {
           </div>
         </section>
 
-        {/* TRANSPARENT FEES SECTION */}
-        <TransparentFeesSection />
-
         {/* FAQ REASSURANCE SECTION */}
         <FAQReassuranceSection />
 
@@ -761,6 +758,9 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* FAQ SECTION */}
+        <FAQSection />
 
         {/* WHATSAPP CHECKLIST - Lead Magnet */}
         <WhatsappChecklist />
