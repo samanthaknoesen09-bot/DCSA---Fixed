@@ -91,7 +91,7 @@ export function DebtReviewComparison() {
                 <p className="text-sm font-medium text-blue-800">Not Sure Which Option is Right for You?</p>
                 <p className="text-sm text-blue-700 mt-1">
                   Compare these debt relief options to understand the differences. Each person&apos;s situation is unique —
-                  speak to a registered debt counsellor (NCRDC 3110) for a personalised assessment.
+                  speak to a registered debt counsellor (NCRDC3995) for a personalised assessment.
                 </p>
               </div>
             </div>
@@ -200,9 +200,9 @@ export function DebtReviewComparison() {
                 <span>Assets are protected while under debt review, provided payments are maintained</span>
               </li>
             </ul>
-            <p className="text-xs text-green-600 mt-3">
-              * Debt review requires some ability to pay each month. Final repayment terms depend on a court or NCT order.
-            </p>
+          <p className="text-xs text-green-600 mt-3">
+            * Debt review requires some ability to pay each month. Final repayment terms depend on a court or NCT order. NCRDC3995.
+          </p>
           </div>
         </CardContent>
       </Card>

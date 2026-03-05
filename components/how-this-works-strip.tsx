@@ -127,7 +127,7 @@ export function HowThisWorksStrip() {
 
         {/* Compliance note */}
         <p className="text-center text-xs mt-10 text-muted-foreground">
-          All processes are conducted in line with the National Credit Act. Outcomes depend on individual circumstances. NCRDC 3110.
+          All processes are conducted in line with the National Credit Act. Outcomes depend on individual circumstances. NCRDC3995.
         </p>
       </div>
     </section>

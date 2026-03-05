@@ -753,7 +753,7 @@ export function HomeClient() {
                 We serve nationwide. Remote or in-person, we meet you where you are.
               </p>
               <p className="text-xs mt-4" style={{ color: colors.warmGrey }}>
-                NCR Registration: NCRDC 3110
+                NCR Registration: NCRDC3995
               </p>
             </div>
           </div>
