@@ -1,6 +1,7 @@
 "use client"
 
 import { colors } from "@/lib/colors"
+import { Check } from "lucide-react"
 
 export function EmotionalMirrorSection() {
   return (
@@ -14,9 +15,18 @@ export function EmotionalMirrorSection() {
 
         <div className="space-y-8">
           <div className="space-y-4 text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-            <p>You're working.</p>
-            <p>You're providing.</p>
-            <p>You're paying what you can.</p>
+            <div className="flex gap-3 items-start">
+              <Check className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: colors.mintCalm }} />
+              <span>You're working.</span>
+            </div>
+            <div className="flex gap-3 items-start">
+              <Check className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: colors.mintCalm }} />
+              <span>You're providing.</span>
+            </div>
+            <div className="flex gap-3 items-start">
+              <Check className="w-6 h-6 flex-shrink-0 mt-1" style={{ color: colors.mintCalm }} />
+              <span>You're paying what you can.</span>
+            </div>
           </div>
 
           <div className="space-y-3">

@@ -67,7 +67,7 @@ export default function CalculatorsPage() {
                 Free Debt & Financial Calculators
               </h1>
               <p className="text-xl text-[#0D3B66]/70 max-w-3xl mx-auto">
-                Take control of your finances with our free online calculators. Track your spending, calculate potential savings, and understand your debt better.
+                No sign-up needed. No judgment. Just clarity. Use these free tools to understand where your money really goes, what you could save through debt review, and what your life could look like with a structured plan.
               </p>
             </div>
 

@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { MobileHelpBar } from "@/components/mobile-help-bar"
 import type { ReactNode } from "react"
 
 interface LayoutWrapperProps {
@@ -13,6 +14,7 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
     <>
       <Header />
       {children}
+      <MobileHelpBar />
       <Footer />
     </>
   )

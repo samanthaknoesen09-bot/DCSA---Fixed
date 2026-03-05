@@ -17,6 +17,11 @@ import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
+import { IdentityStrip } from "@/components/identity-strip"
+import { ClarityBanner } from "@/components/clarity-banner"
+import { WhatsappChecklist } from "@/components/whatsapp-checklist"
+import { MobileHelpBar } from "@/components/mobile-help-bar"
+import { TrustBadges } from "@/components/trust-badges"
 import { brandCopy } from "@/lib/brandCopy"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
@@ -113,7 +118,7 @@ export function HomeClient() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }} ref={topRef}>
-      <main className="flex-1">
+      <main className="flex-1 pb-20 md:pb-0">
         {/* HERO SECTION */}
         <section className="relative py-16 md:py-28 px-4" style={{ 
           background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)`
@@ -123,12 +128,12 @@ export function HomeClient() {
               {/* Left: Copy */}
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-balance" style={{ color: colors.charcoal }}>
-                  Take back control of your money.
+                  When your salary disappears before month-end.
                 </h1>
                 
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    If your salary disappears into debit orders before you've even breathed, you're not alone. We help you restructure your debt legally and realistically — with one affordable payment and a clear end date.
+                    If you're juggling school fees, groceries, and another round of debit orders while stress keeps you up at night—you're not bad with money. The system just takes first.
                   </p>
                 </div>
 
@@ -140,7 +145,7 @@ export function HomeClient() {
                     asChild
                   >
                     <Link href="https://www.dcsam.co.za/calculator">
-                      See what I could pay instead
+                      Check My Debt Situation
                     </Link>
                   </Button>
                   <Button 
@@ -150,19 +155,27 @@ export function HomeClient() {
                     style={{ borderColor: colors.maroon, color: colors.maroon }}
                     asChild
                   >
-                    <Link href="#salary-flow">
-                      How debt review works
+                    <Link href={WHATSAPP_URL}>
+                      WhatsApp Sam
                     </Link>
                   </Button>
                 </div>
 
-                <p className="text-sm pt-2" style={{ color: colors.warmGrey }}>
-                  NCR Registered Debt Counsellor. Honest guidance. No pressure.
+                <TrustBadges variant="light" />
+
+                <p className="text-xs pt-2" style={{ color: colors.warmGrey }}>
+                  No judgement. No pressure. Just clarity.
                 </p>
               </div>
             </div>
           </div>
         </section>
+
+        {/* IDENTITY STRIP - "Who we usually help" */}
+        <IdentityStrip />
+
+        {/* EMOTIONAL MIRROR SECTION */}
+        <EmotionalMirrorSection />
 
         {/* CALCULATORS SECTION - "Your Money Reality Check" */}
         <section className="py-16 md:py-20 px-4" id="money-reality-check" style={{ backgroundColor: "#F8F8F8" }}>
@@ -253,6 +266,9 @@ export function HomeClient() {
           </div>
         </section>
 
+        {/* FREE 15-MINUTE CLARITY BANNER */}
+        <ClarityBanner />
+
         {/* TRANSITION BLOCK */}
         <section className="py-12 px-4" style={{ backgroundColor: colors.warmCream }}>
           <div className="container mx-auto max-w-2xl text-center space-y-4">
@@ -267,9 +283,6 @@ export function HomeClient() {
 
         {/* SALARY COMPARISON SECTION */}
         <SalaryComparisonSection />
-
-        {/* EMOTIONAL MIRROR SECTION - Pain Points */}
-        <EmotionalMirrorSection />
 
         {/* HOW THIS WORKS SECTION */}
         <section id="how-this-works">
@@ -748,6 +761,9 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* WHATSAPP CHECKLIST - Lead Magnet */}
+        <WhatsappChecklist />
 
         {/* GENTLE AFFILIATE FOOTER */}
         <GentleAffiliateFooter buttonText="Check Insurance Savings" />
