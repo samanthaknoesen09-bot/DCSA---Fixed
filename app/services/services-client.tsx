@@ -60,7 +60,10 @@ export function ServicesClient() {
   ]
 
   return (
-    <main className="min-h-screen" style={{ backgroundColor: colors.warmCream }}>
+    <main
+      className="min-h-screen"
+      style={{ backgroundColor: colors.warmCream }}
+    >
       {/* Hero */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl text-center">

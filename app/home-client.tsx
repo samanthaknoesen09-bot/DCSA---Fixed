@@ -115,7 +115,11 @@ export function HomeClient() {
   const currentQuestion = quizQuestions[currentQuestionIndex]
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }} ref={topRef}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ backgroundColor: colors.warmCream }}
+      ref={topRef}
+    >
       <main className="flex-1 pb-20 md:pb-0">
         {/* HERO SECTION */}
         <section className="relative py-16 md:py-28 px-4" style={{ 
