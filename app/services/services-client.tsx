@@ -1,9 +1,11 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Coffee, ArrowRight, CheckCircle, Info, Calendar, FileText, AlertCircle, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
-import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
+
 
 export function ServicesClient() {
   const services = [
@@ -149,112 +151,6 @@ export function ServicesClient() {
           </div>
         </div>
       </section>
-
-      {/* When Your Income Changes Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <Card 
-            className="border-0 shadow-md overflow-hidden" 
-            style={{ backgroundColor: colors.white, borderRadius: "24px" }}
-          >
-            <div className="p-8 md:p-12">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 rounded-full" style={{ backgroundColor: colors.softPeach + "40" }}>
-                  <Calendar className="h-6 w-6" style={{ color: colors.maroon }} />
-                </div>
-                <h2 className="text-3xl font-bold" style={{ color: colors.charcoal }}>
-                  When Your Income Changes
-                </h2>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-10 items-start">
-                <div className="space-y-4">
-                  <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    Life doesn't always go in a straight line. If your financial situation changes due to job loss, a new position, or unexpected life events, we use <strong>Form 17.3</strong> to notify your creditors of a Change in Circumstance.
-                  </p>
-                  <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    This is a protective measure used carefully to ensure your plan remains stable and realistic for your new reality.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-100">
-                  <h3 className="font-bold mb-4 text-sm uppercase tracking-wider" style={{ color: colors.warmGrey }}>
-                    Key Points to Understand
-                  </h3>
-                  <ul className="space-y-4">
-                    <li className="flex gap-3">
-                      <AlertCircle className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: colors.maroon }} />
-                      <p className="text-sm" style={{ color: colors.charcoal }}>
-                        This is not a "payment holiday" — it is a formal notification of change.
-                      </p>
-                    </li>
-                    <li className="flex gap-3">
-                      <FileText className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: colors.maroon }} />
-                      <p className="text-sm" style={{ color: colors.charcoal }}>
-                        Supporting documents are required to verify your new situation.
-                      </p>
-                    </li>
-                    <li className="flex gap-3">
-                      <ShieldCheck className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: colors.maroon }} />
-                      <p className="text-sm" style={{ color: colors.charcoal }}>
-                        A revised proposal or court variation may be necessary to keep you protected.
-                      </p>
-                    </li>
-                  </ul>
-                  <div className="mt-6 pt-6 border-t border-gray-200">
-                    <p className="text-xs italic" style={{ color: colors.warmGrey }}>
-                      We prioritize your long-term stability over short-term relief. Form 17.3 does not override existing court or NCT orders.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section
-        className="py-20 px-4"
-        style={{
-          background: `linear-gradient(135deg, ${colors.softPeach}20 0%, ${colors.mintCalm}10 100%)`,
-        }}
-      >
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold mb-6" style={{ color: colors.charcoal }}>
-            Let's look at your numbers
-          </h2>
-          <p className="text-lg mb-8" style={{ color: colors.warmGrey }}>
-            No pressure. No judgment. Just a clear conversation with Sam or the team about which options actually fit your life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              className="text-white font-semibold shadow-md hover:shadow-lg transition-all items-center gap-2 px-8 py-6 text-lg"
-              style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
-              asChild
-            >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <Coffee className="h-5 w-5" />
-                Chat to Sam
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              className="font-semibold px-8 py-6 text-lg"
-              style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "12px" }}
-              asChild
-            >
-              <Link href="/calculator">
-                Show me my options
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* GENTLE AFFILIATE FOOTER */}
-      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
     </main>
   )
 }

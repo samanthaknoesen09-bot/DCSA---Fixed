@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -219,8 +219,6 @@ export default function PricingPage() {
           </div>
         </div>
       </main>
-
-      <GentleAffiliateFooter buttonText="Check Insurance Savings" />
 
       <Footer />
     </>
