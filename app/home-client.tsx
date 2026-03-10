@@ -37,7 +37,7 @@ import {
   Check,
 } from "lucide-react"
 
-export function HomeClient() {
+export function HomeClient(): JSX.Element {
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>("money-reality")
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -111,15 +111,11 @@ export function HomeClient() {
     setExpandedAccordion(expandedAccordion === id ? null : id)
   }
 
-  const correctAnswers = quizAnswers.filter((answer) => answer).length
-  const currentQuestion = quizQuestions[currentQuestionIndex]
+  const correctAnswers = quizAnswers.filter((answer) => answer).length;
+  const currentQuestion = quizQuestions[currentQuestionIndex];
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{ backgroundColor: colors.warmCream }}
-      ref={topRef}
-    >
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.warmCream }} ref={topRef}>
       <main className="flex-1 pb-20 md:pb-0">
         {/* HERO SECTION */}
         <section className="relative py-16 md:py-28 px-4" style={{ 
