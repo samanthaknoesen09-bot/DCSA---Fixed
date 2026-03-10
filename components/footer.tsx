@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input"
 import { Phone, Mail, MapPin, Facebook, CheckCircle, AlertCircle, Linkedin, Instagram } from "lucide-react"
 import { useState } from "react"
 import PhoneContact from "@/components/phone-contact"
-import { AffiliateIcons } from "@/components/affiliate-icons"
 import { colors } from "@/lib/colors"
 
 const TikTokIcon = () => (
@@ -150,11 +149,6 @@ Time: ${new Date().toLocaleTimeString()}`
                 </a>
               </li>
               <li>
-                <a href="/insurance-quotes" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
-                  Insurance Quotes
-                </a>
-              </li>
-              <li>
                 <a href="/refer-a-friend" className="transition-colors hover:font-semibold" style={{ color: colors.charcoal }}>
                   Refer a Friend
                 </a>
@@ -269,13 +263,6 @@ Time: ${new Date().toLocaleTimeString()}`
         </div>
 
         <div className="border-t mt-6 pt-4 space-y-4" style={{ borderColor: colors.sandLight }}>
-          {/* Insurance Partners */}
-          <div className="w-full">
-            <h4 className="text-sm font-semibold mb-3" style={{ color: colors.charcoal }}>Insurance Partners</h4>
-            <AffiliateIcons gap="gap-6" iconSize={40} />
-            <p className="text-xs mt-2" style={{ color: colors.warmGrey }}>Trusted insurance partners for your peace of mind.</p>
-          </div>
-
           {/* Google Maps Embed */}
           <div className="w-full">
             <h4 className="text-sm font-semibold mb-2" style={{ color: colors.charcoal }}>Find Us</h4>

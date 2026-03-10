@@ -8,8 +8,7 @@ import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { PodcastSection } from "@/components/podcast-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
-import { AffiliateIcons } from "@/components/affiliate-icons"
-import { GentleAffiliateFooter } from "@/components/gentle-affiliate-footer"
+
 import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
 import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
@@ -423,10 +422,7 @@ export function HomeClient() {
                   </button>
                   {expandedAccordion === section.id && (
                     <div className="p-6 bg-white rounded-b-lg border-2 border-t-0" style={{ borderColor: colors.sandLight }}>
-                      <p className="text-base" style={{ color: colors.charcoal }}>
-                        {section.content}
-                      </p>
-                    </div>
+
                   )}
                 </div>
               ))}
@@ -764,9 +760,6 @@ export function HomeClient() {
 
         {/* WHATSAPP CHECKLIST - Lead Magnet */}
         <WhatsappChecklist />
-
-        {/* GENTLE AFFILIATE FOOTER */}
-        <GentleAffiliateFooter buttonText="Check Insurance Savings" />
       </main>
 
       {/* BACK TO TOP BUTTON */}
