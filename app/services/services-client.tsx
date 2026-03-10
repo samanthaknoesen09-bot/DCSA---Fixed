@@ -148,8 +148,9 @@ export function ServicesClient() {
                 </CardContent>
               </Card>
             ))}
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   )
 }
