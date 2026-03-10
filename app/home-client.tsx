@@ -8,7 +8,6 @@ import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { PodcastSection } from "@/components/podcast-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
-
 import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
 import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
@@ -324,7 +323,7 @@ export function HomeClient() {
                   id: "know-before-borrow",
                   title: "Know Before You Borrow",
                   content: "Before taking a loan or using credit, understand: interest rates, fees, and repayment terms. They hugely impact your money. Get clear first.",
-                  tips: ["Interest adds up fast—compare rates always", "Fees matter: R50/month = R600/year", "Read the fine print; ask questions—no shame"]
+                  tips: ["Interest adds up fast���compare rates always", "Fees matter: R50/month = R600/year", "Read the fine print; ask questions—no shame"]
                 },
               ].map((section) => (
                 <div key={section.id}>
