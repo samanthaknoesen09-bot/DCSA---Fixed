@@ -3,8 +3,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calculator, TrendingDown, Percent, ArrowRight } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 
 export const metadata: Metadata = {
   title: "Free Debt Calculators | Money Map, Savings & Interest Calculators",
@@ -58,7 +56,6 @@ export default function CalculatorsPage() {
           }),
         }}
       />
-      <Header />
       <main className="min-h-screen bg-gradient-to-b from-background to-[#F8F9FA]">
         <section className="py-20 px-4">
           <div className="container mx-auto max-w-6xl">
@@ -174,7 +171,6 @@ export default function CalculatorsPage() {
           </div>
         </section>
       </main>
-      <Footer />
     </>
   )
 }

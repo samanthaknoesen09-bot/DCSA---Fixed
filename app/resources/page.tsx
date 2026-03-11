@@ -1,6 +1,3 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-
 import { WhatsAppWidget } from "@/components/whatsapp-widget"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertCircle } from "lucide-react"
@@ -18,8 +15,6 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <main className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
@@ -163,8 +158,6 @@ export default function ResourcesPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }
