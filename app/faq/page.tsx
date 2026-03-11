@@ -110,7 +110,6 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           {/* Page Header */}
@@ -220,7 +219,6 @@ export default function FAQPage() {
           </Card>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

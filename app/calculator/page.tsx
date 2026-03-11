@@ -174,7 +174,6 @@ export default function CalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Header />
       <main className="container mx-auto px-4 py-8">
         {/* SEO-optimized heading hierarchy */}
         <div className="max-w-4xl mx-auto mb-6">
@@ -223,8 +222,6 @@ export default function CalculatorPage() {
           </p>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }
