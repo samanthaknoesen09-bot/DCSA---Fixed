@@ -1,6 +1,4 @@
 import { Metadata } from "next"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { ContactOptionsHub } from "@/components/contact-options-hub"
 
 export const metadata: Metadata = {
@@ -11,15 +9,10 @@ export const metadata: Metadata = {
 
 export default function GetStartedPage() {
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-background py-12 px-4" id="main-content">
-        <div className="container mx-auto max-w-7xl">
-          <ContactOptionsHub />
-        </div>
-      </main>
-
-      <Footer />
-    </>
+    <main className="min-h-screen bg-background py-12 px-4" id="main-content">
+      <div className="container mx-auto max-w-7xl">
+        <ContactOptionsHub />
+      </div>
+    </main>
   )
 }

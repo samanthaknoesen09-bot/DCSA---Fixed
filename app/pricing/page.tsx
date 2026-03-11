@@ -1,7 +1,4 @@
 import type { Metadata } from "next"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -15,7 +12,6 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
-      <Header />
       <main className="min-h-screen bg-background" id="main-content">
         <div className="container mx-auto px-4 py-12 max-w-4xl">
           <div className="text-center mb-12">
@@ -219,8 +215,6 @@ export default function PricingPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   )
 }
