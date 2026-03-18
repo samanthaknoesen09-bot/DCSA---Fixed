@@ -61,7 +61,6 @@ export async function POST(request: Request) {
         file_size: fileSize,
         file_type: fileType,
         file_url: fileUrl,
-        submission_id: submissionId,
         submitted_at: new Date().toISOString(),
       },
     ])

@@ -41,7 +41,6 @@ export async function POST(request: NextRequest) {
     const { data: transfer, error: dbError } = await supabaseAdmin
       .from("transfer_requests")
       .insert({
-        submission_id: submissionId,
         client_id: user.id,
         first_name: formData.firstName,
         last_name: formData.lastName,

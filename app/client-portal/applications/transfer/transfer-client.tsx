@@ -452,14 +452,19 @@ export function TransferClient({ user, client }: TransferClientProps) {
                   </Label>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="rounded-lg border-2 border-red-400 bg-red-50 p-3 mb-4">
+                <p className="text-sm font-semibold text-red-700 flex items-center gap-2">
+                  <span>&#9888;&#65039;</span> All three boxes below are required before you can submit
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
                   <Checkbox
                     id="authorizeTransferOfRecords"
                     checked={formData.authorizeTransferOfRecords}
                     onCheckedChange={(checked) => handleInputChange("authorizeTransferOfRecords", checked)}
                   />
                   <Label htmlFor="authorizeTransferOfRecords" className="text-sm leading-relaxed cursor-pointer">
-                    I authorize the transfer of all my debt review records to DCSA *
+                    <span>I authorize the transfer of all my debt review records to DCSA</span> <span className="text-red-500 font-bold">*</span>
                   </Label>
                 </div>
 
@@ -481,7 +486,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToProcessPersonalInfo", checked)}
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DCSA processing my personal information for the transfer *
+                    <span>I consent to DCSA processing my personal information for the transfer</span> <span className="text-red-500 font-bold">*</span>
                   </Label>
                 </div>
               </div>
@@ -514,7 +519,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
           ) : (
             <Button
               onClick={handleSubmit}
-              disabled={loading}
+              disabled={loading || !formData.authorizeTransferOfRecords || !formData.understandTransferProcess || !formData.consentToProcessPersonalInfo}
               className="ml-auto bg-[#FF6B6B] hover:bg-[#FF6B6B]/90 text-white"
             >
               {loading ? (

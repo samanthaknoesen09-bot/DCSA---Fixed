@@ -41,7 +41,6 @@ export async function POST(request: NextRequest) {
     const { data: application, error: dbError } = await supabaseAdmin
       .from("credit_repair_applications")
       .insert({
-        submission_id: submissionId,
         client_id: user.id,
         first_name: formData.firstName,
         last_name: formData.lastName,

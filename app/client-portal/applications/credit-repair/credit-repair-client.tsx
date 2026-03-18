@@ -461,13 +461,20 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Checkbox
-                    id="poaAgreement"
+                    
+              {/* Required Consent Banner */}
+              <div className="rounded-lg border-2 border-red-400 bg-red-50 p-1 mb-2">
+                <p className="text-xs font-semibold text-red-700 flex items-center gap-1">
+                  <span>&#9888;</span> All boxes below are required before you can submit
+                </p>
+              </div>
+              id="poaAgreement"
                     checked={formData.poaAgreement}
                     onCheckedChange={(checked) => handleInputChange("poaAgreement", checked)}
                   />
                   <Label htmlFor="poaAgreement" className="text-sm leading-relaxed cursor-pointer">
                     I grant DCSA power of attorney to act on my behalf for credit repair services *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -478,7 +485,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                   />
                   <Label htmlFor="consentToDisputeOnBehalf" className="text-sm leading-relaxed cursor-pointer">
                     I authorize DCSA to file disputes with credit bureaus on my behalf *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -489,7 +496,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                   />
                   <Label htmlFor="consentToContactBureaus" className="text-sm leading-relaxed cursor-pointer">
                     I consent to DCSA contacting credit bureaus and creditors on my behalf *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -500,7 +507,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
                     I consent to DCSA processing my personal and financial information *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -511,7 +518,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                   />
                   <Label htmlFor="understandCreditRepairProcess" className="text-sm leading-relaxed cursor-pointer">
                     I understand that credit repair results vary and are not guaranteed *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
               </div>
 
@@ -544,7 +551,8 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
           ) : (
             <Button
               onClick={handleSubmit}
-              disabled={loading}
+              disabled={loading || !formData.poaAgreement || !formData.consentToDisputeOnBehalf || !formData.consentToContactBureaus || !formData.consentToProcessPersonalInfo || !formData.understandCreditRepairProcess}
+              title="Please tick all required consent boxes above to submit"
               className="ml-auto bg-[#FFD93D] hover:bg-[#FFD93D]/90 text-[#0D3B66]"
             >
               {loading ? (

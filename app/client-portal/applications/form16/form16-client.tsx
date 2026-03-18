@@ -800,13 +800,20 @@ export function Form16Client({ user, client }: Form16ClientProps) {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Checkbox
-                    id="poaAgreement"
+                    
+              {/* Required Consent Banner */}
+              <div className="rounded-lg border-2 border-red-400 bg-red-50 p-1 mb-2">
+                <p className="text-xs font-semibold text-red-700 flex items-center gap-1">
+                  <span>&#9888;</span> All boxes below are required before you can submit
+                </p>
+              </div>
+              id="poaAgreement"
                     checked={formData.poaAgreement}
                     onCheckedChange={(checked) => handleInputChange("poaAgreement", checked)}
                   />
                   <Label htmlFor="poaAgreement" className="text-sm leading-relaxed cursor-pointer">
                     I grant DCSA power of attorney to act on my behalf in all debt review matters *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -817,7 +824,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                   />
                   <Label htmlFor="consentToContactCreditors" className="text-sm leading-relaxed cursor-pointer">
                     I consent to DCSA contacting my credit providers on my behalf *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -828,7 +835,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
                     I consent to DCSA processing my personal information in accordance with POPIA *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
 
                 <div className="flex items-start gap-3">
@@ -839,7 +846,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                   />
                   <Label htmlFor="understandDebtReviewProcess" className="text-sm leading-relaxed cursor-pointer">
                     I understand the debt review process and its implications on my credit profile *
-                  </Label>
+                   <span className="text-red-500 font-bold">*</span></Label>
                 </div>
               </div>
 
@@ -876,7 +883,8 @@ export function Form16Client({ user, client }: Form16ClientProps) {
           ) : (
             <Button
               onClick={handleSubmit}
-              disabled={loading}
+              disabled={loading || !formData.poaAgreement || !formData.consentToContactCreditors || !formData.consentToProcessPersonalInfo || !formData.understandDebtReviewProcess}
+              title="Please tick all required consent boxes above to submit"
               className="ml-auto bg-[#4DB6AC] hover:bg-[#4DB6AC]/90 text-white"
             >
               {loading ? (
