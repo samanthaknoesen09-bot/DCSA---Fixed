@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser()
 
     if (!user) {
-      return NextResponse.json({ 
-        ok: false, 
+      return NextResponse.json({
+        ok: false,
         code: "UNAUTHORIZED",
         submissionId,
         message: "Authentication required. Please log in.",
@@ -32,18 +32,18 @@ export async function POST(request: NextRequest) {
     const documentType = formData.get("documentType") as string
 
     if (!file) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         ok: false,
-        code: "VALIDATION_ERROR", 
+        code: "VALIDATION_ERROR",
         submissionId,
         message: "No file provided",
       }, { status: 400 })
     }
 
     if (!documentType) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         ok: false,
-        code: "VALIDATION_ERROR", 
+        code: "VALIDATION_ERROR",
         submissionId,
         message: "Document type is required",
       }, { status: 400 })
@@ -52,14 +52,14 @@ export async function POST(request: NextRequest) {
     // Validate file size (max 50MB)
     if (file.size > MAX_FILE_SIZE) {
       return NextResponse.json(
-        { 
+        {
           ok: false,
           code: "FILE_TOO_LARGE",
           submissionId,
           message: "File too large. Maximum allowed size is 50MB.",
           maxSize: MAX_FILE_SIZE,
           fileSize: file.size
-        }, 
+        },
         { status: 413 }
       )
     }
@@ -69,9 +69,9 @@ export async function POST(request: NextRequest) {
     const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
     if (!supabaseUrl || !serviceRoleKey) {
-      console.error("[v0] Missing Supabase credentials:", { 
-        hasUrl: !!supabaseUrl, 
-        hasKey: !!serviceRoleKey 
+      console.error("[v0] Missing Supabase credentials:", {
+        hasUrl: !!supabaseUrl,
+        hasKey: !!serviceRoleKey
       })
       return NextResponse.json(
         {
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
       // Check if error is related to file size
       if (uploadError.message?.includes("413") || uploadError.message?.includes("entity too large")) {
         return NextResponse.json(
-          { 
+          {
             ok: false,
             code: "FILE_TOO_LARGE",
             submissionId,
@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
         )
       }
       return NextResponse.json(
-        { 
+        {
           ok: false,
           code: "UPLOAD_FAILED",
           submissionId,
@@ -153,7 +153,6 @@ export async function POST(request: NextRequest) {
         file_url: storagePath,
         file_size: file.size,
         mime_type: file.type,
-        submission_id: submissionId,
         status: "uploaded",
       })
       .select()
@@ -162,7 +161,7 @@ export async function POST(request: NextRequest) {
     if (dbError) {
       console.error("[v0] Database insert error:", dbError)
       return NextResponse.json(
-        { 
+        {
           ok: false,
           code: "SAVE_FAILED",
           submissionId,
@@ -253,7 +252,7 @@ export async function POST(request: NextRequest) {
       error: error instanceof Error ? error.message : String(error),
     })
     return NextResponse.json(
-      { 
+      {
         ok: false,
         code: "UPLOAD_ERROR",
         submissionId,
