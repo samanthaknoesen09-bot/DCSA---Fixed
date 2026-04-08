@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Coffee, ChevronDown, Mail } from "lucide-react"
+import { Menu, Coffee, ChevronDown, Mail, Calculator } from "lucide-react"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 
 export function Header() {
@@ -71,8 +71,23 @@ export function Header() {
             <Link href="#contact" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Contact</Link>
           </nav>
 
-          {/* Right: Primary CTA Only */}
-          <div className="flex items-center gap-2 md:gap-4">
+          {/* Right: Calculator CTA + WhatsApp */}
+          <div className="flex items-center gap-2 md:gap-3">
+            {/* Calculator Button - Eye-catching */}
+            <Button
+              className="hidden md:inline-flex items-center gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300 animate-pulse-subtle"
+              style={{ 
+                backgroundColor: "#10B981", 
+                color: "white",
+                borderRadius: "12px",
+              }}
+              asChild
+            >
+              <Link href="/calculators">
+                <Calculator className="h-4 w-4" />
+                Free Calculator
+              </Link>
+            </Button>
 
             <Button
               className="text-white font-semibold hidden md:inline-flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
@@ -85,25 +100,21 @@ export function Header() {
               </a>
             </Button>
 
-            {/* Mobile Portal Buttons */}
-            <div className="md:hidden flex items-center gap-2">
-              <Button
-                className="text-xs font-medium px-2 py-1 h-auto"
-                variant="outline"
-                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "8px" }}
-                asChild
-              >
-                <Link href="/client-portal">Portal</Link>
-              </Button>
-              <Button
-                className="text-xs font-medium px-2 py-1 h-auto"
-                variant="outline"
-                style={{ borderColor: colors.maroon, color: colors.maroon, borderRadius: "8px" }}
-                asChild
-              >
-                <Link href="/refer-a-friend">Refer</Link>
-              </Button>
-            </div>
+            {/* Mobile Calculator Button - Eye-catching */}
+            <Button
+              className="md:hidden inline-flex items-center gap-1.5 font-semibold text-xs px-3 py-2 h-auto shadow-md"
+              style={{ 
+                backgroundColor: "#10B981", 
+                color: "white",
+                borderRadius: "8px",
+              }}
+              asChild
+            >
+              <Link href="/calculators">
+                <Calculator className="h-3.5 w-3.5" />
+                Calculator
+              </Link>
+            </Button>
 
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -153,7 +164,20 @@ export function Header() {
                     <Link href="#contact" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Contact</Link>
                   </nav>
 
-                  <div className="border-t pt-6 space-y-4" style={{ borderColor: colors.sandLight }}>
+                  <div className="border-t pt-6 space-y-3" style={{ borderColor: colors.sandLight }}>
+                    {/* Calculator CTA - Prominent */}
+                    <Button
+                      className="w-full font-semibold items-center gap-2 shadow-md text-white"
+                      style={{ backgroundColor: "#10B981", borderRadius: "12px" }}
+                      asChild
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Link href="/calculators">
+                        <Calculator className="h-4 w-4" />
+                        Free Debt Calculator
+                      </Link>
+                    </Button>
+
                     <Button
                       className="w-full text-white font-semibold items-center gap-2 shadow-md"
                       style={{ backgroundColor: colors.maroon, borderRadius: "12px" }}
