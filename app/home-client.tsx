@@ -269,7 +269,152 @@ export function HomeClient() {
             </div>
           </div>
         </section>
+
+        {/* HOW THIS WORKS */}
+        <HowThisWorksStrip />
+
+        {/* SALARY COMPARISON SECTION */}
+        <SalaryComparisonSection />
+
+        {/* MEET THE TEAM SECTION */}
+        <MeetTheTeam />
+
+        {/* REVIEWS CAROUSEL */}
+        <ReviewsCarousel />
+
+        {/* REVIEW SUBMISSION */}
+        <ReviewSubmission />
+
+        {/* FAQ SECTION */}
+        <FAQSection />
+
+        {/* FAQ REASSURANCE SECTION */}
+        <FAQReassuranceSection />
+
+        {/* QUIZ SECTION */}
+        <section id="quiz" className="py-16 md:py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
+          <div className="container mx-auto max-w-4xl">
+            <Card className="border-2 shadow-lg" style={{ borderColor: colors.sandLight }}>
+              <CardContent className="p-8 md:p-12">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                    Test Your Money Knowledge
+                  </h2>
+                  <p className="text-lg" style={{ color: colors.warmGrey }}>
+                    Quick quiz - see how much you know about debt and money management
+                  </p>
+                </div>
+
+                {!quizComplete ? (
+                  <div className="space-y-6">
+                    <div className="text-center">
+                      <span className="text-sm font-medium" style={{ color: colors.warmGrey }}>
+                        Question {currentQuestionIndex + 1} of {quizQuestions.length}
+                      </span>
+                    </div>
+
+                    <div className="p-6 rounded-xl" style={{ backgroundColor: colors.softPeach + "30" }}>
+                      <p className="text-xl font-medium text-center" style={{ color: colors.charcoal }}>
+                        "{currentQuestion.statement}"
+                      </p>
+                    </div>
+
+                    {!showExplanation ? (
+                      <div className="flex justify-center gap-4">
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          className="min-w-[120px]"
+                          style={{ borderColor: colors.mintCalm, color: colors.mintCalm }}
+                          onClick={() => handleQuizAnswer(true)}
+                        >
+                          <Check className="mr-2 h-5 w-5" />
+                          True
+                        </Button>
+                        <Button
+                          size="lg"
+                          variant="outline"
+                          className="min-w-[120px]"
+                          style={{ borderColor: colors.maroon, color: colors.maroon }}
+                          onClick={() => handleQuizAnswer(false)}
+                        >
+                          <AlertCircle className="mr-2 h-5 w-5" />
+                          False
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        <div className="p-4 rounded-lg" style={{ 
+                          backgroundColor: quizAnswers[quizAnswers.length - 1] ? colors.mintCalm + "20" : colors.softPeach 
+                        }}>
+                          <p className="font-medium mb-2" style={{ color: colors.charcoal }}>
+                            {quizAnswers[quizAnswers.length - 1] ? "Correct!" : "Not quite!"}
+                          </p>
+                          <p style={{ color: colors.warmGrey }}>{currentQuestion.explanation}</p>
+                        </div>
+                        <div className="text-center">
+                          <Button
+                            size="lg"
+                            onClick={handleNextQuestion}
+                            style={{ backgroundColor: colors.maroon }}
+                            className="text-white"
+                          >
+                            {currentQuestionIndex < quizQuestions.length - 1 ? "Next Question" : "See Results"}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-center space-y-6">
+                    <div className="p-6 rounded-xl" style={{ backgroundColor: colors.mintCalm + "20" }}>
+                      <h3 className="text-2xl font-bold mb-2" style={{ color: colors.charcoal }}>
+                        You got {correctAnswers} out of {quizQuestions.length} correct!
+                      </h3>
+                      <p style={{ color: colors.warmGrey }}>
+                        {correctAnswers >= 4 
+                          ? "Great job! You know your stuff about debt management."
+                          : correctAnswers >= 2 
+                            ? "Good effort! There's always more to learn about managing money."
+                            : "No worries - that's why we're here to help you understand your options."}
+                      </p>
+                    </div>
+                    <Button
+                      size="lg"
+                      style={{ backgroundColor: colors.maroon }}
+                      className="text-white"
+                      asChild
+                    >
+                      <Link href={WHATSAPP_URL}>
+                        <MessageCircle className="mr-2 h-5 w-5" />
+                        Chat with Sam About Your Situation
+                      </Link>
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* WHATSAPP CHECKLIST */}
+        <WhatsappChecklist />
+
+        {/* FINAL CTA SECTION */}
+        <FinalCTASection />
+
+        {/* CLARITY BANNER */}
+        <ClarityBanner />
+
+        {/* PODCAST SECTION */}
+        <PodcastSection />
+
+        {/* DEBT REVIEW COMPARISON */}
+        <DebtReviewComparison />
       </main>
+
+      {/* MOBILE HELP BAR */}
+      <MobileHelpBar />
 
       {/* Back to Top Button */}
       {showBackToTop && (
