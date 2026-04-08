@@ -171,12 +171,12 @@ export function HomeClient() {
                 <Card className="p-6 border-2 shadow-2xl hover:shadow-3xl transition-all duration-300" style={{ borderColor: colors.maroon + "30", backgroundColor: colors.white }}>
                   <div className="space-y-5">
                     {/* Sam's Photo */}
-                    <div className="relative w-full h-56 rounded-xl overflow-hidden shadow-lg">
+                    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg">
                       <Image
-                        src="/images/hero-sam-card.jpg"
-                        alt="Sam - DCSA Debt Counsellor"
+                        src="/images/sam-headshot.jpeg"
+                        alt="Samantha Knoesen - DCSA Debt Counsellor"
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </div>
 
