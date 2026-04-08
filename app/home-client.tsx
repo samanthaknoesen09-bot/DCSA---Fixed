@@ -132,39 +132,90 @@ export function HomeClient() {
                 
                 <div className="space-y-4">
                   <p className="text-lg leading-relaxed" style={{ color: colors.charcoal }}>
-                    If you're juggling school fees, groceries, and another round of debit orders while stress keeps you up at night - you're not bad with money. The system just takes first.
+                    If you&apos;re juggling school fees, groceries, and another round of debit orders while stress keeps you up at night - you&apos;re not bad with money. The system just takes first.
                   </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-4">
                   <Button 
                     size="lg" 
-                    className="rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+                    className="rounded-lg font-semibold text-white hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg"
                     style={{ backgroundColor: colors.maroon }}
                     asChild
                   >
-                    <Link href="https://www.dcsam.co.za/calculator">
+                    <Link href="/calculator">
                       Check My Debt Situation
                     </Link>
                   </Button>
                   <Button 
                     size="lg" 
-                    variant="outline"
-                    className="rounded-lg font-semibold"
-                    style={{ borderColor: colors.maroon, color: colors.maroon }}
+                    className="rounded-lg font-semibold bg-green-600 hover:bg-green-700 text-white transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2"
                     asChild
                   >
-                    <Link href={WHATSAPP_URL}>
+                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-5 h-5" />
                       WhatsApp Sam
-                    </Link>
+                    </a>
                   </Button>
                 </div>
 
                 <TrustBadges variant="light" />
 
-                <p className="text-xs pt-2" style={{ color: colors.warmGrey }}>
+                <p className="text-sm font-medium italic pt-2" style={{ color: colors.warmGrey }}>
                   No judgement. No pressure. Just clarity.
                 </p>
+              </div>
+
+              {/* Right: Sam Card with Image */}
+              <div className="relative hidden md:block">
+                <Card className="p-6 border-2 shadow-2xl hover:shadow-3xl transition-all duration-300" style={{ borderColor: colors.maroon + "30", backgroundColor: colors.white }}>
+                  <div className="space-y-5">
+                    {/* Sam's Photo */}
+                    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg">
+                      <Image
+                        src="/images/sam-headshot.jpeg"
+                        alt="Samantha Knoesen - DCSA Debt Counsellor"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+
+                    {/* Sam Introduction */}
+                    <div className="text-center space-y-2">
+                      <h3 className="text-xl font-bold" style={{ color: colors.charcoal }}>Hi, I&apos;m Sam.</h3>
+                      <p className="text-sm leading-relaxed" style={{ color: colors.warmGrey }}>
+                        I&apos;ve helped thousands of South Africans take control of their finances. Your situation isn&apos;t unique - and that&apos;s exactly why I know we can find a way forward together.
+                      </p>
+                    </div>
+
+                    {/* Highlight Stats */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: colors.softPeach + "30" }}>
+                        <div className="text-xl font-bold" style={{ color: colors.maroon }}>1000+</div>
+                        <div className="text-xs" style={{ color: colors.warmGrey }}>Families Helped</div>
+                      </div>
+                      <div className="text-center p-3 rounded-lg" style={{ backgroundColor: colors.softPeach + "30" }}>
+                        <div className="text-xl font-bold" style={{ color: colors.maroon }}>15 min</div>
+                        <div className="text-xs" style={{ color: colors.warmGrey }}>Free Chat</div>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <Button
+                      className="w-full font-semibold h-11 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
+                      style={{ backgroundColor: colors.maroon }}
+                      asChild
+                    >
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                        Start Free Chat with Sam
+                      </a>
+                    </Button>
+                  </div>
+                </Card>
+
+                {/* Decorative Blurs */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-2xl animate-pulse" style={{ backgroundColor: colors.maroon + "15" }}></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full blur-2xl animate-pulse" style={{ backgroundColor: colors.softPeach + "40" }}></div>
               </div>
             </div>
           </div>
