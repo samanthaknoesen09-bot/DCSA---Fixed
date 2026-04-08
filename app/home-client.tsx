@@ -265,10 +265,11 @@ export function HomeClient() {
                     </Button>
                   </CardContent>
                 </Link>
-            </Card>
+              </Card>
+            </div>
           </div>
         </section>
-        </main>
+      </main>
 
       {/* Back to Top Button */}
       {showBackToTop && (
