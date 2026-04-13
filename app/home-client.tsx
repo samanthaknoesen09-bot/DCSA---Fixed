@@ -11,7 +11,7 @@ import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
 import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
 import { HowThisWorksStrip } from "@/components/how-this-works-strip"
-import { FAQReassuranceSection } from "@/components/faq-reassurance-section"
+
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
@@ -173,7 +173,7 @@ export function HomeClient() {
                     {/* Sam's Photo */}
                     <div className="relative w-full h-72 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-primary/10 to-primary/5">
                       <Image
-                        src="/images/samantha-knoesen.jpeg"
+                        src="/images/team/sam.jpg"
                         alt="Samantha Knoesen - DCSA Debt Counsellor"
                         fill
                         className="object-cover object-top"
@@ -339,8 +339,6 @@ export function HomeClient() {
         {/* FAQ SECTION */}
         <FAQSection />
 
-        {/* FAQ REASSURANCE SECTION */}
-        <FAQReassuranceSection />
 
         {/* QUIZ SECTION */}
         <section id="quiz" className="py-16 md:py-20 px-4" style={{ backgroundColor: colors.warmBeige }}>
