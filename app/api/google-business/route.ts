@@ -5,15 +5,23 @@ import { NextResponse } from "next/server"
  * Posts updates to your Google Business Profile when new blog posts are created
  * 
  * Required Environment Variables:
- * - GOOGLE_BUSINESS_ACCESS_TOKEN: OAuth2 access token for Google My Business API
  * - GOOGLE_BUSINESS_ACCOUNT_ID: Your Google Business account ID
  * - GOOGLE_BUSINESS_LOCATION_ID: Your specific location ID
+ * 
+ * Authentication (choose one method):
+ * Option A - Direct Access Token:
+ * - GOOGLE_BUSINESS_ACCESS_TOKEN: OAuth2 access token
+ * 
+ * Option B - Refresh Token Flow (recommended):
+ * - GOOGLE_CLIENT_ID: OAuth client ID
+ * - GOOGLE_CLIENT_SECRET: OAuth client secret
+ * - GOOGLE_BUSINESS_REFRESH_TOKEN: Refresh token for auto-renewal
  * 
  * To get these credentials:
  * 1. Go to Google Cloud Console
  * 2. Enable the "My Business Business Information API"
  * 3. Create OAuth2 credentials
- * 4. Use the OAuth playground to get an access token
+ * 4. Use the OAuth playground to get tokens
  * 5. Find your account/location IDs in Google Business Profile
  */
 
@@ -27,8 +35,9 @@ interface GoogleBusinessPostParams {
 
 async function refreshAccessToken(): Promise<string | null> {
   const refreshToken = process.env.GOOGLE_BUSINESS_REFRESH_TOKEN
-  const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID
-  const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET
+  // Support both naming conventions for flexibility
+  const clientId = process.env.GOOGLE_CLIENT_ID || process.env.GOOGLE_OAUTH_CLIENT_ID
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET || process.env.GOOGLE_OAUTH_CLIENT_SECRET
 
   if (!refreshToken || !clientId || !clientSecret) {
     return null
