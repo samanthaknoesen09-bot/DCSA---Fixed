@@ -26,7 +26,6 @@ export function getSupabaseStorageUrl(bucket: string, path: string): string {
  * Fallback to Vercel Blob URLs if Supabase URLs are not yet available
  */
 export const TEAM_IMAGES = {
-  samantha: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Samantha%20Knoesen-3LnAKsHsyCU0lG1juQKJPjRDobvZ5C.jpeg",
+  samantha: "/images/samantha-knoesen.jpeg",
   kadene: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Kadene%20Jacobs-YU0qw4rRsTb1hR3E4SsubHW9IZMwmD.jpeg",
-  cindy: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cindy%20Killian-OE4bdd90WnESbcGylPEOGOfXUsp9x7.jpeg",
 }
