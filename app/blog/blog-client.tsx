@@ -145,7 +145,7 @@ export default function BlogClientPage() {
             <div className="mt-10 inline-flex items-center gap-4 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-sm">
               <div className="relative w-14 h-14 rounded-full overflow-hidden">
                 <Image
-                  src="/images/samantha-knoesen.jpeg"
+                  src="/images/team/sam.jpg"
                   alt="Samantha Knoesen"
                   fill
                   className="object-cover"
