@@ -2,21 +2,13 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Heart, Sparkles, Users, Calendar, Phone } from "lucide-react"
+import { Heart, Sparkles, Users, Phone } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
-import { BookingCalendar } from "@/components/booking-calendar"
 import { TEAM_IMAGES } from "@/lib/supabase-storage"
 
 export function MeetTheTeam() {
-  const [isBookingOpen, setIsBookingOpen] = useState(false)
-  const [bookingReason, setBookingReason] = useState("")
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
-
-  const openBooking = (reason: string) => {
-    setBookingReason(reason)
-    setIsBookingOpen(true)
-  }
 
   const handleImageError = (id: string) => {
     setImageErrors(prev => ({ ...prev, [id]: true }))
@@ -25,7 +17,6 @@ export function MeetTheTeam() {
   const teamMembers = [
     { id: "sam", initials: "SK", name: "Sam | Samantha Knoesen" },
     { id: "kadene", initials: "KJ", name: "Kadene Jacobs" },
-    { id: "cindy", initials: "CK", name: "Cindy Killian" },
   ]
 
   const AvatarFallback = ({ initials, color }: { initials: string; color: string }) => (
@@ -35,13 +26,6 @@ export function MeetTheTeam() {
   )
 
   return (
-    <>
-      <BookingCalendar 
-        isOpen={isBookingOpen} 
-        onClose={() => setIsBookingOpen(false)}
-        reason={bookingReason}
-      />
-      
       <section className="py-20 px-4 bg-gradient-to-br from-[#FFE5D9]/30 via-white to-primary/5">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
@@ -57,7 +41,7 @@ export function MeetTheTeam() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Sam - Founder/Lead Debt Counsellor */}
           <Card className="border-2 border-primary/30 hover:border-primary transition-all hover:shadow-2xl group">
             <CardContent className="p-8">
@@ -133,16 +117,8 @@ export function MeetTheTeam() {
                   If you're feeling overwhelmed or unsure where to start, you don't have to face it alone. I'm here to help you find your way forward 🤍
                 </p>
 
-                {/* Contact Buttons */}
+                {/* Contact Button */}
                 <div className="flex flex-col gap-3 pt-2">
-                  <Button 
-                    size="sm" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white"
-                    onClick={() => openBooking("Free Consultation with Sam")}
-                  >
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Book Free Consultation
-                  </Button>
                   <Button 
                     size="sm" 
                     variant="outline" 
@@ -217,63 +193,6 @@ export function MeetTheTeam() {
             </CardContent>
           </Card>
 
-          {/* Cindy Killian - Attorney */}
-          <Card className="border-2 border-[#FF6B6B]/30 hover:border-[#FF6B6B] transition-all hover:shadow-2xl group">
-            <CardContent className="p-8">
-              <div className="relative mb-6 overflow-hidden rounded-2xl aspect-square bg-gradient-to-br from-[#FF6B6B] to-[#FF6B6B]/60">
-                {!imageErrors["cindy"] ? (
-                  <Image
-                    src={TEAM_IMAGES.cindy}
-                    alt="Cindy Killian - Attorney & Acting Magistrate"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    onError={() => handleImageError("cindy")}
-                  />
-                ) : (
-                  <AvatarFallback initials="CK" color="bg-gradient-to-br from-[#FF6B6B] to-[#FF6B6B]/60" />
-                )}
-              </div>
-              
-              <div className="text-center space-y-3">
-                <div className="inline-flex items-center gap-2 bg-[#FF6B6B]/10 px-3 py-1 rounded-full">
-                  <Sparkles className="w-4 h-4 text-[#FF6B6B]" />
-                  <span className="text-xs font-semibold text-[#FF6B6B]">Attorney | Acting Magistrate</span>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-[#0D3B66]">Cindy Killian</h3>
-                
-                <p className="text-[#0D3B66]/80 leading-relaxed text-sm space-y-3">
-                  <p>Cindy from Cindy Killian Attorneys is our trusted legal partner — and a powerhouse in her field.</p>
-                  
-                  <p>With extensive experience in debt law, criminal law, family disputes, divorce matters, and broader litigation, she brings depth, authority, and clarity to every legal process connected to our work.</p>
-                  
-                  <p>She is also currently serving as an Acting Magistrate, which speaks to both her expertise and professional standing.</p>
-                  
-                  <p className="text-[#0D3B66] font-medium">When legal protection matters — you want someone who understands the system from every angle. Cindy does.</p>
-                </p>
-
-                <div className="pt-4 space-y-2 text-sm text-[#0D3B66]/70">
-                  <div className="flex items-center gap-2 justify-center">
-                    <div className="w-2 h-2 bg-[#FF6B6B] rounded-full"></div>
-                    <span>Handles all DCSA court matters</span>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center">
-                    <div className="w-2 h-2 bg-[#FF6B6B] rounded-full"></div>
-                    <span>Real-world experience, not just theory</span>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center">
-                    <div className="w-2 h-2 bg-[#FF6B6B] rounded-full"></div>
-                    <span>Fights for you with heart & skill</span>
-                  </div>
-                </div>
-
-                <p className="text-sm italic text-[#0D3B66]/60 pt-4 border-t border-[#FF6B6B]/20">
-                  "I'm not just an attorney - I'm a human who's faced challenges too. Ek's net 'n mens."
-                </p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         <div className="text-center mt-12">
@@ -284,6 +203,5 @@ export function MeetTheTeam() {
         </div>
       </div>
     </section>
-    </>
   )
 }
