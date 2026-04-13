@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     "financial education",
     "debt clear tips",
     "budgeting advice",
+    "Samantha Knoesen blog",
+    "debt review tips",
+    "credit repair advice",
   ],
   openGraph: {
     title: "DCSA Blog - Latest Debt Counselling Tips & Financial Advice",
@@ -23,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/dcsa-logo.jpg",
+        url: "https://www.dcsam.co.za/images/dcsa-og-logo.png",
         width: 1200,
         height: 630,
         alt: "DCSA Blog - Debt Counselling Tips",
@@ -34,10 +37,25 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DCSA Blog - Latest Debt Counselling Tips & Financial Advice",
     description: "Expert debt counselling insights and financial tips from DCSA.",
-    images: ["/images/dcsa-logo.jpg"],
+    images: ["https://www.dcsam.co.za/images/dcsa-og-logo.png"],
   },
   alternates: {
     canonical: "https://www.dcsam.co.za/blog",
+    types: {
+      "application/rss+xml": "https://www.dcsam.co.za/feed.xml",
+      "application/feed+json": "https://www.dcsam.co.za/feed.json",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
 }
 

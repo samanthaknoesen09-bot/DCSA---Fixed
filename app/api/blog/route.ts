@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 import { createClient as createAdminClient } from "@supabase/supabase-js"
+import { postToGoogleBusiness } from "@/app/api/google-business/route"
 
 // Simple auth check
 function isAuthenticated(request: NextRequest): boolean {
@@ -170,7 +171,7 @@ export async function POST(request: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.dcsam.co.za"
     const blogUrl = `${baseUrl}/blog/${slug}`
 
-    // Post to Facebook if publishing now
+    // Post to Facebook and Google Business if publishing now
     if (isPublishNow) {
       const fbResult = await postToFacebook(
         title,
@@ -183,6 +184,25 @@ export async function POST(request: NextRequest) {
         message += " Posted to Facebook."
       } else {
         message += ` Facebook posting failed: ${fbResult.error}`
+      }
+
+      // Post to Google Business Profile
+      try {
+        const gbResult = await postToGoogleBusiness({
+          title,
+          summary: `${post.excerpt}\n\nRead more on our blog for helpful debt counselling tips and financial advice.`,
+          url: blogUrl,
+          imageUrl: featuredImage,
+          callToAction: "LEARN_MORE",
+        })
+
+        if (gbResult.success) {
+          message += " Posted to Google Business Profile."
+        } else {
+          message += ` Google Business posting skipped: ${gbResult.error}`
+        }
+      } catch {
+        message += " (Google Business posting failed)"
       }
 
       // Submit to search engines

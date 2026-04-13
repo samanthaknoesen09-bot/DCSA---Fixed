@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, User, ArrowRight, ExternalLink } from "lucide-react"
+import { Calendar, Clock, ArrowRight, ExternalLink, Rss } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { colors } from "@/lib/colors"
+import Image from "next/image"
 
 interface BlogPost {
   id: string
@@ -100,19 +102,28 @@ export default function BlogClientPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: colors.warmCream }}>
       <Header />
 
-      <main className="py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-4 text-balance">
-              Real Talk About Money (Coffee Break Edition)
+      <main className="pb-16 lg:pb-24">
+        {/* Hero Section - Matching Homepage Style */}
+        <section className="py-16 md:py-20 px-4" style={{ 
+          background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)`
+        }}>
+          <div className="container mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
+              <Rss className="w-4 h-4" style={{ color: colors.maroon }} />
+              <span className="text-sm font-semibold" style={{ color: colors.maroon }}>DCSA Blog</span>
+            </div>
+            
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-balance" style={{ color: colors.charcoal }}>
+              Real Talk About Money
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Hey friend! Welcome to our blog where we share honest financial advice without the boring jargon. Think of it as money conversations over coffee with your supportive (and slightly funny) debt counsellor friends. Pull up a chair!
+            <p className="text-lg mb-8 max-w-2xl mx-auto text-pretty" style={{ color: colors.warmGrey }}>
+              Hey friend! Welcome to our blog where we share honest financial advice without the boring jargon. Think of it as money conversations over coffee with your supportive debt counsellor friends.
             </p>
-            <div className="mt-6">
+            
+            <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 className="bg-[#1877F2] hover:bg-[#166FE5] text-white"
                 onClick={() => window.open("https://www.facebook.com/DebtClearDCSA", "_blank")}
@@ -120,8 +131,35 @@ export default function BlogClientPage() {
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Follow Us on Facebook
               </Button>
+              <Button
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10"
+                onClick={() => window.open("/feed.xml", "_blank")}
+              >
+                <Rss className="w-4 h-4 mr-2" />
+                Subscribe to RSS
+              </Button>
+            </div>
+
+            {/* Author Card */}
+            <div className="mt-10 inline-flex items-center gap-4 bg-white/80 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-sm">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden">
+                <Image
+                  src="/images/samantha-knoesen.jpeg"
+                  alt="Samantha Knoesen"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="text-left">
+                <p className="font-semibold" style={{ color: colors.charcoal }}>Written by Sam &amp; the DCSA Team</p>
+                <p className="text-sm" style={{ color: colors.warmGrey }}>NCR Registered Debt Counsellors</p>
+              </div>
             </div>
           </div>
+        </section>
+
+        <div className="container mx-auto px-4 py-12">
 
           <div className="space-y-8">
             {loading ? (
@@ -132,12 +170,20 @@ export default function BlogClientPage() {
             ) : (
               posts.map((post) => (
                 <a key={post.id} href={`/blog/${post.slug}`} className="block group">
-                  <Card className="bg-card border-border hover:border-[#4DB6AC] hover:shadow-lg transition-all overflow-hidden cursor-pointer">
+                  <Card 
+                    className="border-2 hover:shadow-xl transition-all overflow-hidden cursor-pointer"
+                    style={{ borderColor: colors.sandLight, backgroundColor: colors.white }}
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-3">
-                            <Badge className="bg-[#FFE5D9] text-[#0D3B66] border-[#4DB6AC]/30">{post.category}</Badge>
+                          <div className="flex flex-wrap items-center gap-4 text-sm mb-3" style={{ color: colors.warmGrey }}>
+                            <Badge 
+                              className="border-0"
+                              style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}
+                            >
+                              {post.category}
+                            </Badge>
                             <div className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
                               <span>{formatDate(post.createdAt)}</span>
@@ -147,14 +193,20 @@ export default function BlogClientPage() {
                               <span>{getReadTime(post.content)}</span>
                             </div>
                           </div>
-                          <h2 className="text-2xl font-bold text-[#0D3B66] group-hover:text-[#4DB6AC] transition-colors mb-2">
+                          <h2 
+                            className="text-2xl font-bold group-hover:text-primary transition-colors mb-2"
+                            style={{ color: colors.charcoal }}
+                          >
                             {post.title}
                           </h2>
-                          <p className="text-muted-foreground line-clamp-2">
+                          <p className="line-clamp-2" style={{ color: colors.warmGrey }}>
                             {post.excerpt}
                           </p>
                         </div>
-                        <ArrowRight className="w-6 h-6 text-[#4DB6AC] group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" />
+                        <ArrowRight 
+                          className="w-6 h-6 group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" 
+                          style={{ color: colors.maroon }}
+                        />
                       </div>
                     </CardContent>
                   </Card>
@@ -164,15 +216,21 @@ export default function BlogClientPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Card className="bg-primary/5 border-primary/20 max-w-2xl mx-auto">
+            <Card 
+              className="border-2 max-w-2xl mx-auto"
+              style={{ borderColor: colors.maroon + "30", backgroundColor: colors.softPeach + "20" }}
+            >
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-4">Ready for That Conversation We Mentioned?</h3>
-                <p className="text-muted-foreground mb-6">
+                <h3 className="text-2xl font-bold mb-4" style={{ color: colors.charcoal }}>
+                  Ready for That Conversation We Mentioned?
+                </h3>
+                <p className="mb-6" style={{ color: colors.warmGrey }}>
                   Reading is great (thanks for being here!), but sometimes you just need to talk to an actual human who gets it. Our female-led team is here - no judgment, just genuine support and real solutions tailored to YOUR life.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="text-white"
+                    style={{ backgroundColor: colors.maroon }}
                     onClick={() =>
                       (window.location.href =
                         "mailto:info@dcsam.co.za?subject=Free Consultation Request&body=Hi DCSA team, I would like to schedule a free consultation to discuss my debt situation.")
@@ -182,6 +240,7 @@ export default function BlogClientPage() {
                   </Button>
                   <Button
                     variant="outline"
+                    className="bg-green-600 hover:bg-green-700 text-white border-0"
                     onClick={() =>
                       window.open("https://wa.me/27719006298?text=Hi, I need help with debt counselling", "_blank")
                     }

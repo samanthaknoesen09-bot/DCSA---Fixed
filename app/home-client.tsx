@@ -171,9 +171,9 @@ export function HomeClient() {
                 <Card className="p-6 border-2 shadow-2xl hover:shadow-3xl transition-all duration-300" style={{ borderColor: colors.maroon + "30", backgroundColor: colors.white }}>
                   <div className="space-y-5">
                     {/* Sam's Photo */}
-                    <div className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg">
+                    <div className="relative w-full h-72 rounded-xl overflow-hidden shadow-lg bg-gradient-to-br from-primary/10 to-primary/5">
                       <Image
-                        src="/images/sam-headshot.jpeg"
+                        src="/images/samantha-knoesen.jpeg"
                         alt="Samantha Knoesen - DCSA Debt Counsellor"
                         fill
                         className="object-cover object-top"
@@ -445,6 +445,89 @@ export function HomeClient() {
                 )}
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* BLOG PREVIEW SECTION */}
+        <section className="py-16 md:py-20 px-4" style={{ backgroundColor: colors.white }}>
+          <div className="container mx-auto max-w-4xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-pretty" style={{ color: colors.charcoal }}>
+                From Our Blog
+              </h2>
+              <p className="text-lg" style={{ color: colors.warmGrey }}>
+                Real talk about money, debt, and financial freedom
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <Card 
+                className="border-2 hover:shadow-lg transition-shadow cursor-pointer"
+                style={{ borderColor: colors.sandLight }}
+              >
+                <Link href="/blog/understanding-consumer-rights" className="block p-6">
+                  <div className="text-xs font-semibold px-2 py-1 rounded-full inline-block mb-3" 
+                    style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}>
+                    Consumer Rights
+                  </div>
+                  <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>
+                    Understanding Your Consumer Rights
+                  </h3>
+                  <p className="text-sm line-clamp-2" style={{ color: colors.warmGrey }}>
+                    Know your rights under the National Credit Act and how they protect you.
+                  </p>
+                </Link>
+              </Card>
+
+              <Card 
+                className="border-2 hover:shadow-lg transition-shadow cursor-pointer"
+                style={{ borderColor: colors.sandLight }}
+              >
+                <Link href="/blog/debt-review-benefits" className="block p-6">
+                  <div className="text-xs font-semibold px-2 py-1 rounded-full inline-block mb-3" 
+                    style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}>
+                    Debt Review
+                  </div>
+                  <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>
+                    How Debt Review Can Reduce Payments
+                  </h3>
+                  <p className="text-sm line-clamp-2" style={{ color: colors.warmGrey }}>
+                    Learn how debt review can reduce your monthly payments by up to 45%.
+                  </p>
+                </Link>
+              </Card>
+
+              <Card 
+                className="border-2 hover:shadow-lg transition-shadow cursor-pointer"
+                style={{ borderColor: colors.sandLight }}
+              >
+                <Link href="/blog/struggling-with-debt" className="block p-6">
+                  <div className="text-xs font-semibold px-2 py-1 rounded-full inline-block mb-3" 
+                    style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}>
+                    Support
+                  </div>
+                  <h3 className="font-bold mb-2" style={{ color: colors.charcoal }}>
+                    Struggling with Debt? You&apos;re Not Alone
+                  </h3>
+                  <p className="text-sm line-clamp-2" style={{ color: colors.warmGrey }}>
+                    Our caring team is here to help you through tough financial times.
+                  </p>
+                </Link>
+              </Card>
+            </div>
+
+            <div className="text-center">
+              <Button 
+                variant="outline"
+                className="font-semibold"
+                style={{ borderColor: colors.maroon, color: colors.maroon }}
+                asChild
+              >
+                <Link href="/blog">
+                  Read More Articles
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
 

@@ -501,6 +501,106 @@ export default function RootLayout({
           }}
         />
 
+        {/* RSS and JSON Feed Discovery for Blog */}
+        <link rel="alternate" type="application/rss+xml" title="DCSA Blog RSS Feed" href="https://www.dcsam.co.za/feed.xml" />
+        <link rel="alternate" type="application/feed+json" title="DCSA Blog JSON Feed" href="https://www.dcsam.co.za/feed.json" />
+        
+        {/* AI Crawler Hints - helps AI assistants understand the site */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+        <meta name="bingbot" content="index, follow" />
+        
+        {/* Structured Data for AI Discovery */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": "https://www.dcsam.co.za",
+              "name": "DCSA - Financial Education & Debt Counselling",
+              "description": "South Africa's caring debt counsellors providing financial education, debt review, and credit repair services.",
+              "publisher": {
+                "@type": "Organization",
+                "name": "DCSA",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.dcsam.co.za/images/dcsa-logo.jpg"
+                }
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://www.dcsam.co.za/blog?search={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+
+        {/* Blog Schema for AI Discovery */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              "url": "https://www.dcsam.co.za/blog",
+              "name": "DCSA Blog - Financial Education & Debt Counselling Tips",
+              "description": "Real talk about money, debt management, and financial freedom from DCSA - South Africa's caring debt counsellors.",
+              "publisher": {
+                "@type": "Organization",
+                "name": "DCSA",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.dcsam.co.za/images/dcsa-logo.jpg"
+                }
+              },
+              "blogPost": [],
+              "inLanguage": "en-ZA",
+              "isAccessibleForFree": true,
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "South Africans seeking debt help and financial education"
+              }
+            })
+          }}
+        />
+
+        {/* Person Schema for Sam - helps AI understand the founder */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Samantha Knoesen",
+              "alternateName": "Sam Knoesen",
+              "jobTitle": "Registered Debt Counsellor & Founder",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "DCSA"
+              },
+              "description": "NCR Registered Debt Counsellor (NCRDC3995) helping South Africans achieve financial freedom through debt review and financial education.",
+              "image": "https://www.dcsam.co.za/images/samantha-knoesen.jpeg",
+              "url": "https://www.dcsam.co.za",
+              "sameAs": [
+                "https://www.facebook.com/DebtClearDCSA",
+                "https://www.linkedin.com/company/dcsa-debt-counselling"
+              ],
+              "knowsAbout": [
+                "Debt Counselling",
+                "Debt Review",
+                "Credit Repair",
+                "Financial Education",
+                "National Credit Act"
+              ]
+            })
+          }}
+        />
+
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
