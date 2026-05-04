@@ -89,7 +89,6 @@ export function HeroSection() {
 
                 {/* Sam Introduction */}
                 <div className="text-center space-y-3">
-                  <h3 className="text-2xl font-bold" style={{ color: colors.charcoal }}>Hi, I&apos;m Sam.</h3>
                   <p className="leading-relaxed" style={{ color: colors.warmGrey }}>
                     I&apos;ve helped thousands of South Africans take control of their finances. Your situation isn&apos;t unique - and that&apos;s exactly why I know we can find a way forward together.
                   </p>
