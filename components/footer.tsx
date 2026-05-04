@@ -106,7 +106,7 @@ Time: ${timeStr}`
                   <span className="leading-relaxed group-hover:underline block font-medium">Jean Lemue Attorneys</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">2nd Floor, Pier 14 Shopping Centre,</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">North End, Port Elizabeth</span>
-                  <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Walk-ins welcome</span>
+                  <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Mon-Fri: 8am - 4pm · Walk-ins welcome</span>
                 </div>
               </a>
               {/* Appointment-only office */}
