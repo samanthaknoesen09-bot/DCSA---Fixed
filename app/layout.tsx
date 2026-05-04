@@ -83,9 +83,18 @@ export const metadata: Metadata = {
     "DCSA",
     "DCSam",
     "Samantha Knoesen",
+    "Jean Lemue Attorneys",
+    "Jean Lemue",
     "debt counselling",
     "debt counsellor",
     "credit repair",
+
+    // Location Keywords
+    "Pier 14 Shopping Centre",
+    "North End Port Elizabeth",
+    "Newton Park Port Elizabeth",
+    "attorney Port Elizabeth",
+    "debt attorney Port Elizabeth",
     
     // Brand + Service Combinations
     "DCSA debt counselling",
@@ -93,6 +102,7 @@ export const metadata: Metadata = {
     "Samantha Knoesen debt counsellor",
     "DCSA South Africa",
     "DCSam South Africa",
+    "Jean Lemue Attorneys debt counselling",
     
     // Near Me Searches
     "debt counsellor near me",
@@ -302,8 +312,10 @@ export const metadata: Metadata = {
     "DC.title": "DCSA Debt Counsellors - Professional Debt Help South Africa",
     "DC.subject": "Debt Counselling, Financial Services, Debt Management, Debt Help, Debt Relief",
     "DC.description": "DCSA professional debt counselling, debt help and debt relief services in South Africa",
-    "geo.region": "ZA",
-    "geo.placename": "South Africa",
+    "geo.region": "ZA-EC",
+    "geo.placename": "Port Elizabeth, Eastern Cape, South Africa",
+    "geo.position": "-33.9476;25.5836",
+    "ICBM": "-33.9476, 25.5836",
     language: "en-ZA",
     revisit: "7 days",
   },
@@ -325,60 +337,88 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": "https://www.dcsam.co.za",
-              "name": "DCSA - Financial Education & Debt Counselling",
-              "url": "https://www.dcsam.co.za",
-              "description": "Financial education and debt counselling services in South Africa. NCR registered debt counsellor.",
-              "telephone": "+27719006298",
-              "email": "info@dcsam.co.za",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "81 6th Avenue",
-                "addressLocality": "Newton Park",
-                "addressRegion": "Gqeberha",
-                "postalCode": "6045",
-                "addressCountry": "ZA"
-              },
-              "image": "https://www.dcsam.co.za/og-image.png",
-              "priceRange": "Consultation based",
-              "areaServed": {
-                "@type": "Country",
-                "name": "South Africa"
-              },
-              "sameAs": [
-                "https://www.facebook.com/DCSamDebt",
-                "https://www.linkedin.com/company/dcsa-debt-counselling",
-                "https://www.youtube.com/@dcsam"
-              ],
-              "knowsAbout": [
-                "Debt Counselling",
-                "Credit Repair",
-                "Financial Education",
-                "Debt Review",
-                "Money Management"
-              ],
-              "jobTitle": "Debt Counsellor, Financial Educator",
-              "sponsor": {
-                "@type": "Organization",
-                "name": "National Credit Regulator",
-                "url": "https://www.ncr.org.za"
-              },
-              "makesOffer": [
-                {
-                  "@type": "Offer",
-                  "name": "Debt Counselling",
-                  "description": "Professional debt review and counselling services"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "LegalService",
+                "@id": "https://www.dcsam.co.za/#pier14",
+                "name": "Jean Lemue Attorneys",
+                "alternateName": "DCSA - Financial Education & Debt Counselling",
+                "url": "https://www.dcsam.co.za",
+                "description": "Jean Lemue Attorneys. Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
+                "telephone": "+27719006298",
+                "email": "info@dcsam.co.za",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
+                  "addressLocality": "North End",
+                  "addressRegion": "Port Elizabeth",
+                  "postalCode": "6001",
+                  "addressCountry": "ZA"
                 },
-                {
-                  "@type": "Offer",
-                  "name": "Financial Education",
-                  "description": "Free financial literacy courses and tools"
-                }
-              ]
-            })
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": -33.9476,
+                  "longitude": 25.5836
+                },
+                "openingHoursSpecification": [
+                  {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                    "opens": "08:00",
+                    "closes": "17:00"
+                  }
+                ],
+                "image": "https://www.dcsam.co.za/og-image.png",
+                "priceRange": "Consultation based",
+                "areaServed": {"@type": "City", "name": "Port Elizabeth"},
+                "sameAs": [
+                  "https://www.facebook.com/DCSamDebt",
+                  "https://www.linkedin.com/company/dcsa-debt-counselling"
+                ],
+                "knowsAbout": ["Debt Counselling","Credit Repair","Financial Education","Debt Review","Money Management"],
+                "makesOffer": [
+                  {"@type": "Offer","name": "Debt Counselling","description": "Professional debt review and counselling services"},
+                  {"@type": "Offer","name": "Financial Education","description": "Free financial literacy courses and tools"}
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "LegalService",
+                "@id": "https://www.dcsam.co.za/#newtonpark",
+                "name": "Jean Lemue Attorneys",
+                "alternateName": "DCSA - Financial Education & Debt Counselling",
+                "url": "https://www.dcsam.co.za",
+                "description": "Jean Lemue Attorneys at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
+                "telephone": "+27719006298",
+                "email": "info@dcsam.co.za",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "81 6th Avenue",
+                  "addressLocality": "Newton Park",
+                  "addressRegion": "Port Elizabeth",
+                  "postalCode": "6045",
+                  "addressCountry": "ZA"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": -33.966111,
+                  "longitude": 25.595891
+                },
+                "image": "https://www.dcsam.co.za/og-image.png",
+                "priceRange": "Consultation based",
+                "areaServed": {"@type": "City", "name": "Port Elizabeth"},
+                "sameAs": [
+                  "https://www.facebook.com/DCSamDebt",
+                  "https://www.linkedin.com/company/dcsa-debt-counselling"
+                ],
+                "knowsAbout": ["Debt Counselling","Credit Repair","Financial Education","Debt Review","Money Management"],
+                "makesOffer": [
+                  {"@type": "Offer","name": "Debt Counselling","description": "Professional debt review and counselling services"},
+                  {"@type": "Offer","name": "Financial Education","description": "Free financial literacy courses and tools"}
+                ]
+              }
+            ])
           }}
         />
 

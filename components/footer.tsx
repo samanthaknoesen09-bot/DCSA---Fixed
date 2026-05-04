@@ -40,14 +40,17 @@ export function Footer() {
     setMessage("")
 
     try {
+      const now = new Date()
+      const dateStr = now.toLocaleDateString("en-ZA")
+      const timeStr = now.toLocaleTimeString("en-ZA")
       const subject = "Newsletter Subscription Request"
       const body = `New newsletter subscription request from: ${email}
 
 Please add this email to the DCSA newsletter list for financial tips and debt management advice.
 
 Email: ${email}
-Date: ${new Date().toLocaleDateString()}
-Time: ${new Date().toLocaleTimeString()}`
+Date: ${dateStr}
+Time: ${timeStr}`
 
       window.location.href = `mailto:sam@dcsam.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
@@ -90,17 +93,37 @@ Time: ${new Date().toLocaleTimeString()}`
                 <Mail className="w-5 h-5 text-primary" />
                 <span>info@dcsam.co.za</span>
               </a>
+              {/* Main office - Walk-ins welcome */}
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=81+6th+Avenue,+Newton+Park,+Gqeberha,+South+Africa" 
+                href="https://www.google.com/maps/search/?api=1&query=Pier+14+Shopping+Centre,+North+End,+Port+Elizabeth,+South+Africa" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
-                title="Open in Google Maps"
+                title="Open Pier 14 in Google Maps"
               >
                 <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
-                <span className="leading-relaxed group-hover:underline">
-                  81 6th Avenue, Newton Park, Gqeberha
-                </span>
+                <div>
+                  <span className="leading-relaxed group-hover:underline block font-medium">Jean Lemue Attorneys</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">2nd Floor, Pier 14 Shopping Centre,</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">North End, Port Elizabeth</span>
+                  <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Walk-ins welcome</span>
+                </div>
+              </a>
+              {/* Appointment-only office */}
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=81+6th+Avenue,+Newton+Park,+Port+Elizabeth,+South+Africa" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
+                title="Open Newton Park office in Google Maps"
+              >
+                <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
+                <div>
+                  <span className="leading-relaxed group-hover:underline block font-medium">Jean Lemue Attorneys</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">81 6th Avenue, Newton Park,</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">Port Elizabeth</span>
+                  <span className="text-xs mt-0.5 block" style={{ color: colors.warmGrey }}>By appointment only</span>
+                </div>
               </a>
             </div>
           </div>
@@ -263,20 +286,46 @@ Time: ${new Date().toLocaleTimeString()}`
         </div>
 
         <div className="border-t mt-6 pt-4 space-y-4" style={{ borderColor: colors.sandLight }}>
-          {/* Google Maps Embed */}
-          <div className="w-full">
+          {/* Google Maps Embeds */}
+          <div className="w-full space-y-4">
             <h4 className="text-sm font-semibold mb-2" style={{ color: colors.charcoal }}>Find Us</h4>
-            <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7879845932744!2d25.595891!3d-33.966111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad6a966656a61%3A0x4367e69da17840c!2s81%206th%20Ave%2C%20Newton%20Park%2C%20Gqeberha%2C%206045%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="DCSA Office Location - 81 6th Avenue, Newton Park, Gqeberha"
-              />
+            <div className="grid md:grid-cols-2 gap-4">
+              {/* Pier 14 - Walk-ins */}
+              <div>
+                <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
+                  Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
+                </p>
+                <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.5!2d25.5836!3d-33.9476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7acf5a3a9e3d4b%3A0x0!2sPier+14+Shopping+Centre%2C+North+End%2C+Port+Elizabeth!5e0!3m2!1sen!2sza!4v1234567890124!5m2!1sen!2sza"
+                    width="100%"
+                    height="180"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Jean Lemue Attorneys - Pier 14 Shopping Centre, North End, Port Elizabeth"
+                  />
+                </div>
+              </div>
+              {/* Newton Park - Appointment */}
+              <div>
+                <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
+                  81 6th Avenue, Newton Park, PE <span style={{ color: colors.warmGrey }}>(By appointment only)</span>
+                </p>
+                <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7879845932744!2d25.595891!3d-33.966111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad6a966656a61%3A0x4367e69da17840c!2s81%206th%20Ave%2C%20Newton%20Park%2C%20Gqeberha%2C%206045%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    width="100%"
+                    height="180"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Jean Lemue Attorneys - 81 6th Avenue, Newton Park, Port Elizabeth"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
