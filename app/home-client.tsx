@@ -485,7 +485,7 @@ export function HomeClient() {
         <ClarityBanner />
 
         {/* PODCAST SECTION */}
-        <PodcastSection />
+        
 
         {/* DEBT REVIEW COMPARISON */}
         <DebtReviewComparison />

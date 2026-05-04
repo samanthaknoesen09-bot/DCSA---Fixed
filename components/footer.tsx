@@ -306,7 +306,7 @@ Time: ${timeStr}`
               {/* Pier 14 - Walk-ins */}
               <div>
                 <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
-                  Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
+                  Jean Lemue Attorneys, 2nd Floor, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
                 </p>
                 <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
                   <iframe
@@ -335,7 +335,7 @@ Time: ${timeStr}`
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Jean Lemue Attorneys - 81 6th Avenue, Newton Park, Port Elizabeth"
+                    title="81 6th Avenue, Newton Park, Port Elizabeth"
                   />
                 </div>
               </div>
