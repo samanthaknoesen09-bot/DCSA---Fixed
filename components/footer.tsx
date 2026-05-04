@@ -40,14 +40,17 @@ export function Footer() {
     setMessage("")
 
     try {
+      const now = new Date()
+      const dateStr = now.toLocaleDateString("en-ZA")
+      const timeStr = now.toLocaleTimeString("en-ZA")
       const subject = "Newsletter Subscription Request"
       const body = `New newsletter subscription request from: ${email}
 
 Please add this email to the DCSA newsletter list for financial tips and debt management advice.
 
 Email: ${email}
-Date: ${new Date().toLocaleDateString()}
-Time: ${new Date().toLocaleTimeString()}`
+Date: ${dateStr}
+Time: ${timeStr}`
 
       window.location.href = `mailto:sam@dcsam.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
