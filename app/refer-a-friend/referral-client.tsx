@@ -169,7 +169,7 @@ export function ReferralClient() {
               overwhelming — legally, properly, and without judgement.
             </p>
             <p className="text-xl md:text-2xl font-semibold text-[#0D3B66] leading-relaxed">
-              Refer someone who signs up successfully and we'll thank you with R350.
+              Refer someone who signs up successfully and we&apos;ll thank you with R150.
             </p>
             <div className="pt-4 space-y-2">
               <p className="text-lg text-[#0D3B66]/80 font-medium">You help them take the first step.</p>
@@ -226,20 +226,20 @@ export function ReferralClient() {
                   <Banknote className="w-8 h-8 text-[#4DB6AC]" />
                 </div>
                 <CardTitle className="text-xl text-[#0D3B66]">
-                  3. You Get Paid R350
+                  3. You Get Paid R150
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-[#0D3B66]/70">
                   Once we successfully help your friend with debt counselling,
-                  we'll pay the R350 referral fee straight into your account.
+                  we&apos;ll pay the R150 referral fee straight into your account.
                 </p>
               </CardContent>
             </Card>
           </div>
           <div className="bg-[#FFD93D]/10 border border-[#FFD93D]/30 rounded-2xl p-6 text-center max-w-2xl mx-auto">
             <p className="text-[#0D3B66] font-medium">
-              There's no limit to how many people you can refer. Every successful referral earns you R350.
+              There&apos;s no limit to how many people you can refer. Every successful referral earns you R150.
             </p>
           </div>
         </div>
@@ -350,7 +350,7 @@ export function ReferralClient() {
                       <h3 className="font-bold text-lg text-[#0D3B66]">
                         Banking Details{" "}
                         <span className="text-sm font-normal text-[#0D3B66]/50">
-                          (for your R350 payment)
+                          (for your R150 payment)
                         </span>
                       </h3>
                     </div>
@@ -500,8 +500,8 @@ export function ReferralClient() {
                     </div>
                   </div>
 
-                  {/* Referrer Consent */}
-                  <div className="bg-[#FFD93D]/10 border-2 border-[#FFD93D]/30 rounded-lg p-4">
+                  {/* Referrer Consent with POPI Act Disclaimer */}
+                  <div className="bg-[#FFD93D]/10 border-2 border-[#FFD93D]/30 rounded-lg p-4 space-y-3">
                     <div className="flex items-start gap-3">
                       <Checkbox
                         id="referrerConsent"
@@ -510,8 +510,13 @@ export function ReferralClient() {
                         required
                       />
                       <Label htmlFor="referrerConsent" className="font-normal cursor-pointer text-sm leading-relaxed">
-                        I confirm that my friend is aware you are sharing their details with DCSA for debt counselling services. *
+                        I confirm that I have obtained consent from my friend to share their personal information with DCSA for the purpose of contacting them about debt counselling services. <span className="text-red-500">*</span>
                       </Label>
+                    </div>
+                    <div className="bg-white/50 rounded-md p-3 border border-[#FFD93D]/20">
+                      <p className="text-xs text-[#0D3B66]/60 leading-relaxed">
+                        <strong>POPI Act Notice:</strong> In terms of the Protection of Personal Information Act (POPIA), you must have your friend&apos;s consent before sharing their personal information with us. By submitting this form, you confirm that your friend has agreed to be contacted by DCSA regarding debt counselling services.
+                      </p>
                     </div>
                   </div>
 
@@ -555,8 +560,8 @@ export function ReferralClient() {
                   </p>
                 )}
                 <p className="text-lg text-[#0D3B66]/70 mb-4 max-w-md mx-auto text-pretty">
-                  We've received your referral and will reach out to your friend
-                  with care. Once we successfully help them, we'll pay the R350
+                  We&apos;ve received your referral and will reach out to your friend
+                  with care. Once we successfully help them, we&apos;ll pay the R150
                   referral fee into your account.
                 </p>
                 {submissionId && (
@@ -567,8 +572,8 @@ export function ReferralClient() {
                   </div>
                 )}
                 <p className="text-sm text-[#0D3B66]/50 mb-8">
-                  You can refer as many people as you'd like — every successful
-                  referral earns you R350.
+                  You can refer as many people as you&apos;d like — every successful
+                  referral earns you R150.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button
