@@ -386,10 +386,9 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LegalService",
                 "@id": "https://www.dcsam.co.za/#newtonpark",
-                "name": "Jean Lemue Attorneys",
-                "alternateName": "DCSA - Financial Education & Debt Counselling",
+                "name": "DCSA - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "Jean Lemue Attorneys at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "DCSA office at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {

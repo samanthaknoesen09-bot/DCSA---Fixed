@@ -55,7 +55,7 @@ export function OrganizationSchema() {
           },
           {
             "@type": "Place",
-            "name": "Jean Lemue Attorneys - Newton Park",
+            "name": "DCSA - Newton Park",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "81 6th Avenue",

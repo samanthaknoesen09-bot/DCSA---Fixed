@@ -115,11 +115,10 @@ Time: ${timeStr}`
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
-                title="Open Newton Park office in Google Maps"
+                title="Open Newton Park address in Google Maps"
               >
                 <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
                 <div>
-                  <span className="leading-relaxed group-hover:underline block font-medium">Jean Lemue Attorneys</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">81 6th Avenue, Newton Park,</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">Port Elizabeth</span>
                   <span className="text-xs mt-0.5 block" style={{ color: colors.warmGrey }}>By appointment only</span>
