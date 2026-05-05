@@ -100,12 +100,11 @@ function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 mb-10">
           <Button
             size="lg"
-            variant="outline"
-            className="text-base md:text-lg px-8 py-6 font-semibold rounded-xl border-2"
+            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg border-2"
             style={{ 
-              borderColor: "rgba(255,255,255,0.5)", 
-              color: colors.white,
-              backgroundColor: "transparent"
+              backgroundColor: "transparent",
+              borderColor: colors.gold,
+              color: colors.gold
             }}
             asChild
           >
@@ -120,7 +119,7 @@ function HeroSection() {
             style={{ backgroundColor: colors.gold, color: colors.navy }}
             asChild
           >
-            <Link href={WHATSAPP_URL} target="_blank">
+            <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-5 h-5 mr-2" />
               WhatsApp Sam – {WHATSAPP_NUMBER}
             </Link>
@@ -145,43 +144,7 @@ function HeroSection() {
   )
 }
 
-// Section 2: Emotional Mirror - First Scroll
-function EmotionalMirrorSection() {
-  return (
-    <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
-      <div className="container mx-auto max-w-2xl">
-        <h2 
-          className="text-2xl md:text-3xl font-bold mb-8 text-center"
-          style={{ color: colors.navy }}
-        >
-          If this is your month, you&apos;re not alone
-        </h2>
-
-        <div className="space-y-4 text-lg md:text-xl text-center mb-10" style={{ color: colors.charcoal }}>
-          <p>Salary comes in</p>
-          <p className="font-medium" style={{ color: colors.navy }}>Debit orders go out first</p>
-          <p className="font-bold" style={{ color: colors.gold }}>Nothing is left</p>
-        </div>
-
-        <div className="text-center">
-          <Button
-            size="lg"
-            className="rounded-xl font-semibold px-8 py-6"
-            style={{ backgroundColor: colors.navy, color: colors.white }}
-            asChild
-          >
-            <Link href={WHATSAPP_URL} target="_blank">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Talk to Sam on WhatsApp
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Section 3: Reframe Section
+// Section 2: Reframe Section
 function ReframeSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
@@ -768,10 +731,7 @@ export function HomeClient() {
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Emotional Mirror */}
-      <EmotionalMirrorSection />
-
-      {/* 3. Reframe Section */}
+      {/* 2. Reframe Section */}
       <ReframeSection />
 
       {/* 4. Solution Overview */}
