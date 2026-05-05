@@ -20,6 +20,8 @@ import { MobileHelpBar } from "@/components/mobile-help-bar"
 import { TrustBadges } from "@/components/trust-badges"
 import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
+import { ReviewsSection } from "@/components/reviews-section"
+import { ProcessSection } from "@/components/process-section"      </body>import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
   ChevronDown,
@@ -282,6 +284,9 @@ export function HomeClient() {
         {/* REVIEW SUBMISSION */}
         <ReviewSubmission />
 
+                <ReviewsSection />
+                        <ProcessSection />
+        
         {/* FAQ SECTION */}
         <FAQSection />
 

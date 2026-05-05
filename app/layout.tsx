@@ -7,6 +7,7 @@ import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { Analytics } from "@vercel/analytics/next"
+import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 
 import { Nunito } from "next/font/google" // Added import for Nunito font
 
@@ -664,6 +665,7 @@ export default function RootLayout({
           {children}
         </LayoutWrapper>
         <Analytics />
+        <FloatingWhatsApp />
       </body>
     </html>
   )
