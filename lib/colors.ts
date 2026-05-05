@@ -1,29 +1,30 @@
-// Warm, feminine, calm color palette for DCSA
+// Jean Lemue brand palette - Navy + Gold
 export const colors = {
-  // Maroon - primary brand color (matching DC in logo)
-  maroon: "#800020",
-  maroonHover: "#6B001A",
-  
-  // Warm neutrals
-  warmCream: "#FAF8F5",
-  warmBeige: "#F5F1ED",
-  sandLight: "#E8E4DF",
-  warmGrey: "#8B8680",
-  charcoal: "#2D2D2D",
-  
-  // Accent colors
-  softPeach: "#FFE5D9",
-  coralAccent: "#FF9B85",
-  mintCalm: "#4DB6AC",
-  
-  // WhatsApp green (for consistency)
+  // Primary - Deep Navy (main brand colour)
+  maroon: "#1B2A4A",
+  maroonHover: "#243555",
+
+  // Gold accent (CTA buttons, highlights)
+  coralAccent: "#C9A84C",
+  coralAccentHover: "#B8922F",
+
+  // Backgrounds
+  warmCream: "#F5F6F8",
+  warmBeige: "#ECEEF3",
+  sandLight: "#E0E3EC",
+
+  // Text
+  charcoal: "#1B2A4A",
+  warmGrey: "#5E6A80",
+
+  // Accents
+  softPeach: "#EDF0F7",
+  mintCalm: "#2E7D9B",
+
+  // Utility
   whatsapp: "#25D366",
-  
-  // System colors
   white: "#FFFFFF",
   black: "#000000",
 }
 
-export const WHATSAPP_NUMBER = "+27661937596"
-export const OFFICE_NUMBER = "+27719006298"
-export const WHATSAPP_URL = `https://wa.me/27661937596?text=${encodeURIComponent("Hi DCSA! I'd like to chat about my options.")}`
+export const WHATSAPP_URL = "https://wa.me/27627884609"
