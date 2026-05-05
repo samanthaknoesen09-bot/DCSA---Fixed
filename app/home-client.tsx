@@ -21,7 +21,7 @@ import { TrustBadges } from "@/components/trust-badges"
 import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { ReviewsSection } from "@/components/reviews-section"
-import { ProcessSection } from "@/components/process-section"      </body>import { FloatingWhatsApp } from "@/components/floating-whatsapp"
+import { ProcessSection } from "@/components/process-section"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import { 
   ChevronDown,
