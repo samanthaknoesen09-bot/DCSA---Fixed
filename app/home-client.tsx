@@ -52,6 +52,10 @@ export function HomeClient() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   const quizQuestions = [
     "Are you struggling to make minimum payments?",
     "Is debt stress affecting your daily life?",
@@ -69,52 +73,66 @@ export function HomeClient() {
     }
   }
 
+  const handleNextQuestion = (index: number) => {
+    // placeholder
+  }
+
   const toggleAccordion = (id: string) => {
     setExpandedAccordion(expandedAccordion === id ? null : id)
   }
 
   return (
-    <main className="min-h-screen" style={{ backgroundColor: colors.background }}>
+    <main className="min-h-screen" style={{ backgroundColor: colors.warmCream }}>
       <MobileHelpBar />
 
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryDark} 100%)` }}
+        className="relative py-16 md:py-28 px-4"
+        style={{ background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)` }}
       >
-        <div className="container mx-auto px-4 py-20 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center space-y-8">
             <ClarityBanner />
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              {brandCopy.hero.headline}
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              style={{ color: colors.maroon }}
+            >
+              When your salary disappears before month-end.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
-              {brandCopy.hero.subheadline}
+            <p
+              className="text-lg md:text-xl max-w-2xl mx-auto"
+              style={{ color: colors.warmGrey }}
+            >
+              If you&apos;re juggling school fees, groceries, and another round of debit orders that hit before payday &mdash; you&apos;re not bad with money. You&apos;re just carrying too much debt.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
                 className="text-lg px-8 py-6"
-                style={{ backgroundColor: colors.accent, color: colors.primary }}
+                style={{ backgroundColor: colors.maroon, color: colors.white }}
                 asChild
               >
-                <Link href={WHATSAPP_URL} target="_blank">
-                  {brandCopy.hero.cta}
+                <Link href="#quiz">
+                  Check My Debt Situation
                 </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 border-white text-white hover:bg-white/10"
+                className="text-lg px-8 py-6"
+                style={{ borderColor: colors.maroon, color: colors.maroon }}
                 asChild
               >
-                <Link href="#how-it-works">
-                  Learn How It Works
+                <Link href={WHATSAPP_URL} target="_blank">
+                  WhatsApp Sam
                 </Link>
               </Button>
             </div>
-            <TrustBadges />
+            <TrustBadges variant="light" />
+            <p className="text-sm" style={{ color: colors.warmGrey }}>
+              No judgement. No pressure. Just clarity.
+            </p>
           </div>
         </div>
       </section>
@@ -133,12 +151,11 @@ export function HomeClient() {
       <FAQSection />
       <FinalCTASection />
 
-      {/* Scroll to top */}
       {showScrollTop && (
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           className="fixed bottom-6 right-6 p-3 rounded-full shadow-lg z-50 transition-all"
-          style={{ backgroundColor: colors.primary, color: "white" }}
+          style={{ backgroundColor: colors.maroon, color: colors.white }}
         >
           <ArrowUp size={20} />
         </button>
