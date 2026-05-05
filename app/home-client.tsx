@@ -14,7 +14,6 @@ import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { IdentityStrip } from "@/components/identity-strip"
 import { ClarityBanner } from "@/components/clarity-banner"
-import { WhatsappChecklist } from "@/components/whatsapp-checklist"
 import { MobileHelpBar } from "@/components/mobile-help-bar"
 import { TrustBadges } from "@/components/trust-badges"
 import { FAQSection } from "@/components/faq-section"
@@ -141,7 +140,6 @@ export function HomeClient() {
       <HowThisWorksStrip />
       <ProcessSection />
       <ReviewsSection />
-      <WhatsappChecklist />
       <EmotionalMirrorSection />
       <DebtReviewComparison />
       <SalaryComparisonSection />
