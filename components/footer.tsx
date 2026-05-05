@@ -95,7 +95,7 @@ Time: ${timeStr}`
               </a>
               {/* Main office - Walk-ins welcome */}
               <a 
-                href="https://www.google.com/maps/search/?api=1&query=Pier+14+Shopping+Centre,+North+End,+Port+Elizabeth,+South+Africa" 
+                href="https://www.google.com/maps/search/?api=1&query=Pier+14+Shopping+Centre,+444+Govan+Mbeki+St,+North+End,+Gqeberha,+6001,+South+Africa" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
@@ -310,7 +310,7 @@ Time: ${timeStr}`
                 </p>
                 <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.5!2d25.5836!3d-33.9476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7acf5a3a9e3d4b%3A0x0!2sPier+14+Shopping+Centre%2C+North+End%2C+Port+Elizabeth!5e0!3m2!1sen!2sza!4v1234567890124!5m2!1sen!2sza"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.123456789!2d25.583600!3d-33.947600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7acf5656b4b4b5%3A0x8d5d4b0a5b5b5b5b!2sPier+14+Shopping+Centre%2C+444+Govan+Mbeki+Ave%2C+North+End%2C+Gqeberha%2C+6001!5e0!3m2!1sen!2sza!4v1746432600000!5m2!1sen!2sza"
                     width="100%"
                     height="180"
                     style={{ border: 0 }}
