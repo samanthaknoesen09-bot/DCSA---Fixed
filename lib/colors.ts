@@ -23,3 +23,5 @@ export const colors = {
   softGold: "#C9A84C",
   lightNavy: "#2D3F63",
 };
+
+export const WHATSAPP_URL = "https://wa.me/27627884609?text=Hi%20Sam%2C%20I%20need%20help%20with%20my%20debt";
