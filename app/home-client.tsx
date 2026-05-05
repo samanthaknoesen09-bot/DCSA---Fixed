@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -12,7 +13,6 @@ import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
 import { IdentityStrip } from "@/components/identity-strip"
-import { ClarityBanner } from "@/components/clarity-banner"
 import { MobileHelpBar } from "@/components/mobile-help-bar"
 import { TrustBadges } from "@/components/trust-badges"
 import { FAQSection } from "@/components/faq-section"
@@ -42,74 +42,84 @@ export function HomeClient() {
       <MobileHelpBar />
 
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative px-4 py-20 md:py-28"
-        style={{ background: `linear-gradient(160deg, ${colors.maroon} 0%, #0d1a30 100%)` }}
-      >
-        <div className="container mx-auto max-w-4xl text-center">
+      <section ref={heroRef} className="relative w-full overflow-hidden" style={{ minHeight: "90vh" }}>
+        {/* Background image */}
+        <Image
+          src="/images/hero-banner.jpg"
+          alt="Stressed about debt? I can help - Ask for Sam"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.45)" }} />
 
-          {/* Headline - single line on all screens */}
-          <h1
-            className="font-extrabold text-white leading-none mb-4 tracking-tight whitespace-nowrap"
-            style={{ fontSize: "clamp(1.1rem, 4.5vw, 3.5rem)" }}
-          >
-            Payday &rarr; Debit orders &rarr; Nothing left.
-          </h1>
+        {/* Content - left aligned to match banner style */}
+        <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col justify-end md:justify-center h-full" style={{ minHeight: "90vh", paddingBottom: "4rem", paddingTop: "6rem" }}>
+          <div className="max-w-lg">
 
-          {/* Emotional line */}
-          <p className="text-xl md:text-2xl font-semibold mb-8" style={{ color: colors.coralAccent }}>
-            That&apos;s not living. That&apos;s surviving.
-          </p>
+            {/* Headline - stacked like the banner */}
+            <div className="mb-4">
+              <h1 className="font-extrabold text-white leading-none tracking-tight uppercase" style={{ fontSize: "clamp(2rem, 6vw, 4.5rem)" }}>
+                Payday &rarr;<br />
+                Debit orders &rarr;<br />
+                <span style={{ color: colors.coralAccent }}>Nothing left.</span>
+              </h1>
+            </div>
 
-          {/* Body */}
-          <div className="text-white/85 text-base md:text-lg leading-relaxed space-y-2 mb-8 max-w-2xl mx-auto">
-            <p>After everything goes off, there&apos;s nothing left.</p>
-            <p>Not for food. Not for petrol. Not for life.</p>
-            <p>
-              So you rely on credit cards, loans, or borrowing just to get through the month&hellip;
-              and the cycle just keeps repeating.
+            {/* Divider */}
+            <div className="w-16 h-1 mb-5" style={{ backgroundColor: colors.coralAccent }} />
+
+            {/* Emotional line */}
+            <p className="text-white text-xl md:text-2xl font-semibold mb-1">
+              That&apos;s not living.
             </p>
+            <p className="text-xl md:text-2xl font-bold mb-6" style={{ color: colors.coralAccent }}>
+              That&apos;s surviving.
+            </p>
+
+            {/* Body */}
+            <div className="text-white/90 text-sm md:text-base leading-relaxed space-y-2 mb-6">
+              <p>After everything goes off, there&apos;s nothing left.</p>
+              <p>Not for food. Not for petrol. Not for life.</p>
+              <p>Then it&apos;s credit cards, loans, or borrowing just to get through the month. And the cycle keeps repeating.</p>
+            </div>
+
+            {/* Hope */}
+            <p className="font-bold text-lg md:text-xl mb-1" style={{ color: colors.coralAccent }}>
+              Let&apos;s change that.
+            </p>
+            <p className="text-white/90 text-sm md:text-base mb-8">
+              We&apos;ll help you create a plan that gives you room to breathe again.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                size="lg"
+                className="text-sm md:text-base px-6 py-5 font-bold rounded-xl"
+                style={{ backgroundColor: colors.coralAccent, color: colors.maroon }}
+                asChild
+              >
+                <Link href="#quiz">
+                  👉 Check My Debt Situation
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                className="text-sm md:text-base px-6 py-5 font-semibold rounded-xl border-2"
+                style={{ borderColor: colors.white, color: colors.white, backgroundColor: "transparent" }}
+                asChild
+              >
+                <Link href={WHATSAPP_URL} target="_blank">
+                  💬 WhatsApp Sam – 062 788 4609
+                </Link>
+              </Button>
+            </div>
           </div>
 
-          {/* Hope */}
-          <div
-            className="rounded-2xl px-6 py-5 mb-10 max-w-xl mx-auto text-left"
-            style={{ backgroundColor: "rgba(255,255,255,0.08)", borderLeft: `4px solid ${colors.coralAccent}` }}
-          >
-            <p className="text-white font-semibold text-base md:text-lg mb-1">
-              It doesn&apos;t have to stay this way.
-            </p>
-            <p className="text-white/80 text-sm md:text-base">
-              We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.
-            </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="text-base md:text-lg px-8 py-6 font-bold rounded-xl"
-              style={{ backgroundColor: colors.coralAccent, color: colors.maroon }}
-              asChild
-            >
-              <Link href="#quiz">
-                👉 Check My Debt Situation
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              className="text-base md:text-lg px-8 py-6 font-semibold rounded-xl border-2"
-              style={{ borderColor: colors.white, color: colors.white, backgroundColor: "transparent" }}
-              asChild
-            >
-              <Link href={WHATSAPP_URL} target="_blank">
-                💬 WhatsApp Sam – 062 788 4609
-              </Link>
-            </Button>
-          </div>
-
-          <div className="mt-8">
+          {/* Trust badges bottom */}
+          <div className="mt-10">
             <TrustBadges variant="light" />
           </div>
         </div>
