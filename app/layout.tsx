@@ -7,6 +7,7 @@ import { ViewTracker } from "@/components/view-tracker"
 import { SkipToContent } from "@/components/skip-to-content"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { Analytics } from "@vercel/analytics/next"
+import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 
 import { Nunito } from "next/font/google" // Added import for Nunito font
 
@@ -366,7 +367,7 @@ export default function RootLayout({
                     "@type": "OpeningHoursSpecification",
                     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
                     "opens": "08:00",
-                    "closes": "17:00"
+                    "closes": "16:00"
                   }
                 ],
                 "image": "https://www.dcsam.co.za/og-image.png",
@@ -386,10 +387,9 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LegalService",
                 "@id": "https://www.dcsam.co.za/#newtonpark",
-                "name": "Jean Lemue Attorneys",
-                "alternateName": "DCSA - Financial Education & Debt Counselling",
+                "name": "DCSA - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "Jean Lemue Attorneys at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "DCSA office at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {
@@ -665,6 +665,7 @@ export default function RootLayout({
           {children}
         </LayoutWrapper>
         <Analytics />
+        <FloatingWhatsApp />
       </body>
     </html>
   )
