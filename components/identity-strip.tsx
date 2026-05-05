@@ -1,68 +1,51 @@
-"use client"
-
 import { colors } from "@/lib/colors"
-import { Heart, Users, Briefcase, Home, TrendingUp } from "lucide-react"
+import { Check } from "lucide-react"
 
-const identities = [
-  { id: 1, label: "Healthcare Workers", icon: Heart, color: colors.softPeach },
-  { id: 2, label: "Teachers & Govt", icon: Users, color: colors.mintCalm },
-  { id: 3, label: "Single Parents", icon: Home, color: colors.warmGrey },
-  { id: 4, label: "Self-Employed", icon: Briefcase, color: colors.maroon },
-  { id: 5, label: "Private Sector", icon: TrendingUp, color: colors.charcoal },
+const signs = [
+  "Your salary is gone before month-end",
+  "You dread checking your bank balance",
+  "Debt collectors are calling you",
+  "You use one credit card to pay another",
+  "You can't sleep because of money stress",
+  "You skip meals or cut back on basics",
+  "You feel ashamed but don't know where to turn",
+  "You just want someone to be honest with you",
 ]
 
 export function IdentityStrip() {
-  const handleScroll = () => {
-    const element = document.getElementById("money-reality-check")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
   return (
-    <section className="py-12 px-4" style={{ backgroundColor: colors.white }}>
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-2 text-balance" style={{ color: colors.charcoal }}>
-            Who we usually help
+    <section className="py-14 px-4" style={{ backgroundColor: colors.warmCream }}>
+      <div className="container mx-auto max-w-3xl">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: colors.charcoal }}>
+            If any of this sounds like you &mdash; you&apos;re in the right place.
           </h2>
-          <p className="text-sm" style={{ color: colors.warmGrey }}>
-            If you recognise yourself below, you're in the right place.
+          <p className="text-base" style={{ color: colors.warmGrey }}>
+            We help anyone who is struggling with debt, regardless of where you work or what you earn.
           </p>
         </div>
-
-        {/* Scrollable chips container */}
-        <div className="overflow-x-auto -mx-4 px-4 pb-2">
-          <div className="flex gap-3 md:grid md:grid-cols-5 md:gap-4 min-w-max md:min-w-full">
-            {identities.map((identity) => {
-              const Icon = identity.icon
-              return (
-                <button
-                  key={identity.id}
-                  onClick={handleScroll}
-                  className="flex flex-col items-center gap-2 px-4 py-3 rounded-xl border transition-all hover:shadow-md flex-shrink-0 md:flex-shrink"
-                  style={{
-                    borderColor: identity.color,
-                    backgroundColor: "transparent",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = colors.maroon
-                    e.currentTarget.style.backgroundColor = colors.warmBeige + "40"
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = identity.color
-                    e.currentTarget.style.backgroundColor = "transparent"
-                  }}
-                >
-                  <Icon className="w-5 h-5" style={{ color: identity.color }} />
-                  <span className="text-xs font-semibold text-center whitespace-nowrap" style={{ color: colors.charcoal }}>
-                    {identity.label}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {signs.map((sign, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-3 px-4 py-3 rounded-xl"
+              style={{ backgroundColor: colors.white }}
+            >
+              <div
+                className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
+                style={{ backgroundColor: colors.maroon }}
+              >
+                <Check className="w-3 h-3" style={{ color: colors.white }} />
+              </div>
+              <span className="text-sm font-medium" style={{ color: colors.charcoal }}>
+                {sign}
+              </span>
+            </div>
+          ))}
         </div>
+        <p className="text-center mt-8 text-sm font-semibold" style={{ color: colors.maroon }}>
+          No judgment. No pressure. Just real help.
+        </p>
       </div>
     </section>
   )
