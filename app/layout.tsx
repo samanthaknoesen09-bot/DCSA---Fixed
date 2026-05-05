@@ -331,7 +331,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${roboto.variable} ${nunito.variable} antialiased`}
+      className={`${poppins.variable} ${roboto.variable} ${nunito.variable} antialiased bg-background`}
     >
       <head>
         {/* LocalBusiness Schema - for Google Business Profile & local SEO */}

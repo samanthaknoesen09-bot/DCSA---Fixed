@@ -119,7 +119,7 @@ export function ReviewsCarousel() {
                   {review.author}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: colors.mintCalm + "30", color: colors.charcoal }}>
+                  <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: colors.gold + "30", color: colors.charcoal }}>
                     {review.tag}
                   </span>
                   <p className="text-xs" style={{ color: colors.warmGrey }}>

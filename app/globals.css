@@ -4,48 +4,48 @@
 @custom-variant dark (&:is(.dark *));
  
 :root {
-  /* Warm, approachable backgrounds */
-  --background: oklch(0.99 0.005 85);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
+  /* DCSA Design System - Navy + Gold */
+  --background: #FFFFFF;
+  --foreground: #0B1F3B;
+  --card: #FFFFFF;
+  --card-foreground: #0B1F3B;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1F3B;
   
-  /* Maroon as primary brand color (matching DCSA logo DC) */
-  --primary: oklch(0.35 0.12 15);
-  --primary-foreground: oklch(0.985 0 0);
+  /* Navy as primary brand color */
+  --primary: #0B1F3B;
+  --primary-foreground: #FFFFFF;
   
-  /* Warm secondary for balance */
-  --secondary: oklch(0.95 0.02 85);
-  --secondary-foreground: oklch(0.20 0 0);
+  /* Gold accent for CTAs */
+  --secondary: #F8F9FA;
+  --secondary-foreground: #0B1F3B;
   
-  --muted: oklch(0.96 0.01 85);
-  --muted-foreground: oklch(0.45 0 0);
+  --muted: #F8F9FA;
+  --muted-foreground: #6B7280;
   
-  /* Accent with warm peach/coral tones */
-  --accent: oklch(0.92 0.04 50);
-  --accent-foreground: oklch(0.20 0 0);
+  /* Gold accent */
+  --accent: #C8A24A;
+  --accent-foreground: #0B1F3B;
   
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.90 0.01 85);
-  --input: oklch(0.98 0.005 85);
-  --ring: oklch(0.35 0.12 15);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #F8F9FA;
+  --ring: #0B1F3B;
+  --chart-1: #0B1F3B;
+  --chart-2: #C8A24A;
+  --chart-3: #6B7280;
+  --chart-4: #1A3A5C;
+  --chart-5: #9CA3AF;
+  --radius: 0.75rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0B1F3B;
+  --sidebar-primary: #0B1F3B;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F8F9FA;
+  --sidebar-accent-foreground: #0B1F3B;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #0B1F3B;
 }
  
 .dark {
