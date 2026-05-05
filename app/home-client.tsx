@@ -65,7 +65,7 @@ function HeroSection() {
             className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight"
             style={{ color: colors.white }}
           >
-            Payday <span style={{ color: colors.gold }}>&rarr;</span> Debit orders <span style={{ color: colors.gold }}>&rarr;</span> <span style={{ color: colors.gold }}>Nothing left.</span>
+          <span className="whitespace-nowrap">Payday <span style={{ color: colors.gold }}>&rarr;</span> Debit orders <span style={{ color: colors.gold }}>&rarr;</span> <span style={{ color: colors.gold }}>Nothing left.</span></span>
           </h1>
         </div>
 

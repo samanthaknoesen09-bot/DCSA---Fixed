@@ -180,11 +180,12 @@ export function FAQSection() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: colors.white }}>
+      <section id="faq" aria-labelledby="faq-heading" className="py-16 md:py-20 px-4" style={{ backgroundColor: colors.white }}>
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-pretty" style={{ color: colors.charcoal }}>
-              Common Concerns — Honest Answers
+            <p className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: colors.gold }}>Frequently Asked Questions (FAQ)</p>
+            <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold mb-4 text-pretty" style={{ color: colors.charcoal }}>
+              Frequently Asked Questions: Common Concerns — Honest Answers
             </h2>
             <p className="text-lg" style={{ color: colors.warmGrey }}>
               If you're thinking about debt review, it's normal to have questions. Below are the most common questions South Africans ask before speaking to a debt counsellor.
