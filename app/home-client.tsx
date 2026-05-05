@@ -19,25 +19,9 @@ import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { ProcessSection } from "@/components/process-section"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
-import {
-  ChevronDown,
-  ChevronUp,
-  Lightbulb,
-  PiggyBank,
-  TrendingUp,
-  HelpCircle,
-  ArrowUp,
-  MessageCircle,
-  Mail,
-  Phone,
-  AlertCircle,
-  Check,
-} from "lucide-react"
+import { ArrowUp, MessageCircle } from "lucide-react"
 
 export function HomeClient() {
-  const [expandedAccordion, setExpandedAccordion] = useState<string | null>("money-reality")
-  const [quizAnswers, setQuizAnswers] = useState<boolean[]>([])
-  const [showQuizResult, setShowQuizResult] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
 
@@ -53,31 +37,6 @@ export function HomeClient() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const quizQuestions = [
-    "Are you struggling to make minimum payments?",
-    "Is debt stress affecting your daily life?",
-    "Do you have multiple creditors calling you?",
-    "Are you using credit to pay for basic needs?",
-    "Do you feel trapped by your debt situation?",
-  ]
-
-  const handleQuizAnswer = (index: number, answer: boolean) => {
-    const newAnswers = [...quizAnswers]
-    newAnswers[index] = answer
-    setQuizAnswers(newAnswers)
-    if (newAnswers.filter(Boolean).length >= 3) {
-      setShowQuizResult(true)
-    }
-  }
-
-  const handleNextQuestion = (index: number) => {
-    // placeholder
-  }
-
-  const toggleAccordion = (id: string) => {
-    setExpandedAccordion(expandedAccordion === id ? null : id)
-  }
-
   return (
     <main className="min-h-screen" style={{ backgroundColor: colors.warmCream }}>
       <MobileHelpBar />
@@ -85,51 +44,70 @@ export function HomeClient() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative py-16 md:py-28 px-4"
-        style={{ background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)` }}
+        className="relative px-4 py-20 md:py-28"
+        style={{ background: `linear-gradient(160deg, ${colors.maroon} 0%, #4a0012 100%)` }}
       >
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center space-y-8">
-            <ClarityBanner />
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-              style={{ color: colors.maroon }}
-            >
-              When your salary disappears before month-end.
-            </h1>
-            <p
-              className="text-lg md:text-xl max-w-2xl mx-auto"
-              style={{ color: colors.warmGrey }}
-            >
-              If you&apos;re juggling school fees, groceries, and another round of debit orders that hit before payday &mdash; you&apos;re not bad with money. You&apos;re just carrying too much debt.
+        <div className="container mx-auto max-w-3xl text-center">
+
+          {/* Headline */}
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+            Payday &rarr; Debit orders &rarr; Nothing left.
+          </h1>
+
+          {/* Emotional line */}
+          <p className="text-xl md:text-2xl font-semibold mb-8" style={{ color: colors.coralAccent }}>
+            That&apos;s not living. That&apos;s surviving.
+          </p>
+
+          {/* Body */}
+          <div className="text-white/85 text-base md:text-lg leading-relaxed space-y-2 mb-8 max-w-2xl mx-auto">
+            <p>After everything goes off, there&apos;s nothing left.</p>
+            <p>Not for food. Not for petrol. Not for life.</p>
+            <p>
+              So you rely on credit cards, loans, or borrowing just to get through the month&hellip;
+              and the cycle just keeps repeating.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6"
-                style={{ backgroundColor: colors.maroon, color: colors.white }}
-                asChild
-              >
-                <Link href="#quiz">
-                  Check My Debt Situation
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6"
-                style={{ borderColor: colors.maroon, color: colors.maroon }}
-                asChild
-              >
-                <Link href={WHATSAPP_URL} target="_blank">
-                  WhatsApp Sam
-                </Link>
-              </Button>
-            </div>
+          </div>
+
+          {/* Hope */}
+          <div
+            className="rounded-2xl px-6 py-5 mb-10 max-w-xl mx-auto text-left"
+            style={{ backgroundColor: "rgba(255,255,255,0.08)", borderLeft: `4px solid ${colors.coralAccent}` }}
+          >
+            <p className="text-white font-semibold text-base md:text-lg mb-1">
+              It doesn&apos;t have to stay this way.
+            </p>
+            <p className="text-white/80 text-sm md:text-base">
+              We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="text-base md:text-lg px-8 py-6 font-bold rounded-xl"
+              style={{ backgroundColor: colors.coralAccent, color: colors.maroon }}
+              asChild
+            >
+              <Link href="#quiz">
+                👉 Check My Debt Situation
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              className="text-base md:text-lg px-8 py-6 font-semibold rounded-xl border-2"
+              style={{ borderColor: colors.white, color: colors.white, backgroundColor: "transparent" }}
+              asChild
+            >
+              <Link href={WHATSAPP_URL} target="_blank">
+                💬 WhatsApp Sam – 062 788 4609
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-8">
             <TrustBadges variant="light" />
-            <p className="text-sm" style={{ color: colors.warmGrey }}>
-              No judgement. No pressure. Just clarity.
-            </p>
           </div>
         </div>
       </section>
