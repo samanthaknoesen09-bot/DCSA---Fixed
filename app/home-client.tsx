@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageCircle, Shield, Phone, CheckCircle, Users, Heart, ArrowRight, ArrowUp, ChevronRight } from "lucide-react"
+import { MessageCircle, Shield, Phone, CheckCircle, Users, Heart, ArrowRight, ArrowUp, ChevronRight, MapPin, Coffee, Calendar, Clock } from "lucide-react"
 import { colors, WHATSAPP_URL, WHATSAPP_NUMBER } from "@/lib/colors"
 import { FAQSection } from "@/components/faq-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
@@ -59,40 +59,45 @@ function HeroSection() {
       style={{ backgroundColor: colors.navy }}
     >
       <div className="container mx-auto max-w-4xl">
-        {/* Headline */}
-        <div className="mb-6">
+        {/* Headline - Big + Punchy */}
+        <div className="mb-4">
           <h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight"
             style={{ color: colors.white }}
           >
-            Payday <span style={{ color: colors.gold }}>&rarr;</span><br />
-            Debit orders <span style={{ color: colors.gold }}>&rarr;</span><br />
-            <span style={{ color: colors.gold }}>Nothing left.</span>
+            Payday <span style={{ color: colors.gold }}>&rarr;</span> Debit orders <span style={{ color: colors.gold }}>&rarr;</span> <span style={{ color: colors.gold }}>Nothing left.</span>
           </h1>
         </div>
 
-        {/* Subtext */}
+        {/* Emotional line - Short, hard truth */}
         <p 
-          className="text-lg md:text-xl mb-8 max-w-lg leading-relaxed"
-          style={{ color: "rgba(255,255,255,0.85)" }}
+          className="text-xl md:text-2xl font-semibold mb-6"
+          style={{ color: colors.gold }}
         >
-          You&apos;re not bad with money.<br />
-          You&apos;re stuck in a system that takes first.
+          That&apos;s not living. That&apos;s surviving.
         </p>
+
+        {/* Body - Relatable + real struggle */}
+        <div 
+          className="text-base md:text-lg mb-6 max-w-xl leading-relaxed space-y-3"
+          style={{ color: "rgba(255,255,255,0.9)" }}
+        >
+          <p>After everything goes off, there&apos;s nothing left.</p>
+          <p>Not for food. Not for petrol. Not for life.</p>
+          <p>So you rely on credit cards, loans, or borrowing just to get through the month... and the cycle just keeps repeating.</p>
+        </div>
+
+        {/* Hope - What was missing */}
+        <div 
+          className="text-lg md:text-xl mb-8 max-w-xl"
+          style={{ color: colors.white }}
+        >
+          <p className="font-semibold mb-2" style={{ color: colors.gold }}>It doesn&apos;t have to stay this way.</p>
+          <p style={{ color: "rgba(255,255,255,0.9)" }}>We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.</p>
+        </div>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 mb-10">
-          <Button
-            size="lg"
-            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg"
-            style={{ backgroundColor: colors.gold, color: colors.navy }}
-            asChild
-          >
-            <Link href={WHATSAPP_URL} target="_blank">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp Sam Now
-            </Link>
-          </Button>
           <Button
             size="lg"
             variant="outline"
@@ -107,6 +112,17 @@ function HeroSection() {
             <Link href="/calculator">
               Check My Debt Situation
               <ChevronRight className="w-5 h-5 ml-1" />
+            </Link>
+          </Button>
+          <Button
+            size="lg"
+            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg"
+            style={{ backgroundColor: colors.gold, color: colors.navy }}
+            asChild
+          >
+            <Link href={WHATSAPP_URL} target="_blank">
+              <MessageCircle className="w-5 h-5 mr-2" />
+              WhatsApp Sam – {WHATSAPP_NUMBER}
             </Link>
           </Button>
         </div>
@@ -411,7 +427,139 @@ function TrustSection() {
   )
 }
 
-// Section 7: Tools Section (Lower Priority)
+// Section 7: Location Section - Visit Us
+function LocationSection() {
+  const PIER_14_MAP_URL = "https://www.google.com/maps/place/Pier+14+Shopping+Centre/@-33.9581,25.6161,17z"
+
+  return (
+    <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-10">
+          <Coffee className="w-10 h-10 mx-auto mb-4" style={{ color: colors.gold }} />
+          <h2 
+            className="text-2xl md:text-3xl font-bold mb-3"
+            style={{ color: colors.navy }}
+          >
+            Let&apos;s have a coffee and chat
+          </h2>
+          <p className="text-lg" style={{ color: colors.mutedText }}>
+            Come see me in person - sometimes it&apos;s easier to talk face to face.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* North End Office - Walk-ins Welcome */}
+          <Card className="border-0 shadow-lg overflow-hidden">
+            <CardContent className="p-0">
+              <a 
+                href={PIER_14_MAP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div 
+                  className="p-4 flex items-center gap-2"
+                  style={{ backgroundColor: colors.navy }}
+                >
+                  <MapPin className="w-5 h-5" style={{ color: colors.gold }} />
+                  <span className="font-bold text-white">North End Office</span>
+                  <span 
+                    className="ml-auto text-xs px-2 py-1 rounded-full font-semibold"
+                    style={{ backgroundColor: colors.gold, color: colors.navy }}
+                  >
+                    Walk-ins Welcome
+                  </span>
+                </div>
+              </a>
+              <div className="p-5">
+                <p className="font-semibold mb-1" style={{ color: colors.navy }}>
+                  Pier 14 Shopping Centre
+                </p>
+                <p className="text-sm mb-4" style={{ color: colors.mutedText }}>
+                  444 Govan Mbeki Avenue, North End
+                </p>
+                <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
+                  Located at Jean Lemue Attorneys - just ask for Sam!
+                </p>
+                <a 
+                  href={PIER_14_MAP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold"
+                  style={{ color: colors.gold }}
+                >
+                  <MapPin className="w-4 h-4" />
+                  Get Directions
+                  <ChevronRight className="w-4 h-4" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Newton Park - By Appointment */}
+          <Card className="border-0 shadow-lg overflow-hidden">
+            <CardContent className="p-0">
+              <div 
+                className="p-4 flex items-center gap-2"
+                style={{ backgroundColor: colors.navy }}
+              >
+                <Calendar className="w-5 h-5" style={{ color: colors.gold }} />
+                <span className="font-bold text-white">Newton Park</span>
+                <span 
+                  className="ml-auto text-xs px-2 py-1 rounded-full font-semibold"
+                  style={{ backgroundColor: "rgba(255,255,255,0.2)", color: colors.white }}
+                >
+                  By Appointment
+                </span>
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <Clock className="w-4 h-4" style={{ color: colors.gold }} />
+                  <p className="font-semibold" style={{ color: colors.navy }}>
+                    After hours &amp; weekends available
+                  </p>
+                </div>
+                <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
+                  For your convenience, I&apos;m available outside normal business hours. 
+                  Let&apos;s find a time that works for you.
+                </p>
+                <Button
+                  size="sm"
+                  className="rounded-lg font-semibold"
+                  style={{ backgroundColor: colors.gold, color: colors.navy }}
+                  asChild
+                >
+                  <Link href={WHATSAPP_URL} target="_blank">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Book via WhatsApp
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <p 
+          className="text-center mt-8 text-sm"
+          style={{ color: colors.mutedText }}
+        >
+          Not ready to meet? No problem.{" "}
+          <Link 
+            href={WHATSAPP_URL} 
+            target="_blank"
+            className="font-semibold underline"
+            style={{ color: colors.navy }}
+          >
+            WhatsApp me
+          </Link>
+          {" "}and we can start there.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+// Section 8: Tools Section (Lower Priority)
 function ToolsSection() {
   const tools = [
     { name: "Money Map", description: "See where your money goes", href: "/calculator" },
@@ -635,8 +783,11 @@ export function HomeClient() {
       {/* 6. Trust Section with Sam */}
       <TrustSection />
 
+      {/* 7. Location Section - Visit Us */}
+      <LocationSection />
+
       {/* Reviews Section */}
-      <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
+      <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
         <div className="container mx-auto max-w-5xl">
           <h2 
             className="text-2xl md:text-3xl font-bold mb-10 text-center"
@@ -648,7 +799,7 @@ export function HomeClient() {
         </div>
       </section>
 
-      {/* 7. Tools Section */}
+      {/* 8. Tools Section */}
       <ToolsSection />
 
       {/* 8. Blog Section */}
