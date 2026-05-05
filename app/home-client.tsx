@@ -8,7 +8,6 @@ import { DebtReviewComparison } from "@/components/debt-review-comparison"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
 import { ReviewSubmission } from "@/components/review-submission"
 import { EmotionalMirrorSection } from "@/components/emotional-mirror-section"
-import { HowThisWorksStrip } from "@/components/how-this-works-strip"
 import { MeetTheTeam } from "@/components/meet-the-team"
 import { SalaryComparisonSection } from "@/components/salary-comparison-section"
 import { FinalCTASection } from "@/components/final-cta-section"
@@ -136,7 +135,6 @@ export function HomeClient() {
       </section>
 
       <IdentityStrip />
-      <HowThisWorksStrip />
       <ProcessSection />
       <EmotionalMirrorSection />
       <DebtReviewComparison />
