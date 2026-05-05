@@ -18,7 +18,6 @@ import { MobileHelpBar } from "@/components/mobile-help-bar"
 import { TrustBadges } from "@/components/trust-badges"
 import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
-import { ReviewsSection } from "@/components/reviews-section"
 import { ProcessSection } from "@/components/process-section"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
 import {
@@ -139,7 +138,6 @@ export function HomeClient() {
       <IdentityStrip />
       <HowThisWorksStrip />
       <ProcessSection />
-      <ReviewsSection />
       <EmotionalMirrorSection />
       <DebtReviewComparison />
       <SalaryComparisonSection />
