@@ -19,7 +19,7 @@ import { FAQSection } from "@/components/faq-section"
 import { brandCopy } from "@/lib/brandCopy"
 import { ProcessSection } from "@/components/process-section"
 import { colors, WHATSAPP_URL } from "@/lib/colors"
-import { ArrowUp, MessageCircle } from "lucide-react"
+import { ArrowUp } from "lucide-react"
 
 export function HomeClient() {
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -45,12 +45,15 @@ export function HomeClient() {
       <section
         ref={heroRef}
         className="relative px-4 py-20 md:py-28"
-        style={{ background: `linear-gradient(160deg, ${colors.maroon} 0%, #4a0012 100%)` }}
+        style={{ background: `linear-gradient(160deg, ${colors.maroon} 0%, #0d1a30 100%)` }}
       >
-        <div className="container mx-auto max-w-3xl text-center">
+        <div className="container mx-auto max-w-4xl text-center">
 
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+          {/* Headline - single line on all screens */}
+          <h1
+            className="font-extrabold text-white leading-none mb-4 tracking-tight whitespace-nowrap"
+            style={{ fontSize: "clamp(1.1rem, 4.5vw, 3.5rem)" }}
+          >
             Payday &rarr; Debit orders &rarr; Nothing left.
           </h1>
 
