@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { MessageCircle, Shield, Phone, CheckCircle, Users, Heart, ArrowRight, ArrowUp, ChevronRight, MapPin, Coffee, Calendar, Clock } from "lucide-react"
+import { MessageCircle, Shield, Phone, CheckCircle, Users, Heart, ArrowRight, ArrowUp, ChevronRight, MapPin, Coffee, Calendar, Clock, Percent } from "lucide-react"
 import { colors, WHATSAPP_URL, WHATSAPP_NUMBER } from "@/lib/colors"
 import { FAQSection } from "@/components/faq-section"
 import { ReviewsCarousel } from "@/components/reviews-carousel"
@@ -89,30 +89,33 @@ function HeroSection() {
 
         {/* Hope - What was missing */}
         <div 
-          className="text-lg md:text-xl mb-8 max-w-xl"
+          className="text-lg md:text-xl max-w-xl"
           style={{ color: colors.white }}
         >
           <p className="font-semibold mb-2" style={{ color: colors.gold }}>It doesn&apos;t have to stay this way.</p>
           <p style={{ color: "rgba(255,255,255,0.9)" }}>We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.</p>
         </div>
+      </div>
+    </section>
+  )
+}
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-10">
-          <Button
-            size="lg"
-            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg border-2"
-            style={{ 
-              backgroundColor: "transparent",
-              borderColor: colors.gold,
-              color: colors.gold
-            }}
-            asChild
-          >
-            <Link href="/calculator">
-              Check My Debt Situation
-              <ChevronRight className="w-5 h-5 ml-1" />
-            </Link>
-          </Button>
+// Section 2: CTA Section - "If this sounds like your month"
+function CTASection() {
+  return (
+    <section className="py-12 md:py-16 px-6" style={{ backgroundColor: colors.warmBeige }}>
+      <div className="container mx-auto max-w-2xl text-center">
+        <h2 
+          className="text-2xl md:text-3xl font-bold mb-6"
+          style={{ color: colors.navy }}
+        >
+          If this sounds like your month
+        </h2>
+        <p className="text-lg mb-8" style={{ color: colors.mutedText }}>
+          WhatsApp Sam or check your debt situation - no commitment, just clarity.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
             className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg"
@@ -124,15 +127,30 @@ function HeroSection() {
               WhatsApp Sam – {WHATSAPP_NUMBER}
             </Link>
           </Button>
+          <Button
+            size="lg"
+            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg border-2"
+            style={{ 
+              backgroundColor: colors.white,
+              borderColor: colors.navy,
+              color: colors.navy
+            }}
+            asChild
+          >
+            <Link href="/calculator">
+              Check My Debt Situation
+              <ChevronRight className="w-5 h-5 ml-1" />
+            </Link>
+          </Button>
         </div>
 
-        {/* Trust line */}
+        {/* Trust badges */}
         <div 
-          className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm"
-          style={{ color: "rgba(255,255,255,0.7)" }}
+          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm mt-8"
+          style={{ color: colors.mutedText }}
         >
           <span className="flex items-center gap-1">
-            <Shield className="w-4 h-4" /> NCR Registered
+            <Shield className="w-4 h-4" style={{ color: colors.navy }} /> NCR Registered
           </span>
           <span className="hidden sm:inline">|</span>
           <span>Confidential</span>
@@ -179,6 +197,54 @@ function ReframeSection() {
         >
           Structure can be fixed.
         </p>
+      </div>
+    </section>
+  )
+}
+
+// Section: Interest Understanding
+function InterestSection() {
+  return (
+    <section className="py-14 md:py-18 px-6" style={{ backgroundColor: colors.white }}>
+      <div className="container mx-auto max-w-2xl">
+        <div className="text-center">
+          <div 
+            className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
+            style={{ backgroundColor: `${colors.gold}20` }}
+          >
+            <Percent className="w-7 h-7" style={{ color: colors.gold }} />
+          </div>
+          
+          <h2 
+            className="text-2xl md:text-3xl font-bold mb-4"
+            style={{ color: colors.navy }}
+          >
+            Do you understand how interest is affecting your debt?
+          </h2>
+          
+          <p className="text-lg mb-6" style={{ color: colors.mutedText }}>
+            Most people don&apos;t realize that high interest rates can double what they owe over time. 
+            Even small differences in rates can cost you thousands.
+          </p>
+          
+          <p className="text-base mb-8" style={{ color: colors.charcoal }}>
+            Use our free interest calculator to see exactly how much you&apos;re paying in interest - 
+            and how debt restructuring could save you money.
+          </p>
+          
+          <Button
+            size="lg"
+            className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg"
+            style={{ backgroundColor: colors.navy, color: colors.white }}
+            asChild
+          >
+            <Link href="/interest-calculator">
+              <Percent className="w-5 h-5 mr-2" />
+              Check My Interest
+              <ChevronRight className="w-5 h-5 ml-1" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   )
@@ -731,10 +797,16 @@ export function HomeClient() {
       {/* 1. Hero Section */}
       <HeroSection />
 
-      {/* 2. Reframe Section */}
+      {/* 2. CTA Section - If this sounds like your month */}
+      <CTASection />
+
+      {/* 3. Reframe Section */}
       <ReframeSection />
 
-      {/* 4. Solution Overview */}
+      {/* 4. Interest Section - Understanding interest */}
+      <InterestSection />
+
+      {/* 5. Solution Overview */}
       <SolutionSection />
 
       {/* 5. How It Works */}
