@@ -168,35 +168,23 @@ function ReframeSection() {
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto max-w-2xl">
         <h2 
-          className="text-2xl md:text-3xl font-bold mb-8 text-center"
+          className="text-2xl md:text-3xl font-bold mb-4 text-center"
           style={{ color: colors.navy }}
         >
-          You are not the problem
+          Debt happens for different reasons.
         </h2>
 
-        <div className="space-y-4 mb-8">
-          {[
-            "It's not bad budgeting",
-            "It's not lack of discipline",
-            "It's debt structure working against you"
-          ].map((item, index) => (
-            <div 
-              key={index}
-              className="flex items-start gap-3 text-lg"
-              style={{ color: colors.charcoal }}
-            >
-              <CheckCircle className="w-6 h-6 flex-shrink-0 mt-0.5" style={{ color: colors.gold }} />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-
         <p 
-          className="text-xl font-semibold text-center"
+          className="text-xl font-semibold text-center mb-8"
           style={{ color: colors.navy }}
         >
-          Structure can be fixed.
+          No judgement here.
         </p>
+
+        <div className="space-y-3 mb-8 text-lg text-center" style={{ color: colors.charcoal }}>
+          <p>What matters is fixing the way it&apos;s set up —</p>
+          <p>so you can finally breathe again.</p>
+        </div>
       </div>
     </section>
   )
@@ -255,18 +243,23 @@ function SolutionSection() {
   const services = [
     {
       icon: Shield,
-      title: "Debt Review Protection",
-      description: "Legal protection from creditors while we restructure your debt into manageable payments."
+      title: "We protect you from pressure",
+      description: "We step in so creditors stop chasing and things can calm down while we sort everything out."
     },
     {
       icon: ArrowRight,
-      title: "Credit Structure Reset",
-      description: "We negotiate with creditors to reduce interest rates and extend payment terms."
+      title: "We make your debt more manageable",
+      description: "We work with your creditors to lower what you&apos;re paying monthly and give you room to breathe."
     },
     {
       icon: Users,
-      title: "Payment Consolidation",
-      description: "One affordable monthly payment instead of multiple debit orders draining your account."
+      title: "We simplify everything into one payment",
+      description: "No more multiple debit orders. Just one structured payment that actually works with your budget."
+    },
+    {
+      icon: Heart,
+      title: "We guide you going forward",
+      description: "This isn&apos;t just about fixing today — it&apos;s about helping you stay out of the same situation tomorrow."
     }
   ]
 
@@ -274,13 +267,20 @@ function SolutionSection() {
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-5xl">
         <h2 
-          className="text-2xl md:text-3xl font-bold mb-10 text-center"
+          className="text-2xl md:text-3xl font-bold mb-3 text-center"
           style={{ color: colors.navy }}
         >
-          How we help
+          How I help you get back on track
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <p 
+          className="text-lg text-center mb-10"
+          style={{ color: colors.mutedText }}
+        >
+          No judgement. No pressure. Just honest advice, a coffee, and a plan that works.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
           {services.map((service, index) => (
             <Card 
               key={index} 
@@ -305,16 +305,16 @@ function SolutionSection() {
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center">
           <Button
             size="lg"
-            className="rounded-xl font-semibold px-8 py-6"
+            className="rounded-xl font-semibold px-8 py-6 text-base md:text-lg"
             style={{ backgroundColor: colors.gold, color: colors.navy }}
             asChild
           >
             <Link href={WHATSAPP_URL} target="_blank">
               <MessageCircle className="w-5 h-5 mr-2" />
-              WhatsApp Sam
+              Let&apos;s talk — no pressure
             </Link>
           </Button>
         </div>
@@ -387,11 +387,17 @@ function TrustSection() {
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-4xl">
         <h2 
-          className="text-2xl md:text-3xl font-bold mb-10 text-center"
+          className="text-2xl md:text-3xl font-bold mb-3 text-center"
           style={{ color: colors.navy }}
         >
-          Why trust DCSA?
+          Meet Sam
         </h2>
+        <p 
+          className="text-lg mb-10 text-center"
+          style={{ color: colors.mutedText }}
+        >
+          Sometimes it starts with just a coffee and a conversation.
+        </p>
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           {/* Sam&apos;s Photo */}
@@ -418,16 +424,20 @@ function TrustSection() {
 
           {/* Trust Statement */}
           <div>
-            <p className="text-lg mb-6 leading-relaxed" style={{ color: colors.charcoal }}>
+            <p className="text-lg mb-4 leading-relaxed" style={{ color: colors.charcoal }}>
               &quot;I believe every person deserves a judgment-free space to rebuild their financial life. 
               When you work with me, you&apos;re not just another case file &mdash; you&apos;re a person with 
               dreams, and I&apos;m here to help you achieve them.&quot;
             </p>
-            <p className="font-bold text-lg mb-2" style={{ color: colors.navy }}>
+            <p className="text-base mb-6 leading-relaxed" style={{ color: colors.mutedText }}>
+              Whether you&apos;re feeling overwhelmed or just need someone to talk to about your options &mdash; 
+              I&apos;m here. No pressure, no judgment. Let&apos;s figure it out together.
+            </p>
+            <p className="font-bold text-lg mb-1" style={{ color: colors.navy }}>
               Samantha Knoesen
             </p>
             <p style={{ color: colors.mutedText }}>
-              NCR Registered Debt Counsellor
+              NCR Registered Debt Counsellor • NCRDC3995
             </p>
           </div>
         </div>
