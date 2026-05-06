@@ -387,11 +387,17 @@ function TrustSection() {
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-4xl">
         <h2 
-          className="text-2xl md:text-3xl font-bold mb-10 text-center"
+          className="text-2xl md:text-3xl font-bold mb-3 text-center"
           style={{ color: colors.navy }}
         >
-          Why trust DCSA?
+          Meet Sam
         </h2>
+        <p 
+          className="text-lg mb-10 text-center"
+          style={{ color: colors.mutedText }}
+        >
+          Sometimes it starts with just a coffee and a conversation.
+        </p>
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           {/* Sam&apos;s Photo */}
@@ -418,16 +424,20 @@ function TrustSection() {
 
           {/* Trust Statement */}
           <div>
-            <p className="text-lg mb-6 leading-relaxed" style={{ color: colors.charcoal }}>
+            <p className="text-lg mb-4 leading-relaxed" style={{ color: colors.charcoal }}>
               &quot;I believe every person deserves a judgment-free space to rebuild their financial life. 
               When you work with me, you&apos;re not just another case file &mdash; you&apos;re a person with 
               dreams, and I&apos;m here to help you achieve them.&quot;
             </p>
-            <p className="font-bold text-lg mb-2" style={{ color: colors.navy }}>
+            <p className="text-base mb-6 leading-relaxed" style={{ color: colors.mutedText }}>
+              Whether you&apos;re feeling overwhelmed or just need someone to talk to about your options &mdash; 
+              I&apos;m here. No pressure, no judgment. Let&apos;s figure it out together.
+            </p>
+            <p className="font-bold text-lg mb-1" style={{ color: colors.navy }}>
               Samantha Knoesen
             </p>
             <p style={{ color: colors.mutedText }}>
-              NCR Registered Debt Counsellor
+              NCR Registered Debt Counsellor • NCRDC3995
             </p>
           </div>
         </div>
