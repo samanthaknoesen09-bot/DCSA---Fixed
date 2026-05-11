@@ -310,7 +310,7 @@ Time: ${timeStr}`
                 </p>
                 <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.123456789!2d25.583600!3d-33.947600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7acf5656b4b4b5%3A0x8d5d4b0a5b5b5b5b!2sPier+14+Shopping+Centre%2C+444+Govan+Mbeki+Ave%2C+North+End%2C+Gqeberha%2C+6001!5e0!3m2!1sen!2sza!4v1746432600000!5m2!1sen!2sza"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.6352158871277!2d25.6073229!3d-33.9505092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad2f347061149%3A0xf3511d45c1e0fc07!2sJean%20Lemue%20Attorneys!5e0!3m2!1sen!2sza!4v1778486633877!5m2!1sen!2sza"
                     width="100%"
                     height="180"
                     style={{ border: 0 }}

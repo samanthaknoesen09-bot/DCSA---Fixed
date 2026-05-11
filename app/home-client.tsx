@@ -20,7 +20,7 @@ function StickyWhatsAppBar() {
       // Show after scrolling past hero (approximately 100vh)
       setIsVisible(window.scrollY > window.innerHeight * 0.5)
     }
-    
+
     handleScroll()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -29,9 +29,9 @@ function StickyWhatsAppBar() {
   if (!isVisible) return null
 
   return (
-    <div 
+    <div
       className="fixed bottom-0 left-0 right-0 z-50 p-3 md:hidden"
-      style={{ 
+      style={{
         backgroundColor: colors.navy,
         boxShadow: "0 -4px 20px rgba(0,0,0,0.15)"
       }}
@@ -54,23 +54,23 @@ function StickyWhatsAppBar() {
 // Section 1: Hero - First Screen Only
 function HeroSection() {
   return (
-    <section 
+    <section
       className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12"
       style={{ backgroundColor: colors.navy }}
     >
       <div className="container mx-auto max-w-4xl">
         {/* Headline - Big + Punchy */}
         <div className="mb-4">
-          <h1 
+          <h1
             className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight"
             style={{ color: colors.white }}
           >
-          <span className="whitespace-nowrap">Payday <span style={{ color: colors.gold }}>&rarr;</span> Debit orders <span style={{ color: colors.gold }}>&rarr;</span> <span style={{ color: colors.gold }}>Nothing left.</span></span>
+            Payday <span style={{ color: colors.gold }}>&rarr;</span> Debit orders <span style={{ color: colors.gold }}>&rarr;</span> <span style={{ color: colors.gold }}>Nothing left.</span>
           </h1>
         </div>
 
         {/* Emotional line - Short, hard truth */}
-        <p 
+        <p
           className="text-xl md:text-2xl font-semibold mb-6"
           style={{ color: colors.gold }}
         >
@@ -78,7 +78,7 @@ function HeroSection() {
         </p>
 
         {/* Body - Relatable + real struggle */}
-        <div 
+        <div
           className="text-base md:text-lg mb-6 max-w-xl leading-relaxed space-y-3"
           style={{ color: "rgba(255,255,255,0.9)" }}
         >
@@ -88,7 +88,7 @@ function HeroSection() {
         </div>
 
         {/* Hope - What was missing */}
-        <div 
+        <div
           className="text-lg md:text-xl max-w-xl"
           style={{ color: colors.white }}
         >
@@ -105,7 +105,7 @@ function CTASection() {
   return (
     <section className="py-12 md:py-16 px-6" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto max-w-2xl text-center">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-6"
           style={{ color: colors.navy }}
         >
@@ -114,7 +114,7 @@ function CTASection() {
         <p className="text-lg mb-8" style={{ color: colors.mutedText }}>
           WhatsApp Sam or check your debt situation - no commitment, just clarity.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
@@ -130,7 +130,7 @@ function CTASection() {
           <Button
             size="lg"
             className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg border-2"
-            style={{ 
+            style={{
               backgroundColor: colors.white,
               borderColor: colors.navy,
               color: colors.navy
@@ -145,7 +145,7 @@ function CTASection() {
         </div>
 
         {/* Trust badges */}
-        <div 
+        <div
           className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm mt-8"
           style={{ color: colors.mutedText }}
         >
@@ -167,7 +167,7 @@ function ReframeSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto max-w-2xl">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-8 text-center"
           style={{ color: colors.navy }}
         >
@@ -180,7 +180,7 @@ function ReframeSection() {
             "It's not lack of discipline",
             "It's debt structure working against you"
           ].map((item, index) => (
-            <div 
+            <div
               key={index}
               className="flex items-start gap-3 text-lg"
               style={{ color: colors.charcoal }}
@@ -191,7 +191,7 @@ function ReframeSection() {
           ))}
         </div>
 
-        <p 
+        <p
           className="text-xl font-semibold text-center"
           style={{ color: colors.navy }}
         >
@@ -208,30 +208,30 @@ function InterestSection() {
     <section className="py-14 md:py-18 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-2xl">
         <div className="text-center">
-          <div 
+          <div
             className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5"
             style={{ backgroundColor: `${colors.gold}20` }}
           >
             <Percent className="w-7 h-7" style={{ color: colors.gold }} />
           </div>
-          
-          <h2 
+
+          <h2
             className="text-2xl md:text-3xl font-bold mb-4"
             style={{ color: colors.navy }}
           >
             Do you understand how interest is affecting your debt?
           </h2>
-          
+
           <p className="text-lg mb-6" style={{ color: colors.mutedText }}>
-            Most people don&apos;t realize that high interest rates can double what they owe over time. 
+            Most people don&apos;t realize that high interest rates can double what they owe over time.
             Even small differences in rates can cost you thousands.
           </p>
-          
+
           <p className="text-base mb-8" style={{ color: colors.charcoal }}>
-            Use our free interest calculator to see exactly how much you&apos;re paying in interest - 
+            Use our free interest calculator to see exactly how much you&apos;re paying in interest -
             and how debt restructuring could save you money.
           </p>
-          
+
           <Button
             size="lg"
             className="text-base md:text-lg px-8 py-6 font-bold rounded-xl shadow-lg"
@@ -273,7 +273,7 @@ function SolutionSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-5xl">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-10 text-center"
           style={{ color: colors.navy }}
         >
@@ -282,13 +282,13 @@ function SolutionSection() {
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="border-0 shadow-lg hover:shadow-xl transition-shadow"
               style={{ backgroundColor: colors.white }}
             >
               <CardContent className="p-6">
-                <div 
+                <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                   style={{ backgroundColor: `${colors.gold}20` }}
                 >
@@ -335,7 +335,7 @@ function HowItWorksSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto max-w-3xl">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-10 text-center"
           style={{ color: colors.navy }}
         >
@@ -345,7 +345,7 @@ function HowItWorksSection() {
         <div className="space-y-6">
           {steps.map((step, index) => (
             <div key={index} className="flex gap-4 items-start">
-              <div 
+              <div
                 className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-lg"
                 style={{ backgroundColor: colors.navy, color: colors.white }}
               >
@@ -386,7 +386,7 @@ function TrustSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-4xl">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-10 text-center"
           style={{ color: colors.navy }}
         >
@@ -406,7 +406,7 @@ function TrustSection() {
                   onError={() => setImageError(true)}
                 />
               ) : (
-                <div 
+                <div
                   className="w-full h-full flex items-center justify-center text-5xl font-bold"
                   style={{ backgroundColor: colors.navy, color: colors.white }}
                 >
@@ -419,8 +419,8 @@ function TrustSection() {
           {/* Trust Statement */}
           <div>
             <p className="text-lg mb-6 leading-relaxed" style={{ color: colors.charcoal }}>
-              &quot;I believe every person deserves a judgment-free space to rebuild their financial life. 
-              When you work with me, you&apos;re not just another case file &mdash; you&apos;re a person with 
+              &quot;I believe every person deserves a judgment-free space to rebuild their financial life.
+              When you work with me, you&apos;re not just another case file &mdash; you&apos;re a person with
               dreams, and I&apos;m here to help you achieve them.&quot;
             </p>
             <p className="font-bold text-lg mb-2" style={{ color: colors.navy }}>
@@ -440,7 +440,7 @@ function TrustSection() {
             { icon: Users, label: "Real Support", detail: "Human team" },
             { icon: Phone, label: "No Judgment", detail: "Safe space" }
           ].map((item, index) => (
-            <div 
+            <div
               key={index}
               className="text-center p-4 rounded-xl"
               style={{ backgroundColor: colors.warmBeige }}
@@ -465,7 +465,7 @@ function LocationSection() {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-10">
           <Coffee className="w-10 h-10 mx-auto mb-4" style={{ color: colors.gold }} />
-          <h2 
+          <h2
             className="text-2xl md:text-3xl font-bold mb-3"
             style={{ color: colors.navy }}
           >
@@ -480,19 +480,19 @@ function LocationSection() {
           {/* North End Office - Walk-ins Welcome */}
           <Card className="border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
-              <a 
+              <a
                 href={PIER_14_MAP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
               >
-                <div 
+                <div
                   className="p-4 flex items-center gap-2"
                   style={{ backgroundColor: colors.navy }}
                 >
                   <MapPin className="w-5 h-5" style={{ color: colors.gold }} />
                   <span className="font-bold text-white">North End Office</span>
-                  <span 
+                  <span
                     className="ml-auto text-xs px-2 py-1 rounded-full font-semibold"
                     style={{ backgroundColor: colors.gold, color: colors.navy }}
                   >
@@ -505,12 +505,12 @@ function LocationSection() {
                   Pier 14 Shopping Centre
                 </p>
                 <p className="text-sm mb-4" style={{ color: colors.mutedText }}>
-                  444 Govan Mbeki Avenue, North End
+                  444 Govan Mbeki Avenue,
                 </p>
                 <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
                   Located at Jean Lemue Attorneys - just ask for Sam!
                 </p>
-                <a 
+                <a
                   href={PIER_14_MAP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -528,13 +528,13 @@ function LocationSection() {
           {/* Newton Park - By Appointment */}
           <Card className="border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
-              <div 
+              <div
                 className="p-4 flex items-center gap-2"
                 style={{ backgroundColor: colors.navy }}
               >
                 <Calendar className="w-5 h-5" style={{ color: colors.gold }} />
                 <span className="font-bold text-white">Newton Park</span>
-                <span 
+                <span
                   className="ml-auto text-xs px-2 py-1 rounded-full font-semibold"
                   style={{ backgroundColor: "rgba(255,255,255,0.2)", color: colors.white }}
                 >
@@ -549,7 +549,7 @@ function LocationSection() {
                   </p>
                 </div>
                 <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
-                  For your convenience, I&apos;m available outside normal business hours. 
+                  For your convenience, I&apos;m available outside normal business hours.
                   Let&apos;s find a time that works for you.
                 </p>
                 <Button
@@ -568,13 +568,13 @@ function LocationSection() {
           </Card>
         </div>
 
-        <p 
+        <p
           className="text-center mt-8 text-sm"
           style={{ color: colors.mutedText }}
         >
           Not ready to meet? No problem.{" "}
-          <Link 
-            href={WHATSAPP_URL} 
+          <Link
+            href={WHATSAPP_URL}
             target="_blank"
             className="font-semibold underline"
             style={{ color: colors.navy }}
@@ -599,13 +599,13 @@ function ToolsSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
       <div className="container mx-auto max-w-3xl">
-        <p 
+        <p
           className="text-sm uppercase tracking-wide mb-2 text-center"
           style={{ color: colors.mutedText }}
         >
           Clarity tools
         </p>
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-4 text-center"
           style={{ color: colors.navy }}
         >
@@ -617,11 +617,11 @@ function ToolsSection() {
 
         <div className="space-y-4">
           {tools.map((tool, index) => (
-            <Link 
+            <Link
               key={index}
               href={tool.href}
               className="block p-4 rounded-xl border-2 transition-all hover:shadow-md"
-              style={{ 
+              style={{
                 backgroundColor: colors.white,
                 borderColor: colors.grey
               }}
@@ -637,13 +637,13 @@ function ToolsSection() {
           ))}
         </div>
 
-        <p 
+        <p
           className="text-center mt-8 text-sm"
           style={{ color: colors.mutedText }}
         >
           Still confused?{" "}
-          <Link 
-            href={WHATSAPP_URL} 
+          <Link
+            href={WHATSAPP_URL}
             target="_blank"
             className="font-semibold underline"
             style={{ color: colors.navy }}
@@ -674,7 +674,7 @@ function BlogSection() {
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-3xl">
-        <h2 
+        <h2
           className="text-2xl md:text-3xl font-bold mb-8 text-center"
           style={{ color: colors.navy }}
         >
@@ -683,11 +683,11 @@ function BlogSection() {
 
         <div className="space-y-4 mb-8">
           {posts.map((post, index) => (
-            <Link 
+            <Link
               key={index}
               href={post.href}
               className="block p-4 rounded-xl border transition-all hover:shadow-md"
-              style={{ 
+              style={{
                 backgroundColor: colors.white,
                 borderColor: colors.grey
               }}
@@ -698,13 +698,13 @@ function BlogSection() {
           ))}
         </div>
 
-        <p 
+        <p
           className="text-center text-sm"
           style={{ color: colors.mutedText }}
         >
           Still confused?{" "}
-          <Link 
-            href={WHATSAPP_URL} 
+          <Link
+            href={WHATSAPP_URL}
             target="_blank"
             className="font-semibold underline"
             style={{ color: colors.navy }}
@@ -722,13 +722,13 @@ function FinalCTA() {
   return (
     <section className="py-20 md:py-28 px-6" style={{ backgroundColor: colors.navy }}>
       <div className="container mx-auto max-w-3xl text-center">
-        <h2 
+        <h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
           style={{ color: colors.gold }}
         >
           You don&apos;t need another loan.
         </h2>
-        <p 
+        <p
           className="text-2xl md:text-3xl font-bold mb-10"
           style={{ color: colors.white }}
         >
@@ -747,7 +747,7 @@ function FinalCTA() {
           </Link>
         </Button>
 
-        <p 
+        <p
           className="mt-8 text-sm"
           style={{ color: "rgba(255,255,255,0.6)" }}
         >
@@ -821,7 +821,7 @@ export function HomeClient() {
       {/* Reviews Section */}
       <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
         <div className="container mx-auto max-w-5xl">
-          <h2 
+          <h2
             className="text-2xl md:text-3xl font-bold mb-10 text-center"
             style={{ color: colors.navy }}
           >
