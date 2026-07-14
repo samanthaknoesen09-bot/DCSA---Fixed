@@ -369,6 +369,43 @@ Time: ${timeStr}`
             </div>
           </div>
 
+          <div className="text-sm text-background/70 mb-8">
+            <h4 className="font-semibold text-background mb-2">Our Partners</h4>
+            <p className="mb-2">We work alongside trusted, accredited service providers to protect and support our clients:</p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              <li>
+                <a
+                  href="https://www.dcpartner.co.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline hover:text-primary transition-colors"
+                >
+                  DC Partner (PDA)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://infussionbrokers.co.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline hover:text-primary transition-colors"
+                >
+                  Infusion Brokers
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.one.za.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline hover:text-primary transition-colors"
+                >
+                  One
+                </a>
+              </li>
+            </ul>
+          </div>
+
           <div className="bg-background/10 border-t border-b border-background/20 py-6 my-6 px-4 rounded-lg">
             <p className="text-background/80 text-sm leading-relaxed mb-3">
               <strong>Important Disclaimer:</strong> The information on this site is for educational purposes only and does not constitute financial or legal advice. Debt review outcomes depend on creditor responses. Interest reductions are negotiated and not guaranteed. All projections are estimates. Always consult with a registered debt counsellor for your specific situation.
