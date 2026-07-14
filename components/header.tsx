@@ -12,13 +12,13 @@ export function Header() {
   const [learnOpen, setLearnOpen] = useState(false)
 
   const mainNavLinks = [
-    { label: "Debt Help", href: "#debt-options" },
-    { label: "Free Tools", href: "#calculators" },
+    { label: "Debt Help", href: "/debt-help" },
+    { label: "Free Debt Calculator", href: "/free-debt-calculator" },
   ]
 
   const learnDropdown = [
-    { label: "Education Tips", href: "#education" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Debt Help Guides", href: "/debt-help-guides" },
+    { label: "FAQ", href: "/faq" },
     { label: "Blog", href: "/blog" },
     { label: "Podcast", href: "#podcast" },
   ]
@@ -65,7 +65,6 @@ export function Header() {
               </div>
             </div>
 
-            <Link href="#team" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Team</Link>
             <Link href="/client-portal" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Client Portal</Link>
             <Link href="/refer-a-friend" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Refer a Friend</Link>
             <Link href="#contact" className="text-sm font-medium transition-colors hover:underline decoration-2 underline-offset-4" style={{ color: colors.charcoal }}>Contact</Link>
@@ -158,7 +157,6 @@ export function Header() {
                       ))}
                     </div>
                     
-                    <Link href="#team" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Team</Link>
                     <Link href="/client-portal" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Client Portal</Link>
                     <Link href="/refer-a-friend" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Refer a Friend</Link>
                     <Link href="#contact" className="text-base font-medium" style={{ color: colors.charcoal }} onClick={() => setIsOpen(false)}>Contact</Link>
