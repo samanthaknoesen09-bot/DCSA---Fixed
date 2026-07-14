@@ -289,7 +289,7 @@ export function VerifyDebtCounsellorClient() {
                   Sam
                 </p>
                 <p className="text-sm mt-1" style={{ color: colors.warmGrey }}>
-                  066 193 7596 (WhatsApp)
+                  071 900 6298 (WhatsApp)
                 </p>
               </div>
             </div>
@@ -331,7 +331,7 @@ export function VerifyDebtCounsellorClient() {
             style={{ backgroundColor: colors.whatsapp || "#25D366", borderRadius: "12px" }}
             asChild
           >
-            <Link href="https://wa.me/27661937596" target="_blank" rel="noopener noreferrer">
+            <Link href="https://wa.me/27719006298" target="_blank" rel="noopener noreferrer">
               Message Sam on WhatsApp ☕
             </Link>
           </Button>

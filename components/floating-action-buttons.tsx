@@ -19,7 +19,7 @@ export function FloatingActionButtons() {
     {
       icon: MessageCircle,
       label: "WhatsApp Sam",
-      href: "https://wa.me/27661937596",
+      href: "https://wa.me/27719006298",
       color: "bg-[#25D366] hover:bg-[#25D366]/90",
       external: true
     },

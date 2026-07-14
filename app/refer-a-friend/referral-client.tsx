@@ -599,7 +599,7 @@ export function ReferralClient() {
                     Refer Another Friend
                   </Button>
                   <Button asChild variant="outline" className="bg-transparent">
-                    <a href={`https://wa.me/27661937596?text=${encodeURIComponent(`Hi DCSA! I just submitted a referral${submissionId ? ` (Ref: ${submissionId})` : ""}. Can you confirm you received it?`)}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`https://wa.me/27719006298?text=${encodeURIComponent(`Hi DCSA! I just submitted a referral${submissionId ? ` (Ref: ${submissionId})` : ""}. Can you confirm you received it?`)}`} target="_blank" rel="noopener noreferrer">
                       Confirm via WhatsApp
                     </a>
                   </Button>
@@ -653,7 +653,7 @@ export function ReferralClient() {
             </h3>
             <ul className="text-xs text-[#0D3B66]/60 space-y-1.5 list-disc list-inside">
               <li>
-                The R350 referral fee is paid once the referred person
+                The R150 referral fee is paid once the referred person
                 successfully enters into a debt counselling agreement with DCSA.
               </li>
               <li>

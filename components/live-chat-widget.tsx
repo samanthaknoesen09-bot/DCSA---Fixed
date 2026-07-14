@@ -71,7 +71,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
   const [inputMessage, setInputMessage] = useState("")
   const [showEscalation, setShowEscalation] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const chatNumber = "27661937596" // 066 193 7596
+  const chatNumber = "27719006298" // 071 900 6298
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -274,13 +274,13 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => window.open(`tel:0661937596`, "_self")}
+                      onClick={() => window.open(`tel:0719006298`, "_self")}
                     >
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
                   <p className="text-xs text-[#0D3B66]/70 mt-2 text-center">
-                    066 193 7596
+                    071 900 6298
                   </p>
                 </div>
               )}

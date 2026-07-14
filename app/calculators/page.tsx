@@ -160,7 +160,7 @@ export default function CalculatorsPage() {
                       </Link>
                     </Button>
                     <Button size="lg" variant="outline" className="border-[#4DB6AC] text-[#4DB6AC] hover:bg-[#4DB6AC]/10" asChild>
-                      <Link href="https://wa.me/27661937596" target="_blank">
+                      <Link href="https://wa.me/27719006298" target="_blank">
                         &#x1F4AC; WhatsApp Sam
                       </Link>
                     </Button>

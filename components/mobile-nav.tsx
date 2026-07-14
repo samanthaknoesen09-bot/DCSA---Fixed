@@ -49,7 +49,7 @@ export function MobileNav() {
               asChild
             >
               <a
-                href="https://wa.me/27661937596?text=Hi%20DCSA%20%F0%9F%91%8B%20I%20have%20a%20question%20about%20debt%20counselling."
+                href="https://wa.me/27719006298?text=Hi%20DCSA%20%F0%9F%91%8B%20I%20have%20a%20question%20about%20debt%20counselling."
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

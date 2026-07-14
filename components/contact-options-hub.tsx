@@ -23,7 +23,7 @@ export function ContactOptionsHub() {
       color: "bg-green-500",
       hoverColor: "hover:bg-green-600",
       action: () => {
-        const whatsappNumber = "27661937596"
+        const whatsappNumber = "27719006298"
         const message = encodeURIComponent("Hi, I need help with debt counselling")
         window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
       },

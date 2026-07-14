@@ -36,5 +36,5 @@ export const colors = {
   lightNavy: "#1A3A5C",
 };
 
-export const WHATSAPP_URL = "https://wa.me/27627884609?text=Hi%20Sam%2C%20I%20need%20help%20with%20my%20debt";
-export const WHATSAPP_NUMBER = "062 788 4609";
+export const WHATSAPP_URL = "https://wa.me/27719006298?text=Hi%20Sam%2C%20I%20need%20help%20with%20my%20debt";
+export const WHATSAPP_NUMBER = "071 900 6298";

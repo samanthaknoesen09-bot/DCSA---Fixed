@@ -636,7 +636,7 @@ export function FinancialRoadmap() {
                     <p className="text-muted-foreground leading-relaxed">{result.message}</p>
                     {result.zone !== "healthy" && (
                       <Button variant="outline" className="w-full bg-transparent" asChild>
-                        <a href="tel:+27661937596">Speak to a debt counsellor</a>
+                        <a href="tel:+27719006298">Speak to a debt counsellor</a>
                       </Button>
                     )}
                   </CardContent>

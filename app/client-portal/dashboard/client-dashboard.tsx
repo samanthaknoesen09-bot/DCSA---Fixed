@@ -382,7 +382,7 @@ export function ClientDashboard({
                 </Button>
                 <Button variant="outline" className="w-full bg-transparent" asChild>
                   <a
-                    href="https://wa.me/27661937596"
+                    href="https://wa.me/27719006298"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

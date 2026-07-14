@@ -347,6 +347,17 @@ Time: ${timeStr}`
               <h4 className="font-semibold text-background mb-2">NCR Registration</h4>
               <p>DCSA is a registered debt counsellor with the National Credit Regulator (NCR).</p>
               <p className="font-medium mt-1">Registration Number: NCRDC3995</p>
+              <p className="mt-2">
+                In affiliation with{" "}
+                <a
+                  href="https://www.lemue.co.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline hover:text-primary transition-colors"
+                >
+                  Jean Lemue Attorneys
+                </a>
+              </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">

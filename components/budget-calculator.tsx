@@ -738,7 +738,7 @@ export function BudgetCalculator() {
                       className="w-full bg-transparent"
                       onClick={() =>
                         window.open(
-                          `https://wa.me/27661937596?text=Hi, I completed the DCSA budget calculator and could potentially save ${formatCurrency(result.potentialSavings)} per month with debt counselling. I'd like to discuss my options.`,
+                          `https://wa.me/27719006298?text=Hi, I completed the DCSA budget calculator and could potentially save ${formatCurrency(result.potentialSavings)} per month with debt counselling. I'd like to discuss my options.`,
                           "_blank",
                         )
                       }
