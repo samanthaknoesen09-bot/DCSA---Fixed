@@ -44,7 +44,7 @@ export function WhatsAppWidget() {
             <CardHeader className="bg-green-500 text-white rounded-t-lg">
               <CardTitle className="text-lg flex items-center gap-2">
                 <MessageCircle className="h-5 w-5" />
-                DCSA Debt Counsellors
+                DC Sam Debt Counsellors
               </CardTitle>
               <CardDescription className="text-green-100">Chat with us on WhatsApp</CardDescription>
             </CardHeader>

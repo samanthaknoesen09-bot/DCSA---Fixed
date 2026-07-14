@@ -43,7 +43,7 @@ async function postToFacebook(
   }
 
   try {
-    const message = `${title}\n\n${excerpt}\n\nRead more: ${blogUrl}\n\n#DCSA #DebtCounselling #DebtReview #FinancialFreedom #CreditRepair #DebtHelp`
+    const message = `${title}\n\n${excerpt}\n\nRead more: ${blogUrl}\n\n#DC Sam #DebtCounselling #DebtReview #FinancialFreedom #CreditRepair #DebtHelp`
 
     let endpoint = `https://graph.facebook.com/v18.0/${pageId}/feed`
     const params: Record<string, string> = {
@@ -149,7 +149,7 @@ export async function POST(request: NextRequest) {
         content,
         excerpt: excerpt || `${plainTextContent.substring(0, 200)}...`,
         category: category || "General",
-        author: "DCSA Team",
+        author: "DC Sam Team",
         featured_image: featuredImage || null,
         status: "published",
         scheduled_for: scheduledFor || null,

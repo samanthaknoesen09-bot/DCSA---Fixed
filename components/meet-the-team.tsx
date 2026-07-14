@@ -34,7 +34,7 @@ export function MeetTheTeam() {
             <span className="text-sm font-semibold text-[#0D3B66]">Meet the Humans Behind the Help</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0D3B66] mb-4">
-            The <span className="text-primary">DC</span><span className="text-black">SA</span> Squad
+            The <span className="text-primary">DC</span> Sam Squad
           </h2>
           <p className="text-lg text-[#0D3B66]/70 max-w-2xl mx-auto">
             No stuffy suits here. Just real people who genuinely care about helping you win with money.
@@ -49,7 +49,7 @@ export function MeetTheTeam() {
                 {!imageErrors["sam"] ? (
                   <Image
                     src={TEAM_IMAGES.samantha}
-                    alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DCSA"
+                    alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DC Sam"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -142,7 +142,7 @@ export function MeetTheTeam() {
                 {!imageErrors["kadene"] ? (
                   <Image
                     src={TEAM_IMAGES.kadene}
-                    alt="Kadene Jacobs - DCSA Administrative Assistant"
+                    alt="Kadene Jacobs - DC Sam Administrative Assistant"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -198,7 +198,7 @@ export function MeetTheTeam() {
         <div className="text-center mt-12">
           <p className="text-[#0D3B66]/70 max-w-2xl mx-auto">
             We're not a faceless corporation - we're a small team of real people who genuinely care about your financial wellbeing. 
-            When you work with <span className="text-primary font-semibold">DC</span><span className="text-black font-semibold">SA</span>, you're family.
+            When you work with <span className="text-primary font-semibold">DC</span> Sam, you're family.
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { DocumentsClient } from "./documents-client"
 
 export const metadata = {
-  title: "My Documents | DCSA Client Portal",
+  title: "My Documents | DC Sam Client Portal",
   description: "Upload and manage your documents securely",
 }
 

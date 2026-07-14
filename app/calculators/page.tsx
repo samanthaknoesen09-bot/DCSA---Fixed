@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Free online debt calculators to help you manage your finances. Calculate potential debt counselling savings, track expenses, and understand interest costs.",
   keywords: "debt calculator, savings calculator, expense tracker, interest calculator, debt counselling, South Africa",
   openGraph: {
-    title: "Free Debt Calculators | DCSA Debt Help",
+    title: "Free Debt Calculators | DC Sam Debt Help",
     description:
       "Use our free calculators to understand your debt situation, estimate potential savings, and take control of your finances.",
     url: "https://www.dcsam.co.za/calculators",

@@ -181,7 +181,7 @@ export function SavingsCalculator() {
                   <Button className="w-full py-6 text-lg font-bold"
                           style={{ backgroundColor: colors.charcoal, color: colors.white, borderRadius: "12px" }}
                           asChild>
-                    <a href={`https://wa.me/27719006298?text=Hi DCSA! I've used the preview tool. My estimated total debt is R${currentTotal}. I'd like to chat about my options.`}>
+                    <a href={`https://wa.me/27719006298?text=Hi DC Sam! I've used the preview tool. My estimated total debt is R${currentTotal}. I'd like to chat about my options.`}>
                       Chat with Sam About This Plan
                     </a>
                   </Button>

@@ -41,7 +41,7 @@ export default function PhoneContact() {
             asChild
           >
             <a
-              href="https://wa.me/27719006298?text=Hi%20DCSA%20%F0%9F%91%8B%20I%20have%20a%20question."
+              href="https://wa.me/27719006298?text=Hi%20DC%20Sam%20%F0%9F%91%8B%20I%20have%20a%20question."
               target="_blank"
               rel="noopener noreferrer"
             >

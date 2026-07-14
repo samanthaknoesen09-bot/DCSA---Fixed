@@ -3,9 +3,9 @@ import { OrganizationSchema } from "@/components/organization-schema"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Debt Counsellor Near Me | NCR Registered Debt Review & Credit Repair | DCSA",
+  title: "Debt Counsellor Near Me | NCR Registered Debt Review & Credit Repair | DC Sam",
   description:
-    "Looking for a debt counsellor near you? DCSA offers NCR registered debt counselling (NCRDC3995), credit repair & free debt calculators. Reduce debt by 15-45%. Get help with debt stress today. Free consultation available across South Africa.",
+    "Looking for a debt counsellor near you? DC Sam offers NCR registered debt counselling (NCRDC3995), credit repair & free debt calculators. Reduce debt by 15-45%. Get help with debt stress today. Free consultation available across South Africa.",
   keywords: [
     "debt counsellor near me",
     "debt counselling near me",
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     "debt help near me",
     "NCR debt counsellor",
     "registered debt counsellor",
-    "DCSA",
-    "DCSA debt counsellors",
+    "DC Sam",
+    "DC Sam debt counsellors",
     "NCRDC3995",
     "debt counselling South Africa",
     "debt review South Africa",
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     canonical: "https://www.dcsam.co.za",
   },
   openGraph: {
-    title: "DCSA - We're Here to Help | Debt Counselling & Credit Repair",
+    title: "DC Sam - We're Here to Help | Debt Counselling & Credit Repair",
     description: "Compassionate debt counselling and credit repair services. No judgment, just honest support to help you regain control of your finances. Free consultation available.",
     url: "https://www.dcsam.co.za",
-    siteName: "DCSA - Debt Counselling South Africa",
+    siteName: "DC Sam - Debt Counselling South Africa",
     type: "website",
     locale: "en_ZA",
     images: [
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
         url: "https://www.dcsam.co.za/images/dcsa-og-logo.png",
         width: 1200,
         height: 630,
-        alt: "DCSA - Debt Counselling & Credit Repair South Africa",
+        alt: "DC Sam - Debt Counselling & Credit Repair South Africa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DCSA - Debt Counselling & Credit Repair",
+    title: "DC Sam - Debt Counselling & Credit Repair",
     description: "We're here to help. Compassionate debt counselling and credit repair services. No judgment, just support.",
     images: ["https://www.dcsam.co.za/images/dcsa-og-logo.png"],
   },
@@ -87,7 +87,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "@id": "https://www.dcsam.co.za/#localbusiness",
-            name: "DCSA Debt Counselling South Africa",
+            name: "DC Sam Debt Counselling South Africa",
             image: "https://www.dcsam.co.za/images/dcsa-logo.png",
             telephone: "+27-71-900-6298",
             email: "info@dcsam.co.za",
@@ -129,7 +129,7 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "@id": "https://www.dcsam.co.za/#service",
-            name: "DCSA Debt Counselling & Credit Repair Services",
+            name: "DC Sam Debt Counselling & Credit Repair Services",
             description: "Compassionate debt counselling and credit repair services for South Africans who need financial support. No judgment, just honest guidance.",
             provider: {
               "@id": "https://www.dcsam.co.za/#organization",
@@ -180,10 +180,10 @@ export default function Home() {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What is DCSA?",
+                name: "What is DC Sam?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "DCSA (Debt Counselling South Africa) is an NCR registered debt counselling service that provides compassionate support to South Africans struggling with debt. We offer debt counselling and credit repair services with no judgment, just honest guidance to help you regain financial control.",
+                  text: "DC Sam (Debt Counselling South Africa) is an NCR registered debt counselling service that provides compassionate support to South Africans struggling with debt. We offer debt counselling and credit repair services with no judgment, just honest guidance to help you regain financial control.",
                 },
               },
               {
@@ -196,18 +196,18 @@ export default function Home() {
               },
               {
                 "@type": "Question",
-                name: "How can DCSA help with my debt?",
+                name: "How can DC Sam help with my debt?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "DCSA provides two main services: debt counselling (debt review) to restructure your debt into one affordable payment, and credit repair to help improve your credit score. We offer compassionate, judgment-free support throughout your journey to financial freedom, with free consultations to understand your situation and recommend the right path forward.",
+                  text: "DC Sam provides two main services: debt counselling (debt review) to restructure your debt into one affordable payment, and credit repair to help improve your credit score. We offer compassionate, judgment-free support throughout your journey to financial freedom, with free consultations to understand your situation and recommend the right path forward.",
                 },
               },
               {
                 "@type": "Question",
-                name: "Is DCSA registered with the NCR?",
+                name: "Is DC Sam registered with the NCR?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes, DCSA is a fully registered debt counsellor with the National Credit Regulator (NCR) under registration number NCRDC3995.",
+                  text: "Yes, DC Sam is a fully registered debt counsellor with the National Credit Regulator (NCR) under registration number NCRDC3995.",
                 },
               },
             ],
@@ -237,7 +237,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "DCSA Free Financial Calculators",
+            name: "DC Sam Free Financial Calculators",
             url: "https://www.dcsam.co.za/calculator",
             description: "Free online calculators to help South Africans manage debt, calculate interest, and plan their finances. Includes Money Map, Potential Savings Calculator, and Interest Calculator.",
             applicationCategory: "FinanceApplication",
@@ -266,7 +266,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FinancialService",
-            name: "DCSA Debt Counselling Services",
+            name: "DC Sam Debt Counselling Services",
             description: "Professional debt counselling and credit repair services helping South Africans reduce debt by 15-45% through NCR registered debt review.",
             provider: {
               "@id": "https://www.dcsam.co.za/#organization"

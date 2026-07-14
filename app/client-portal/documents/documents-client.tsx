@@ -178,7 +178,7 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
               </Button>
             </div>
             <Link href="/" className="text-xl font-bold text-[#0D3B66]">
-              DCSA
+              DC Sam
             </Link>
           </div>
         </div>

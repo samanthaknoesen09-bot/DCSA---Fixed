@@ -355,7 +355,7 @@ export function CreditRepairApplication() {
                   required
                 />
                 <Label htmlFor="consentCredit" className="font-normal cursor-pointer text-sm leading-relaxed">
-                  I authorize DCSA to access my credit reports from all major credit bureaus in South Africa to assess
+                  I authorize DC Sam to access my credit reports from all major credit bureaus in South Africa to assess
                   my credit repair needs and work on my behalf to dispute inaccurate information.
                 </Label>
               </div>
@@ -368,7 +368,7 @@ export function CreditRepairApplication() {
                   required
                 />
                 <Label htmlFor="consentTerms" className="font-normal cursor-pointer text-sm leading-relaxed">
-                  I understand that credit repair is a process that takes time and results may vary. DCSA will work
+                  I understand that credit repair is a process that takes time and results may vary. DC Sam will work
                   diligently on my behalf but cannot guarantee specific outcomes or timeframes.
                 </Label>
               </div>
@@ -381,7 +381,7 @@ export function CreditRepairApplication() {
                   required
                 />
                 <Label htmlFor="consentPrivacy" className="font-normal cursor-pointer text-sm leading-relaxed">
-                  I consent to DCSA storing and processing my personal information in accordance with POPIA regulations
+                  I consent to DC Sam storing and processing my personal information in accordance with POPIA regulations
                   for the purpose of providing credit repair services.
                 </Label>
               </div>
@@ -398,7 +398,7 @@ export function CreditRepairApplication() {
               {isSubmitting ? "Submitting Application..." : "Submit Credit Repair Application"}
             </Button>
             <p className="text-sm text-center text-muted-foreground mt-4">
-              By submitting this form, your information will be sent securely to Sam at DCSA.
+              By submitting this form, your information will be sent securely to Sam at DC Sam.
             </p>
           </div>
         </CardContent>

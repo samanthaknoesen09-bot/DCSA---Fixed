@@ -37,31 +37,31 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   title: {
-    default: "Financial Education & Debt Help for South Africans | DCSA",
-    template: "%s | DCSA - Financial Education",
+    default: "Financial Education & Debt Help for South Africans | DC Sam",
+    template: "%s | DC Sam - Financial Education",
   },
   description:
-    "DCSA - Financial education made simple for every South African. Learn about saving, debt, credit without judgment. Free tools, calculators, and guidance in plain English. Plus professional debt counselling (NCR registered NCRDC3995) when you need it.",
+    "DC Sam - Financial education made simple for every South African. Learn about saving, debt, credit without judgment. Free tools, calculators, and guidance in plain English. Plus professional debt counselling (NCR registered NCRDC3995) when you need it.",
   openGraph: {
     type: "website",
     locale: "en_ZA",
     url: "https://www.dcsam.co.za",
-    siteName: "DCSA - Financial Education & Debt Counselling",
-    title: "Financial Education & Debt Help for South Africans | DCSA",
+    siteName: "DC Sam - Financial Education & Debt Counselling",
+    title: "Financial Education & Debt Help for South Africans | DC Sam",
     description: "Free plain-language financial education for South Africans. Learn saving, debt management, credit repair without judgment. Tools, calculators, and NCR-registered debt counselling.",
     images: [
       {
         url: "https://www.dcsam.co.za/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DCSA - Financial Education for All South Africans",
+        alt: "DC Sam - Financial Education for All South Africans",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Financial Education & Debt Help for South Africans | DCSA",
+    title: "Financial Education & Debt Help for South Africans | DC Sam",
     description: "Free financial tools and debt counselling. No judgment, just real help.",
     images: ["https://www.dcsam.co.za/og-image.png"],
   },
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   keywords: [
     // Brand Keywords
-    "DCSA",
+    "DC Sam",
     "DCSam",
     "Samantha Knoesen",
     "Jean Lemue Attorneys",
@@ -98,10 +98,10 @@ export const metadata: Metadata = {
     "debt attorney Port Elizabeth",
     
     // Brand + Service Combinations
-    "DCSA debt counselling",
+    "DC Sam debt counselling",
     "DCSam debt counsellor",
     "Samantha Knoesen debt counsellor",
-    "DCSA South Africa",
+    "DC Sam South Africa",
     "DCSam South Africa",
     "Jean Lemue Attorneys debt counselling",
     
@@ -241,9 +241,9 @@ export const metadata: Metadata = {
     "how to get out of debt",
     "debt free",
   ],
-  authors: [{ name: "DCSA Debt Counsellors", url: "https://www.dcsam.co.za" }],
-  creator: "DCSA",
-  publisher: "DCSA Debt Counsellors",
+  authors: [{ name: "DC Sam Debt Counsellors", url: "https://www.dcsam.co.za" }],
+  creator: "DC Sam",
+  publisher: "DC Sam Debt Counsellors",
   formatDetection: {
     email: true,
     address: true,
@@ -273,24 +273,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_ZA",
     url: "https://www.dcsam.co.za",
-    siteName: "DCSA - Debt Counselling & Credit Repair",
-    title: "DCSA - Caring Debt Counselling & Credit Repair | NCR Registered South Africa",
+    siteName: "DC Sam - Debt Counselling & Credit Repair",
+    title: "DC Sam - Caring Debt Counselling & Credit Repair | NCR Registered South Africa",
     description:
-      "DCSA helps South Africans find real financial relief through debt review, credit repair, and free financial tools. NCR registered (NCRDC3995). No judgment, just genuine support.",
+      "DC Sam helps South Africans find real financial relief through debt review, credit repair, and free financial tools. NCR registered (NCRDC3995). No judgment, just genuine support.",
     images: [
       {
         url: "https://www.dcsam.co.za/images/dcsa-og-logo.png",
         width: 1200,
         height: 630,
-        alt: "DCSA - Debt Counselling & Credit Repair South Africa",
+        alt: "DC Sam - Debt Counselling & Credit Repair South Africa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DCSA - Caring Debt Counselling & Credit Repair | South Africa",
+    title: "DC Sam - Caring Debt Counselling & Credit Repair | South Africa",
     description:
-      "Real help for real people. DCSA offers debt review, credit repair, and free financial tools across South Africa. NCR registered (NCRDC3995). No judgment.",
+      "Real help for real people. DC Sam offers debt review, credit repair, and free financial tools across South Africa. NCR registered (NCRDC3995). No judgment.",
     images: ["https://www.dcsam.co.za/images/dcsa-og-logo.png"],
   },
   alternates: {
@@ -304,15 +304,15 @@ export const metadata: Metadata = {
     "facebook-domain-verification": "dcsa",
     "fb:page_id": "DebtClearDCSA",
     // AI Bot Meta Tags
-    "ai:title": "DCSA Debt Counsellors - Professional Debt Relief South Africa",
+    "ai:title": "DC Sam Debt Counsellors - Professional Debt Relief South Africa",
     "ai:description": "NCR registered debt counsellors (NCRDC3995) providing immediate debt relief, debt review, and credit repair services across South Africa. Free consultation available.",
     "ai:category": "Financial Services",
     "ai:service_area": "South Africa",
     rating: "general",
     distribution: "global",
-    "DC.title": "DCSA Debt Counsellors - Professional Debt Help South Africa",
+    "DC.title": "DC Sam Debt Counsellors - Professional Debt Help South Africa",
     "DC.subject": "Debt Counselling, Financial Services, Debt Management, Debt Help, Debt Relief",
-    "DC.description": "DCSA professional debt counselling, debt help and debt relief services in South Africa",
+    "DC.description": "DC Sam professional debt counselling, debt help and debt relief services in South Africa",
     "geo.region": "ZA-EC",
     "geo.placename": "Port Elizabeth, Eastern Cape, South Africa",
     "geo.position": "-33.9476;25.5836",
@@ -344,7 +344,7 @@ export default function RootLayout({
                 "@type": "LegalService",
                 "@id": "https://www.dcsam.co.za/#pier14",
                 "name": "Jean Lemue Attorneys",
-                "alternateName": "DCSA - Financial Education & Debt Counselling",
+                "alternateName": "DC Sam - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
                 "description": "Jean Lemue Attorneys. Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
@@ -387,9 +387,9 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LegalService",
                 "@id": "https://www.dcsam.co.za/#newtonpark",
-                "name": "DCSA - Financial Education & Debt Counselling",
+                "name": "DC Sam - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "DCSA office at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "DC Sam office at Newton Park. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {
@@ -466,7 +466,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "DCSA",
+              "name": "DC Sam",
               "url": "https://www.dcsam.co.za",
               "description": "Financial education platform and debt counselling services",
               "logo": "https://www.dcsam.co.za/logo.png",
@@ -542,8 +542,8 @@ export default function RootLayout({
         />
 
         {/* RSS and JSON Feed Discovery for Blog */}
-        <link rel="alternate" type="application/rss+xml" title="DCSA Blog RSS Feed" href="https://www.dcsam.co.za/feed.xml" />
-        <link rel="alternate" type="application/feed+json" title="DCSA Blog JSON Feed" href="https://www.dcsam.co.za/feed.json" />
+        <link rel="alternate" type="application/rss+xml" title="DC Sam Blog RSS Feed" href="https://www.dcsam.co.za/feed.xml" />
+        <link rel="alternate" type="application/feed+json" title="DC Sam Blog JSON Feed" href="https://www.dcsam.co.za/feed.json" />
         
         {/* AI Crawler Hints - helps AI assistants understand the site */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -558,11 +558,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "url": "https://www.dcsam.co.za",
-              "name": "DCSA - Financial Education & Debt Counselling",
+              "name": "DC Sam - Financial Education & Debt Counselling",
               "description": "South Africa's caring debt counsellors providing financial education, debt review, and credit repair services.",
               "publisher": {
                 "@type": "Organization",
-                "name": "DCSA",
+                "name": "DC Sam",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://www.dcsam.co.za/images/dcsa-logo.jpg"
@@ -588,11 +588,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Blog",
               "url": "https://www.dcsam.co.za/blog",
-              "name": "DCSA Blog - Financial Education & Debt Counselling Tips",
-              "description": "Real talk about money, debt management, and financial freedom from DCSA - South Africa's caring debt counsellors.",
+              "name": "DC Sam Blog - Financial Education & Debt Counselling Tips",
+              "description": "Real talk about money, debt management, and financial freedom from DC Sam - South Africa's caring debt counsellors.",
               "publisher": {
                 "@type": "Organization",
-                "name": "DCSA",
+                "name": "DC Sam",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://www.dcsam.co.za/images/dcsa-logo.jpg"
@@ -621,7 +621,7 @@ export default function RootLayout({
               "jobTitle": "Registered Debt Counsellor & Founder",
               "worksFor": {
                 "@type": "Organization",
-                "name": "DCSA"
+                "name": "DC Sam"
               },
               "description": "NCR Registered Debt Counsellor (NCRDC3995) helping South Africans achieve financial freedom through debt review and financial education.",
               "image": "https://www.dcsam.co.za/images/samantha-knoesen.jpeg",

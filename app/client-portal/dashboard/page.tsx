@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { ClientDashboard } from "./client-dashboard"
 
 export const metadata = {
-  title: "Dashboard | DCSA Client Portal",
+  title: "Dashboard | DC Sam Client Portal",
   description: "Access your documents, applications, and account information",
 }
 

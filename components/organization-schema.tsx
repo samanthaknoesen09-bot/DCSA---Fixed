@@ -5,8 +5,8 @@ export function OrganizationSchema() {
       {
         "@type": "Organization",
         "@id": "https://www.dcsam.co.za/#organization",
-        "name": "DCSA Debt Counsellors",
-        "legalName": "DCSA Debt Counselling Services",
+        "name": "DC Sam Debt Counsellors",
+        "legalName": "DC Sam Debt Counselling Services",
         "url": "https://www.dcsam.co.za",
         "logo": {
           "@type": "ImageObject",
@@ -55,7 +55,7 @@ export function OrganizationSchema() {
           },
           {
             "@type": "Place",
-            "name": "DCSA - Newton Park",
+            "name": "DC Sam - Newton Park",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "81 6th Avenue",
@@ -168,7 +168,7 @@ export function OrganizationSchema() {
         "@type": "WebSite",
         "@id": "https://www.dcsam.co.za/#website",
         "url": "https://www.dcsam.co.za",
-        "name": "DCSA Debt Counsellors",
+        "name": "DC Sam Debt Counsellors",
         "description": "Professional debt counselling, debt review, and credit repair services in South Africa",
         "publisher": {
           "@id": "https://www.dcsam.co.za/#organization"
@@ -185,7 +185,7 @@ export function OrganizationSchema() {
       {
         "@type": "ProfessionalService",
         "@id": "https://www.dcsam.co.za/#service",
-        "name": "DCSA Debt Counselling Services",
+        "name": "DC Sam Debt Counselling Services",
         "description": "NCR registered debt counselling providing immediate debt relief and legal protection. Specializing in debt review, credit repair, and financial rehabilitation across South Africa.",
         "provider": {
           "@id": "https://www.dcsam.co.za/#organization"

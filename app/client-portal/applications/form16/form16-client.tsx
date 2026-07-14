@@ -219,7 +219,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
               </Link>
             </Button>
             <Link href="/" className="text-xl font-bold text-[#0D3B66]">
-              DCSA
+              DC Sam
             </Link>
           </div>
         </div>
@@ -790,7 +790,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
               <div className="space-y-4 p-4 bg-[#0D3B66]/5 rounded-lg">
                 <h3 className="font-semibold text-[#0D3B66]">Power of Attorney Agreement</h3>
                 <p className="text-sm text-[#0D3B66]/80 leading-relaxed">
-                  I hereby grant DCSA (Debt Counselling South Africa), NCR Registered Debt Counsellor NCRDC3995, 
+                  I hereby grant DC Sam (Debt Counselling South Africa), NCR Registered Debt Counsellor NCRDC3995, 
                   the authority to act on my behalf in all matters relating to my debt review application. This includes, 
                   but is not limited to, contacting my credit providers, negotiating repayment terms, and representing 
                   me in court proceedings if necessary.
@@ -805,7 +805,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                     onCheckedChange={(checked) => handleInputChange("poaAgreement", checked)}
                   />
                   <Label htmlFor="poaAgreement" className="text-sm leading-relaxed cursor-pointer">
-                    I grant DCSA power of attorney to act on my behalf in all debt review matters *
+                    I grant DC Sam power of attorney to act on my behalf in all debt review matters *
                   </Label>
                 </div>
 
@@ -816,7 +816,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToContactCreditors", checked)}
                   />
                   <Label htmlFor="consentToContactCreditors" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DCSA contacting my credit providers on my behalf *
+                    I consent to DC Sam contacting my credit providers on my behalf *
                   </Label>
                 </div>
 
@@ -827,7 +827,7 @@ export function Form16Client({ user, client }: Form16ClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToProcessPersonalInfo", checked)}
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DCSA processing my personal information in accordance with POPIA *
+                    I consent to DC Sam processing my personal information in accordance with POPIA *
                   </Label>
                 </div>
 

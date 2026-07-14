@@ -1,4 +1,4 @@
-// DCSA brand palette - Navy + Gold (mobile conversion optimized)
+// DC Sam brand palette - Navy + Gold (mobile conversion optimized)
 export const colors = {
   // Primary - Deep Navy (main brand colour)
   navy: "#0B1F3B",

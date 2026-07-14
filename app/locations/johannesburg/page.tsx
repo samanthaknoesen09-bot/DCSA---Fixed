@@ -46,7 +46,7 @@ export default function JohannesburgPage() {
 
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p>
-                Are you looking for a reliable debt counsellor in Johannesburg? <span className="text-primary font-semibold">DC</span><span className="text-black font-semibold">SA</span> (DCSam) provides professional debt counselling and credit repair services to individuals and families throughout Johannesburg and surrounding areas.
+                Are you looking for a reliable debt counsellor in Johannesburg? <span className="text-primary font-semibold">DC</span> Sam (DCSam) provides professional debt counselling and credit repair services to individuals and families throughout Johannesburg and surrounding areas.
               </p>
 
               <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary/20 not-prose">
@@ -74,7 +74,7 @@ export default function JohannesburgPage() {
               </ul>
 
               <h2 className="text-3xl font-bold text-foreground mt-8">
-                Why Choose <span className="text-primary">DC</span><span className="text-black">SA</span> for Debt Help in Johannesburg?
+                Why Choose <span className="text-primary">DC</span> Sam for Debt Help in Johannesburg?
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>NCR Registered:</strong> Fully compliant with National Credit Regulator standards</li>

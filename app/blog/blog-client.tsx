@@ -29,10 +29,10 @@ const fallbackPosts: BlogPost[] = [
     id: "1",
     slug: "understanding-consumer-rights",
     title: "Understanding Your Consumer Rights in South Africa",
-    content: "Understanding your rights as a consumer is the first step towards financial freedom. At DCSA, we believe knowledge empowers you to make better financial decisions. The National Credit Act protects you from unfair lending practices and gives you the right to apply for debt review if you're struggling to pay your debts.",
+    content: "Understanding your rights as a consumer is the first step towards financial freedom. At DC Sam, we believe knowledge empowers you to make better financial decisions. The National Credit Act protects you from unfair lending practices and gives you the right to apply for debt review if you're struggling to pay your debts.",
     excerpt: "Understanding your rights as a consumer is the first step towards financial freedom...",
     category: "Consumer Rights",
-    author: "DCSA Team",
+    author: "DC Sam Team",
     createdAt: "2024-01-15T10:00:00Z",
     updatedAt: "2024-01-15T10:00:00Z",
   },
@@ -43,7 +43,7 @@ const fallbackPosts: BlogPost[] = [
     content: "Struggling with debt? You're not alone. Our certified debt counsellors are here to help you navigate through tough financial times with compassion and expertise. We understand that life happens - unexpected expenses, job loss, or medical emergencies can put anyone in a difficult financial position. Contact us for a free consultation.",
     excerpt: "Our certified debt counsellors are here to help you navigate through tough financial times...",
     category: "Debt Review",
-    author: "DCSA Team",
+    author: "DC Sam Team",
     createdAt: "2024-01-10T14:30:00Z",
     updatedAt: "2024-01-10T14:30:00Z",
   },
@@ -51,10 +51,10 @@ const fallbackPosts: BlogPost[] = [
     id: "3",
     slug: "debt-review-benefits",
     title: "Did You Know? Debt Review Can Reduce Your Payments by Up to 45%",
-    content: "Did you know that debt review can reduce your monthly payments by up to 45%? It's a legal process that protects you from creditors while you get back on your feet. During debt review, you make one affordable monthly payment, and we distribute it to your creditors on your behalf. Learn more about how DCSA can help you regain financial freedom.",
+    content: "Did you know that debt review can reduce your monthly payments by up to 45%? It's a legal process that protects you from creditors while you get back on your feet. During debt review, you make one affordable monthly payment, and we distribute it to your creditors on your behalf. Learn more about how DC Sam can help you regain financial freedom.",
     excerpt: "Debt review can reduce your monthly payments by up to 45% - a legal process that protects you...",
     category: "Debt Review",
-    author: "DCSA Team",
+    author: "DC Sam Team",
     createdAt: "2024-01-05T09:15:00Z",
     updatedAt: "2024-01-05T09:15:00Z",
   },
@@ -113,7 +113,7 @@ export default function BlogClientPage() {
           <div className="container mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
               <Rss className="w-4 h-4" style={{ color: colors.maroon }} />
-              <span className="text-sm font-semibold" style={{ color: colors.maroon }}>DCSA Blog</span>
+              <span className="text-sm font-semibold" style={{ color: colors.maroon }}>DC Sam Blog</span>
             </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-balance" style={{ color: colors.charcoal }}>
@@ -152,7 +152,7 @@ export default function BlogClientPage() {
                 />
               </div>
               <div className="text-left">
-                <p className="font-semibold" style={{ color: colors.charcoal }}>Written by Sam &amp; the DCSA Team</p>
+                <p className="font-semibold" style={{ color: colors.charcoal }}>Written by Sam &amp; the DC Sam Team</p>
                 <p className="text-sm" style={{ color: colors.warmGrey }}>NCR Registered Debt Counsellors</p>
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function BlogClientPage() {
                     style={{ backgroundColor: colors.maroon }}
                     onClick={() =>
                       (window.location.href =
-                        "mailto:info@dcsam.co.za?subject=Free Consultation Request&body=Hi DCSA team, I would like to schedule a free consultation to discuss my debt situation.")
+                        "mailto:info@dcsam.co.za?subject=Free Consultation Request&body=Hi DC Sam team, I would like to schedule a free consultation to discuss my debt situation.")
                     }
                   >
                     Email for Free Consultation

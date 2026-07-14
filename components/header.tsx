@@ -27,10 +27,10 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b shadow-sm" style={{ backgroundColor: colors.warmCream, borderColor: colors.sandLight }}>
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Left: DCSA Logo - Home Button */}
+          {/* Left: DC Sam Logo - Home Button */}
           <Link href="/" className="flex items-center gap-1 text-2xl font-bold hover:opacity-80 transition-opacity">
             <span style={{ color: colors.maroon }}>DC</span>
-            <span style={{ color: colors.black }}>SA</span>
+            <span style={{ color: colors.charcoal }}>&nbsp;Sam</span>
           </Link>
 
           {/* Middle: Desktop Navigation */}

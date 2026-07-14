@@ -62,7 +62,7 @@ export default function AdminLoginPage() {
             <Shield className="w-6 h-6 text-primary" />
           </div>
           <CardTitle className="text-2xl">
-            <span className="text-primary">DC</span><span className="text-black">SA</span> Admin
+            <span className="text-primary">DC</span> Sam Admin
           </CardTitle>
           <CardDescription>
             Client Portal Administration

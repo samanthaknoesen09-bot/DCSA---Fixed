@@ -83,7 +83,7 @@ export function ClientDashboard({
           <div className="flex items-center justify-between">
             <div>
               <Link href="/" className="text-2xl font-bold text-primary">
-                <span className="text-primary">DC</span><span className="text-black">SA</span>
+                <span className="text-primary">DC</span> Sam
               </Link>
               <p className="text-sm text-[#0D3B66]/70">Your Safe Space</p>
             </div>
@@ -213,7 +213,7 @@ export function ClientDashboard({
                     <ArrowRight className="h-5 w-5 mr-2" />
                     <div className="text-left">
                       <div className="font-semibold">Transfer Request</div>
-                      <div className="text-xs opacity-90">Transfer to DCSA</div>
+                      <div className="text-xs opacity-90">Transfer to DC Sam</div>
                     </div>
                   </Link>
                 </Button>

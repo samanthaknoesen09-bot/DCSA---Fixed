@@ -128,11 +128,11 @@ export function FAQSection() {
     },
     {
       id: "why-dcsa-different",
-      question: "What makes DCSA different?",
+      question: "What makes DC Sam different?",
       content: (
         <div className="space-y-4">
           <p style={{ color: colors.charcoal }}>
-            Most debt counsellors treat you like another file number. At DCSA, we're different:
+            Most debt counsellors treat you like another file number. At DC Sam, we're different:
           </p>
           <ul className="space-y-2 text-sm">
             <li style={{ color: colors.charcoal }}>

@@ -29,7 +29,7 @@ export function EnhancedMobileNav() {
       <SheetContent side="left" className="w-[300px]">
         <SheetHeader>
           <SheetTitle className="text-left text-2xl font-bold">
-            <span className="text-primary">DC</span><span className="text-black">SA</span>
+            <span className="text-primary">DC</span> Sam
           </SheetTitle>
         </SheetHeader>
         <nav className="mt-8 flex flex-col gap-3">

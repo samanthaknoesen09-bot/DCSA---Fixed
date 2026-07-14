@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { VerifyDebtCounsellorClient } from "./verify-client"
 
 export const metadata: Metadata = {
-  title: "How to Verify Your Debt Counsellor | DCSA",
+  title: "How to Verify Your Debt Counsellor | DC Sam",
   description: "Learn how to verify if a debt counsellor is NCR registered and legitimate. Understand the risks of unregistered debt counsellors and protect yourself.",
   keywords: [
     "verify debt counsellor",

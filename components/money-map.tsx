@@ -322,7 +322,7 @@ export function MoneyMap() {
     if (!result) return
     
     const content = `
-DCSA Money Map Results
+DC Sam Money Map Results
 Generated: ${new Date().toLocaleDateString()}
 
 INCOME
@@ -354,7 +354,7 @@ ${result.message}
 
 ---
 For personalized guidance, book a free consultation at www.dcsam.co.za
-DCSA - Debt Counselling South Africa
+DC Sam - Debt Counselling South Africa
 NCR Registered: NCRDC3995
     `.trim()
 
@@ -362,7 +362,7 @@ NCR Registered: NCRDC3995
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `DCSA-Money-Map-${new Date().toISOString().split("T")[0]}.txt`
+    a.download = `DC Sam-Money-Map-${new Date().toISOString().split("T")[0]}.txt`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -988,7 +988,7 @@ NCR Registered: NCRDC3995
                       asChild
                     >
                       <a
-                        href="https://wa.me/27719006298?text=Hi%20DCSA%20%F0%9F%91%8B%20I%27ve%20completed%20the%20Money%20Map%20and%20I%27m%20currently%20in%20the%20Healthy%20Zone.%20I%27d%20love%20a%20few%20tips%20to%20help%20me%20stay%20on%20track."
+                        href="https://wa.me/27719006298?text=Hi%20DC%20Sam%20%F0%9F%91%8B%20I%27ve%20completed%20the%20Money%20Map%20and%20I%27m%20currently%20in%20the%20Healthy%20Zone.%20I%27d%20love%20a%20few%20tips%20to%20help%20me%20stay%20on%20track."
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -1012,7 +1012,7 @@ NCR Registered: NCRDC3995
                       asChild
                     >
                       <a
-                        href="https://wa.me/27719006298?text=Hi%20DCSA%20%F0%9F%8C%B1%20I%27ve%20just%20finished%20the%20Money%20Map%20and%20I%27m%20in%20the%20Caution%20Zone.%20I%27d%20appreciate%20some%20guidance%20on%20how%20to%20improve%20my%20situation%20before%20it%20becomes%20stressful."
+                        href="https://wa.me/27719006298?text=Hi%20DC%20Sam%20%F0%9F%8C%B1%20I%27ve%20just%20finished%20the%20Money%20Map%20and%20I%27m%20in%20the%20Caution%20Zone.%20I%27d%20appreciate%20some%20guidance%20on%20how%20to%20improve%20my%20situation%20before%20it%20becomes%20stressful."
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -1037,7 +1037,7 @@ NCR Registered: NCRDC3995
                       asChild
                     >
                       <a
-                        href="https://wa.me/27719006298?text=Hi%20DCSA%20%E2%9A%A0%EF%B8%8F%20I%20completed%20the%20Money%20Map%20and%20it%20shows%20I%20m%20in%20the%20Warning%20Zone.%20I%20need%20help%20understanding%20my%20options%20and%20would%20like%20to%20speak%20to%20a%20registered%20debt%20counsellor."
+                        href="https://wa.me/27719006298?text=Hi%20DC%20Sam%20%E2%9A%A0%EF%B8%8F%20I%20completed%20the%20Money%20Map%20and%20it%20shows%20I%20m%20in%20the%20Warning%20Zone.%20I%20need%20help%20understanding%20my%20options%20and%20would%20like%20to%20speak%20to%20a%20registered%20debt%20counsellor."
                         target="_blank"
                         rel="noopener noreferrer"
                       >

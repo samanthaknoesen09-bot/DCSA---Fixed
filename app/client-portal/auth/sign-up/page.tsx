@@ -83,7 +83,7 @@ export default function SignUpPage() {
       <Card className="w-full max-w-md border-2 border-[#0D3B66]/10">
         <CardHeader className="space-y-1 text-center">
           <Link href="/" className="inline-block mb-4">
-            <div className="text-2xl font-bold text-[#0D3B66]">DCSA</div>
+            <div className="text-2xl font-bold text-[#0D3B66]">DC Sam</div>
             <div className="text-sm text-[#0D3B66]/70">Client Portal</div>
           </Link>
           <CardTitle className="text-2xl text-[#0D3B66]">Create Your Account</CardTitle>

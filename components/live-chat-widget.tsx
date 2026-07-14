@@ -63,7 +63,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hey! I'm Sam from DCSA. Whether you're just curious or seriously stressed about money — either way, you're welcome here. Ask me anything, there are no silly questions. What's on your mind?",
+      text: "Hey! I'm Sam from DC Sam. Whether you're just curious or seriously stressed about money — either way, you're welcome here. Ask me anything, there are no silly questions. What's on your mind?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -156,7 +156,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
 
   const sendChatTranscript = () => {
     const transcript = messages
-      .map(m => `${m.sender === "user" ? "Client" : "DCSA Bot"}: ${m.text}`)
+      .map(m => `${m.sender === "user" ? "Client" : "DC Sam Bot"}: ${m.text}`)
       .join("\n\n")
     
     const message = `Chat Transcript:\n\n${transcript}\n\nClient wants to speak with a counsellor.`

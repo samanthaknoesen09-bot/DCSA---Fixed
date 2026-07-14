@@ -390,7 +390,7 @@ function TrustSection() {
           className="text-2xl md:text-3xl font-bold mb-10 text-center"
           style={{ color: colors.navy }}
         >
-          Why trust DCSA?
+          Why trust DC Sam?
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
@@ -504,12 +504,24 @@ function LocationSection() {
                 <p className="font-semibold mb-1" style={{ color: colors.navy }}>
                   Pier 14 Shopping Centre
                 </p>
-                <p className="text-sm mb-4" style={{ color: colors.mutedText }}>
-                  444 Govan Mbeki Avenue,
+                <p className="text-sm mb-2" style={{ color: colors.mutedText }}>
+                  444 Govan Mbeki Avenue, North End
                 </p>
                 <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
-                  Located at Jean Lemue Attorneys - just ask for Sam!
+                  Find me inside <span className="font-semibold" style={{ color: colors.navy }}>Jean Lemue Attorneys</span>.
                 </p>
+
+                {/* Just ask for Sam callout */}
+                <div
+                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 mb-4"
+                  style={{ backgroundColor: `${colors.gold}1A`, border: `1px solid ${colors.gold}` }}
+                >
+                  <Coffee className="w-5 h-5 flex-shrink-0" style={{ color: colors.gold }} />
+                  <p className="text-sm font-bold" style={{ color: colors.navy }}>
+                    Pop in for a coffee &mdash; just ask for Sam!
+                  </p>
+                </div>
+
                 <a
                   href={PIER_14_MAP_URL}
                   target="_blank"

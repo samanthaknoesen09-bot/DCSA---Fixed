@@ -1,5 +1,5 @@
 /**
- * Brand Voice & Copy Standards for DCSA
+ * Brand Voice & Copy Standards for DC Sam
  * Tone: Calm, warm, supportive, educational - like a gentle coffee chat
  * Never: Salesy, manipulative, urgent, shame-based
  * Always: Kind, clear, judgment-free, South African English
@@ -67,9 +67,9 @@ export const brandCopy = {
 export const pageTitles = {
   calculator: "Free Debt Calculators | Start With Clarity",
   faq: "Common Questions About Debt Review (Honest Answers)",
-  blog: "Real Talk About Money & Debt | DCSA Blog",
+  blog: "Real Talk About Money & Debt | DC Sam Blog",
   contact: "Let's Talk | Book a Gentle Chat",
-  portal: "Client Portal | DCSA",
+  portal: "Client Portal | DC Sam",
 }
 
 export const metaDescriptions = {

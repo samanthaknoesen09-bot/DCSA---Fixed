@@ -129,7 +129,7 @@ export function ApplicationProgress({
             <div className="flex items-start gap-2">
               <AlertCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-semibold text-blue-900 mb-1">Notes from DCSA</p>
+                <p className="font-semibold text-blue-900 mb-1">Notes from DC Sam</p>
                 <p className="text-sm text-blue-800">{notes}</p>
               </div>
             </div>

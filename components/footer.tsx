@@ -46,7 +46,7 @@ export function Footer() {
       const subject = "Newsletter Subscription Request"
       const body = `New newsletter subscription request from: ${email}
 
-Please add this email to the DCSA newsletter list for financial tips and debt management advice.
+Please add this email to the DC Sam newsletter list for financial tips and debt management advice.
 
 Email: ${email}
 Date: ${dateStr}
@@ -73,7 +73,7 @@ Time: ${timeStr}`
             <div className="flex items-center space-x-2">
               <Image
                 src="/images/dcsa-logo.png"
-                alt="DCSA Debt Counselling & Credit Repair"
+                alt="DC Sam Debt Counselling & Credit Repair"
                 width={120}
                 height={48}
                 className="h-10 w-auto"
@@ -270,7 +270,7 @@ Time: ${timeStr}`
                 rel="noopener noreferrer"
                 className="hover:scale-110 transition-transform"
                 style={{ color: colors.charcoal }}
-                aria-label="Connect with DCSA on LinkedIn"
+                aria-label="Connect with DC Sam on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -345,7 +345,7 @@ Time: ${timeStr}`
           <div className="grid md:grid-cols-2 gap-6 text-sm text-background/70 mb-8">
             <div>
               <h4 className="font-semibold text-background mb-2">NCR Registration</h4>
-              <p>DCSA is a registered debt counsellor with the National Credit Regulator (NCR).</p>
+              <p>DC Sam is a registered debt counsellor with the National Credit Regulator (NCR).</p>
               <p className="font-medium mt-1">Registration Number: NCRDC3995</p>
               <p className="mt-2">
                 In affiliation with{" "}
@@ -360,50 +360,74 @@ Time: ${timeStr}`
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">
-                <span className="text-primary">DC</span><span className="text-black">SA</span>
+              <h3 className="text-xl font-bold mb-2 text-background">
+                <span className="text-primary">DC</span> Sam
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-background/70 mb-4">
                 Your trusted partner for debt counselling and financial freedom
               </p>
             </div>
           </div>
 
-          <div className="text-sm text-background/70 mb-8">
-            <h4 className="font-semibold text-background mb-2">Our Partners</h4>
-            <p className="mb-2">We work alongside trusted, accredited service providers to protect and support our clients:</p>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              <li>
-                <a
-                  href="https://www.dcpartner.co.za"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium underline hover:text-primary transition-colors"
-                >
-                  DC Partner (PDA)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://infussionbrokers.co.za"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium underline hover:text-primary transition-colors"
-                >
-                  Infusion Brokers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.one.za.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium underline hover:text-primary transition-colors"
-                >
-                  One
-                </a>
-              </li>
-            </ul>
+          {/* Trusted Affiliations - built to signal legitimacy */}
+          <div className="rounded-xl border-2 border-primary/40 bg-background/5 p-6 mb-8">
+            <div className="flex items-center gap-2 mb-1">
+              <CheckCircle className="w-5 h-5 text-primary" />
+              <h4 className="text-lg font-bold text-background">Accredited &amp; Trusted Affiliations</h4>
+            </div>
+            <p className="text-sm text-background/70 mb-5">
+              We only work with registered, reputable partners — so your debt, your assets, and your peace of mind are protected every step of the way.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {/* Jean Lemue Attorneys */}
+              <a
+                href="https://www.lemue.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-lg bg-background p-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span className="text-xs uppercase tracking-wide text-primary font-semibold mb-1">Legal Partner</span>
+                <span className="font-bold text-foreground leading-tight">Jean Lemue Attorneys</span>
+                <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">lemue.co.za →</span>
+              </a>
+
+              {/* DC Partner PDA */}
+              <a
+                href="https://www.dcpartner.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-lg bg-background p-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span className="text-xs uppercase tracking-wide text-primary font-semibold mb-1">Payment Distribution (PDA)</span>
+                <span className="font-bold text-foreground leading-tight">DC Partner</span>
+                <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">dcpartner.co.za →</span>
+              </a>
+
+              {/* Infusion Brokers */}
+              <a
+                href="https://infussionbrokers.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-lg bg-background p-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span className="text-xs uppercase tracking-wide text-primary font-semibold mb-1">Insurance Partner</span>
+                <span className="font-bold text-foreground leading-tight">Infusion Brokers</span>
+                <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">infussionbrokers.co.za →</span>
+              </a>
+
+              {/* One */}
+              <a
+                href="https://www.one.za.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-lg bg-background p-4 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <span className="text-xs uppercase tracking-wide text-primary font-semibold mb-1">Insurance Partner</span>
+                <span className="font-bold text-foreground leading-tight">One</span>
+                <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">one.za.com →</span>
+              </a>
+            </div>
           </div>
 
           <div className="bg-background/10 border-t border-b border-background/20 py-6 my-6 px-4 rounded-lg">
@@ -411,12 +435,12 @@ Time: ${timeStr}`
               <strong>Important Disclaimer:</strong> The information on this site is for educational purposes only and does not constitute financial or legal advice. Debt review outcomes depend on creditor responses. Interest reductions are negotiated and not guaranteed. All projections are estimates. Always consult with a registered debt counsellor for your specific situation.
             </p>
             <p className="text-background/70 text-xs">
-              DCSA (Debt Counselling South Africa) is NCR Registered under number NCRDC3995. We operate under the National Credit Act, 2005. All services comply with NCR guidelines.
+              DC Sam (Debt Counselling South Africa) is NCR Registered under number NCRDC3995. We operate under the National Credit Act, 2005. All services comply with NCR guidelines.
             </p>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 pt-4">
-            <p className="text-background/60 text-sm">© 2026 DCSA - Debt Clear South Africa. All rights reserved.</p>
+            <p className="text-background/60 text-sm">© 2026 DC Sam - Debt Clear South Africa. All rights reserved.</p>
             <div className="flex space-x-6 text-sm">
               <a href="/privacy-policy" className="text-background/60 hover:text-primary transition-colors">
                 Privacy Policy

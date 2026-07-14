@@ -3,8 +3,8 @@ import { Footer } from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | DCSA - Debt Counselling South Africa",
-  description: "DCSA's privacy policy and POPIA compliance. Learn how we protect your personal information.",
+  title: "Privacy Policy | DC Sam - Debt Counselling South Africa",
+  description: "DC Sam's privacy policy and POPIA compliance. Learn how we protect your personal information.",
   robots: {
     index: true,
     follow: true,
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-bold text-[#0D3B66] mb-4">POPIA Compliance Statement</h2>
               <p className="text-[#0D3B66]/80 leading-relaxed">
-                DCSA (Debt Counselling South Africa) is committed to protecting your privacy and complying with the
+                DC Sam (Debt Counselling South Africa) is committed to protecting your privacy and complying with the
                 Protection of Personal Information Act (POPIA) No. 4 of 2013. This policy explains how we collect,
                 use, store, and protect your personal information.
               </p>
@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
                 For privacy-related queries or to exercise your POPIA rights, contact:
               </p>
               <div className="bg-[#FFE5D9]/30 p-6 rounded-lg">
-                <p className="text-[#0D3B66] font-medium">DCSA - Debt Counselling South Africa</p>
+                <p className="text-[#0D3B66] font-medium">DC Sam - Debt Counselling South Africa</p>
                 <p className="text-[#0D3B66]/80 mt-2">Email: info@dcsam.co.za</p>
                 <p className="text-[#0D3B66]/80">Phone: +27 71 900 6298</p>
                 <p className="text-[#0D3B66]/80">Address: 81 6th Avenue, Newton Park, Gqeberha, 6045</p>
