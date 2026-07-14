@@ -47,11 +47,11 @@ export async function GET(request: NextRequest) {
     const rssContent = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>DCSA Blog - Debt Counselling & Financial Help</title>
+    <title>DC Sam Blog - Debt Counselling & Financial Help</title>
     <link>${baseUrl}</link>
     <description>Read our latest articles on debt counselling, credit repair, and financial help for South Africans.</description>
     <language>en-za</language>
-    <copyright>Copyright 2024 DCSA Debt Counsellors. All rights reserved.</copyright>
+    <copyright>Copyright 2024 DC Sam Debt Counsellors. All rights reserved.</copyright>
     <managingEditor>info@dcsam.co.za</managingEditor>
     <webMaster>info@dcsam.co.za</webMaster>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     const fallbackRss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>DCSA Blog</title>
+    <title>DC Sam Blog</title>
     <link>https://www.dcsam.co.za</link>
     <description>Debt Counselling & Financial Help</description>
     <language>en-za</language>

@@ -59,7 +59,7 @@ export default function LoginPage() {
         <CardHeader className="space-y-1 text-center">
           <Link href="/" className="inline-block mb-4">
             <div className="text-2xl font-bold">
-              <span className="text-primary">DC</span><span className="text-black">SA</span>
+              <span className="text-primary">DC</span> Sam
             </div>
             <div className="text-sm text-[#0D3B66]/70">Your Safe Space</div>
           </Link>

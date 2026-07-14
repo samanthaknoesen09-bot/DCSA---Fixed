@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { MoneyResetClient } from "./money-reset-client"
 
 export const metadata: Metadata = {
-  title: "Money Reset Program | DCSA - 6-Month Financial Recovery",
+  title: "Money Reset Program | DC Sam - 6-Month Financial Recovery",
   description: "6-month structured programme to rebuild your finances after debt counselling. Learn money habits, saving strategies, and financial wellness with expert guidance.",
   keywords: [
     "financial recovery",

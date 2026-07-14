@@ -188,7 +188,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
               </Link>
             </Button>
             <Link href="/" className="text-xl font-bold text-[#0D3B66]">
-              DCSA
+              DC Sam
             </Link>
           </div>
         </div>
@@ -203,7 +203,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
             </Badge>
           </div>
           <p className="text-[#0D3B66]/70 mb-4">
-            Transfer your debt review from another debt counsellor to DCSA
+            Transfer your debt review from another debt counsellor to DC Sam
           </p>
           <div className="flex gap-2">
             {[1, 2, 3, 4].map((step) => (
@@ -392,7 +392,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
                   value={formData.reasonForTransfer}
                   onChange={(e) => handleInputChange("reasonForTransfer", e.target.value)}
                   rows={4}
-                  placeholder="Please tell us why you want to transfer to DCSA..."
+                  placeholder="Please tell us why you want to transfer to DC Sam..."
                 />
               </div>
 
@@ -434,8 +434,8 @@ export function TransferClient({ user, client }: TransferClientProps) {
               <div className="space-y-4 p-4 bg-[#0D3B66]/5 rounded-lg">
                 <h3 className="font-semibold text-[#0D3B66]">Authorization to Transfer</h3>
                 <p className="text-sm text-[#0D3B66]/80 leading-relaxed">
-                  I hereby authorize DCSA (Debt Counselling South Africa) to contact my current debt counsellor 
-                  and initiate the transfer of my debt review file. I understand that DCSA will act as my new 
+                  I hereby authorize DC Sam (Debt Counselling South Africa) to contact my current debt counsellor 
+                  and initiate the transfer of my debt review file. I understand that DC Sam will act as my new 
                   debt counsellor and will handle all future communication with my creditors and the credit bureaus.
                 </p>
               </div>
@@ -448,7 +448,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
                     onCheckedChange={(checked) => handleInputChange("authorizeContactCurrentDC", checked)}
                   />
                   <Label htmlFor="authorizeContactCurrentDC" className="text-sm leading-relaxed cursor-pointer">
-                    I authorize DCSA to contact my current debt counsellor to request my transfer *
+                    I authorize DC Sam to contact my current debt counsellor to request my transfer *
                   </Label>
                 </div>
 
@@ -459,7 +459,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
                     onCheckedChange={(checked) => handleInputChange("authorizeTransferOfRecords", checked)}
                   />
                   <Label htmlFor="authorizeTransferOfRecords" className="text-sm leading-relaxed cursor-pointer">
-                    I authorize the transfer of all my debt review records to DCSA *
+                    I authorize the transfer of all my debt review records to DC Sam *
                   </Label>
                 </div>
 
@@ -481,7 +481,7 @@ export function TransferClient({ user, client }: TransferClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToProcessPersonalInfo", checked)}
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DCSA processing my personal information for the transfer *
+                    I consent to DC Sam processing my personal information for the transfer *
                   </Label>
                 </div>
               </div>

@@ -30,7 +30,7 @@ export function ProcessSection() {
         </div>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/27627884609"
+            href="https://wa.me/27719006298"
             className="px-6 py-3 rounded-2xl bg-primary text-white font-semibold"
           >
             Start on WhatsApp

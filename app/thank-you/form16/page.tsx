@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ThankYouForm16Client from "./form16-client"
 
 export const metadata: Metadata = {
-  title: "Application Submitted - Thank You | DCSA",
+  title: "Application Submitted - Thank You | DC Sam",
   description: "Your debt review application has been successfully submitted. We'll contact you within 24 hours.",
   robots: {
     index: false,

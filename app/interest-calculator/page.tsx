@@ -40,19 +40,19 @@ export const metadata: Metadata = {
       "Calculate how interest rates affect your debt repayments. Free interest calculator for loans, credit cards, and all types of debt. See total costs and monthly payments instantly.",
     url: "https://www.dcsam.co.za/interest-calculator",
     type: "website",
-    siteName: "DCSA - Debt Counselling South Africa",
+    siteName: "DC Sam - Debt Counselling South Africa",
     images: [
       {
         url: "https://www.dcsam.co.za/images/financial-education.jpg",
         width: 1200,
         height: 630,
-        alt: "Free Interest Calculator South Africa - DCSA",
+        alt: "Free Interest Calculator South Africa - DC Sam",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Interest Calculator South Africa | DCSA",
+    title: "Free Interest Calculator South Africa | DC Sam",
     description:
       "Calculate loan interest and see how rates affect your monthly payments. Free tool for all types of debt.",
     images: ["https://www.dcsam.co.za/images/financial-education.jpg"],
@@ -75,7 +75,7 @@ export default function InterestCalculatorPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "DCSA Interest Calculator",
+    name: "DC Sam Interest Calculator",
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web Browser",
     offers: {
@@ -92,7 +92,7 @@ export default function InterestCalculatorPage() {
     },
     provider: {
       "@type": "Organization",
-      name: "DCSA - Debt Counselling South Africa",
+      name: "DC Sam - Debt Counselling South Africa",
       url: "https://www.dcsam.co.za",
       logo: "https://www.dcsam.co.za/images/dcsa-logo.png",
       contactPoint: {
@@ -262,7 +262,7 @@ export default function InterestCalculatorPage() {
             How Debt Counselling Can Help Lower Your Interest
           </h3>
           <p className="text-[#0D3B66]/80 mb-4">
-            Through professional debt counselling, DCSA can negotiate with your creditors to reduce
+            Through professional debt counselling, DC Sam can negotiate with your creditors to reduce
             interest rates and restructure your debt. This means:
           </p>
           <ul className="list-disc list-inside text-[#0D3B66]/80 space-y-2 mb-6">
@@ -279,7 +279,7 @@ export default function InterestCalculatorPage() {
             </h3>
             <p className="text-[#0D3B66]/80 mb-4">
               After using our interest calculator, if you're concerned about high interest rates and
-              monthly payments, DCSA can help. Book a free consultation to see how debt counselling
+              monthly payments, DC Sam can help. Book a free consultation to see how debt counselling
               can reduce your interest costs and help you regain financial control.
             </p>
             <div className="flex gap-4">

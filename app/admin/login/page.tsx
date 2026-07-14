@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
           <div className="flex justify-center mb-4">
             <Image
               src="/images/dcsa-logo.png"
-              alt="DCSA Logo"
+              alt="DC Sam Logo"
               width={150}
               height={60}
               className="h-16 w-auto"

@@ -73,7 +73,7 @@ export default function ThankYouCreditRepairClient() {
           <Button 
             variant="ghost" 
             className="w-full" 
-            onClick={() => window.open('https://wa.me/27738303287?text=Hi, I just submitted my credit repair application', '_blank')}
+            onClick={() => window.open('https://wa.me/27719006298?text=Hi, I just submitted my credit repair application', '_blank')}
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Message Us on WhatsApp

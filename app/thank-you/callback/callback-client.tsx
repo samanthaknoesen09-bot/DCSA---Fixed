@@ -72,7 +72,7 @@ export default function ThankYouCallbackClient() {
           <Button 
             variant="ghost" 
             className="w-full" 
-            onClick={() => window.open('https://wa.me/27738303287?text=Hi, I just requested a callback. Can we chat on WhatsApp instead?', '_blank')}
+            onClick={() => window.open('https://wa.me/27719006298?text=Hi, I just requested a callback. Can we chat on WhatsApp instead?', '_blank')}
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Prefer WhatsApp? Message Us Now

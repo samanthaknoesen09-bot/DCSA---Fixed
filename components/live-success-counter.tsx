@@ -8,7 +8,7 @@ export function LiveSuccessCounter() {
     <section className="py-12 px-4 bg-gradient-to-r from-primary to-black">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-2">
-          Why South Africans Choose <span className="text-[#FFD93D]">DC</span><span className="text-white">SA</span>
+          Why South Africans Choose <span className="text-[#FFD93D]">DC</span> Sam
         </h2>
         <p className="text-white/80 text-center mb-8">
           Real debt counselling industry facts that matter

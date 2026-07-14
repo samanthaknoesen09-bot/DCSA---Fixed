@@ -36,7 +36,7 @@ export async function generateMetadata({
   
   if (!post) {
     return {
-      title: "Post Not Found | DCSA Blog",
+      title: "Post Not Found | DC Sam Blog",
       description: "The blog post you're looking for could not be found.",
     }
   }
@@ -45,7 +45,7 @@ export async function generateMetadata({
   const postUrl = `${baseUrl}/blog/${post.slug}`
   
   return {
-    title: `${post.title} | DCSA Blog - Debt Counselling South Africa`,
+    title: `${post.title} | DC Sam Blog - Debt Counselling South Africa`,
     description: post.excerpt,
     keywords: [
       post.category,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       "debt review",
       "credit repair",
       "financial advice",
-      "DCSA",
+      "DC Sam",
       "South Africa",
     ],
     authors: [{ name: post.author }],
@@ -69,7 +69,7 @@ export async function generateMetadata({
       modifiedTime: post.updatedAt,
       authors: [post.author],
       images: post.featuredImage ? [post.featuredImage] : [],
-      siteName: "DCSA - Debt Clear South Africa",
+      siteName: "DC Sam - Debt Clear South Africa",
     },
     twitter: {
       card: "summary_large_image",
@@ -123,7 +123,7 @@ export default async function BlogPostPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "DCSA Debt Counsellors",
+      name: "DC Sam Debt Counsellors",
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/images/dcsa-logo.jpg`,

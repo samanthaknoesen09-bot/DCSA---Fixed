@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button"
 import { MessageCircle, Phone } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "FAQ - Frequently Asked Questions | DCSA Debt Counselling",
+  title: "FAQ - Frequently Asked Questions | DC Sam Debt Counselling",
   description:
-    "Find answers to common questions about debt counselling, credit repair, and our services. Learn about the debt review process, costs, and how DCSA can help you.",
+    "Find answers to common questions about debt counselling, credit repair, and our services. Learn about the debt review process, costs, and how DC Sam can help you.",
   keywords: [
     "debt counselling FAQ",
     "debt review questions",
-    "DCSA FAQ",
+    "DC Sam FAQ",
     "debt counselling process",
     "credit repair questions",
     "debt help South Africa",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "https://www.dcsam.co.za/faq",
   },
   openGraph: {
-    title: "Frequently Asked Questions - DCSA Debt Counselling",
+    title: "Frequently Asked Questions - DC Sam Debt Counselling",
     description: "Get answers to your questions about debt counselling and credit repair services.",
     url: "https://www.dcsam.co.za/faq",
     type: "website",
@@ -55,10 +55,10 @@ export default function FAQPage() {
       },
       {
         "@type": "Question",
-        name: "What does DCSA offer?",
+        name: "What does DC Sam offer?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "DCSA offers two main services: Debt Counselling (Debt Review) to restructure your debt into one affordable payment with legal protection, and Credit Repair to help you understand and improve your credit score. We provide compassionate, judgment-free support with free consultations.",
+          text: "DC Sam offers two main services: Debt Counselling (Debt Review) to restructure your debt into one affordable payment with legal protection, and Credit Repair to help you understand and improve your credit score. We provide compassionate, judgment-free support with free consultations.",
         },
       },
       {
@@ -95,10 +95,10 @@ export default function FAQPage() {
       },
       {
         "@type": "Question",
-        name: "Is DCSA registered with the NCR?",
+        name: "Is DC Sam registered with the NCR?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, DCSA is fully registered with the National Credit Regulator (NCR). You can verify our registration (NCRDC3995) on the NCR website.",
+          text: "Yes, DC Sam is fully registered with the National Credit Regulator (NCR). You can verify our registration (NCRDC3995) on the NCR website.",
         },
       },
     ],
@@ -127,16 +127,16 @@ export default function FAQPage() {
             <h2 className="text-2xl font-bold text-[#0D3B66] mb-6">General Questions</h2>
             <Accordion type="multiple" className="space-y-4">
               <AccordionItem value="what-is-dcsa" className="border rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-left">What is DCSA and what do you offer?</AccordionTrigger>
+                <AccordionTrigger className="text-left">What is DC Sam and what do you offer?</AccordionTrigger>
                 <AccordionContent className="text-[#0D3B66]/80 leading-relaxed">
-                  We&apos;re DCSA &mdash; a professional, NCR-registered debt counselling practice (NCRDC3995). We offer 
+                  We&apos;re DC Sam &mdash; a professional, NCR-registered debt counselling practice (NCRDC3995). We offer 
                   <strong>Debt Review</strong> (restructuring your debt into one affordable payment with legal protection) and 
                   <strong>Credit Repair</strong> (helping you understand and improve your credit information). 
                   We provide expert, judgment-free support to help South Africans find financial stability.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="who-can-help" className="border rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-left">Who can benefit from DCSA&apos;s services?</AccordionTrigger>
+                <AccordionTrigger className="text-left">Who can benefit from DC Sam&apos;s services?</AccordionTrigger>
                 <AccordionContent className="text-[#0D3B66]/80 leading-relaxed">
                   We help anyone in South Africa who is over-indebted &mdash; meaning you cannot meet all your debt obligations 
                   while covering essential living costs. If you&apos;re getting creditor calls, using credit to pay other debts, 
@@ -144,7 +144,7 @@ export default function FAQPage() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="how-start" className="border rounded-lg px-6 bg-white">
-                <AccordionTrigger className="text-left">How do I get started with DCSA?</AccordionTrigger>
+                <AccordionTrigger className="text-left">How do I get started with DC Sam?</AccordionTrigger>
                 <AccordionContent className="text-[#0D3B66]/80 leading-relaxed">
                   Start with a FREE, no-obligation assessment. You can use our calculators to see your situation, 
                   then message us on WhatsApp or call to speak with a professional. We&apos;ll explain your options 
@@ -205,7 +205,7 @@ export default function FAQPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-[#D4AF37] hover:bg-[#B8962E] text-white" asChild>
-                  <a href="https://wa.me/27661937596" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/27719006298" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5" /> Chat on WhatsApp
                   </a>
                 </Button>

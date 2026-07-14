@@ -63,7 +63,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hey! I'm Sam from DCSA. Whether you're just curious or seriously stressed about money — either way, you're welcome here. Ask me anything, there are no silly questions. What's on your mind?",
+      text: "Hey! I'm Sam from DC Sam. Whether you're just curious or seriously stressed about money — either way, you're welcome here. Ask me anything, there are no silly questions. What's on your mind?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -71,7 +71,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
   const [inputMessage, setInputMessage] = useState("")
   const [showEscalation, setShowEscalation] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const chatNumber = "27661937596" // 066 193 7596
+  const chatNumber = "27719006298" // 071 900 6298
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -156,7 +156,7 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
 
   const sendChatTranscript = () => {
     const transcript = messages
-      .map(m => `${m.sender === "user" ? "Client" : "DCSA Bot"}: ${m.text}`)
+      .map(m => `${m.sender === "user" ? "Client" : "DC Sam Bot"}: ${m.text}`)
       .join("\n\n")
     
     const message = `Chat Transcript:\n\n${transcript}\n\nClient wants to speak with a counsellor.`
@@ -274,13 +274,13 @@ export function LiveChatWidget({ isOpen: isOpenProp, onClose: onCloseProp }: Liv
                     <Button
                       size="sm"
                       variant="outline"
-                      onClick={() => window.open(`tel:0661937596`, "_self")}
+                      onClick={() => window.open(`tel:0719006298`, "_self")}
                     >
                       <Phone className="h-4 w-4" />
                     </Button>
                   </div>
                   <p className="text-xs text-[#0D3B66]/70 mt-2 text-center">
-                    066 193 7596
+                    071 900 6298
                   </p>
                 </div>
               )}

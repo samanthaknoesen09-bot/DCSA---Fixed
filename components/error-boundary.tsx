@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
               <p className="text-sm text-muted-foreground pt-4 border-t">
                 Need help? <a href="/#contact" className="text-[#4DB6AC] hover:underline">Contact us</a> or{" "}
-                <a href="https://wa.me/27661937596" className="text-[#4DB6AC] hover:underline">
+                <a href="https://wa.me/27719006298" className="text-[#4DB6AC] hover:underline">
                   chat on WhatsApp
                 </a>
               </p>

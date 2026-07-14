@@ -165,7 +165,7 @@ export function DebtReviewComparison() {
               onClick={() => {
                 if (navigator.share) {
                   navigator.share({
-                    title: "Debt Review vs Other Options - DCSA",
+                    title: "Debt Review vs Other Options - DC Sam",
                     text: "Compare debt relief solutions and find the right option for you",
                     url: window.location.href + "#debt-review-comparison",
                   })

@@ -998,7 +998,7 @@ export function Form16Application() {
                     className="mt-1"
                   />
                   <Label htmlFor="dec5" className="text-sm leading-relaxed cursor-pointer">
-                    I/We confirm that the Debt Review Process and Fee Structure has been explained and is understood and accepted. I/We authorize DCSA and its agents to process and store my/our personal information in accordance with POPI Act.
+                    I/We confirm that the Debt Review Process and Fee Structure has been explained and is understood and accepted. I/We authorize DC Sam and its agents to process and store my/our personal information in accordance with POPI Act.
                   </Label>
                 </div>
               </div>

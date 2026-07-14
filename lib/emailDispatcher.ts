@@ -9,7 +9,7 @@ interface SendDualEmailOptions {
 }
 
 const REQUIRED_EMAILS = ["info@dcsam.co.za", "samantha.knoesen09@gmail.com"]
-const FROM_ADDRESS = "DCSA Website <noreply@dcsam.co.za>"
+const FROM_ADDRESS = "DC Sam Website <noreply@dcsam.co.za>"
 
 /**
  * Convert HTML to plain text for email clients that block HTML

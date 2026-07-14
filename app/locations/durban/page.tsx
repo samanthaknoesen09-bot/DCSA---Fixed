@@ -47,7 +47,7 @@ export default function DurbanPage() {
 
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p>
-                Need a reliable debt counsellor in Durban? <span className="text-primary font-semibold">DC</span><span className="text-black font-semibold">SA</span> (DCSam) provides professional, compassionate debt counselling and credit repair services to individuals and families throughout Durban, Pietermaritzburg, and the KwaZulu-Natal region.
+                Need a reliable debt counsellor in Durban? <span className="text-primary font-semibold">DC</span> Sam (DCSam) provides professional, compassionate debt counselling and credit repair services to individuals and families throughout Durban, Pietermaritzburg, and the KwaZulu-Natal region.
               </p>
 
               <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary/20 not-prose">
@@ -75,7 +75,7 @@ export default function DurbanPage() {
               </ul>
 
               <h2 className="text-3xl font-bold text-foreground mt-8">
-                Why Durban Residents Choose <span className="text-primary">DC</span><span className="text-black">SA</span>
+                Why Durban Residents Choose <span className="text-primary">DC</span> Sam
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>NCR Registered:</strong> Fully compliant with National Credit Regulator standards</li>

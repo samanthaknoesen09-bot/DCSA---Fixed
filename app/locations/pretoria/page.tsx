@@ -47,7 +47,7 @@ export default function PretoriaPage() {
 
             <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
               <p>
-                Searching for a trusted debt counsellor in Pretoria? <span className="text-primary font-semibold">DC</span><span className="text-black font-semibold">SA</span> (DCSam) provides expert debt counselling and credit repair services to help Pretoria and Tshwane residents overcome financial challenges and achieve debt-free living.
+                Searching for a trusted debt counsellor in Pretoria? <span className="text-primary font-semibold">DC</span> Sam (DCSam) provides expert debt counselling and credit repair services to help Pretoria and Tshwane residents overcome financial challenges and achieve debt-free living.
               </p>
 
               <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary/20 not-prose">
@@ -75,7 +75,7 @@ export default function PretoriaPage() {
               </ul>
 
               <h2 className="text-3xl font-bold text-foreground mt-8">
-                Why Pretoria Residents Choose <span className="text-primary">DC</span><span className="text-black">SA</span>
+                Why Pretoria Residents Choose <span className="text-primary">DC</span> Sam
               </h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>NCR Compliant:</strong> Registered and regulated by the National Credit Regulator</li>

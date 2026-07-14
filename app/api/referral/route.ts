@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
         </table>
 
         <div style="margin-top: 20px; padding: 15px; background: #FFF3CD; border-left: 4px solid #FFD93D; border-radius: 4px;">
-          <p style="margin: 0;"><strong>Referral Fee:</strong> R350.00 (payable once the friend successfully signs up for debt counselling)</p>
+          <p style="margin: 0;"><strong>Referral Fee:</strong> R150.00 (payable once the friend successfully signs up for debt counselling)</p>
         </div>
 
         <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
