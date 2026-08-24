@@ -58,8 +58,7 @@ function HeroSection() {
       className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12"
       style={{ backgroundColor: colors.navy }}
     >
-      <div className="container mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
+      <div className="container mx-auto max-w-4xl">
         {/* Headline - Big + Punchy */}
         <div className="mb-4">
           <h1
@@ -95,17 +94,6 @@ function HeroSection() {
         >
           <p className="font-semibold mb-2" style={{ color: colors.gold }}>It doesn&apos;t have to stay this way.</p>
           <p style={{ color: "rgba(255,255,255,0.9)" }}>We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.</p>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl shadow-xl">
-          <Image
-            src="/images/dc-sam-welcome.png"
-            alt="Sam welcoming a client at her desk"
-            width={1536}
-            height={1024}
-            priority
-            className="h-full min-h-72 w-full object-cover"
-          />
-        </div>
         </div>
       </div>
     </section>

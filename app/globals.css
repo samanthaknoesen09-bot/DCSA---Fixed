@@ -4,40 +4,40 @@
 @custom-variant dark (&:is(.dark *));
  
 :root {
-  /* DC Sam elegant brand system - burgundy, black, cream, white */
-  --background: #F7F1EB;
-  --foreground: #171414;
-  --card: #FFFDFC;
-  --card-foreground: #171414;
-  --popover: #FFFDFC;
-  --popover-foreground: #171414;
-  --primary: #5A1820;
+  /* DCSA Design System - Navy + Gold */
+  --background: #FFFFFF;
+  --foreground: #0B1F3B;
+  --card: #FFFFFF;
+  --card-foreground: #0B1F3B;
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1F3B;
+  --primary: #0B1F3B;
   --primary-foreground: #FFFFFF;
-  --secondary: #EDE2D9;
-  --secondary-foreground: #5A1820;
-  --muted: #F1E8E1;
-  --muted-foreground: #655B58;
-  --accent: #7A2932;
-  --accent-foreground: #FFFFFF;
-  --destructive: #9B2C2C;
+  --secondary: #F8F9FA;
+  --secondary-foreground: #0B1F3B;
+  --muted: #F8F9FA;
+  --muted-foreground: #6B7280;
+  --accent: #C8A24A;
+  --accent-foreground: #0B1F3B;
+  --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --border: #DCCDC3;
-  --input: #FFFDFC;
-  --ring: #7A2932;
-  --chart-1: #5A1820;
-  --chart-2: #171414;
-  --chart-3: #EDE2D9;
-  --chart-4: #7A2932;
-  --chart-5: #655B58;
+  --border: #E5E7EB;
+  --input: #F8F9FA;
+  --ring: #0B1F3B;
+  --chart-1: #0B1F3B;
+  --chart-2: #C8A24A;
+  --chart-3: #6B7280;
+  --chart-4: #1A3A5C;
+  --chart-5: #9CA3AF;
   --radius: 0.75rem;
-  --sidebar: #FFFDFC;
-  --sidebar-foreground: #171414;
-  --sidebar-primary: #5A1820;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0B1F3B;
+  --sidebar-primary: #0B1F3B;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F1E8E1;
-  --sidebar-accent-foreground: #5A1820;
-  --sidebar-border: #DCCDC3;
-  --sidebar-ring: #7A2932;
+  --sidebar-accent: #F8F9FA;
+  --sidebar-accent-foreground: #0B1F3B;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #0B1F3B;
 }
  
 .dark {
