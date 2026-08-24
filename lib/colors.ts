@@ -1,39 +1,26 @@
-// DC Sam brand palette - Navy + Gold (mobile conversion optimized)
+// DC Sam brand palette - elegant burgundy, black, cream, and white
 export const colors = {
-  // Primary - Deep Navy (main brand colour)
-  navy: "#0B1F3B",
-  navyHover: "#0E2847",
-  
-  // Alias for backwards compatibility
-  maroon: "#0B1F3B",
-  maroonHover: "#0E2847",
-
-  // Gold accent (CTA buttons, highlights)
-  gold: "#C8A24A",
-  goldHover: "#B8922F",
-  
-  // Alias for backwards compatibility
-  coralAccent: "#C8A24A",
-  coralAccentHover: "#B8922F",
-
-  // Backgrounds
-  warmCream: "#FFFFFF",
-  warmBeige: "#F8F9FA",
-  sandLight: "#E5E7EB",
-
-  // Greys
-  grey: "#E5E7EB",
-  greyMuted: "#9CA3AF",
-
-  // Text
-  charcoal: "#0B1F3B",
-  mutedText: "#6B7280",
+  burgundy: "#5A1820",
+  burgundyHover: "#7A2932",
+  maroon: "#5A1820",
+  maroonHover: "#7A2932",
+  navy: "#5A1820",
+  navyHover: "#7A2932",
+  gold: "#5A1820",
+  goldHover: "#7A2932",
+  coralAccent: "#5A1820",
+  coralAccentHover: "#7A2932",
+  warmCream: "#F7F1EB",
+  warmBeige: "#F1E8E1",
+  sandLight: "#DCCDC3",
+  grey: "#DCCDC3",
+  greyMuted: "#A79A94",
+  charcoal: "#171414",
+  mutedText: "#655B58",
   white: "#FFFFFF",
-
-  // Accents
-  warmGrey: "#6B7280",
-  softGold: "#C8A24A",
-  lightNavy: "#1A3A5C",
+  warmGrey: "#655B58",
+  softGold: "#DCCDC3",
+  lightNavy: "#7A2932",
 };
 
 export const WHATSAPP_URL = "https://wa.me/27719006298?text=Hi%20Sam%2C%20I%20need%20help%20with%20my%20debt";
