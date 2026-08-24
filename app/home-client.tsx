@@ -483,9 +483,8 @@ function TrustSection() {
   )
 }
 
-// Section 7: Location Section - Visit Us
+// Section 7: Appointment Section - Meet with Sam
 function LocationSection() {
-  const PIER_14_MAP_URL = "https://www.google.com/maps/place/Pier+14+Shopping+Centre/@-33.9581,25.6161,17z"
 
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.warmBeige }}>
@@ -499,71 +498,11 @@ function LocationSection() {
             Let&apos;s have a coffee and chat
           </h2>
           <p className="text-lg" style={{ color: colors.mutedText }}>
-            Come see me in person - sometimes it&apos;s easier to talk face to face.
+            Online (virtual) and in-person appointments are available in Newton Park — by appointment only.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* North End Office - Walk-ins Welcome */}
-          <Card className="border-0 shadow-lg overflow-hidden">
-            <CardContent className="p-0">
-              <a
-                href={PIER_14_MAP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <div
-                  className="p-4 flex items-center gap-2"
-                  style={{ backgroundColor: colors.navy }}
-                >
-                  <MapPin className="w-5 h-5" style={{ color: colors.gold }} />
-                  <span className="font-bold text-white">North End Office</span>
-                  <span
-                    className="ml-auto text-xs px-2 py-1 rounded-full font-semibold"
-                    style={{ backgroundColor: colors.gold, color: colors.navy }}
-                  >
-                    Walk-ins Welcome
-                  </span>
-                </div>
-              </a>
-              <div className="p-5">
-                <p className="font-semibold mb-1" style={{ color: colors.navy }}>
-                  Pier 14 Shopping Centre
-                </p>
-                <p className="text-sm mb-2" style={{ color: colors.mutedText }}>
-                  444 Govan Mbeki Avenue, North End
-                </p>
-                <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
-                  Find us at Pier 14 Shopping Centre.
-                </p>
-
-                {/* Just ask for Sam callout */}
-                <div
-                  className="flex items-center gap-2 rounded-lg px-3 py-2.5 mb-4"
-                  style={{ backgroundColor: `${colors.gold}1A`, border: `1px solid ${colors.gold}` }}
-                >
-                  <Coffee className="w-5 h-5 flex-shrink-0" style={{ color: colors.gold }} />
-                  <p className="text-sm font-bold" style={{ color: colors.navy }}>
-                    Pop in for a coffee &mdash; just ask for Sam!
-                  </p>
-                </div>
-
-                <a
-                  href={PIER_14_MAP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold"
-                  style={{ color: colors.gold }}
-                >
-                  <MapPin className="w-4 h-4" />
-                  Get Directions
-                  <ChevronRight className="w-4 h-4" />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-
+        <div className="max-w-xl mx-auto">
           {/* Newton Park - By Appointment */}
           <Card className="border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
@@ -584,12 +523,11 @@ function LocationSection() {
                 <div className="flex items-center gap-2 mb-3">
                   <Clock className="w-4 h-4" style={{ color: colors.gold }} />
                   <p className="font-semibold" style={{ color: colors.navy }}>
-                    After hours &amp; weekends available
+                    In-person appointments in Newton Park
                   </p>
                 </div>
                 <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
-                  For your convenience, I&apos;m available outside normal business hours.
-                  Let&apos;s find a time that works for you.
+                  All appointments are by appointment only. Choose an online virtual consultation or meet with me in person in Newton Park. After-hours and weekend appointments are available.
                 </p>
                 <Button
                   size="sm"

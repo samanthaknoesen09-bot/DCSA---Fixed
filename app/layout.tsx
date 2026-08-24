@@ -89,8 +89,8 @@ export const metadata: Metadata = {
     "credit repair",
 
     // Location Keywords
-    "Pier 14 Shopping Centre",
-    "North End Port Elizabeth",
+    "Newton Park",
+    "Newton Park Port Elizabeth",
     "Newton Park Port Elizabeth",
     "attorney Port Elizabeth",
     "debt attorney Port Elizabeth",
@@ -339,19 +339,19 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "LegalService",
-                "@id": "https://www.dcsam.co.za/#pier14",
-                "name": "DC Sam North End Office",
+                "@id": "https://www.dcsam.co.za/#newtonpark",
+                "name": "DC Sam Newton Park Office",
                 "alternateName": "DC Sam - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "DC Sam North End Office. Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "DC Sam Newton Park Office. By appointment only, with virtual and in-person consultations available. NCR registered debt counselling services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "Pier 14 Shopping Centre",
-                  "addressLocality": "North End",
+                  "streetAddress": "Newton Park",
+                  "addressLocality": "Newton Park",
                   "addressRegion": "Port Elizabeth",
-                  "postalCode": "6001",
+                  "postalCode": "6045",
                   "addressCountry": "ZA"
                 },
                 "geo": {

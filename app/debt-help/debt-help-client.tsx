@@ -316,7 +316,7 @@ function FinalCTASection() {
           className="text-sm"
           style={{ color: "rgba(255,255,255,0.6)" }}
         >
-          Or visit us for a coffee at our North End office
+          In-person appointments are available in Newton Park by appointment only. Virtual appointments are also available.
         </p>
       </div>
     </section>

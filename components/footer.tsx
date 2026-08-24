@@ -93,35 +93,19 @@ Time: ${timeStr}`
                 <Mail className="w-5 h-5 text-primary" />
                 <span>info@dcsam.co.za</span>
               </a>
-              {/* Main office - Walk-ins welcome */}
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=Pier+14+Shopping+Centre,+444+Govan+Mbeki+St,+North+End,+Gqeberha,+6001,+South+Africa" 
-                target="_blank" 
+              {/* Newton Park office - appointment only */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=81+6th+Avenue,+Newton+Park,+Port+Elizabeth,+South+Africa"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
-                title="Open Pier 14 in Google Maps"
+                title="Open Newton Park office in Google Maps"
               >
                 <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
                 <div>
-                  <span className="leading-relaxed group-hover:underline block font-medium">DC Sam North End Office</span>
-                  <span className="leading-relaxed group-hover:underline block text-sm">Pier 14 Shopping Centre,</span>
-                  <span className="leading-relaxed group-hover:underline block text-sm">North End, Port Elizabeth</span>
-                  <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Mon-Fri: 8am - 4pm · Walk-ins welcome</span>
-                </div>
-              </a>
-              {/* Appointment-only office */}
-              <a 
-                href="https://www.google.com/maps/search/?api=1&query=81+6th+Avenue,+Newton+Park,+Port+Elizabeth,+South+Africa" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-start space-x-3 hover:text-[#4DB6AC] transition-colors group cursor-pointer"
-                title="Open Newton Park address in Google Maps"
-              >
-                <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
-                <div>
-                  <span className="leading-relaxed group-hover:underline block text-sm">81 6th Avenue, Newton Park,</span>
-                  <span className="leading-relaxed group-hover:underline block text-sm">Port Elizabeth</span>
-                  <span className="text-xs mt-0.5 block" style={{ color: colors.warmGrey }}>By appointment only</span>
+                  <span className="leading-relaxed group-hover:underline block font-medium">Newton Park Office</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">81 6th Avenue, Newton Park</span>
+                  <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>By appointment only · Virtual and in-person appointments</span>
                 </div>
               </a>
             </div>
@@ -302,25 +286,7 @@ Time: ${timeStr}`
           {/* Google Maps Embeds */}
           <div className="w-full space-y-4">
             <h4 className="text-sm font-semibold mb-2" style={{ color: colors.charcoal }}>Find Us</h4>
-            <div className="grid md:grid-cols-2 gap-4">
-              {/* Pier 14 - Walk-ins */}
-              <div>
-                <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
-                  DC Sam North End Office, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
-                </p>
-                <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.6352158871277!2d25.6073229!3d-33.9505092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad2f347061149%3A0xf3511d45c1e0fc07!2sPier%2014%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1778486633877!5m2!1sen!2sza"
-                    width="100%"
-                    height="180"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="DC Sam - Pier 14 Shopping Centre, North End, Port Elizabeth"
-                  />
-                </div>
-              </div>
+            <div className="max-w-2xl">
               {/* Newton Park - Appointment */}
               <div>
                 <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
