@@ -535,7 +535,7 @@ function LocationSection() {
                   444 Govan Mbeki Avenue, North End
                 </p>
                 <p className="text-sm mb-4" style={{ color: colors.charcoal }}>
-                  Find me inside <span className="font-semibold" style={{ color: colors.navy }}>Jean Lemue Attorneys</span>.
+                  Find us at Pier 14 Shopping Centre.
                 </p>
 
                 {/* Just ask for Sam callout */}

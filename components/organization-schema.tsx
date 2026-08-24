@@ -18,7 +18,7 @@ export function OrganizationSchema() {
         "address": [
           {
             "@type": "PostalAddress",
-            "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
+            "streetAddress": "Pier 14 Shopping Centre",
             "addressLocality": "North End",
             "addressRegion": "Port Elizabeth",
             "postalCode": "6001",
@@ -38,10 +38,10 @@ export function OrganizationSchema() {
         "location": [
           {
             "@type": "Place",
-            "name": "Jean Lemue Attorneys - Pier 14",
+            "name": "DC Sam - Pier 14",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
+              "streetAddress": "Pier 14 Shopping Centre",
               "addressLocality": "North End",
               "addressRegion": "Port Elizabeth",
               "postalCode": "6001",

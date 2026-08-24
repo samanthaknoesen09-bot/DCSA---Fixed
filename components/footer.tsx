@@ -103,8 +103,8 @@ Time: ${timeStr}`
               >
                 <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
                 <div>
-                  <span className="leading-relaxed group-hover:underline block font-medium">Jean Lemue Attorneys</span>
-                  <span className="leading-relaxed group-hover:underline block text-sm">2nd Floor, Pier 14 Shopping Centre,</span>
+                  <span className="leading-relaxed group-hover:underline block font-medium">DC Sam North End Office</span>
+                  <span className="leading-relaxed group-hover:underline block text-sm">Pier 14 Shopping Centre,</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">North End, Port Elizabeth</span>
                   <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Mon-Fri: 8am - 4pm · Walk-ins welcome</span>
                 </div>
@@ -306,18 +306,18 @@ Time: ${timeStr}`
               {/* Pier 14 - Walk-ins */}
               <div>
                 <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
-                  Jean Lemue Attorneys, 2nd Floor, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
+                  DC Sam North End Office, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
                 </p>
                 <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.6352158871277!2d25.6073229!3d-33.9505092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad2f347061149%3A0xf3511d45c1e0fc07!2sJean%20Lemue%20Attorneys!5e0!3m2!1sen!2sza!4v1778486633877!5m2!1sen!2sza"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.6352158871277!2d25.6073229!3d-33.9505092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad2f347061149%3A0xf3511d45c1e0fc07!2sPier%2014%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1778486633877!5m2!1sen!2sza"
                     width="100%"
                     height="180"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Jean Lemue Attorneys - Pier 14 Shopping Centre, North End, Port Elizabeth"
+                    title="DC Sam - Pier 14 Shopping Centre, North End, Port Elizabeth"
                   />
                 </div>
               </div>
@@ -347,17 +347,6 @@ Time: ${timeStr}`
               <h4 className="font-semibold text-background mb-2">NCR Registration</h4>
               <p>DC Sam is a registered debt counsellor with the National Credit Regulator (NCR).</p>
               <p className="font-medium mt-1">Registration Number: NCRDC3995</p>
-              <p className="mt-2">
-                In affiliation with{" "}
-                <a
-                  href="https://www.lemue.co.za"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium underline hover:text-primary transition-colors"
-                >
-                  Jean Lemue Attorneys
-                </a>
-              </p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2 text-background">
@@ -380,18 +369,6 @@ Time: ${timeStr}`
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {/* Jean Lemue Attorneys */}
-              <a
-                href="https://www.lemue.co.za"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between rounded-lg bg-background p-4 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <span className="text-xs uppercase tracking-wide text-primary font-semibold mb-1">Legal Partner</span>
-                <span className="font-bold text-foreground leading-tight">Jean Lemue Attorneys</span>
-                <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">lemue.co.za →</span>
-              </a>
-
               {/* DC Partner PDA */}
               <a
                 href="https://www.dcpartner.co.za"
