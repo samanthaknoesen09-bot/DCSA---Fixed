@@ -58,7 +58,8 @@ function HeroSection() {
       className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12"
       style={{ backgroundColor: colors.navy }}
     >
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
         {/* Headline - Big + Punchy */}
         <div className="mb-4">
           <h1
@@ -94,6 +95,17 @@ function HeroSection() {
         >
           <p className="font-semibold mb-2" style={{ color: colors.gold }}>It doesn&apos;t have to stay this way.</p>
           <p style={{ color: "rgba(255,255,255,0.9)" }}>We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.</p>
+        </div>
+        <div className="relative overflow-hidden rounded-2xl shadow-xl">
+          <Image
+            src="/images/dc-sam-welcome.png"
+            alt="Sam welcoming a client at her desk"
+            width={1536}
+            height={1024}
+            priority
+            className="h-full min-h-72 w-full object-cover"
+          />
+        </div>
         </div>
       </div>
     </section>
@@ -398,8 +410,6 @@ function HowItWorksSection() {
 
 // Section 6: Trust Section with Sam Photo
 function TrustSection() {
-  const [imageError, setImageError] = useState(false)
-
   return (
     <section className="py-16 md:py-20 px-6" style={{ backgroundColor: colors.white }}>
       <div className="container mx-auto max-w-4xl">
@@ -416,29 +426,7 @@ function TrustSection() {
           Sometimes it starts with just a coffee and a conversation.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-          {/* Sam&apos;s Photo */}
-          <div className="flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-xl">
-              {!imageError ? (
-                <Image
-                  src="/images/dc-sam-coffee.jpeg"
-                  alt="Samantha (Sam) Knoesen - NCR Registered Debt Counsellor"
-                  fill
-                  className="object-cover"
-                  onError={() => setImageError(true)}
-                />
-              ) : (
-                <div
-                  className="w-full h-full flex items-center justify-center text-5xl font-bold"
-                  style={{ backgroundColor: colors.navy, color: colors.white }}
-                >
-                  SK
-                </div>
-              )}
-            </div>
-          </div>
-
+        <div className="max-w-2xl mx-auto mb-12">
           {/* Trust Statement */}
           <div>
             <p className="text-lg mb-6 leading-relaxed" style={{ color: colors.charcoal }}>
@@ -457,16 +445,6 @@ function TrustSection() {
               NCR Registered Debt Counsellor • NCRDC3995
             </p>
           </div>
-        </div>
-
-        <div className="mt-10 overflow-hidden rounded-2xl shadow-lg">
-          <Image
-            src="/images/dc-sam-consultations.png"
-            alt="A welcoming consultation and planning moments with Sam"
-            width={1536}
-            height={1024}
-            className="h-auto w-full object-cover"
-          />
         </div>
 
         {/* Trust Badges */}
