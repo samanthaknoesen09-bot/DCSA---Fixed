@@ -58,8 +58,7 @@ function HeroSection() {
       className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12"
       style={{ backgroundColor: colors.navy }}
     >
-      <div className="container mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
+      <div className="container mx-auto max-w-4xl">
         {/* Headline - Big + Punchy */}
         <div className="mb-4">
           <h1
@@ -96,20 +95,6 @@ function HeroSection() {
           <p className="font-semibold mb-2" style={{ color: colors.gold }}>It doesn&apos;t have to stay this way.</p>
           <p style={{ color: "rgba(255,255,255,0.9)" }}>We&apos;ll help you reduce the pressure and create a plan that gives you room to breathe again.</p>
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
-          <Image
-            src="/images/dc-sam-welcome.png"
-            alt="Sam welcoming a client with coffee at her desk"
-            width={1536}
-            height={1024}
-            priority
-            className="h-full min-h-80 w-full object-cover"
-          />
-          <div className="absolute inset-x-0 bottom-0 bg-black/60 px-5 py-4 text-sm font-medium text-white">
-            A welcoming conversation. A practical plan. A fresh start.
-          </div>
-        </div>
-        </div>
       </div>
     </section>
   )
@@ -119,15 +104,7 @@ function HeroSection() {
 function CTASection() {
   return (
     <section className="py-12 md:py-16 px-6" style={{ backgroundColor: colors.warmBeige }}>
-      <div className="container mx-auto grid max-w-5xl items-center gap-8 lg:grid-cols-[0.7fr_1.3fr]">
-        <Image
-          src="/images/debt-help-graphic.jpeg"
-          alt="Debt help guidance: professional support, clear options, and a solution that works"
-          width={1536}
-          height={1024}
-          className="mx-auto w-full max-w-sm rounded-xl shadow-lg"
-        />
-        <div className="text-center lg:text-left">
+      <div className="container mx-auto max-w-2xl text-center">
         <h2
           className="text-2xl md:text-3xl font-bold mb-6"
           style={{ color: colors.navy }}
@@ -179,7 +156,6 @@ function CTASection() {
           <span>Confidential</span>
           <span className="hidden sm:inline">|</span>
           <span>South Africa</span>
-        </div>
         </div>
       </div>
     </section>
