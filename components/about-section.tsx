@@ -25,7 +25,7 @@ export function AboutSection() {
               <div className="flex flex-col justify-center space-y-4">
                 <div>
                   <h2 className="text-3xl font-bold text-foreground mb-2">Meet Your Debt Counsellor</h2>
-                  <p className="text-lg text-primary font-semibold">Samantha - DC Sam Founder</p>
+                  <p className="text-lg text-primary font-semibold">Samantha - DCSA (Debt Clear SA (Pty) Ltd) Founder</p>
                 </div>
 
                 <p className="text-muted-foreground leading-relaxed">

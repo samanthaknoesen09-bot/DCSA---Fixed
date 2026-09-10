@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Debt Counselling Costs & Fees | DC Sam Transparent Pricing",
+  title: "Debt Counselling Costs & Fees | DCSA (Debt Clear SA (Pty) Ltd) Transparent Pricing",
   description: "Clear breakdown of debt counselling costs in South Africa. NCR regulated fees, no hidden charges. Understand exactly what you'll pay for debt review services.",
 }
 

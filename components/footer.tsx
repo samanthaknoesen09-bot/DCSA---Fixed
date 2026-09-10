@@ -46,7 +46,7 @@ export function Footer() {
       const subject = "Newsletter Subscription Request"
       const body = `New newsletter subscription request from: ${email}
 
-Please add this email to the DC Sam newsletter list for financial tips and debt management advice.
+Please add this email to the DCSA (Debt Clear SA (Pty) Ltd) newsletter list for financial tips and debt management advice.
 
 Email: ${email}
 Date: ${dateStr}
@@ -73,7 +73,7 @@ Time: ${timeStr}`
             <div className="flex items-center space-x-2">
               <Image
                 src="/images/dcsa-logo.png"
-                alt="DC Sam Debt Counselling & Credit Repair"
+                alt="DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling & Credit Repair"
                 width={120}
                 height={48}
                 className="h-10 w-auto"
@@ -103,7 +103,7 @@ Time: ${timeStr}`
               >
                 <MapPin className="w-5 h-5 text-[#4DB6AC] mt-1 flex-shrink-0" />
                 <div>
-                  <span className="leading-relaxed group-hover:underline block font-medium">DC Sam Debt Counsellors</span>
+                  <span className="leading-relaxed group-hover:underline block font-medium">DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">2nd Floor, Pier 14 Shopping Centre,</span>
                   <span className="leading-relaxed group-hover:underline block text-sm">North End, Port Elizabeth</span>
                   <span className="text-xs mt-0.5 block" style={{ color: colors.maroon }}>Mon-Fri: 8am - 4pm · Walk-ins welcome</span>
@@ -270,7 +270,7 @@ Time: ${timeStr}`
                 rel="noopener noreferrer"
                 className="hover:scale-110 transition-transform"
                 style={{ color: colors.charcoal }}
-                aria-label="Connect with DC Sam on LinkedIn"
+                aria-label="Connect with DCSA (Debt Clear SA (Pty) Ltd) on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -306,7 +306,7 @@ Time: ${timeStr}`
               {/* Pier 14 - Walk-ins */}
               <div>
                 <p className="text-xs font-semibold mb-1.5" style={{ color: colors.charcoal }}>
-                  DC Sam, 2nd Floor, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
+                  DCSA (Debt Clear SA (Pty) Ltd), 2nd Floor, Pier 14 Shopping Centre, North End, PE <span style={{ color: colors.maroon }}>(Walk-ins welcome)</span>
                 </p>
                 <div className="rounded-lg overflow-hidden border-2 shadow-sm" style={{ borderColor: colors.sandLight }}>
                   <iframe
@@ -345,7 +345,7 @@ Time: ${timeStr}`
           <div className="grid md:grid-cols-2 gap-6 text-sm text-background/70 mb-8">
             <div>
               <h4 className="font-semibold text-background mb-2">NCR Registration</h4>
-              <p>DC Sam is a registered debt counsellor with the National Credit Regulator (NCR).</p>
+              <p>DCSA (Debt Clear SA (Pty) Ltd) is a registered debt counsellor with the National Credit Regulator (NCR).</p>
               <p className="font-medium mt-1">Registration Number: NCRDC3995</p>
             </div>
             <div>
@@ -412,12 +412,12 @@ Time: ${timeStr}`
               <strong>Important Disclaimer:</strong> The information on this site is for educational purposes only and does not constitute financial or legal advice. Debt review outcomes depend on creditor responses. Interest reductions are negotiated and not guaranteed. All projections are estimates. Always consult with a registered debt counsellor for your specific situation.
             </p>
             <p className="text-background/70 text-xs">
-              DC Sam (Debt Counselling South Africa) is NCR Registered under number NCRDC3995. We operate under the National Credit Act, 2005. All services comply with NCR guidelines.
+              DCSA (Debt Clear SA (Pty) Ltd) (Debt Counselling South Africa) is NCR Registered under number NCRDC3995. We operate under the National Credit Act, 2005. All services comply with NCR guidelines.
             </p>
           </div>
           
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 pt-4">
-            <p className="text-background/60 text-sm">© 2026 DC Sam - Debt Clear South Africa. All rights reserved.</p>
+            <p className="text-background/60 text-sm">© 2026 DCSA (Debt Clear SA (Pty) Ltd) - Debt Clear South Africa. All rights reserved.</p>
             <div className="flex space-x-6 text-sm">
               <a href="/privacy-policy" className="text-background/60 hover:text-primary transition-colors">
                 Privacy Policy

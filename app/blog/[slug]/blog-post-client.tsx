@@ -54,7 +54,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
     },
     publisher: {
       "@type": "Organization",
-      name: "DC Sam - Debt Clear South Africa",
+      name: "DCSA (Debt Clear SA (Pty) Ltd) - Debt Clear South Africa",
       logo: {
         "@type": "ImageObject",
         url: "https://www.dcsam.co.za/images/dcsa-logo.png",
@@ -73,7 +73,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
       },
     }),
     articleSection: post.category,
-    keywords: [post.category, "debt counselling", "debt review", "financial advice", "DC Sam"],
+    keywords: [post.category, "debt counselling", "debt review", "financial advice", "DCSA (Debt Clear SA (Pty) Ltd)"],
   }
 
   return (

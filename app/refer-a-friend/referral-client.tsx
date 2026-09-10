@@ -165,7 +165,7 @@ export function ReferralClient() {
               you can be the one who throws them a lifeline.
             </p>
             <p className="text-lg md:text-xl text-[#0D3B66]/70 leading-relaxed">
-              At DC Sam Debt Counselling & Credit Repair, we help people fix what feels 
+              At DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling & Credit Repair, we help people fix what feels 
               overwhelming — legally, properly, and without judgement.
             </p>
             <p className="text-xl md:text-2xl font-semibold text-[#0D3B66] leading-relaxed">
@@ -510,12 +510,12 @@ export function ReferralClient() {
                         required
                       />
                       <Label htmlFor="referrerConsent" className="font-normal cursor-pointer text-sm leading-relaxed">
-                        I confirm that I have obtained consent from my friend to share their personal information with DC Sam for the purpose of contacting them about debt counselling services. <span className="text-red-500">*</span>
+                        I confirm that I have obtained consent from my friend to share their personal information with DCSA (Debt Clear SA (Pty) Ltd) for the purpose of contacting them about debt counselling services. <span className="text-red-500">*</span>
                       </Label>
                     </div>
                     <div className="bg-white/50 rounded-md p-3 border border-[#FFD93D]/20">
                       <p className="text-xs text-[#0D3B66]/60 leading-relaxed">
-                        <strong>POPI Act Notice:</strong> In terms of the Protection of Personal Information Act (POPIA), you must have your friend&apos;s consent before sharing their personal information with us. By submitting this form, you confirm that your friend has agreed to be contacted by DC Sam regarding debt counselling services.
+                        <strong>POPI Act Notice:</strong> In terms of the Protection of Personal Information Act (POPIA), you must have your friend&apos;s consent before sharing their personal information with us. By submitting this form, you confirm that your friend has agreed to be contacted by DCSA (Debt Clear SA (Pty) Ltd) regarding debt counselling services.
                       </p>
                     </div>
                   </div>
@@ -599,7 +599,7 @@ export function ReferralClient() {
                     Refer Another Friend
                   </Button>
                   <Button asChild variant="outline" className="bg-transparent">
-                    <a href={`https://wa.me/27719006298?text=${encodeURIComponent(`Hi DC Sam! I just submitted a referral${submissionId ? ` (Ref: ${submissionId})` : ""}. Can you confirm you received it?`)}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`https://wa.me/27719006298?text=${encodeURIComponent(`Hi DCSA (Debt Clear SA (Pty) Ltd)! I just submitted a referral${submissionId ? ` (Ref: ${submissionId})` : ""}. Can you confirm you received it?`)}`} target="_blank" rel="noopener noreferrer">
                       Confirm via WhatsApp
                     </a>
                   </Button>
@@ -654,7 +654,7 @@ export function ReferralClient() {
             <ul className="text-xs text-[#0D3B66]/60 space-y-1.5 list-disc list-inside">
               <li>
                 The R150 referral fee is paid once the referred person
-                successfully enters into a debt counselling agreement with DC Sam.
+                successfully enters into a debt counselling agreement with DCSA (Debt Clear SA (Pty) Ltd).
               </li>
               <li>
                 Payment will be made via EFT into the bank account provided
@@ -664,13 +664,13 @@ export function ReferralClient() {
                 There is no limit to the number of referrals you can make.
               </li>
               <li>
-                DC Sam reserves the right to verify all referral claims and
+                DCSA (Debt Clear SA (Pty) Ltd) reserves the right to verify all referral claims and
                 decline payment if the referral does not meet the qualifying
                 criteria.
               </li>
               <li>
                 The referred person must be a new client who has not previously
-                contacted DC Sam.
+                contacted DCSA (Debt Clear SA (Pty) Ltd).
               </li>
             </ul>
           </div>

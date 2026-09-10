@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 
 export const metadata = {
-  title: "Client Portal | DC Sam",
+  title: "Client Portal | DCSA (Debt Clear SA (Pty) Ltd)",
   description: "Access your debt review account and documents",
 }
 

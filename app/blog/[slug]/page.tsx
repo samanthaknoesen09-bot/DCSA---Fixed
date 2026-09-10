@@ -36,7 +36,7 @@ export async function generateMetadata({
   
   if (!post) {
     return {
-      title: "Post Not Found | DC Sam Blog",
+      title: "Post Not Found | DCSA (Debt Clear SA (Pty) Ltd) Blog",
       description: "The blog post you're looking for could not be found.",
     }
   }
@@ -45,7 +45,7 @@ export async function generateMetadata({
   const postUrl = `${baseUrl}/blog/${post.slug}`
   
   return {
-    title: `${post.title} | DC Sam Blog - Debt Counselling South Africa`,
+    title: `${post.title} | DCSA (Debt Clear SA (Pty) Ltd) Blog - Debt Counselling South Africa`,
     description: post.excerpt,
     keywords: [
       post.category,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       "debt review",
       "credit repair",
       "financial advice",
-      "DC Sam",
+      "DCSA (Debt Clear SA (Pty) Ltd)",
       "South Africa",
     ],
     authors: [{ name: post.author }],
@@ -69,7 +69,7 @@ export async function generateMetadata({
       modifiedTime: post.updatedAt,
       authors: [post.author],
       images: post.featuredImage ? [post.featuredImage] : [],
-      siteName: "DC Sam - Debt Clear South Africa",
+      siteName: "DCSA (Debt Clear SA (Pty) Ltd) - Debt Clear South Africa",
     },
     twitter: {
       card: "summary_large_image",
@@ -123,7 +123,7 @@ export default async function BlogPostPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "DC Sam Debt Counsellors",
+      name: "DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors",
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/images/dcsa-logo.jpg`,

@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { CreditRepairClient } from "./credit-repair-client"
 
 export const metadata = {
-  title: "Credit Repair Application | DC Sam Client Portal",
+  title: "Credit Repair Application | DCSA (Debt Clear SA (Pty) Ltd) Client Portal",
   description: "Apply for credit repair services to improve your credit score",
 }
 

@@ -273,7 +273,7 @@ export function InterestCalculator() {
       {/* Share Calculator */}
       <ShareResults
         title="Free Interest Rate Calculator"
-        description="Calculate your loan interest, monthly payments, and total cost for any debt type with DC Sam's free calculator"
+        description="Calculate your loan interest, monthly payments, and total cost for any debt type with DCSA (Debt Clear SA (Pty) Ltd)'s free calculator"
         calculatorType="interest"
       />
 

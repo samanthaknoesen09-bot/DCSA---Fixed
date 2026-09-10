@@ -213,7 +213,7 @@ export function ClientDashboard({
                     <ArrowRight className="h-5 w-5 mr-2" />
                     <div className="text-left">
                       <div className="font-semibold">Transfer Request</div>
-                      <div className="text-xs opacity-90">Transfer to DC Sam</div>
+                      <div className="text-xs opacity-90">Transfer to DCSA (Debt Clear SA (Pty) Ltd)</div>
                     </div>
                   </Link>
                 </Button>

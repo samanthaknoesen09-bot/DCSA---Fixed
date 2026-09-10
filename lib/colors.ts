@@ -1,4 +1,4 @@
-// DC Sam warm boutique palette
+// DCSA (Debt Clear SA (Pty) Ltd) warm boutique palette
 export const colors = {
   maroon: "#5A1F32",
   maroonHover: "#431625",

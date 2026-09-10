@@ -4,9 +4,9 @@ import { AlertCircle } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Financial Education Resources - DC Sam | Understand Your Rights",
+  title: "Financial Education Resources - DCSA (Debt Clear SA (Pty) Ltd) | Understand Your Rights",
   description:
-    "Learn about interest rates, prescribed debt, reckless lending, and your consumer rights. Educational resources from DC Sam Debt Counsellors.",
+    "Learn about interest rates, prescribed debt, reckless lending, and your consumer rights. Educational resources from DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors.",
   alternates: {
     canonical: "https://www.dcsam.co.za/resources",
   },

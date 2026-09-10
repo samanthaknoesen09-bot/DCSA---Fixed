@@ -2,23 +2,23 @@ import type { Metadata } from "next"
 import BlogClientPage from "./blog-client"
 
 export const metadata: Metadata = {
-  title: "DC Sam Blog - Latest Debt Help Tips & Financial Advice | Debt Counselling Updates",
+  title: "DCSA (Debt Clear SA (Pty) Ltd) Blog - Latest Debt Help Tips & Financial Advice | Debt Counselling Updates",
   description:
-    "Stay updated with DC Sam's latest debt help tips, financial advice, and debt counselling insights. Follow our blog for practical solutions to manage debt, improve credit scores, and achieve financial freedom in South Africa.",
+    "Stay updated with DCSA (Debt Clear SA (Pty) Ltd)'s latest debt help tips, financial advice, and debt counselling insights. Follow our blog for practical solutions to manage debt, improve credit scores, and achieve financial freedom in South Africa.",
   keywords: [
     "debt help blog",
     "debt counselling tips",
     "financial advice South Africa",
     "debt management blog",
-    "DC Sam updates",
+    "DCSA (Debt Clear SA (Pty) Ltd) updates",
     "debt clear tips",
   ],
   alternates: {
     canonical: "https://dcsam.co.za/blog",
   },
   openGraph: {
-    title: "DC Sam Blog - Latest Debt Help Tips & Financial Advice",
-    description: "Get expert debt counselling tips and financial advice from DC Sam's experienced team.",
+    title: "DCSA (Debt Clear SA (Pty) Ltd) Blog - Latest Debt Help Tips & Financial Advice",
+    description: "Get expert debt counselling tips and financial advice from DCSA (Debt Clear SA (Pty) Ltd)'s experienced team.",
     url: "https://dcsam.co.za/blog",
     type: "website",
   },

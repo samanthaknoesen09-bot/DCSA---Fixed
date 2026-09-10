@@ -20,7 +20,7 @@ export function ShareResults({ title, description, calculatorType, results }: Sh
     ? `${window.location.origin}/calculator?type=${calculatorType}` 
     : ""
   
-  const shareText = `Check out this free financial calculator from DC Sam!\n\nCalculate your debt, savings, and financial health: ${shareUrl}`
+  const shareText = `Check out this free financial calculator from DCSA (Debt Clear SA (Pty) Ltd)!\n\nCalculate your debt, savings, and financial health: ${shareUrl}`
   const encodedText = encodeURIComponent(shareText)
   const encodedUrl = encodeURIComponent(shareUrl)
 
@@ -58,7 +58,7 @@ export function ShareResults({ title, description, calculatorType, results }: Sh
           Share This Calculator
         </CardTitle>
         <p className="text-sm text-muted-foreground">
-          Help friends and family calculate their financial health with DC Sam's free tools
+          Help friends and family calculate their financial health with DCSA (Debt Clear SA (Pty) Ltd)'s free tools
         </p>
       </CardHeader>
       <CardContent>

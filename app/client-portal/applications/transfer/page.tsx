@@ -3,8 +3,8 @@ import { createClient } from "@/lib/supabase/server"
 import { TransferClient } from "./transfer-client"
 
 export const metadata = {
-  title: "Transfer Request | DC Sam Client Portal",
-  description: "Transfer your debt review from another counsellor to DC Sam",
+  title: "Transfer Request | DCSA (Debt Clear SA (Pty) Ltd) Client Portal",
+  description: "Transfer your debt review from another counsellor to DCSA (Debt Clear SA (Pty) Ltd)",
 }
 
 export default async function TransferPage() {

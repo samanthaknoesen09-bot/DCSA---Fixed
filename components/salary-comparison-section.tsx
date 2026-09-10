@@ -83,7 +83,7 @@ export function SalaryComparisonSection() {
             <CardContent className="p-8">
               <div className="mb-6 pb-6 border-b" style={{ borderColor: colors.maroon }}>
                 <p className="font-semibold text-sm uppercase tracking-wide" style={{ color: colors.maroon }}>
-                  WITH DEBT REVIEW (DC Sam)
+                  WITH DEBT REVIEW (DCSA (Debt Clear SA (Pty) Ltd))
                 </p>
               </div>
 

@@ -9,28 +9,28 @@ const testimonials = [
   {
     name: "Sarah M.",
     story:
-      "I was drowning in debt with payments totaling R18,000 per month. The DC Sam team didn't judge my situation - they listened, understood, and helped me reduce this to R9,500. I finally have breathing room and hope again.",
+      "I was drowning in debt with payments totaling R18,000 per month. The DCSA (Debt Clear SA (Pty) Ltd) team didn't judge my situation - they listened, understood, and helped me reduce this to R9,500. I finally have breathing room and hope again.",
     rating: 5,
     savings: "R8,500/month saved",
   },
   {
     name: "Michael K.",
     story:
-      "The debt review process seemed scary at first, but the DC Sam team walked with me through every step. They made me feel like family, not just another client. My credit cards are paid off and I'm building savings for the first time in years.",
+      "The debt review process seemed scary at first, but the DCSA (Debt Clear SA (Pty) Ltd) team walked with me through every step. They made me feel like family, not just another client. My credit cards are paid off and I'm building savings for the first time in years.",
     rating: 5,
     savings: "Debt-free in 3 years",
   },
   {
     name: "Nomsa T.",
     story:
-      "DC Sam's budget calculator opened my eyes to where my money was going. But more than that, their counselling helped me understand I wasn't a failure - just someone who needed guidance. Now I manage my finances with confidence.",
+      "DCSA (Debt Clear SA (Pty) Ltd)'s budget calculator opened my eyes to where my money was going. But more than that, their counselling helped me understand I wasn't a failure - just someone who needed guidance. Now I manage my finances with confidence.",
     rating: 5,
     savings: "R12,000 emergency fund",
   },
   {
     name: "David L.",
     story:
-      "I thought bankruptcy was my only option and felt so ashamed. DC Sam showed me there was another way and treated me with such kindness. Now I'm on track to be completely debt-free within 4 years instead of losing everything.",
+      "I thought bankruptcy was my only option and felt so ashamed. DCSA (Debt Clear SA (Pty) Ltd) showed me there was another way and treated me with such kindness. Now I'm on track to be completely debt-free within 4 years instead of losing everything.",
     rating: 5,
     savings: "Avoided bankruptcy",
   },
@@ -70,7 +70,7 @@ export function TestimonialsSection() {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
             These aren't just success stories - they're real people who found their way back to financial freedom with
-            DC Sam. Your story could be next.
+            DCSA (Debt Clear SA (Pty) Ltd). Your story could be next.
           </p>
         </div>
 

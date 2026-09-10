@@ -46,7 +46,7 @@ export default function CapeTownPage() {
 
             <div className="prose prose-lg max-w-none text-[#0D3B66]/80 space-y-6">
               <p>
-                Looking for a trusted debt counsellor in Cape Town? DC Sam (DCSam) provides expert debt counselling and credit repair services to help Cape Town residents overcome financial challenges and achieve debt-free living.
+                Looking for a trusted debt counsellor in Cape Town? DCSA (Debt Clear SA (Pty) Ltd) (DCSam) provides expert debt counselling and credit repair services to help Cape Town residents overcome financial challenges and achieve debt-free living.
               </p>
 
               <div className="bg-[#4DB6AC]/10 p-6 rounded-lg border-2 border-[#4DB6AC]/20 not-prose">

@@ -15,7 +15,7 @@ export function PodcastSection() {
             Debt Review for Dummies with Corrie and Zak
           </h2>
           <p className="text-lg text-[#0D3B66]/70 max-w-2xl mx-auto">
-            A podcast DC Sam loves - Listen to expert financial advice, debt management tips, and success stories from real South Africans
+            A podcast DCSA (Debt Clear SA (Pty) Ltd) loves - Listen to expert financial advice, debt management tips, and success stories from real South Africans
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export function PodcastSection() {
                 src="https://open.spotify.com/embed/show/4se2WtEkWcVMrqOU4Jmh7r?utm_source=generator&theme=0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
-                title="DC Sam Podcast on Spotify"
+                title="DCSA (Debt Clear SA (Pty) Ltd) Podcast on Spotify"
               />
             </div>
 

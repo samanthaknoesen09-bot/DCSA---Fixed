@@ -39,7 +39,7 @@ Name: ${formData.firstName} ${formData.lastName}
 ID Number: ${formData.idNumber}
 Contact Number: ${formData.contactNumber}
 
-This client has started their debt counselling journey through the DC Sam website.`
+This client has started their debt counselling journey through the DCSA (Debt Clear SA (Pty) Ltd) website.`
 
       const mailtoLink = `mailto:sam@dcsam.co.za?subject=New Client Registration - ${formData.firstName} ${formData.lastName}&body=${encodeURIComponent(emailBody)}`
 

@@ -155,7 +155,7 @@ export function BudgetCalculator() {
     if (debtToIncomeRatio > 40) {
       status = "critical"
       recommendations.push("You are over-indebted and need urgent help")
-      recommendations.push("Contact DC Sam immediately - we can help reduce your debt payments by up to 45%")
+      recommendations.push("Contact DCSA (Debt Clear SA (Pty) Ltd) immediately - we can help reduce your debt payments by up to 45%")
       if (totalDebt > 0) {
         recommendations.push(`You could save approximately ${formatCurrency(monthlySavings)} per month`)
       }
@@ -163,7 +163,7 @@ export function BudgetCalculator() {
     } else if (debtToIncomeRatio > 30) {
       status = "concerning"
       recommendations.push("You are over-indebted and struggling with debt payments")
-      recommendations.push("Contact DC Sam today - we can help restructure your debt and reduce payments")
+      recommendations.push("Contact DCSA (Debt Clear SA (Pty) Ltd) today - we can help restructure your debt and reduce payments")
       if (totalDebt > 0) {
         recommendations.push(`With our help, you could save ${formatCurrency(monthlySavings)} monthly`)
       }
@@ -186,7 +186,7 @@ export function BudgetCalculator() {
     if (disposableIncome < 0 && debtToIncomeRatio > 0) {
       status = "critical"
       recommendations.unshift("You are spending more than you earn - you need immediate help")
-      recommendations.push("Contact DC Sam now to prevent your situation from getting worse")
+      recommendations.push("Contact DCSA (Debt Clear SA (Pty) Ltd) now to prevent your situation from getting worse")
     }
 
     setResult({
@@ -664,7 +664,7 @@ export function BudgetCalculator() {
                       {formatCurrency(result.potentialSavings)}
                     </div>
                     <div className="text-sm text-primary font-semibold">
-                      Potential Monthly Savings with DC Sam Debt Counselling
+                      Potential Monthly Savings with DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling
                     </div>
                   </div>
                 )}
@@ -738,7 +738,7 @@ export function BudgetCalculator() {
                       className="w-full bg-transparent"
                       onClick={() =>
                         window.open(
-                          `https://wa.me/27719006298?text=Hi, I completed the DC Sam budget calculator and could potentially save ${formatCurrency(result.potentialSavings)} per month with debt counselling. I'd like to discuss my options.`,
+                          `https://wa.me/27719006298?text=Hi, I completed the DCSA (Debt Clear SA (Pty) Ltd) budget calculator and could potentially save ${formatCurrency(result.potentialSavings)} per month with debt counselling. I'd like to discuss my options.`,
                           "_blank",
                         )
                       }

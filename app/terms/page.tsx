@@ -2,8 +2,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Terms & Conditions | DC Sam Debt Counselling",
-  description: "Terms and conditions for DC Sam debt counselling services. Understanding your rights and responsibilities.",
+  title: "Terms & Conditions | DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling",
+  description: "Terms and conditions for DCSA (Debt Clear SA (Pty) Ltd) debt counselling services. Understanding your rights and responsibilities.",
 }
 
 export default function TermsPage() {
@@ -17,7 +17,7 @@ export default function TermsPage() {
 
           <h2>1. Services Provided</h2>
           <p>
-            DC Sam (Debt Counselling South Africa), NCR registration number NCRDC3995, provides debt counselling services in accordance with the National Credit Act (NCA), Act 34 of 2005.
+            DCSA (Debt Clear SA (Pty) Ltd) (Debt Counselling South Africa), NCR registration number NCRDC3995, provides debt counselling services in accordance with the National Credit Act (NCA), Act 34 of 2005.
           </p>
 
           <h2>2. Debt Counselling Process</h2>
@@ -32,7 +32,7 @@ export default function TermsPage() {
           </ul>
 
           <h2>3. Fees and Payments</h2>
-          <p>All fees charged by DC Sam are regulated by the National Credit Regulator and include:</p>
+          <p>All fees charged by DCSA (Debt Clear SA (Pty) Ltd) are regulated by the National Credit Regulator and include:</p>
           <ul>
             <li>Application fee: R50 (once-off)</li>
             <li>Restructuring fee: Maximum R8,000 (paid over time, not upfront)</li>
@@ -47,13 +47,13 @@ export default function TermsPage() {
           <ul>
             <li>Provide accurate and complete financial information</li>
             <li>Make payments as per the agreed restructured payment plan</li>
-            <li>Inform DC Sam of any changes in your financial circumstances</li>
+            <li>Inform DCSA (Debt Clear SA (Pty) Ltd) of any changes in your financial circumstances</li>
             <li>Not incur additional debt while under debt review</li>
             <li>Cooperate with the debt counselling process</li>
           </ul>
 
-          <h2>5. DC Sam Responsibilities</h2>
-          <p>DC Sam commits to:</p>
+          <h2>5. DCSA (Debt Clear SA (Pty) Ltd) Responsibilities</h2>
+          <p>DCSA (Debt Clear SA (Pty) Ltd) commits to:</p>
           <ul>
             <li>Conduct a thorough assessment of your financial situation</li>
             <li>Negotiate with creditors on your behalf for reduced payments</li>
@@ -79,12 +79,12 @@ export default function TermsPage() {
 
           <h2>8. Credit Bureau Reporting</h2>
           <p>
-            While under debt review, your credit profile will show "under debt review" status. Upon successful completion and clearance, this notation will be removed. DC Sam will liaise with credit bureaus on your behalf.
+            While under debt review, your credit profile will show "under debt review" status. Upon successful completion and clearance, this notation will be removed. DCSA (Debt Clear SA (Pty) Ltd) will liaise with credit bureaus on your behalf.
           </p>
 
           <h2>9. Limitation of Liability</h2>
           <p>
-            DC Sam will use reasonable skill and care in providing debt counselling services. However, we cannot guarantee specific outcomes with creditors or court proceedings. Each case depends on individual circumstances and creditor cooperation.
+            DCSA (Debt Clear SA (Pty) Ltd) will use reasonable skill and care in providing debt counselling services. However, we cannot guarantee specific outcomes with creditors or court proceedings. Each case depends on individual circumstances and creditor cooperation.
           </p>
 
           <h2>10. Dispute Resolution</h2>
@@ -92,14 +92,14 @@ export default function TermsPage() {
             Any disputes arising from these terms will be resolved through:
           </p>
           <ol>
-            <li>Direct communication with DC Sam management</li>
+            <li>Direct communication with DCSA (Debt Clear SA (Pty) Ltd) management</li>
             <li>Escalation to the National Credit Regulator if unresolved</li>
             <li>Formal mediation or arbitration if necessary</li>
           </ol>
 
           <h2>11. Amendments</h2>
           <p>
-            DC Sam reserves the right to amend these terms in accordance with changes in legislation or NCR regulations. Clients will be notified of material changes.
+            DCSA (Debt Clear SA (Pty) Ltd) reserves the right to amend these terms in accordance with changes in legislation or NCR regulations. Clients will be notified of material changes.
           </p>
 
           <h2>12. Contact Information</h2>
@@ -111,7 +111,7 @@ export default function TermsPage() {
           </p>
 
           <p className="text-sm text-muted-foreground italic mt-8">
-            By proceeding with DC Sam's debt counselling services, you acknowledge that you have read, understood, and agree to these terms and conditions.
+            By proceeding with DCSA (Debt Clear SA (Pty) Ltd)'s debt counselling services, you acknowledge that you have read, understood, and agree to these terms and conditions.
           </p>
         </div>
       </main>

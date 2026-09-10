@@ -292,7 +292,7 @@ export default function AdminBlogPage() {
           <div className="flex items-center gap-4">
             <Image
               src="/images/dcsa-logo.png"
-              alt="DC Sam Logo"
+              alt="DCSA (Debt Clear SA (Pty) Ltd) Logo"
               width={120}
               height={48}
               className="h-10 w-auto"
