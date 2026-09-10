@@ -322,7 +322,7 @@ export function MoneyMap() {
     if (!result) return
     
     const content = `
-DC Sam Money Map Results
+DCSA (Debt Clear SA (Pty) Ltd) Money Map Results
 Generated: ${new Date().toLocaleDateString()}
 
 INCOME
@@ -354,7 +354,7 @@ ${result.message}
 
 ---
 For personalized guidance, book a free consultation at www.dcsam.co.za
-DC Sam - Debt Counselling South Africa
+DCSA (Debt Clear SA (Pty) Ltd) - Debt Counselling South Africa
 NCR Registered: NCRDC3995
     `.trim()
 
@@ -362,7 +362,7 @@ NCR Registered: NCRDC3995
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `DC Sam-Money-Map-${new Date().toISOString().split("T")[0]}.txt`
+    a.download = `DCSA (Debt Clear SA (Pty) Ltd)-Money-Map-${new Date().toISOString().split("T")[0]}.txt`
     a.click()
     URL.revokeObjectURL(url)
   }

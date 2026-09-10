@@ -5,8 +5,8 @@ export function OrganizationSchema() {
       {
         "@type": "Organization",
         "@id": "https://www.dcsam.co.za/#organization",
-        "name": "DC Sam Debt Counsellors",
-        "legalName": "DC Sam Debt Counselling Services",
+        "name": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors",
+        "legalName": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling Services",
         "url": "https://www.dcsam.co.za",
         "logo": {
           "@type": "ImageObject",
@@ -18,18 +18,9 @@ export function OrganizationSchema() {
         "address": [
           {
             "@type": "PostalAddress",
-            "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
-            "addressLocality": "North End",
-            "addressRegion": "Port Elizabeth",
-            "postalCode": "6001",
-            "addressCountry": "ZA",
-            "description": "Walk-ins welcome"
-          },
-          {
-            "@type": "PostalAddress",
             "streetAddress": "81 6th Avenue",
             "addressLocality": "Newton Park",
-            "addressRegion": "Port Elizabeth",
+            "addressRegion": "Gqeberha",
             "postalCode": "6045",
             "addressCountry": "ZA",
             "description": "By appointment only"
@@ -38,29 +29,12 @@ export function OrganizationSchema() {
         "location": [
           {
             "@type": "Place",
-            "name": "Jean Lemue Attorneys - Pier 14",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
-              "addressLocality": "North End",
-              "addressRegion": "Port Elizabeth",
-              "postalCode": "6001",
-              "addressCountry": "ZA"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": -33.9476,
-              "longitude": 25.5836
-            }
-          },
-          {
-            "@type": "Place",
-            "name": "DC Sam - Newton Park",
+            "name": "DCSA (Debt Clear SA (Pty) Ltd) - Newton Park",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "81 6th Avenue",
               "addressLocality": "Newton Park",
-              "addressRegion": "Port Elizabeth",
+              "addressRegion": "Gqeberha",
               "postalCode": "6045",
               "addressCountry": "ZA"
             },
@@ -168,7 +142,7 @@ export function OrganizationSchema() {
         "@type": "WebSite",
         "@id": "https://www.dcsam.co.za/#website",
         "url": "https://www.dcsam.co.za",
-        "name": "DC Sam Debt Counsellors",
+        "name": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors",
         "description": "Professional debt counselling, debt review, and credit repair services in South Africa",
         "publisher": {
           "@id": "https://www.dcsam.co.za/#organization"
@@ -185,7 +159,7 @@ export function OrganizationSchema() {
       {
         "@type": "ProfessionalService",
         "@id": "https://www.dcsam.co.za/#service",
-        "name": "DC Sam Debt Counselling Services",
+        "name": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling Services",
         "description": "NCR registered debt counselling providing immediate debt relief and legal protection. Specializing in debt review, credit repair, and financial rehabilitation across South Africa.",
         "provider": {
           "@id": "https://www.dcsam.co.za/#organization"

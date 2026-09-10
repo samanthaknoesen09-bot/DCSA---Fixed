@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ClientCalculatorPage } from "./calculator-client"
 
 export const metadata: Metadata = {
-  title: "Free Debt Calculator South Africa | Calculate Your Debt & Budget | DC Sam",
+  title: "Free Debt Calculator South Africa | Calculate Your Debt & Budget | DCSA (Debt Clear SA (Pty) Ltd)",
   description:
     "Free interactive debt calculator for South Africa. Calculate your total debt, monthly expenses, debt-to-income ratio, and get instant financial clarity. See if debt counselling can help you today.",
   keywords: [
@@ -33,19 +33,19 @@ export const metadata: Metadata = {
       "Use our free interactive debt calculator to understand your finances. Calculate total debt, expenses, and debt-to-income ratio instantly. Get help with debt counselling.",
     url: "https://www.dcsam.co.za/calculator",
     type: "website",
-    siteName: "DC Sam - Debt Counselling South Africa",
+    siteName: "DCSA (Debt Clear SA (Pty) Ltd) - Debt Counselling South Africa",
     images: [
       {
         url: "https://www.dcsam.co.za/images/budget-planning.jpg",
         width: 1200,
         height: 630,
-        alt: "Free Debt Calculator South Africa - DC Sam",
+        alt: "Free Debt Calculator South Africa - DCSA (Debt Clear SA (Pty) Ltd)",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Debt Calculator South Africa | DC Sam",
+    title: "Free Debt Calculator South Africa | DCSA (Debt Clear SA (Pty) Ltd)",
     description: "Calculate your total debt, monthly expenses, and debt-to-income ratio with our free interactive calculator.",
     images: ["https://www.dcsam.co.za/images/budget-planning.jpg"],
   },
@@ -67,7 +67,7 @@ export default function CalculatorPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "DC Sam Debt Calculator",
+    name: "DCSA (Debt Clear SA (Pty) Ltd) Debt Calculator",
     applicationCategory: "FinanceApplication",
     operatingSystem: "Web Browser",
     offers: {
@@ -84,7 +84,7 @@ export default function CalculatorPage() {
     },
     provider: {
       "@type": "Organization",
-      name: "DC Sam - Debt Counselling South Africa",
+      name: "DCSA (Debt Clear SA (Pty) Ltd) - Debt Counselling South Africa",
       url: "https://www.dcsam.co.za",
       logo: "https://www.dcsam.co.za/images/dcsa-logo.png",
       contactPoint: {
@@ -129,7 +129,7 @@ export default function CalculatorPage() {
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Use DC Sam Debt Calculator",
+    name: "How to Use DCSA (Debt Clear SA (Pty) Ltd) Debt Calculator",
     description: "Step-by-step guide to using our free debt calculator to assess your financial situation",
     step: [
       {

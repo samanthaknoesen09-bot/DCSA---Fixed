@@ -30,7 +30,7 @@ Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 
-This person has subscribed to receive free financial advice and tips from DC Sam.
+This person has subscribed to receive free financial advice and tips from DCSA (Debt Clear SA (Pty) Ltd).
     `.trim()
 
     window.location.href = `mailto:sam@dcsam.co.za?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
@@ -136,7 +136,7 @@ This person has subscribed to receive free financial advice and tips from DC Sam
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">Welcome to Our Community!</h3>
                   <p className="text-lg text-muted-foreground mb-6">
-                    Thank you for subscribing. You'll start receiving helpful financial tips and advice from DC Sam soon.
+                    Thank you for subscribing. You'll start receiving helpful financial tips and advice from DCSA (Debt Clear SA (Pty) Ltd) soon.
                   </p>
                   <Button onClick={() => setIsSubmitted(false)} variant="outline" className="mx-auto">
                     Subscribe Another Person

@@ -14,7 +14,7 @@ interface QRCodeShareProps {
 export function QRCodeShare({
   url,
   title = "Share This Calculator",
-  description = "Scan this QR code to access the DC Sam Budget Calculator",
+  description = "Scan this QR code to access the DCSA (Debt Clear SA (Pty) Ltd) Budget Calculator",
 }: QRCodeShareProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [copied, setCopied] = useState(false)
@@ -145,12 +145,12 @@ export function QRCodeShare({
     printCtx.fillStyle = "#000000"
     printCtx.font = "bold 16px Arial"
     printCtx.textAlign = "center"
-    printCtx.fillText("DC Sam Budget Calculator", printSize / 2, printSize + 30)
+    printCtx.fillText("DCSA (Debt Clear SA (Pty) Ltd) Budget Calculator", printSize / 2, printSize + 30)
     printCtx.font = "12px Arial"
     printCtx.fillText("www.dcsam.co.za/calculator", printSize / 2, printSize + 55)
 
     const link = document.createElement("a")
-    link.download = "DC Sam-Budget-Calculator-QR.png"
+    link.download = "DCSA (Debt Clear SA (Pty) Ltd)-Budget-Calculator-QR.png"
     link.href = printCanvas.toDataURL("image/png")
     link.click()
   }
@@ -169,7 +169,7 @@ export function QRCodeShare({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "DC Sam Budget Calculator",
+          title: "DCSA (Debt Clear SA (Pty) Ltd) Budget Calculator",
           text: "Use this free budget calculator to track your expenses and manage your debt",
           url: url,
         })
@@ -189,7 +189,7 @@ export function QRCodeShare({
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-4">
         <div className="bg-white p-4 rounded-lg shadow-md">
-          <canvas ref={canvasRef} className="w-[200px] h-[200px]" aria-label="QR Code for DC Sam Budget Calculator" />
+          <canvas ref={canvasRef} className="w-[200px] h-[200px]" aria-label="QR Code for DCSA (Debt Clear SA (Pty) Ltd) Budget Calculator" />
         </div>
 
         <p className="text-sm text-muted-foreground text-center">Scan with your phone camera to open the calculator</p>

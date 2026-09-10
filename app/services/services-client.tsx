@@ -54,7 +54,7 @@ export function ServicesClient() {
         "Credit bureaus must produce verifiable evidence or remove the listing.",
         "Valid and accurate listings remain on your record for prescribed periods.",
         "This is a professional, structured process — not an overnight fix.",
-        "DC Sam provides guidance, but outcomes depend on the accuracy of the data found.",
+        "DCSA (Debt Clear SA (Pty) Ltd) provides guidance, but outcomes depend on the accuracy of the data found.",
       ],
     },
   ]

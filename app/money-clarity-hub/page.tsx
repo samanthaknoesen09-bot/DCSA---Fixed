@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { MoneyClarityClient } from "./money-clarity-client"
 
 export const metadata: Metadata = {
-  title: "Money Clarity Hub | DC Sam - Free Financial Education & Guides",
+  title: "Money Clarity Hub | DCSA (Debt Clear SA (Pty) Ltd) - Free Financial Education & Guides",
   description: "Free financial education on debt, credit scores, saving habits, and money management. Simple guides on budgeting, credit repair, and building wealth. No jargon, just clarity.",
   keywords: [
     "financial education",

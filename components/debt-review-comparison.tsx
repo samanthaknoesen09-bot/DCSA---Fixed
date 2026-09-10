@@ -165,7 +165,7 @@ export function DebtReviewComparison() {
               onClick={() => {
                 if (navigator.share) {
                   navigator.share({
-                    title: "Debt Review vs Other Options - DC Sam",
+                    title: "Debt Review vs Other Options - DCSA (Debt Clear SA (Pty) Ltd)",
                     text: "Compare debt relief solutions and find the right option for you",
                     url: window.location.href + "#debt-review-comparison",
                   })

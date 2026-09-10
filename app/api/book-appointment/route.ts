@@ -31,7 +31,7 @@ ${message ? `\nAdditional Info: ${message}` : ""}
 Duration: 1 hour
 ${appointmentType === "whatsapp" ? "\nContact via WhatsApp: +27719006298" : ""}
 ${appointmentType === "telephone" ? "\nContact via Telephone: +27719006298" : ""}
-${appointmentType === "in-person" ? "\nLocation: DC Sam Office (Details will be sent via email)" : ""}
+${appointmentType === "in-person" ? "\nLocation: DCSA (Debt Clear SA (Pty) Ltd) Office (Details will be sent via email)" : ""}
       `.trim(),
       start: {
         dateTime: startDateTime.toISOString(),
@@ -44,7 +44,7 @@ ${appointmentType === "in-person" ? "\nLocation: DC Sam Office (Details will be 
       attendees: [
         {
           email: calendarEmail,
-          displayName: "Samantha Knoesen - DC Sam",
+          displayName: "Samantha Knoesen - DCSA (Debt Clear SA (Pty) Ltd)",
           organizer: true,
           responseStatus: "accepted",
         },
@@ -89,10 +89,10 @@ ${appointmentType === "in-person" ? "\nLocation: DC Sam Office (Details will be 
         
         ${appointmentType === "whatsapp" ? "<p><strong>Connection Method:</strong> We will contact you via WhatsApp on +27719006298</p>" : ""}
         ${appointmentType === "telephone" ? "<p><strong>Connection Method:</strong> We will call you on the provided phone number from +27719006298</p>" : ""}
-        ${appointmentType === "in-person" ? "<p><strong>Location:</strong> DC Sam Office - Address details will be provided in a follow-up email</p>" : ""}
+        ${appointmentType === "in-person" ? "<p><strong>Location:</strong> DCSA (Debt Clear SA (Pty) Ltd) Office - Address details will be provided in a follow-up email</p>" : ""}
         
         <p>A calendar invitation has been sent to both parties.</p>
-        <p><em>This is an automated confirmation from DC Sam Debt Counselling.</em></p>
+        <p><em>This is an automated confirmation from DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling.</em></p>
       `,
     }
 

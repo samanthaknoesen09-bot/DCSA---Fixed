@@ -178,7 +178,7 @@ export function DocumentsClient({ user, initialDocuments }: DocumentsClientProps
               </Button>
             </div>
             <Link href="/" className="text-xl font-bold text-[#0D3B66]">
-              DC Sam
+              DCSA (Debt Clear SA (Pty) Ltd)
             </Link>
           </div>
         </div>

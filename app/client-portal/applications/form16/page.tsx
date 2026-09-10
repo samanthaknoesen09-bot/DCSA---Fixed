@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server"
 import { Form16Client } from "./form16-client"
 
 export const metadata = {
-  title: "Form 16 - Debt Review Application | DC Sam Client Portal",
+  title: "Form 16 - Debt Review Application | DCSA (Debt Clear SA (Pty) Ltd) Client Portal",
   description: "Complete your debt review application with power of attorney",
 }
 

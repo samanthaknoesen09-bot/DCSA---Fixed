@@ -57,15 +57,15 @@ export async function GET() {
 
   const jsonFeed = {
     version: "https://jsonfeed.org/version/1.1",
-    title: "DC Sam Blog - Financial Education & Debt Counselling",
+    title: "DCSA (Debt Clear SA (Pty) Ltd) Blog - Financial Education & Debt Counselling",
     home_page_url: `${baseUrl}/blog`,
     feed_url: `${baseUrl}/feed.json`,
-    description: "Real talk about money, debt management, and financial freedom from DC Sam - South Africa's caring debt counsellors.",
+    description: "Real talk about money, debt management, and financial freedom from DCSA (Debt Clear SA (Pty) Ltd) - South Africa's caring debt counsellors.",
     icon: `${baseUrl}/images/dcsa-logo.jpg`,
     favicon: `${baseUrl}/favicon.png`,
     authors: [
       {
-        name: "DC Sam Team",
+        name: "DCSA (Debt Clear SA (Pty) Ltd) Team",
         url: baseUrl,
         avatar: `${baseUrl}/images/samantha-knoesen.jpeg`,
       },

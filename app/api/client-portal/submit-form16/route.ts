@@ -89,9 +89,9 @@ export async function POST(request: NextRequest) {
       const resend = getResend()
       if (!resend) throw new Error("Resend not configured")
       await resend.emails.send({
-        from: "DC Sam Client Portal <noreply@dcsam.co.za>",
+        from: "DCSA (Debt Clear SA (Pty) Ltd) Client Portal <noreply@dcsam.co.za>",
         to: formData.email,
-        subject: "Form 16 Application Received - DC Sam",
+        subject: "Form 16 Application Received - DCSA (Debt Clear SA (Pty) Ltd)",
         html: `
           <h2>Thank You for Your Application</h2>
           <p>Dear ${formData.firstName} ${formData.lastName},</p>
@@ -105,13 +105,13 @@ export async function POST(request: NextRequest) {
           </ul>
           <p>If you have any questions, please contact us:</p>
           <p>Phone: +27 71 900 6298<br/>Email: info@dcsam.co.za</p>
-          <p>Best regards,<br/>DC Sam Team</p>
+          <p>Best regards,<br/>DCSA (Debt Clear SA (Pty) Ltd) Team</p>
         `,
       })
 
-      // Send email to DC Sam office
+      // Send email to DCSA (Debt Clear SA (Pty) Ltd) office
       await resend.emails.send({
-        from: "DC Sam Client Portal <noreply@dcsam.co.za>",
+        from: "DCSA (Debt Clear SA (Pty) Ltd) Client Portal <noreply@dcsam.co.za>",
         to: "info@dcsam.co.za",
         subject: `New Form 16 Application - ${formData.firstName} ${formData.lastName}`,
         html: `
@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
       // Log email sent in database
       await supabase.from("email_logs").insert({
         recipient: formData.email,
-        subject: "Form 16 Application Received - DC Sam",
+        subject: "Form 16 Application Received - DCSA (Debt Clear SA (Pty) Ltd)",
         application_type: "form16",
         application_id: application.id,
         status: "sent",

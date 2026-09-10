@@ -228,7 +228,7 @@ export function QuickCalculator() {
       {monthlyIncome > 0 && (
         <ShareResults
           title="Free Quick Financial Health Check"
-          description="Check your debt-to-income ratio and see your monthly leftover in under 2 minutes with DC Sam's free calculator"
+          description="Check your debt-to-income ratio and see your monthly leftover in under 2 minutes with DCSA (Debt Clear SA (Pty) Ltd)'s free calculator"
           calculatorType="quick"
         />
       )}

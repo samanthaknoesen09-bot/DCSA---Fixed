@@ -34,7 +34,7 @@ export function TrustSection() {
     <section className="py-16 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">Why Trust DC Sam?</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">Why Trust DCSA (Debt Clear SA (Pty) Ltd)?</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
             Because we believe every person deserves a second chance and a judgment-free space to rebuild their
             financial life. We're not just debt counsellors - we're your partners in this journey.
@@ -69,7 +69,7 @@ export function TrustSection() {
                 walks through our doors (or calls us) is treated with dignity, respect, and genuine care. You're not
                 just another case file - you're a person with dreams, and we're here to help you achieve them."
               </p>
-              <div className="mt-6 text-primary font-semibold">- The DC Sam Team</div>
+              <div className="mt-6 text-primary font-semibold">- The DCSA (Debt Clear SA (Pty) Ltd) Team</div>
             </CardContent>
           </Card>
         </div>
@@ -78,14 +78,14 @@ export function TrustSection() {
           <div className="inline-flex items-center space-x-8 p-8 bg-card rounded-lg border border-border">
             <Image
               src="/images/dcsa-logo.png"
-              alt="DC Sam Logo"
+              alt="DCSA (Debt Clear SA (Pty) Ltd) Logo"
               width={100}
               height={40}
               className="h-10 w-auto opacity-70"
             />
             <div className="text-sm text-muted-foreground">
-              <div className="font-semibold">Located in Port Elizabeth</div>
-              <div>81 6th Avenue Newton Park</div>
+              <div className="font-semibold">Located in Gqeberha</div>
+              <div>81 6th Avenue, Newton Park, Gqeberha</div>
             </div>
           </div>
         </div>

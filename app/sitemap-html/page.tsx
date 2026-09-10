@@ -3,9 +3,9 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Sitemap | DC Sam Debt Counsellors",
+  title: "Sitemap | DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors",
   description:
-    "Complete sitemap of DC Sam Debt Counselling website. Find all our pages including debt services, budget calculator, and blog posts.",
+    "Complete sitemap of DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling website. Find all our pages including debt services, budget calculator, and blog posts.",
   alternates: {
     canonical: "https://www.dcsam.co.za/sitemap-html", // Updated to production domain
   },
@@ -46,7 +46,7 @@ export default function HtmlSitemap() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Site Map</h1>
           <p className="text-lg text-muted-foreground mb-8">
-            Find all the pages and resources available on the DC Sam Debt Counselling website. We provide professional
+            Find all the pages and resources available on the DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling website. We provide professional
             debt help, financial counselling, and debt clear solutions throughout South Africa.
           </p>
 
@@ -124,9 +124,9 @@ export default function HtmlSitemap() {
             </section>
 
             <section className="mt-12 p-6 bg-muted rounded-lg">
-              <h2 className="text-2xl font-semibold mb-4">About DC Sam</h2>
+              <h2 className="text-2xl font-semibold mb-4">About DCSA (Debt Clear SA (Pty) Ltd)</h2>
               <p className="text-muted-foreground">
-                DC Sam is a professional debt counselling service dedicated to helping South Africans
+                DCSA (Debt Clear SA (Pty) Ltd) is a professional debt counselling service dedicated to helping South Africans
                 achieve financial freedom. We are NCR registered debt counsellors providing personalized debt management
                 plans, budget planning, credit repair, and financial guidance. Our judgment-free approach ensures you
                 receive compassionate support throughout your debt-free journey.

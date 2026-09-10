@@ -32,7 +32,7 @@ export function ReviewSubmission() {
               </h4>
             </div>
             <p className="text-sm mb-6" style={{ color: colors.warmGrey }}>
-              Leave a review on Google to help others discover DC Sam and see real stories from people we've helped.
+              Leave a review on Google to help others discover DCSA (Debt Clear SA (Pty) Ltd) and see real stories from people we've helped.
             </p>
             <Button
               className="w-full text-white font-semibold shadow-md hover:shadow-lg transition-all"
@@ -56,7 +56,7 @@ export function ReviewSubmission() {
               </h4>
             </div>
             <p className="text-sm mb-6" style={{ color: colors.warmGrey }}>
-              Connect on Facebook and share your story with the DC Sam community.
+              Connect on Facebook and share your story with the DCSA (Debt Clear SA (Pty) Ltd) community.
             </p>
             <Button
               className="w-full text-white font-semibold shadow-md hover:shadow-lg transition-all"
@@ -72,7 +72,7 @@ export function ReviewSubmission() {
 
         <div className="mt-8 p-6 rounded-lg" style={{ backgroundColor: `${colors.mintCalm}15`, borderLeft: `4px solid ${colors.mintCalm}` }}>
           <p className="text-sm text-center" style={{ color: colors.charcoal }}>
-            <strong>Real reviews from real people</strong> help build trust. Your honest feedback — positive or constructive — makes DC Sam better for everyone.
+            <strong>Real reviews from real people</strong> help build trust. Your honest feedback — positive or constructive — makes DCSA (Debt Clear SA (Pty) Ltd) better for everyone.
           </p>
         </div>
       </CardContent>

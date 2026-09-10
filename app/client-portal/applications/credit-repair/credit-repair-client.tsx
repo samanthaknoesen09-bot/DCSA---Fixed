@@ -193,7 +193,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
               </Link>
             </Button>
             <Link href="/" className="text-xl font-bold text-[#0D3B66]">
-              DC Sam
+              DCSA (Debt Clear SA (Pty) Ltd)
             </Link>
           </div>
         </div>
@@ -451,7 +451,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
               <div className="space-y-4 p-4 bg-[#0D3B66]/5 rounded-lg">
                 <h3 className="font-semibold text-[#0D3B66]">Credit Repair Authorization</h3>
                 <p className="text-sm text-[#0D3B66]/80 leading-relaxed">
-                  I hereby authorize DC Sam (Debt Counselling South Africa) to act on my behalf in all matters 
+                  I hereby authorize DCSA (Debt Clear SA (Pty) Ltd) (Debt Counselling South Africa) to act on my behalf in all matters 
                   relating to my credit repair. This includes, but is not limited to, submitting disputes to 
                   credit bureaus, requesting credit reports, communicating with creditors, and representing me 
                   in credit-related matters.
@@ -466,7 +466,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                     onCheckedChange={(checked) => handleInputChange("poaAgreement", checked)}
                   />
                   <Label htmlFor="poaAgreement" className="text-sm leading-relaxed cursor-pointer">
-                    I grant DC Sam power of attorney to act on my behalf for credit repair services *
+                    I grant DCSA (Debt Clear SA (Pty) Ltd) power of attorney to act on my behalf for credit repair services *
                   </Label>
                 </div>
 
@@ -477,7 +477,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToDisputeOnBehalf", checked)}
                   />
                   <Label htmlFor="consentToDisputeOnBehalf" className="text-sm leading-relaxed cursor-pointer">
-                    I authorize DC Sam to file disputes with credit bureaus on my behalf *
+                    I authorize DCSA (Debt Clear SA (Pty) Ltd) to file disputes with credit bureaus on my behalf *
                   </Label>
                 </div>
 
@@ -488,7 +488,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToContactBureaus", checked)}
                   />
                   <Label htmlFor="consentToContactBureaus" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DC Sam contacting credit bureaus and creditors on my behalf *
+                    I consent to DCSA (Debt Clear SA (Pty) Ltd) contacting credit bureaus and creditors on my behalf *
                   </Label>
                 </div>
 
@@ -499,7 +499,7 @@ export function CreditRepairClient({ user, client }: CreditRepairClientProps) {
                     onCheckedChange={(checked) => handleInputChange("consentToProcessPersonalInfo", checked)}
                   />
                   <Label htmlFor="consentToProcessPersonalInfo" className="text-sm leading-relaxed cursor-pointer">
-                    I consent to DC Sam processing my personal and financial information *
+                    I consent to DCSA (Debt Clear SA (Pty) Ltd) processing my personal and financial information *
                   </Label>
                 </div>
 

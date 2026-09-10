@@ -15,7 +15,7 @@ const faqs = [
     answer: "Savings depend on the interest reductions your creditors agree to negotiate. We can't guarantee specific percentages, but typically clients see their monthly payment reduced by 20-40% through restructuring, plus the structured timeline keeps you from accumulating additional interest. The 'savings' is really the interest you won't pay because your debt is restructured and you'll finish paying in 5-6 years instead of 10+.",
   },
   {
-    question: "Is DC Sam actually legitimate?",
+    question: "Is DCSA (Debt Clear SA (Pty) Ltd) actually legitimate?",
     answer: "Yes. We're NCR-regulated (NCR Registration Number on file). Cindy Killian, our team member, is an Acting Magistrate, which means she's been vetted by the South African legal system. We operate under the National Credit Act and follow NCR guidelines strictly. You can verify our registration anytime with the National Credit Regulator.",
   },
   {

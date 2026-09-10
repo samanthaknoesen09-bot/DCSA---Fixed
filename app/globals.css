@@ -4,48 +4,40 @@
 @custom-variant dark (&:is(.dark *));
  
 :root {
-  /* DCSA Design System - Navy + Gold */
-  --background: #FFFFFF;
-  --foreground: #0B1F3B;
+  /* DC Sam warm boutique design system */
+  --background: #FFF8F7;
+  --foreground: #33272A;
   --card: #FFFFFF;
-  --card-foreground: #0B1F3B;
+  --card-foreground: #33272A;
   --popover: #FFFFFF;
-  --popover-foreground: #0B1F3B;
-  
-  /* Navy as primary brand color */
-  --primary: #0B1F3B;
-  --primary-foreground: #FFFFFF;
-  
-  /* Gold accent for CTAs */
-  --secondary: #F8F9FA;
-  --secondary-foreground: #0B1F3B;
-  
-  --muted: #F8F9FA;
-  --muted-foreground: #6B7280;
-  
-  /* Gold accent */
-  --accent: #C8A24A;
-  --accent-foreground: #0B1F3B;
-  
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #E5E7EB;
-  --input: #F8F9FA;
-  --ring: #0B1F3B;
-  --chart-1: #0B1F3B;
-  --chart-2: #C8A24A;
-  --chart-3: #6B7280;
-  --chart-4: #1A3A5C;
-  --chart-5: #9CA3AF;
-  --radius: 0.75rem;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #0B1F3B;
-  --sidebar-primary: #0B1F3B;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F8F9FA;
-  --sidebar-accent-foreground: #0B1F3B;
-  --sidebar-border: #E5E7EB;
-  --sidebar-ring: #0B1F3B;
+  --popover-foreground: #33272A;
+  --primary: #5A1F32;
+  --primary-foreground: #FFF8F7;
+  --secondary: #F6DDE1;
+  --secondary-foreground: #5A1F32;
+  --muted: #FFF1EC;
+  --muted-foreground: #765F65;
+  --accent: #B84F68;
+  --accent-foreground: #FFF8F7;
+  --destructive: #A53E4E;
+  --destructive-foreground: #FFF8F7;
+  --border: #E9C8CD;
+  --input: #FFF1EC;
+  --ring: #B84F68;
+  --chart-1: #5A1F32;
+  --chart-2: #B84F68;
+  --chart-3: #C08A52;
+  --chart-4: #F6DDE1;
+  --chart-5: #765F65;
+  --radius: 1rem;
+  --sidebar: #FFF8F7;
+  --sidebar-foreground: #33272A;
+  --sidebar-primary: #5A1F32;
+  --sidebar-primary-foreground: #FFF8F7;
+  --sidebar-accent: #F6DDE1;
+  --sidebar-accent-foreground: #5A1F32;
+  --sidebar-border: #E9C8CD;
+  --sidebar-ring: #B84F68;
 }
  
 .dark {

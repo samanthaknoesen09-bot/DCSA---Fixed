@@ -42,7 +42,7 @@ export function SocialMediaFeed() {
                 data-show-facepile="true"
               >
                 <blockquote cite="https://www.facebook.com/DCSamDebt" className="fb-xfbml-parse-ignore">
-                  <a href="https://www.facebook.com/DCSamDebt">DC Sam Debt Counselling</a>
+                  <a href="https://www.facebook.com/DCSamDebt">DCSA (Debt Clear SA (Pty) Ltd) Debt Counselling</a>
                 </blockquote>
               </div>
               <Button 

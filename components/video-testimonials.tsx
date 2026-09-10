@@ -62,7 +62,7 @@ export function VideoTestimonials() {
         <div className="bg-[#FFD93D]/20 border-l-4 border-[#FFD93D] p-6 rounded-r-lg">
           <h3 className="font-bold text-[#0D3B66] mb-2">Want to Share Your Story?</h3>
           <p className="text-[#0D3B66]/70 mb-4">
-            We'd love to hear how DC Sam helped you. Record a quick video on your phone (no fancy equipment needed) and inspire others!
+            We'd love to hear how DCSA (Debt Clear SA (Pty) Ltd) helped you. Record a quick video on your phone (no fancy equipment needed) and inspire others!
           </p>
           <Button className="bg-[#FF6B6B] hover:bg-[#FF6B6B]/90">
             Share Your Story

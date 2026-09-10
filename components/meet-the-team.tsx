@@ -49,7 +49,7 @@ export function MeetTheTeam() {
                 {!imageErrors["sam"] ? (
                   <Image
                     src={TEAM_IMAGES.samantha}
-                    alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DC Sam"
+                    alt="Samantha (Sam) Knoesen - Registered Debt Counsellor & Founder of DCSA (Debt Clear SA (Pty) Ltd)"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -142,7 +142,7 @@ export function MeetTheTeam() {
                 {!imageErrors["kadene"] ? (
                   <Image
                     src={TEAM_IMAGES.kadene}
-                    alt="Kadene Jacobs - DC Sam Administrative Assistant"
+                    alt="Kadene Jacobs - DCSA (Debt Clear SA (Pty) Ltd) Administrative Assistant"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
