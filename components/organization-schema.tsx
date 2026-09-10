@@ -38,7 +38,7 @@ export function OrganizationSchema() {
         "location": [
           {
             "@type": "Place",
-            "name": "Jean Lemue Attorneys - Pier 14",
+            "name": "DC Sam - Pier 14",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "2nd Floor, Pier 14 Shopping Centre",

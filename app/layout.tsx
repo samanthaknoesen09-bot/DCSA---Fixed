@@ -84,8 +84,6 @@ export const metadata: Metadata = {
     "DC Sam",
     "DCSam",
     "Samantha Knoesen",
-    "Jean Lemue Attorneys",
-    "Jean Lemue",
     "debt counselling",
     "debt counsellor",
     "credit repair",
@@ -103,7 +101,6 @@ export const metadata: Metadata = {
     "Samantha Knoesen debt counsellor",
     "DC Sam South Africa",
     "DCSam South Africa",
-    "Jean Lemue Attorneys debt counselling",
     
     // Near Me Searches
     "debt counsellor near me",
@@ -343,10 +340,10 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "LegalService",
                 "@id": "https://www.dcsam.co.za/#pier14",
-                "name": "Jean Lemue Attorneys",
+                "name": "DC Sam Debt Counsellors",
                 "alternateName": "DC Sam - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "Jean Lemue Attorneys. Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {
