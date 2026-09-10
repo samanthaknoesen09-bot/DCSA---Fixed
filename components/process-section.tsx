@@ -12,7 +12,7 @@ export function ProcessSection() {
           <div className="p-6 border rounded-2xl">
             <h3 className="font-semibold mb-2">1. Reach out</h3>
             <p>
-              Send a WhatsApp or visit our North End office. We&apos;ll start with a quick, friendly chat.
+              Send a WhatsApp to 071 900 6298 — or book a Coffee Chat at our Newton Park office (strictly by appointment, no walk-ins). We&apos;ll start with a quick, friendly chat.
             </p>
           </div>
           <div className="p-6 border rounded-2xl">
@@ -36,10 +36,10 @@ export function ProcessSection() {
             Start on WhatsApp
           </a>
           <a
-            href="#north-end"
+            href="/#coffee"
             className="px-6 py-3 rounded-2xl border font-semibold"
           >
-            Visit North End Office
+            Book my Coffee Chat ☕
           </a>
         </div>
       </div>
