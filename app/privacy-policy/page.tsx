@@ -132,7 +132,7 @@ export default function PrivacyPolicyPage() {
                 <p className="text-[#0D3B66] font-medium">DCSA (Debt Clear SA (Pty) Ltd) - Debt Counselling South Africa</p>
                 <p className="text-[#0D3B66]/80 mt-2">Email: info@dcsam.co.za</p>
                 <p className="text-[#0D3B66]/80">Phone: +27 71 900 6298</p>
-                <p className="text-[#0D3B66]/80">Address: 81 6th Avenue, Newton Park, Gqeberha, 6045</p>
+                <p className="text-[#0D3B66]/80">Address: 81 6th Avenue, Newton Park, Gqeberha</p>
               </div>
             </section>
 

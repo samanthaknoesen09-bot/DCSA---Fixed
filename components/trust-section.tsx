@@ -85,7 +85,7 @@ export function TrustSection() {
             />
             <div className="text-sm text-muted-foreground">
               <div className="font-semibold">Located in Gqeberha</div>
-              <div>81 6th Avenue Newton Park</div>
+              <div>81 6th Avenue, Newton Park, Gqeberha</div>
             </div>
           </div>
         </div>
