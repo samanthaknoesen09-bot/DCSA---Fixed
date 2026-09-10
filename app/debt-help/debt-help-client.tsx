@@ -316,7 +316,7 @@ function FinalCTASection() {
           className="text-sm"
           style={{ color: "rgba(255,255,255,0.6)" }}
         >
-          Or visit us for a coffee at Pier 14 Shopping Centre, North End
+          Our office is at 81 6th Avenue, Newton Park, Gqeberha
         </p>
       </div>
     </section>

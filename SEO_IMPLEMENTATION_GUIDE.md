@@ -89,7 +89,7 @@ This guide documents all free, high-impact SEO optimizations implemented for www
 Your metadata includes:
 - **Brand keywords:** DCSA, DCSam, Samantha Knoesen, Debt Counsellor
 - **Service keywords:** Debt review, debt counselling, credit repair, financial education
-- **Location keywords:** South Africa, Gqeberha, Port Elizabeth, near me queries
+- **Location keywords:** South Africa, Gqeberha, Newton Park, near me queries
 - **NCR registration keywords:** NCR registered debt counsellor, NCRDC3995
 - **Educational keywords:** Interest calculator, money management, debt basics
 

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "debt consolidation",
     "struggling with debt",
     "Gqeberha debt counselling",
-    "Port Elizabeth debt help",
+    "Gqeberha debt help",
     "Johannesburg debt counsellor",
     "Cape Town debt counsellor",
     "Durban debt counsellor",

@@ -18,18 +18,9 @@ export function OrganizationSchema() {
         "address": [
           {
             "@type": "PostalAddress",
-            "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
-            "addressLocality": "North End",
-            "addressRegion": "Port Elizabeth",
-            "postalCode": "6001",
-            "addressCountry": "ZA",
-            "description": "Walk-ins welcome"
-          },
-          {
-            "@type": "PostalAddress",
             "streetAddress": "81 6th Avenue",
             "addressLocality": "Newton Park",
-            "addressRegion": "Port Elizabeth",
+            "addressRegion": "Gqeberha",
             "postalCode": "6045",
             "addressCountry": "ZA",
             "description": "By appointment only"
@@ -38,29 +29,12 @@ export function OrganizationSchema() {
         "location": [
           {
             "@type": "Place",
-            "name": "DCSA (Debt Clear SA (Pty) Ltd) - Pier 14",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
-              "addressLocality": "North End",
-              "addressRegion": "Port Elizabeth",
-              "postalCode": "6001",
-              "addressCountry": "ZA"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": -33.9476,
-              "longitude": 25.5836
-            }
-          },
-          {
-            "@type": "Place",
             "name": "DCSA (Debt Clear SA (Pty) Ltd) - Newton Park",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "81 6th Avenue",
               "addressLocality": "Newton Park",
-              "addressRegion": "Port Elizabeth",
+              "addressRegion": "Gqeberha",
               "postalCode": "6045",
               "addressCountry": "ZA"
             },

@@ -84,7 +84,7 @@ export function TrustSection() {
               className="h-10 w-auto opacity-70"
             />
             <div className="text-sm text-muted-foreground">
-              <div className="font-semibold">Located in Port Elizabeth</div>
+              <div className="font-semibold">Located in Gqeberha</div>
               <div>81 6th Avenue Newton Park</div>
             </div>
           </div>

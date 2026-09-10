@@ -89,11 +89,9 @@ export const metadata: Metadata = {
     "credit repair",
 
     // Location Keywords
-    "Pier 14 Shopping Centre",
-    "North End Port Elizabeth",
-    "Newton Park Port Elizabeth",
-    "attorney Port Elizabeth",
-    "debt attorney Port Elizabeth",
+    "81 6th Avenue Newton Park Gqeberha",
+    "debt counsellor Newton Park",
+    "debt help Gqeberha",
     
     // Brand + Service Combinations
     "DCSA (Debt Clear SA (Pty) Ltd) debt counselling",
@@ -192,7 +190,7 @@ export const metadata: Metadata = {
     "debt help South Africa",
     "debt relief South Africa",
     "debt counsellor Gqeberha",
-    "debt counsellor Port Elizabeth",
+    "debt counsellor Gqeberha",
     "debt counsellor Eastern Cape",
     "debt counsellor Johannesburg",
     "debt counsellor Cape Town",
@@ -311,9 +309,9 @@ export const metadata: Metadata = {
     "DC.subject": "Debt Counselling, Financial Services, Debt Management, Debt Help, Debt Relief",
     "DC.description": "DCSA (Debt Clear SA (Pty) Ltd) professional debt counselling, debt help and debt relief services in South Africa",
     "geo.region": "ZA-EC",
-    "geo.placename": "Port Elizabeth, Eastern Cape, South Africa",
-    "geo.position": "-33.9476;25.5836",
-    "ICBM": "-33.9476, 25.5836",
+    "geo.placename": "Gqeberha, Eastern Cape, South Africa",
+    "geo.position": "-33.966111;25.595891",
+    "ICBM": "-33.966111, 25.595891",
     language: "en-ZA",
     revisit: "7 days",
   },
@@ -339,19 +337,19 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "LegalService",
-                "@id": "https://www.dcsam.co.za/#pier14",
+                "@id": "https://www.dcsam.co.za/#office",
                 "name": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors",
                 "alternateName": "DCSA (Debt Clear SA (Pty) Ltd) - Financial Education & Debt Counselling",
                 "url": "https://www.dcsam.co.za",
-                "description": "Walk-ins welcome. NCR registered debt counselling and financial education services in South Africa.",
+                "description": "DCSA office at 81 6th Avenue, Newton Park, Gqeberha. By appointment only. NCR registered debt counselling and financial education services in South Africa.",
                 "telephone": "+27719006298",
                 "email": "info@dcsam.co.za",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "2nd Floor, Pier 14 Shopping Centre",
-                  "addressLocality": "North End",
-                  "addressRegion": "Port Elizabeth",
-                  "postalCode": "6001",
+                  "streetAddress": "81 6th Avenue",
+                  "addressLocality": "Newton Park",
+                  "addressRegion": "Gqeberha",
+                  "postalCode": "6045",
                   "addressCountry": "ZA"
                 },
                 "geo": {
@@ -369,7 +367,7 @@ export default function RootLayout({
                 ],
                 "image": "https://www.dcsam.co.za/og-image.png",
                 "priceRange": "Consultation based",
-                "areaServed": {"@type": "City", "name": "Port Elizabeth"},
+                "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
                   "https://www.facebook.com/DCSADebt",
                   "https://www.linkedin.com/company/dcsa-debt-counselling"
@@ -393,7 +391,7 @@ export default function RootLayout({
                   "@type": "PostalAddress",
                   "streetAddress": "81 6th Avenue",
                   "addressLocality": "Newton Park",
-                  "addressRegion": "Port Elizabeth",
+                  "addressRegion": "Gqeberha",
                   "postalCode": "6045",
                   "addressCountry": "ZA"
                 },
@@ -404,7 +402,7 @@ export default function RootLayout({
                 },
                 "image": "https://www.dcsam.co.za/og-image.png",
                 "priceRange": "Consultation based",
-                "areaServed": {"@type": "City", "name": "Port Elizabeth"},
+                "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
                   "https://www.facebook.com/DCSADebt",
                   "https://www.linkedin.com/company/dcsa-debt-counselling"
