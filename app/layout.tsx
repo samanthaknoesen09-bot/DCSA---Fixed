@@ -369,7 +369,7 @@ export default function RootLayout({
                 "priceRange": "Consultation based",
                 "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
-                  "https://www.facebook.com/DCSADebt",
+                  "https://www.facebook.com/DCSamDebt/",
                   "https://www.linkedin.com/company/dcsa-debt-counselling"
                 ],
                 "knowsAbout": ["Debt Counselling","Credit Repair","Financial Education","Debt Review","Money Management"],
@@ -404,7 +404,7 @@ export default function RootLayout({
                 "priceRange": "Consultation based",
                 "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
-                  "https://www.facebook.com/DCSADebt",
+                  "https://www.facebook.com/DCSamDebt/",
                   "https://www.linkedin.com/company/dcsa-debt-counselling"
                 ],
                 "knowsAbout": ["Debt Counselling","Credit Repair","Financial Education","Debt Review","Money Management"],
@@ -462,6 +462,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "DCSA (Debt Clear SA (Pty) Ltd)",
+              "alternateName": ["DCSA", "DCSam", "DC Sam", "Ask Sam", "Debt Clear SA", "Debt Clear SA (Pty) Ltd", "Debt Counselling South Africa"],
               "url": "https://www.dcsam.co.za",
               "description": "Financial education platform and debt counselling services",
               "logo": "https://www.dcsam.co.za/logo.png",
@@ -476,7 +477,7 @@ export default function RootLayout({
                 "email": "info@dcsam.co.za"
               },
               "sameAs": [
-                "https://www.facebook.com/DCSADebt",
+                "https://www.facebook.com/DCSamDebt/",
                 "https://www.linkedin.com/company/dcsa-debt-counselling"
               ]
             })
@@ -622,7 +623,7 @@ export default function RootLayout({
               "image": "https://www.dcsam.co.za/images/samantha-knoesen.jpeg",
               "url": "https://www.dcsam.co.za",
               "sameAs": [
-                "https://www.facebook.com/DebtClearDCSA",
+                "https://www.facebook.com/DCSamDebt/",
                 "https://www.linkedin.com/company/dcsa-debt-counselling"
               ],
               "knowsAbout": [
