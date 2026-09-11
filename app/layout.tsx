@@ -297,7 +297,7 @@ export const metadata: Metadata = {
     "google-site-verification": "WvDUKvcUNr3Dng8NU3MpW-Gcl4rpe31jmsHr4IPTHFk",
     "msvalidate.01": "BING_VERIFICATION_CODE_NEEDED",
     "facebook-domain-verification": "dcsa",
-    "fb:page_id": "DebtClearDCSA",
+    "fb:page_id": "DCSamDebt",
     // AI Bot Meta Tags
     "ai:title": "DCSA (Debt Clear SA (Pty) Ltd) Debt Counsellors - Professional Debt Relief South Africa",
     "ai:description": "NCR registered debt counsellors (NCRDC3995) providing immediate debt relief, debt review, and credit repair services across South Africa. Free consultation available.",
