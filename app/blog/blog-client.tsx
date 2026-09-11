@@ -5,8 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, ArrowRight, ExternalLink, Rss } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { colors } from "@/lib/colors"
 import Image from "next/image"
 
@@ -103,12 +101,10 @@ export default function BlogClientPage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.warmCream }}>
-      <Header />
-
       <main className="pb-16 lg:pb-24">
         {/* Hero Section - Matching Homepage Style */}
         <section className="py-16 md:py-20 px-4" style={{ 
-          background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.softPeach}30 100%)`
+          background: `linear-gradient(135deg, ${colors.warmBeige} 0%, ${colors.blush} 100%)`
         }}>
           <div className="container mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
@@ -116,7 +112,7 @@ export default function BlogClientPage() {
               <span className="text-sm font-semibold" style={{ color: colors.maroon }}>DCSA (Debt Clear SA (Pty) Ltd) Blog</span>
             </div>
             
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-balance" style={{ color: colors.charcoal }}>
+            <h1 className="text-4xl lg:text-5xl font-serif font-medium mb-6 text-balance" style={{ color: colors.maroon }}>
               Real Talk About Money
             </h1>
             <p className="text-lg mb-8 max-w-2xl mx-auto text-pretty" style={{ color: colors.warmGrey }}>
@@ -126,7 +122,7 @@ export default function BlogClientPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 className="bg-[#1877F2] hover:bg-[#166FE5] text-white"
-                onClick={() => window.open("https://www.facebook.com/DebtClearDCSA", "_blank")}
+                onClick={() => window.open("https://www.facebook.com/DCSamDebt/", "_blank")}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Follow Us on Facebook
@@ -171,7 +167,7 @@ export default function BlogClientPage() {
               posts.map((post) => (
                 <a key={post.id} href={`/blog/${post.slug}`} className="block group">
                   <Card 
-                    className="border-2 hover:shadow-xl transition-all overflow-hidden cursor-pointer"
+                    className="rounded-3xl border-2 hover:shadow-xl transition-all overflow-hidden cursor-pointer"
                     style={{ borderColor: colors.sandLight, backgroundColor: colors.white }}
                   >
                     <CardContent className="p-6">
@@ -180,7 +176,7 @@ export default function BlogClientPage() {
                           <div className="flex flex-wrap items-center gap-4 text-sm mb-3" style={{ color: colors.warmGrey }}>
                             <Badge 
                               className="border-0"
-                              style={{ backgroundColor: colors.softPeach, color: colors.charcoal }}
+                              style={{ backgroundColor: colors.blush, color: colors.charcoal }}
                             >
                               {post.category}
                             </Badge>
@@ -218,7 +214,7 @@ export default function BlogClientPage() {
           <div className="mt-16 text-center">
             <Card 
               className="border-2 max-w-2xl mx-auto"
-              style={{ borderColor: colors.maroon + "30", backgroundColor: colors.softPeach + "20" }}
+              style={{ borderColor: colors.maroon + "30", backgroundColor: colors.blush }}
             >
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-4" style={{ color: colors.charcoal }}>
@@ -254,7 +250,6 @@ export default function BlogClientPage() {
         </div>
       </main>
 
-      <Footer />
     </div>
   )
 }
