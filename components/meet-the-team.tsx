@@ -34,7 +34,7 @@ export function MeetTheTeam() {
             <span className="text-sm font-semibold text-[#0D3B66]">Meet the Humans Behind the Help</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#0D3B66] mb-4">
-            The <span className="text-primary">DC</span> Sam Squad
+            The <span className="text-[#5A1F32]">DC</span><span className="text-black">SA</span> Squad
           </h2>
           <p className="text-lg text-[#0D3B66]/70 max-w-2xl mx-auto">
             No stuffy suits here. Just real people who genuinely care about helping you win with money.

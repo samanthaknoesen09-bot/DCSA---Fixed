@@ -315,7 +315,7 @@ Time: ${timeStr}`
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2 text-background">
-                <span className="text-primary">DC</span> Sam
+                <span style={{ color: colors.maroon }}>DC</span><span style={{ color: colors.charcoal }}>SA</span>
               </h3>
               <p className="text-sm text-background/70 mb-4">
                 Your trusted partner for debt counselling and financial freedom
