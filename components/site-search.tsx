@@ -49,7 +49,7 @@ export function SiteSearch() {
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-foreground">
-            Search <span className="text-primary">DC</span> Sam
+            Search <span className="text-[#5A1F32]">DC</span><span className="text-black">SA</span>
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
