@@ -60,7 +60,7 @@ export function OrganizationSchema() {
           }
         ],
         "sameAs": [
-          "https://www.facebook.com/DebtClearDCSA"
+          "https://www.facebook.com/DCSamDebt/"
         ],
         "founder": {
           "@type": "Person",
