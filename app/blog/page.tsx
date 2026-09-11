@@ -24,6 +24,20 @@ export const metadata: Metadata = {
   },
 }
 
+const blogBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.dcsam.co.za" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.dcsam.co.za/blog" },
+  ],
+}
+
 export default function BlogPage() {
-  return <BlogClientPage />
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogBreadcrumb) }} />
+      <BlogClientPage />
+    </>
+  )
 }
