@@ -97,7 +97,18 @@ export async function GET() {
       return NextResponse.json({ posts: [] })
     }
 
-    return NextResponse.json({ posts: posts || [] })
+    // Normalize snake_case DB columns to camelCase for all frontend consumers
+    // (post pages, feeds, sitemap, homepage). Fixes "Invalid Date" + missing images.
+    const normalized = (posts || []).map((p: Record<string, unknown>) => ({
+      ...p,
+      createdAt: p.created_at || p.createdAt || p.published_at || null,
+      updatedAt: p.updated_at || p.updatedAt || p.published_at || null,
+      publishedAt: p.published_at || null,
+      scheduledFor: p.scheduled_for || null,
+      featuredImage: p.featured_image || p.featuredImage || null,
+    }))
+
+    return NextResponse.json({ posts: normalized })
   } catch (error) {
     console.error("[v0] Blog GET error:", error)
     return NextResponse.json({ posts: [] })
