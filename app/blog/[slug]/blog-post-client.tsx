@@ -4,8 +4,6 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, User, ArrowLeft, Phone } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { BlogShareButtons } from "@/components/blog-share-buttons"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { calculateReadingTime } from "@/lib/reading-time"
@@ -84,7 +82,6 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
       <main className="min-h-screen bg-background" id="main-content">
         <article className="container mx-auto px-4 py-12 max-w-4xl">
           {/* Breadcrumbs */}
@@ -193,7 +190,6 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           {/* Related posts could go here */}
         </article>
       </main>
-      <Footer />
     </>
   )
 }
