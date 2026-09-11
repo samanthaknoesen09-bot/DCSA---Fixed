@@ -153,6 +153,20 @@ export default async function BlogPostPage({
           __html: JSON.stringify(structuredData),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.dcsam.co.za" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.dcsam.co.za/blog" },
+              { "@type": "ListItem", position: 3, name: post.title, item: postUrl },
+            ],
+          }),
+        }}
+      />
       <BlogPostClient post={post} />
     </>
   )
