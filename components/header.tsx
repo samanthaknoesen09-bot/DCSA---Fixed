@@ -11,6 +11,7 @@ const links = [
   { label: "Why Sam?", href: "/#why-sam" },
   { label: "About Sam", href: "/#about-sam" },
   { label: "FAQs", href: "/faq" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },
 ]
 
