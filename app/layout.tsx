@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: "Free plain-language financial education for South Africans. Learn saving, debt management, credit repair without judgment. Tools, calculators, and NCR-registered debt counselling.",
     images: [
       {
-        url: "https://www.dcsam.co.za/og-image.png",
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ay4sj1JbQbqpSqRcIehDPxp2TJClhy.png",
         width: 1200,
         height: 630,
         alt: "DCSA (Debt Clear SA (Pty) Ltd) - Financial Education for All South Africans",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Financial Education & Debt Help for South Africans | DCSA (Debt Clear SA (Pty) Ltd)",
     description: "Free financial tools and debt counselling. No judgment, just real help.",
-    images: ["https://www.dcsam.co.za/og-image.png"],
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ay4sj1JbQbqpSqRcIehDPxp2TJClhy.png"],
   },
   alternates: {
     canonical: "https://www.dcsam.co.za",
@@ -365,7 +365,7 @@ export default function RootLayout({
                     "closes": "16:00"
                   }
                 ],
-                "image": "https://www.dcsam.co.za/og-image.png",
+                "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ay4sj1JbQbqpSqRcIehDPxp2TJClhy.png",
                 "priceRange": "Consultation based",
                 "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
@@ -400,7 +400,7 @@ export default function RootLayout({
                   "latitude": -33.966111,
                   "longitude": 25.595891
                 },
-                "image": "https://www.dcsam.co.za/og-image.png",
+                "image": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ay4sj1JbQbqpSqRcIehDPxp2TJClhy.png",
                 "priceRange": "Consultation based",
                 "areaServed": {"@type": "City", "name": "Gqeberha"},
                 "sameAs": [
