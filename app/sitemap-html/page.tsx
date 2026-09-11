@@ -112,7 +112,7 @@ export default function HtmlSitemap() {
                 <p>
                   <strong>Facebook:</strong>{" "}
                   <a
-                    href="https://www.facebook.com/DebtClearDCSA"
+                    href="https://www.facebook.com/DCSamDebt/"
                     className="text-primary hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
